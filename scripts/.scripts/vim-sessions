@@ -1,0 +1,12 @@
+#!/bin/sh
+if [[ $1 = "-main" ]]; then
+urxvtc -geometry 95x48 -e sh -c "vim -S ~/.vim/sessions/main.vim"
+elif [[ $1 = "-notes" ]]; then
+urxvtc -geometry 95x48 -e sh -c "vim -S ~/.vim/sessions/notes.vim"
+elif [[ $1 = "-start-page" ]]; then
+urxvtc -geometry 95x48 -e sh -c "vim -S ~/.vim/sessions/start-page.vim"
+elif [[ $1 = "-kitty" ]]; then
+kitty -e sh -c "vim -S ~/.vim/sessions/main.vim"
+else
+echo "Options: -main -notes -start-page"
+fi

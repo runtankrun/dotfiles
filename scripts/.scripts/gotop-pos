@@ -1,0 +1,2 @@
+#!/bin/sh
+urxvtc -geometry 74x42 -e "gotop"

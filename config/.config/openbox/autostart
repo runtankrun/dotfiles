@@ -1,0 +1,36 @@
+## Restore Wallpaper
+#sleep 1; nitrogen --restore
+#feh --bg-max ~/.config/wall.png --bg-max ~/.config/wall2.png
+
+## xfce4-settings daemon
+xfsettingsd &
+
+## Start Compositing Manager
+picom -b &
+
+## Start Music Player Daemon
+mpd &
+
+## Thunar Daemon
+#thunar --daemon &
+
+##Urxvt Daemon Mode
+urxvtd -q &
+
+## super key for menu
+xcape -e 'Super_L=Alt_L|F2' &
+
+## Swap ESC Key with Caps Lock
+setxkbmap -option caps:swapescape
+
+## font
+xset +fp ~/.fonts/misc/
+
+## skippy windowswitcher
+skippy-xd --config ~/.config/skippy-xd/skippy-xd.rc --start-daemon &
+
+### PolicyKit authentication
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+### Localize user system folders
+xdg-user-dirs-gtk-update &

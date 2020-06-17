@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+# just a command to launch urxvt with bulbasaur background
+# replace zsh with bash if are using bash
+urxvtc -e sh \
+-c "printf '\033]708;rgb:ee/ee/ee\007';vim -S ~/.vim/sessions/notes.vim" # clean up the terminal padding \

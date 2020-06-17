@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu>
+
+<menu id="New menu 1" label="Vim">
+	<item label="Vim - urxvtc">
+		<action name="Execute">
+			<command>~/.scripts/vim-sessions -main</command>
+		</action>
+	</item>
+	<item label="Vim - Kitty">
+		<action name="Execute">
+			<command>~/.scripts/vim-sessions -kitty</command>
+		</action>
+	</item>
+</menu>
+<menu id="New menu 2" label="Web Browser">
+	<item label="Firefox">
+		<action name="Execute">
+			<command>firefox</command>
+		</action>
+	</item>
+	<item label="Surf">
+		<action name="Execute">
+			<command>surf https://www.duckduckgo.com/</command>
+		</action>
+	</item>
+</menu>
+<menu id="New menu 4" label="Bookmarks">
+	<item label="Whoer">
+		<action name="Execute">
+			<command>firefox https://www.whoer.net/</command>
+		</action>
+	</item>
+	<item label="BoutineLA">
+		<action name="Execute">
+			<command>firefox https://www.redditp.com/r/boutinela/top/?t=week</command>
+		</action>
+	</item>
+	<item label="Youtube">
+		<action name="Execute">
+			<command>firefox https://www.youtube.com</command>
+		</action>
+	</item>
+</menu>
+<menu id="screenshot" label="Screenshot">
+	<item label="Screenshot in 5">
+		<action name="Execute">
+			<command>scrot -d 5 &apos;%Y%m%d-%H%M%S_$wx$h_screenshot.png&apos; -e &apos;mv $f ~/Pictures/screenshots/ ; feh -z -. ~/Pictures/screenshots/$f&apos;</command>
+		</action>
+	</item>
+	<item label="Screenshot in 10">
+		<action name="Execute">
+			<command>scrot -d 10 &apos;%Y%m%d-%H%M%S_$wx$h_screenshot.png&apos; -e &apos;mv $f ~/Pictures/screenshots/ ; feh -z -. ~/Pictures/screenshots/$f&apos;</command>
+		</action>
+	</item>
+	<item label="Screenshot With Selection">
+		<action name="Execute">
+			<command>scrot -s &apos;%Y%m%d-%H%M%S_$wx$h_screenshot.png&apos; -e &apos;mv $f ~/Pictures/screenshots/ ; feh -z -. ~/Pictures/screenshots/$f&apos;</command>
+		</action>
+	</item>
+</menu>
+<menu id="disk-utilities" label="Disk Utilities">
+	<item label="Timeshift">
+		<action name="Execute">
+			<command>timeshift</command>
+		</action>
+	</item>
+	<item label="GParted">
+		<action name="Execute">
+			<command>gparted</command>
+		</action>
+	</item>
+	<item label="Etcher">
+		<action name="Execute">
+			<command>etcher</command>
+		</action>
+	</item>
+</menu>
+<menu id="preferences" label="Preferences">
+	<menu id="appearance-config" label="Customize Look and Feel">
+		<item label="Gtk3 Theme">
+			<action name="Execute">
+				<command>xfce4-appearance-settings</command>
+			</action>
+		</item>
+		<item label="Openbox">
+			<action name="Execute">
+				<command>obconf</command>
+			</action>
+		</item>
+		<item label="Qt5 Settings">
+			<action name="Execute">
+				<command>qt5ct</command>
+			</action>
+		</item>
+	</menu>
+	<menu id="system-settings" label="System">
+		<item label="Settings Manager">
+			<action name="Execute">
+				<command>xfce4-settings-manager</command>
+			</action>
+		</item>
+		<item label="Add/Remove Software">
+			<action name="Execute">
+				<command>pamac-manager</command>
+			</action>
+		</item>
+		<item label="Audio Settings">
+			<action name="Execute">
+				<command>pavucontrol</command>
+			</action>
+		</item>
+		<item label="Screen Layout">
+			<action name="Execute">
+				<command>arandr</command>
+			</action>
+		</item>
+	</menu>
+	<menu id="openbox-config" label="Openbox">
+		<item label="GUI Menu Editor">
+			<action name="Execute">
+				<command>kickshaw</command>
+			</action>
+		</item>
+		<item label="GUI Keybind Editor">
+			<action name="Execute">
+				<command>obkey</command>
+			</action>
+		</item>
+		<separator/>
+		<item label="Edit autostart">
+			<action name="Execute">
+				<command>geany ~/.config/openbox/autostart</command>
+			</action>
+		</item>
+		<item label="Edit rc.xml">
+			<action name="Execute">
+				<command>geany ~/.config/openbox/rc.xml</command>
+			</action>
+		</item>
+	</menu>
+	<menu id="PolybarPipeMenu" label="Polybar" execute="manjaro-polybar-pipemenu"/>
+	<menu id="ConkyPipeMenu" label="Conky" execute="manjaro-conky-pipemenu"/>
+	<menu id="TintPipeMenu" label="Tint2" execute="manjaro-tint2-pipemenu"/>
+	<menu id="CompositingPipeMenu" label="Compositor" execute="manjaro-compositor"/>
+	<item label="Reconfigure Openbox">
+		<action name="Reconfigure"/>
+	</item>
+	<item label="Restart Openbox">
+		<action name="Restart"/>
+	</item>
+	<separator/>
+</menu>
+
+<menu id="root-menu" label="Openbox 3">
+	<separator label="Yo"/>
+	<item label="Terminal">
+		<action name="Execute">
+			<command>urxvtc</command>
+		</action>
+	</item>
+	<item label="File Manager">
+		<action name="Execute">
+			<command>~/.scripts/ranger-slim</command>
+		</action>
+	</item>
+	<item label="Text Editor">
+		<action name="Execute">
+			<command>urxvtc -geometry 110x62 -e sh -c &quot;vim -S ~/.vim/sessions/notes.vim&quot;</command>
+		</action>
+	</item>
+	<menu id="New menu 1"/>
+	<separator/>
+	<menu id="New menu 2"/>
+	<menu id="New menu 4"/>
+	<separator/>
+	<item label="Music">
+		<action name="Execute">
+			<command>~/.scripts/spot</command>
+		</action>
+	</item>
+	<separator/>
+	<menu id="applications" label="Applications" execute="/usr/bin/obmenu-generator -S ~/.config/obmenu-generator/applications.pl"/>
+	<separator/>
+	<menu id="screenshot"/>
+	<separator/>
+	<menu id="disk-utilities"/>
+	<menu id="preferences"/>
+	<menu id="keybinds" label="Keybinds" execute="manjaro-kb-pipemenu"/>
+	<separator/>
+	<separator/>
+	<separator/>
+	<item label="Lock Screen">
+		<action name="Execute">
+			<command>lockscreen -- scrot</command>
+		</action>
+	</item>
+	<item label="Exit Openbox">
+		<action name="Execute">
+			<command>rofr.sh -l</command>
+		</action>
+	</item>
+</menu>
+
+</openbox_menu>
