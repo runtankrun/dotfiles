@@ -99,9 +99,10 @@ Plug 'lilydjwg/colorizer'
 call plug#end()
 
 ""Plug Config
-":hi ColorColumn ctermbg=0 guibg=#887E80
+":hi ColorColumn ctermbg=0 guibg=#D3D3D3
 "autocmd VimEnter * NERDTree
 let NERDTreeShowHidden=1
 let g:NERDTreeNodeDelimiter = "\u00a0"
 let g:colorizer_maxlines=1000
 let g:colorizer_startup = 0
+let g:lens#width_resize_min = 2000
