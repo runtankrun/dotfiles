@@ -36,7 +36,7 @@ white: #ffffff;
 // black
 * {
 bg: #00000099;
-bg-sel: #00000066;
+bg-sel: #008FFF66;
 fg: #ffffff;
 }
 
