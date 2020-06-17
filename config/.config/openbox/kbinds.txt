@@ -1,0 +1,80 @@
+x W-0             	~/.scripts/pro -f
+x A-W-0           	~/.scripts/pro -s
+x C-W-0           	~/.scripts/pro -F
+x W-1             	~/.scripts/neo-pos
+x W-2             	~/.scripts/gotop-pos
+x W-3             	~/.scripts/nvtop-pos
+o W-grave         	MoveResizeTo
+o S-W-asciitilde  	MoveResizeTo
+o S-W-F1          	MoveResizeTo
+o W-F2            	MoveResizeTo
+o W-F3            	MoveResizeTo
+o W-F4            	MoveResizeTo
+o W-F5            	MoveResizeTo
+x S-W-exclam      	wal --theme base16-grayscale -l -a 95 --saturate .85
+x S-W-at          	wal --theme base16-grayscale -a 95 --saturate .85
+x Pause           	skippy-xd-toggle
+x C-A-End         	rofr.sh -l
+x C-p             	~/.config/polybar/launch.sh
+x C-A-p           	pkill polybar
+x Menu            	rofi -show combi
+x W-a             	pavucontrol
+x A-W-a           	urxvtc -geometry 61x20 -e "alsamixer"
+x F12             	amixer set Master -M 5%+
+x F11             	amixer set Master -M 5%-
+x F10             	amixer -D pulse sset Master unmute
+x F9              	amixer -D pulse sset Master mute
+o C-Home          	Focus
+o C-d             	ToggleDecorations
+o W-C-Left        	Move
+o C-Right         	MoveRelative
+o C-Left          	MoveRelative
+o C-Down          	MoveRelative
+o C-Up            	MoveRelative
+o C-End           	ToggleMaximizeVert
+o C-S-Right       	ResizeRelative
+o C-S-Left        	ResizeRelative
+o C-S-Up          	ResizeRelative
+o C-S-Down        	ResizeRelative
+o C-S-Page_Down   	ResizeRelative
+o C-S-End         	ResizeRelative
+o C-S-Delete      	ResizeRelative
+o C-S-Home        	ResizeRelative
+o W-Tab           	Resize
+o C-q             	Close
+o C-W-Right       	Close
+o A-m             	Iconify
+o C-A-Right       	SendToDesktopRight
+o C-A-Left        	SendToDesktopPrevious
+o A-Right         	DesktopNext
+o A-Left          	DesktopPrevious
+x W-s             	xfce4-settings-manager
+x S-W-s           	xfce4-appearance-settings
+x A-W-s           	obconf
+x W-w             	networkmanager_dmenu
+x A-W-w           	nm-connection-editor
+x W-z             	urxvtc
+x A-W-z           	alacritty
+x S-W-z           	kitty
+x W-r             	~/.scripts/ranger-slim
+x W-e             	thunar
+x A-W-e           	gksu thunar
+x S-W-d           	thunar ~/Downloads
+x S-W-p           	thunar ~/Pictures
+x S-W-v           	kitty -e sh -c "vim -S ~/.vim/sessions/main.vim"
+x A-W-k           	obkey
+x W-g             	geany
+x W-k             	geany /home/ellio/.config/openbox/rc.xml
+x S-W-b           	geany ~/.zshrc
+x W-n             	~/.scripts/vim-sessions -notes
+x A-W-m           	megasync
+x W-m             	~/.scripts/spot
+x W-v             	~/.scripts/vim-sessions -main
+x W-b             	firefox
+x W-A-b           	surf duckduckgo.com
+x W-c             	wal --theme random -a 95 --saturate 0.85
+x W-A-c           	wal --theme random_light -a 95 --saturate 0.85
+x C-W-c           	gcolor3
+x W-A-p           	feh -Z -. -D 5 /home/ellio/Pictures/feh/
+x W-Pause         	mpv /home/ellio/Videos/CT_o.mov
+x W-A-v           	mpv ~/Videos/h/b
