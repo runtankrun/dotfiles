@@ -1022,14 +1022,14 @@
       </size>
       <maximized>no</maximized>
     </application>
-    -->
     <application class="mpv*" name="gl*" type="normal">
       <size>
-        <height>50%</height>
-        <width>33%</width>
+        <height>1343px</height>
+        <width>757px</width>
       </size>
       <maximized>no</maximized>
     </application>
+    -->    
     <application class="Gimp-2.10" name="gimp-2.10" type="normal">
       <size>
         <height>500</height>

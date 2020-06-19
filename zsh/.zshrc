@@ -107,6 +107,18 @@ source $ZSH/oh-my-zsh.sh
 
 alias cl='clear'
 
+#Git
+alias gi='git init'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit -m'
+alias gpsh='git push -u origin master'
+alias gpll='git pull'
+
+#stow
+alias store-n='stow --adopt -n -v -t ~ *'
+alias store='stow --adopt -v -t ~ *'
+
 #ProtonVPN
 alias prof='sudo protonvpn c -f'
 alias pros='sudo protonvpn c --sc'
