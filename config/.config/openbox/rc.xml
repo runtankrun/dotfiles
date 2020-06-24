@@ -391,6 +391,11 @@
         <command>~/.scripts/ranger-slim</command>
       </action>
     </keybind>
+    <keybind key="A-W-r">
+      <action name="Execute">
+        <command>~/.scripts/ranger-slim -s</command>
+      </action>
+    </keybind>
     <keybind key="W-e">
       <action name="Execute">
         <command>thunar</command>
