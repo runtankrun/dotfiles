@@ -495,7 +495,7 @@
     </keybind>
     <keybind key="W-A-p">
       <action name="Execute">
-        <command>feh -Z -. -D 5 /home/ellio/Pictures/feh/</command>
+        <command>feh -Z -. -D 5 -H 1365px /home/ellio/Pictures/feh/</command>
       </action>
     </keybind>
     <keybind key="W-Pause">
