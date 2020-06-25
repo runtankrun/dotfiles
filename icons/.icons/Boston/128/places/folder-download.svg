@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="128"
+   height="128"
+   viewBox="0 0 33.866667 33.866667"
+   version="1.1"
+   id="svg2634">
+  <title
+     id="title3250">Boston Icons</title>
+  <defs
+     id="defs2628">
+    <linearGradient
+       xlink:href="#linearGradient1027"
+       id="linearGradient1029"
+       x1="99.48333"
+       y1="170"
+       x2="99.48333"
+       y2="155.18333"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-3.7299999e-6,2.292875e-5)" />
+    <linearGradient
+       id="linearGradient1027">
+      <stop
+         style="stop-color:#2d8cff;stop-opacity:1"
+         offset="0"
+         id="stop1023" />
+      <stop
+         style="stop-color:#2d8cff;stop-opacity:0"
+         offset="1"
+         id="stop1025" />
+    </linearGradient>
+  </defs>
+  <metadata
+     id="metadata2631">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Boston Icons</dc:title>
+        <cc:license
+           rdf:resource="dribbble.com/chrisdiaz" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Christian Díaz</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:date>2019</dc:date>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Christian Díaz</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:identifier>christiandiaz.design [at] gmail [dot] com</dc:identifier>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>GNOME icon Theme</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>diazchris.deviantart.com | dribbble.com/chrisdiaz</dc:description>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     transform="translate(-82.550003,-136.13333)">
+    <g
+       id="g852">
+      <path
+         id="path957"
+         d="m 83.608329,140.89584 h 12.170834 l 3.704166,2.64583 h 15.875001 v 23.28334 l -31.750001,-1e-5 -10e-7,-25.4"
+         style="fill:#00000f;stroke:none;stroke-width:0.26458335px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:0.94117647" />
+      <path
+         id="path959"
+         d="m 98.530832,143.54166 -3.016249,2.11668 H 83.608332 v 21.16665 h 31.750008 v -23.28333 z m 0.238125,0.52917 h 16.060213 v 22.225 H 84.137499 v -20.10832 h 11.641667 z"
+         style="fill:#00000f;fill-opacity:0.94117647;stroke:none;stroke-width:0.26458335px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         id="path845"
+         d="m 84.137495,146.18752 h 11.641667 l 2.989795,-2.11667 h 16.060213 v 22.225 H 84.137495 Z"
+         style="fill:#a290e2;fill-opacity:1;stroke:none;stroke-width:0.26458335px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         y="155.18333"
+         x="84.137497"
+         height="11.1125"
+         width="30.691668"
+         id="rect1005"
+         style="opacity:0;fill:url(#linearGradient1029);fill-opacity:1;stroke:none;stroke-width:0.5291667;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <g
+         id="g848">
+        <path
+           style="fill:#a290e2;fill-opacity:0.74111676;stroke:none;stroke-width:0.26458335px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 84.137496,141.42502 h 11.377086 l 3.042709,2.11666 -3.042709,2.11667 H 84.137496 Z"
+           id="path843" />
+      </g>
+      <path
+         d="m 95.4375,157.54935 -0.375,0.37305 4.419922,4.41992 4.421878,-4.41992 -0.375,-0.37305 -4.046878,4.04492 z m 3.78125,-8.18607 v 12.60599 h 0.529297 v -12.60599 z"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#00000f;fill-opacity:0.94117647;fill-rule:nonzero;stroke:none;stroke-width:0.5291667;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="path883" />
+    </g>
+  </g>
+</svg>
