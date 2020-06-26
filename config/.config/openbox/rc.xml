@@ -88,7 +88,7 @@
      Many programs reserve space automatically, but you can use this in other
      cases. -->
   <margins>
-    <top>25</top>
+    <top>0</top>
     <bottom>63</bottom>
     <left>25</left>
     <right>25</right>
@@ -141,26 +141,6 @@
     <keybind key="W-3">
       <action name="Execute">
         <command>~/.scripts/nvtop-pos</command>
-      </action>
-    </keybind>
-    <keybind key="W-grave">
-      <action name="MoveResizeTo">
-        <x>0</x>
-        <y>-1156</y>
-      </action>
-    </keybind>
-    <keybind key="S-W-asciitilde">
-      <action name="MoveResizeTo">
-        <x>0</x>
-        <y>183</y>
-      </action>
-    </keybind>
-    <keybind key="S-W-F1">
-      <action name="MoveResizeTo">
-        <x>498</x>
-        <y>-7</y>
-        <width>828</width>
-        <height>1369</height>
       </action>
     </keybind>
     <keybind key="W-F2">
@@ -256,9 +236,6 @@
     <keybind key="C-d">
       <action name="ToggleDecorations"/>
     </keybind>
-    <keybind key="W-C-Left">
-      <action name="Move"/>
-    </keybind>
     <keybind key="C-Right">
       <action name="MoveRelative">
         <x>5</x>
@@ -322,10 +299,13 @@
         <top>5</top>
       </action>
     </keybind>
+    <keybind key="C-W-Left">
+      <action name="Move"/>
+    </keybind>
     <keybind key="W-Tab">
       <action name="Resize"/>
     </keybind>
-    <keybind key="C-q">
+    <keybind key="W-Escape">
       <action name="Close"/>
     </keybind>
     <keybind key="C-W-Right">
@@ -398,22 +378,7 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>thunar</command>
-      </action>
-    </keybind>
-    <keybind key="A-W-e">
-      <action name="Execute">
-        <command>gksu thunar</command>
-      </action>
-    </keybind>
-    <keybind key="S-W-d">
-      <action name="Execute">
-        <command>thunar ~/Downloads</command>
-      </action>
-    </keybind>
-    <keybind key="S-W-p">
-      <action name="Execute">
-        <command>thunar ~/Pictures</command>
+        <command>easystroke</command>
       </action>
     </keybind>
     <keybind key="S-W-v">
@@ -421,23 +386,9 @@
         <command>~/.scripts/vim-sessions -kitty</command>
       </action>
     </keybind>
-    <keybind key="A-W-k">
-      <action name="Execute">
-        <command>obkey</command>
-      </action>
-    </keybind>
-    <keybind key="W-g">
-      <action name="Execute">
-        <command>geany</command>
-      </action>
-    </keybind>
     <keybind key="W-k">
       <action name="Execute">
-        <command>geany /home/ellio/.config/openbox/rc.xml</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-          <name>keybindings</name>
-        </startupnotify>
+        <command>obkey</command>
       </action>
     </keybind>
     <keybind key="S-W-b">
@@ -500,7 +451,7 @@
     </keybind>
     <keybind key="W-A-p">
       <action name="Execute">
-        <command>feh -Z -. -D 5 -H 1365px /home/ellio/Pictures/feh/</command>
+        <command>feh -Z -. -D 5 -H 1345px /home/ellio/Pictures/feh/</command>
       </action>
     </keybind>
     <keybind key="W-Pause">
@@ -1034,7 +985,7 @@
       </size>
       <maximized>no</maximized>
     </application>
-    -->    
+    -->
     <application class="Gimp-2.10" name="gimp-2.10" type="normal">
       <size>
         <height>500</height>

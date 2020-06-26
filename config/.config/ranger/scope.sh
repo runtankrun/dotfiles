@@ -44,6 +44,19 @@ trim() { head -n "$maxln"; }
 # wraps highlight to treat exit code 141 (killed by SIGPIPE) as success
 highlight() { command highlight "$@"; test $? = 0 -o $? = 141; }
 
+# Image previews, if enabled in ranger.
+#if [ "$preview_images" = "True" ]; then
+#    case "$mimetype" in
+#        image/svg+xml)
+#           convert "$path" "$cached" && exit 6 || exit 1;;
+#        image/*)
+#            exit 7;;
+#        # Image preview for video, disabled by default.:
+#        ###video/*)
+#        ###    ffmpegthumbnailer -i "$path" -o "$cached" -s 0 && exit 6 || exit 1;;
+#    esac
+#fi
+
 case "$extension" in
     # Archive extensions:
     7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\

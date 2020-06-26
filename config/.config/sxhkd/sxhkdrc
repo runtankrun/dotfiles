@@ -15,14 +15,47 @@
 ##  COMMON COMMAND  ##
 ######################
 
-## launch terminal
+## polybar
+ctrl + p
+    ~/.config/polybar/launch.sh
+ctrl + alt + p
+    pkill polybar
+
+## audio
+super + a
+    pavucontrol
+F12
+    amixer set Master -M 5%+
+F11
+    amixer set Master -M 5%-
+F10
+    amixer -D pulse sset Master unmute
+F9
+    amixer -D pulse sset Master mute
+
+## launch terminal & commands
 super + z
 	urxvtc	
 
+super + 0
+    ~/.scripts/pro -f
+
+super + F1
+    ~/.scripts/neo-pos
+
+super + F2
+    ~/.scripts/gotop-pos
+
+super + F3
+    ~/.scripts/nvtop-pos
+
 ## launch ranger
 super + r
-	. ranger
-	
+	ranger-slim
+
+super + alt + r
+    ranger-slim -s  
+
 ## launch firefox
 super + b
 	firefox
@@ -32,16 +65,8 @@ super + v
 	vim-sessions -main
 
 ## launch spotify
-super + s
-    spot
-
-## volume control
-XF86Audio{RaiseVolume,LowerVolume,Mute}
-	amixer {-c 0 set PCM 4dB+,-c 0 set PCM 4dB-,set Master toggle}
-	
-## music control
-XF86Audio{Next,Prev,Play,Stop}
-	mpc {next,prev,toggle,stop}
+super + m
+    ~/.scripts/spot
 
 ## program launcher
 super + d
@@ -59,6 +84,17 @@ super + l
 Print
 	scrot 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~ ; viewnior ~/$f'
 
+## log out
+super + shift + l
+    rofr.sh -l
+
+## feh
+super + alt + p
+    feh -Z -. -D 5 -H 1365px /home/ellio/Pictures/feh/
+
+## color
+super + c
+    gcolor3
 
 ######################
 ##  BSPWM COMMANDS  ##
@@ -77,10 +113,6 @@ super + shift + BackSpace
 super + Escape
 	bspc node -c
 
-## close app (common way)
-alt + F4
-	bspc node -c
-
 ## he disobey you? kill!
 super + shift + Escape
 	bspc node -k
@@ -88,19 +120,29 @@ super + shift + Escape
 ## fullscreen
 super + f
 	bspc desktop -l next
-	
+
+##-----PRESELECT-----##
 ## spit horizontal & split vertical, like in i3-gaps :D
-super + ctrl + {h,v}
+super + ctrl + {v,h}
 	bspc node -p {east,south}
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+## cancel preselection
+super + ctrl + space
+	bspc node -p cancel
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
 	
 ## preselect the ratio
 super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
-## cancel it, I set it to super + r. like in my herbstluftwm config
-super + control + r
-	bspc node -p cancel
-
+##-----NODE STATE-----##
 ## toggle beetwen pseudo-tiled & tiled
 super + p
     bspc node -t pseudo_tiled
@@ -113,6 +155,7 @@ super + space
 super + t
 	bspc node -t tiled
 
+##-----MOVE-----##
 ## send the window in the given direction
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
@@ -144,6 +187,7 @@ super + {_,shift + }{1-8}
 super + {1-8}
 	bspc desktop --focus^{1-8}
 
+##-----RESIZE-----##
 ## expanding windows
 super + ctrl + {Left,Right,Up,Down}
 	bspc node -z {left -10 0,right 10 0,top 0 -10,bottom 0 10}
@@ -151,7 +195,12 @@ super + ctrl + {Left,Right,Up,Down}
 ## shrinking windows
 super + alt + {Left,Right,Up,Down}
 	bspc node -z {left 10 0,right -10 0,top 0 10,bottom 0 -10}
-	
+
+##-----MISC-----##
 ## move floating windows
 alt + shift + {Left,Down,Up,Right}
 	bspc node -v {-10 0,0 10,0 -10,10 0}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}

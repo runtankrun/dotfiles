@@ -2,6 +2,11 @@
 
 sxhkd &
 urxvtd &
+xcape -e 'Super_L=Super_L|D' &
+picom -b &
+mpd &
+setxkbmap -option caps:swapescape
+
 bspc monitor -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         2
