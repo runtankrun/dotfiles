@@ -14,6 +14,8 @@
 ######################
 ##  COMMON COMMAND  ##
 ######################
+Menu
+    skippy-xd-toggle
 
 ## polybar
 ctrl + p
@@ -28,10 +30,14 @@ F12
     amixer set Master -M 5%+
 F11
     amixer set Master -M 5%-
-F10
+ctrl + F12
     amixer -D pulse sset Master unmute
-F9
+ctrl + F11
     amixer -D pulse sset Master mute
+
+## wifi
+super + w
+    networkmanager_dmenu
 
 ## launch terminal & commands
 super + z
@@ -40,11 +46,18 @@ super + z
 super + 0
     ~/.scripts/pro -f
 
+super + alt + 0
+    ~/.scripts/pro -s
+
 super + F1
     ~/.scripts/neo-pos
 
 super + F2
     ~/.scripts/gotop-pos
+super + alt + F2
+    ~/.scripts/gotop-pos -v
+super + ctrl + F2
+    ~/.scripts/gotop-pos -h
 
 super + F3
     ~/.scripts/nvtop-pos
@@ -64,9 +77,16 @@ super + b
 super + v
 	vim-sessions -main
 
+super + n 
+    vim-sessions -notes
+
 ## launch spotify
 super + m
     ~/.scripts/spot
+
+## launch mega
+super + alt + m
+    megasync
 
 ## program launcher
 super + d
@@ -96,6 +116,15 @@ super + alt + p
 super + c
     gcolor3
 
+super + ctrl + c
+    wal --theme random -a 95 --saturate 0.85
+
+super + alt + c 
+    wal --theme random_light -a 95 --saturate 0.85
+
+## easystroke
+super + e
+    easystroke
 ######################
 ##  BSPWM COMMANDS  ##
 ######################
@@ -123,7 +152,7 @@ super + f
 
 ##-----PRESELECT-----##
 ## spit horizontal & split vertical, like in i3-gaps :D
-super + ctrl + {v,h}
+super + ctrl + {h,v}
 	bspc node -p {east,south}
 
 # preselect the direction
@@ -186,6 +215,10 @@ super + {_,shift + }{1-8}
 ## jump to another workspace
 super + {1-8}
 	bspc desktop --focus^{1-8}
+
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
 
 ##-----RESIZE-----##
 ## expanding windows

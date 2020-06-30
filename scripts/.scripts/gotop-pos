@@ -1,2 +1,8 @@
 #!/bin/sh
-urxvtc -geometry 74x42 -e "gotop"
+if [[ $1 = "-v" ]]; then
+urxvtc -e sh -c "vtop --theme certs;zsh"
+elif [[ $1 = "-h" ]]; then
+urxvtc -e sh -c "htop;zsh"
+else
+urxvtc -geometry 74x42 -e sh -c "gotop;zsh"
+fi

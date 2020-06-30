@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
   <resistance>
     <strength>50</strength>
@@ -143,6 +144,9 @@
         <command>~/.scripts/nvtop-pos</command>
       </action>
     </keybind>
+    <keybind key="C-S-A-r">
+      <action name="RaiseLower"/>
+    </keybind>
     <keybind key="W-F2">
       <action name="MoveResizeTo">
         <width>1682</width>
@@ -205,7 +209,7 @@
     </keybind>
     <keybind key="A-W-a">
       <action name="Execute">
-        <command>urxvtc -geometry 61x20 -e &quot;alsamixer&quot;</command>
+        <command>urxvtc -geometry 61x20 -e "alsamixer"</command>
       </action>
     </keybind>
     <keybind key="F12">
@@ -524,9 +528,11 @@
           <to>next</to>
         </action>
       </mousebind>
+      <!-- 
       <mousebind action="Press" button="Middle">
         <action name="RaiseLower"/>
       </mousebind>
+      -->
     </context>
     <context name="Titlebar">
       <mousebind action="Drag" button="Left">
