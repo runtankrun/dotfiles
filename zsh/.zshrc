@@ -107,6 +107,11 @@ source $ZSH/oh-my-zsh.sh
 
 alias cl='clear'
 
+#bsp-layout
+alias wide='bsp-layout set wide'
+alias even='bsp-layout set even'
+alias rl='bsp-layout remove'
+
 #Git
 alias gi='git init'
 alias gs='git status'

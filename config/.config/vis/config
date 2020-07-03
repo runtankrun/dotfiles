@@ -1,14 +1,14 @@
 #Refresh rate of the visualizers. A really high refresh rate may cause screen tearing. Default is 20.
-visualizer.fps=30
+visualizer.fps=35
 #Specifies the color scheme. The color scheme must be in ~/.config/vis/colors/ directory. Default is "colors"
 #colors.scheme=colors
-colors.scheme=colors
+colors.scheme=basic_colors
 #This configures the falloff effect on the spectrum visualizer. Available falloff options are fill,top,none.
 #Defaults to "fill"
 visualizer.spectrum.falloff.mode=top
 #Configures how fast the falloff character falls. This is an exponential falloff so values usually look
 #best 0.9+ and small changes in this value can have a large effect. Defaults to 0.95
-visualizer.spectrum.falloff.weight=1
+visualizer.spectrum.falloff.weight=.99
 #Spectrum bar width. Defaults to 1.
 visualizer.spectrum.bar.width=1
 #The amount of space between each bar in the spectrum visualizer. Defaults to 1. It's possible to set this to
@@ -16,4 +16,4 @@ visualizer.spectrum.bar.width=1
 visualizer.spectrum.bar.spacing=1
 ##Applies scaling factor to both lorenz and ellipse visualizers. This is useful when the system audio is set
 #to a low volume.
-visualizer.scaling.multiplier=1.5
+visualizer.scaling.multiplier=1

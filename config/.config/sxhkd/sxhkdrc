@@ -14,8 +14,14 @@
 ######################
 ##  COMMON COMMAND  ##
 ######################
-Menu
+Pause
     skippy-xd-toggle
+
+## program launcher
+super + d
+	rofi -modi run,drun,window -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font "Noto Sans 8"
+Menu
+    rofi -show combi
 
 ## polybar
 ctrl + p
@@ -42,6 +48,8 @@ super + w
 ## launch terminal & commands
 super + z
 	urxvtc	
+super + alt + z
+    kitty
 
 super + 0
     ~/.scripts/pro -f
@@ -62,12 +70,20 @@ super + ctrl + F2
 super + F3
     ~/.scripts/nvtop-pos
 
+super + F4
+    urxvtc -e sh -c "pipes-diagonal;zsh"
+super + shift + F4
+    urxvtc -e sh -c "pipes-vertical;zsh"
+
 ## launch ranger
 super + r
 	ranger-slim
 
 super + alt + r
-    ranger-slim -s  
+    ranger-slim -k
+
+super + ctrl + r
+    ranger-slim -s
 
 ## launch firefox
 super + b
@@ -76,7 +92,10 @@ super + b
 ## launch vim
 super + v
 	vim-sessions -main
-
+super + alt +v
+    mpv ~/Videos/h/b
+super + shift +v
+    vim-sessions -kitty
 super + n 
     vim-sessions -notes
 
@@ -87,14 +106,6 @@ super + m
 ## launch mega
 super + alt + m
     megasync
-
-## program launcher
-super + d
-	rofi -modi run,drun,window -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font "Noto Sans 8"
-
-## make sxhkd reload its configuration files
-super + control + s
-	pkill -USR1 -x sxhkd
 	
 ## fancy lockscreen :)
 super + l
@@ -105,7 +116,7 @@ Print
 	scrot 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~ ; viewnior ~/$f'
 
 ## log out
-super + shift + l
+ctrl + alt + End
     rofr.sh -l
 
 ## feh
@@ -125,6 +136,7 @@ super + alt + c
 ## easystroke
 super + e
     easystroke
+
 ######################
 ##  BSPWM COMMANDS  ##
 ######################
@@ -133,10 +145,6 @@ super + e
 ## quit bspwm normally
 super + control + Escape
 	pkill panel; bspc quit
-
-## reload bspwm config
-super + shift + BackSpace
-	pkill panel;~/.config/bspwm/bspwmrc
 
 ## close app
 super + Escape
@@ -153,7 +161,7 @@ super + f
 ##-----PRESELECT-----##
 ## spit horizontal & split vertical, like in i3-gaps :D
 super + ctrl + {h,v}
-	bspc node -p {east,south}
+	bspc node -p {west,south}
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
@@ -178,16 +186,17 @@ super + p
 
 ## toggle beetwen floating & tiled
 super + space
-    bspc node -t floating
-    
-## just in case you want to go back to tiled mode but the toggle keybind doesn't work
-super + t
-	bspc node -t tiled
+    bspc node -t {floating, tiled}
 
 ##-----MOVE-----##
 ## send the window in the given direction
-super + {_,shift + }{Left,Down,Up,Right}
-	bspc node -{f,s} {west,south,north,east}
+##super + {_,shift + }{Left,Down,Up,Right}
+##	bspc node -{f,s} {west,south,north,east}
+
+super + {Left,Down,Up,Right}
+    bspc node -f {west,south,north,east}
+super + shift + {Left,Down,Up,Right}
+    bspwm_smart_move {west,south,north,east}
 
 ## focus the next node in the current desktop
 alt + Tab
@@ -205,8 +214,8 @@ ctrl + alt + Right
 	bspc desktop -f next.local
 
 ## focus the last node/desktop
-super + {Tab,grave}
-	bspc {node,desktop} -f last
+super + {grave}
+	bspc {desktop} -f last
 
 ## focus or send to the given desktop
 super + {_,shift + }{1-8}
@@ -224,16 +233,44 @@ super + g
 ## expanding windows
 super + ctrl + {Left,Right,Up,Down}
 	bspc node -z {left -10 0,right 10 0,top 0 -10,bottom 0 10}
-	
 ## shrinking windows
 super + alt + {Left,Right,Up,Down}
 	bspc node -z {left 10 0,right -10 0,top 0 10,bottom 0 -10}
-
+##Toggle Gaps
+super + shift + d
+	bspc config window_gap {0,15}
+##Resize Gaps
+super { + ctrl,+ shift }+ z
+	bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
 ##-----MISC-----##
 ## move floating windows
 alt + shift + {Left,Down,Up,Right}
 	bspc node -v {-10 0,0 10,0 -10,10 0}
 
+## receptacle
+super + Tab
+    bspc node -i
+super + ctrl + Tab
+    while bspc node 'any.leaf.!window' -k; do :; done
+
 # set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
+
+## make sxhkd reload its configuration files
+super + control + s
+	pkill -USR1 -x sxhkd
+
+## reload bspwm config
+super + shift + BackSpace
+	pkill panel;~/.config/bspwm/bspwmrc
+
+## Add focused window to a tabbed instance in given direction
+#super + t; {h,j,k,l}
+#    tabc.sh $(bspc query -N -n {west,south,north,east}) add $(bspc query -N -n focused)
+
+## Remove one tab from tabbed
+#super + t; r
+#    tabbed=$(bspc query -N -n focused); \
+#    child=$(tabc.sh $tabbed list | head -n1); \
+#    tabc.sh $tabbed remove $child
