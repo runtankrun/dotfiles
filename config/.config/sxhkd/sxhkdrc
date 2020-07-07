@@ -72,7 +72,7 @@ super + F3
 
 super + F4
     urxvtc -e sh -c "pipes-diagonal;zsh"
-super + shift + F4
+super + alt + F4
     urxvtc -e sh -c "pipes-vertical;zsh"
 
 ## launch ranger
@@ -92,9 +92,9 @@ super + b
 ## launch vim
 super + v
 	vim-sessions -main
-super + alt +v
+super + alt + v
     mpv ~/Videos/h/b
-super + shift +v
+super + shift + v
     vim-sessions -kitty
 super + n 
     vim-sessions -notes
@@ -186,17 +186,28 @@ super + p
 
 ## toggle beetwen floating & tiled
 super + space
-    bspc node -t {floating, tiled}
+    bspc node -t floating
+
+## toggle tiled
+super + t
+    bspc node -t tiled
 
 ##-----MOVE-----##
 ## send the window in the given direction
 ##super + {_,shift + }{Left,Down,Up,Right}
 ##	bspc node -{f,s} {west,south,north,east}
 
+## focus window in given direction
 super + {Left,Down,Up,Right}
     bspc node -f {west,south,north,east}
+
+## send the window in the given direction
 super + shift + {Left,Down,Up,Right}
     bspwm_smart_move {west,south,north,east}
+
+# Rotate tree
+super + shift + {d,a}
+    bspc node @/ -C {forward,backward}
 
 ## focus the next node in the current desktop
 alt + Tab
@@ -242,15 +253,16 @@ super + shift + d
 ##Resize Gaps
 super { + ctrl,+ shift }+ z
 	bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
+
 ##-----MISC-----##
 ## move floating windows
 alt + shift + {Left,Down,Up,Right}
 	bspc node -v {-10 0,0 10,0 -10,10 0}
 
 ## receptacle
-super + Tab
+super + BackSpace
     bspc node -i
-super + ctrl + Tab
+super + ctrl + BackSpace
     while bspc node 'any.leaf.!window' -k; do :; done
 
 # set the node flags

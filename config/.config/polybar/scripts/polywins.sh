@@ -16,7 +16,7 @@ max_windows="15" # maximum number of displayed windows
 char_case="normal" # options: normal, upper, lower
 add_spaces="true"
 resize_increment=30
-wm_border_width=3 # setting this might be required for accurate resize position
+wm_border_width=2 # setting this might be required for accurate resize position
 
 # --- }}}
 
