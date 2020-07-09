@@ -16,6 +16,7 @@ map  "+p
 map <silent>   :noh
 map   /
 nmap \tc <Plug>Colorizer
+map ct :ColorToggle
 map cs :colorscheme 
 vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
@@ -83,6 +84,7 @@ tabnew
 tabnew
 tabnew
 tabnew
+tabnew
 tabrewind
 edit .zshrc
 set splitbelow splitright
@@ -100,9 +102,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 75 + 63) / 126)
-exe 'vert 2resize ' . ((&columns * 25 + 63) / 126)
-exe 'vert 3resize ' . ((&columns * 24 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 34 + 63) / 126)
+exe 'vert 2resize ' . ((&columns * 79 + 63) / 126)
+exe 'vert 3resize ' . ((&columns * 11 + 63) / 126)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -501,9 +503,9 @@ normal! zt
 46
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 75 + 63) / 126)
-exe 'vert 2resize ' . ((&columns * 25 + 63) / 126)
-exe 'vert 3resize ' . ((&columns * 24 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 34 + 63) / 126)
+exe 'vert 2resize ' . ((&columns * 79 + 63) / 126)
+exe 'vert 3resize ' . ((&columns * 11 + 63) / 126)
 tabnext
 edit .config/polybar/config.ini
 set splitbelow splitright
@@ -521,9 +523,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 26 + 63) / 126)
-exe 'vert 2resize ' . ((&columns * 26 + 63) / 126)
-exe 'vert 3resize ' . ((&columns * 72 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 12 + 63) / 126)
+exe 'vert 2resize ' . ((&columns * 79 + 63) / 126)
+exe 'vert 3resize ' . ((&columns * 33 + 63) / 126)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -922,9 +924,9 @@ normal! zt
 47
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 26 + 63) / 126)
-exe 'vert 2resize ' . ((&columns * 26 + 63) / 126)
-exe 'vert 3resize ' . ((&columns * 72 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 12 + 63) / 126)
+exe 'vert 2resize ' . ((&columns * 79 + 63) / 126)
+exe 'vert 3resize ' . ((&columns * 33 + 63) / 126)
 tabnext
 edit .config/sxhkd/sxhkdrc
 set splitbelow splitright
@@ -939,8 +941,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 75 + 63) / 126)
-exe 'vert 2resize ' . ((&columns * 50 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 80 + 63) / 126)
+exe 'vert 2resize ' . ((&columns * 45 + 63) / 126)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -1066,12 +1068,12 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 160 - ((0 * winheight(0) + 25) / 50)
+let s:l = 150 - ((41 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-160
-normal! 0
+150
+normal! 014|
 wincmd w
 argglobal
 if bufexists(".config/bspwm/bspwmrc") | buffer .config/bspwm/bspwmrc | else | edit .config/bspwm/bspwmrc | endif
@@ -1206,8 +1208,149 @@ normal! zt
 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 75 + 63) / 126)
-exe 'vert 2resize ' . ((&columns * 50 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 80 + 63) / 126)
+exe 'vert 2resize ' . ((&columns * 45 + 63) / 126)
+tabnext
+edit .config/picom/picom.conf
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=:#
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=inc
+setlocal conceallevel=2
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'conf'
+setlocal filetype=conf
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'conf'
+setlocal syntax=conf
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal undofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+set nowrap
+setlocal nowrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 10 - ((9 * winheight(0) + 25) / 50)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+10
+normal! 0
 tabnext
 edit .config/openbox/rc.xml
 set splitbelow splitright
@@ -1225,9 +1368,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 75 + 63) / 126)
-exe 'vert 2resize ' . ((&columns * 25 + 63) / 126)
-exe 'vert 3resize ' . ((&columns * 24 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 55 + 63) / 126)
+exe 'vert 2resize ' . ((&columns * 34 + 63) / 126)
+exe 'vert 3resize ' . ((&columns * 35 + 63) / 126)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -1503,7 +1646,7 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 54
-let s:c = 13 - ((5 * winwidth(0) + 12) / 25)
+let s:c = 13 - ((2 * winwidth(0) + 17) / 34)
 if s:c > 0
   exe 'normal! ' . s:c . '|zs' . 13 . '|'
 else
@@ -1643,9 +1786,9 @@ normal! zt
 56
 normal! 02|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 75 + 63) / 126)
-exe 'vert 2resize ' . ((&columns * 25 + 63) / 126)
-exe 'vert 3resize ' . ((&columns * 24 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 55 + 63) / 126)
+exe 'vert 2resize ' . ((&columns * 34 + 63) / 126)
+exe 'vert 3resize ' . ((&columns * 35 + 63) / 126)
 tabnext
 edit .mozilla/firefox/v2nnvt6o.default-release/startpage/index.html
 set splitbelow splitright
@@ -1792,19 +1935,19 @@ set stal=1
 badd +1 .zshrc
 badd +1 .config/polybar/config.ini
 badd +1 .config/sxhkd/sxhkdrc
+badd +0 .config/picom/picom.conf
 badd +1 .config/openbox/rc.xml
 badd +1 .mozilla/firefox/v2nnvt6o.default-release/startpage/index.html
 badd +1 .config/kitty/kitty.conf
 badd +38 .Xresources
 badd +28 .config/polybar/scripts/polywins.sh
-badd +0 .themes/ad/openbox-3/themerc
+badd +1 .themes/ad/openbox-3/themerc
 badd +1 .config/bspwm/bspwmrc
 badd +1 .vimrc
 badd +1 .config/ranger/rc.conf
 badd +1 .mozilla/firefox/v2nnvt6o.default-release/chrome/userChrome.css
 badd +86 .themes/ac/openbox-3/themerc
 badd +44 .mozilla/firefox/v2nnvt6o.default-release/startpage/style.css
-badd +38 .config/picom/picom.conf
 badd +44 .config/alacritty/alacritty.yml
 badd +24 .vimrc-min
 badd +19 .mozilla/firefox/v2nnvt6o.default-release/chrome/userContent.css

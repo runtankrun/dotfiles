@@ -1,14 +1,15 @@
 #! /bin/sh
+sleep .5s; setxkbmap -option caps:swapescape &
+sleep 1s; picom -b &
+sleep .5s; sxhkd &
+sleep 1s; urxvtd -q &
 xfsettingsd &
 xcape -e 'Super_L=Super_L|D' &
-setxkbmap -option caps:swapescape &
-sxhkd &
-picom &
-urxvtd -q &
 mpd &
 skippy-xd --config ~/.config/skippy-xd/skippy-xd.rc --start-daemon &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 xdg-user-dirs-gtk-update &
+sleep .5s; kitty -e ~/.scripts/ranger/ranger.py -r ~/.config/ranger/kitty --selectfile=Pictures/wal/1-bb.jpg &
 
 bspc config focus_follows_pointer true
 

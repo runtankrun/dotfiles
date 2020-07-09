@@ -168,20 +168,14 @@ alias win='obxprop | grep "^_OB_APP"'
 alias music='ncmpcpp'
 
 #Ranger exit to Shell
-alias fm='. ranger'
+alias fm='ranger'
 
 #Font Cache Refresh
 alias rf='fc-cache -f -v'
 alias fl='fc-list | grep "/home/ellio/.fonts/"'
 
-#VIS Colors
-alias vis-c='cp /home/ellio/.cache/wal/colors /home/ellio/.config/vis/colors/'
-
 #Youtube-DL
 alias yd='youtube-dl'
-
-#Refresh MEGA
-alias mega-r='pkill megasync;sudo protonvpn c -f;sleep 1.5s'
 
 #vim
 alias vim-s='vim -S ~/.vim/sessions/main.vim'
@@ -196,6 +190,12 @@ alias shreddit='shred -n 5 -v -z'
 #XRDM
 alias cs='xrdm color'
 alias tf='xrdm font'
+
+#timeshift
+alias bu='sudo timeshift --create --comments'
+alias bu-l='sudo timeshift --list'
+alias bu-ln='sudo timeshift --list | grep -o "2020-[0-9][0-9]-[0-9][0-9]_[0-9][0-9]-[0-9][0-9]-[0-9][0-9]"'
+alias bu-d='sudo timeshift --delete --snapshot'
 
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d

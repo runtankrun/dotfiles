@@ -62,6 +62,7 @@ map sh :sp
 map sv :vsp
 map sd :DimInactiveToggle
 map cs :colorscheme<space>
+map ct :ColorToggle<CR>
 
 map <C-t> :tabnew<CR>
 map <C-n> :NERDTreeToggle<CR>
