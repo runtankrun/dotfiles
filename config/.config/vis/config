@@ -1,5 +1,5 @@
 #Refresh rate of the visualizers. A really high refresh rate may cause screen tearing. Default is 20.
-visualizer.fps=35
+visualizer.fps=30
 #Specifies the color scheme. The color scheme must be in ~/.config/vis/colors/ directory. Default is "colors"
 #colors.scheme=colors
 colors.scheme=basic_colors

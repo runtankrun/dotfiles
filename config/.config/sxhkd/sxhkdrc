@@ -14,11 +14,11 @@
 ######################
 ##  COMMON COMMAND  ##
 ######################
-button9
+button10
     bspc node -t {floating,tiled} 
 
-#button10
-    bspc node -c
+button9
+    bspc node -t {pseudo_tiled, tiled} 
 
 Pause
     skippy-xd-toggle
@@ -99,14 +99,14 @@ super + b
 super + v
 	vim-sessions -main
 super + alt + v
-    mpv ~/Videos/h/b
+    mpv ~/Videos/h/ --video-zoom=0.2
 super + shift + v
     vim-sessions -kitty
 super + n 
     vim-sessions -notes
 
 ## launch spotify
-super + m
+super + s
     ~/.scripts/spot
 
 ## launch mega
@@ -120,6 +120,10 @@ super + l
 ## take a screenshot
 Print
 	scrot 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~ ; viewnior ~/$f'
+
+## induce window layout
+super + Print
+    savewins -l
 
 ## log out
 ctrl + alt + End
@@ -143,6 +147,9 @@ super + alt + c
 super + e
     easystroke
 
+## equalizer
+super + alt + e
+    kitty -e sh -c "kitty @set-font-size 1;vis"
 ######################
 ##  BSPWM COMMANDS  ##
 ######################
@@ -175,7 +182,7 @@ super + ctrl + {h,j,k,l}
 
 ## cancel preselection
 super + ctrl + space
-	bspc node -p cancel
+	bspc node -p cancel | while bspc node 'any.leaf.!window' -k; do :; done
 
 # send the newest marked node to the newest preselected node
 super + y
@@ -250,14 +257,17 @@ super + g
 ## expanding windows
 super + ctrl + {Left,Right,Up,Down}
 	bspc node -z {left -10 0,right 10 0,top 0 -10,bottom 0 10}
+
 ## shrinking windows
 super + alt + {Left,Right,Up,Down}
 	bspc node -z {left 10 0,right -10 0,top 0 10,bottom 0 -10}
+
 ##Toggle Gaps
 super + Tab
-	bspc config window_gap {0,15}
+	bspc config window_gap {15,0}
+
 ##Resize Gaps
-super { + ctrl,+ shift }+ z
+super + ctrl { + d,+ a }
 	bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
 
 ##-----MISC-----##
@@ -268,8 +278,6 @@ alt + shift + {Left,Down,Up,Right}
 ## receptacle
 super + BackSpace
     bspc node -i
-super + ctrl + BackSpace
-    while bspc node 'any.leaf.!window' -k; do :; done
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -282,13 +290,3 @@ super + control + s
 ## reload bspwm config
 super + shift + BackSpace
 	pkill panel;~/.config/bspwm/bspwmrc
-
-## Add focused window to a tabbed instance in given direction
-#super + t; {h,j,k,l}
-#    tabc.sh $(bspc query -N -n {west,south,north,east}) add $(bspc query -N -n focused)
-
-## Remove one tab from tabbed
-#super + t; r
-#    tabbed=$(bspc query -N -n focused); \
-#    child=$(tabc.sh $tabbed list | head -n1); \
-#    tabc.sh $tabbed remove $child

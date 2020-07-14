@@ -4,5 +4,5 @@ urxvtc -geometry 74x20 -e sh -c "~/.scripts/ranger/ranger.py;zsh"
 elif [[ $1 = "-k" ]]; then
 kitty -e sh -c "~/.scripts/ranger/ranger.py -r ~/.config/ranger/kitty;zsh"
 else
-urxvtc -geometry 74x25 -e sh -c "ranger;zsh"
+urxvtc -geometry 74x25 -e "ranger"
 fi

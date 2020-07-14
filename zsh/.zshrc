@@ -176,6 +176,7 @@ alias fl='fc-list | grep "/home/ellio/.fonts/"'
 
 #Youtube-DL
 alias yd='youtube-dl'
+alias ydm='youtube-dl --extract-audio --embed-thumbnail --audio-format'
 
 #vim
 alias vim-s='vim -S ~/.vim/sessions/main.vim'

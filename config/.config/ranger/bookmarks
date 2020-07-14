@@ -1,7 +1,7 @@
 c:/home/ellio/.config
 p:/home/ellio/Pictures
 w:/home/ellio/Pictures/wal
-':/home/ellio/Pictures/wal
+':/home/ellio
 D:/run/media/ellio/TB_1
 v:/home/ellio/Videos
 h:/home/ellio
@@ -15,3 +15,4 @@ F:/home/ellio/Pictures/chx
 T:/home/ellio/Downloads/dotfiles-thunar/.color-toys
 s:/home/ellio/.scripts
 V:/home/ellio/.vim/sessions
+x:/home/ellio/.Xresource.d

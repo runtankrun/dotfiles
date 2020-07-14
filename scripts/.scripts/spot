@@ -1,2 +1,2 @@
 #!/bin/sh
-urxvtc -geometry 95x34 -e "spt";urxvtc -geometry 95x17 -e "vis"
+urxvtc -geometry 95x34 -e "spt";kitty -e sh -c "kitty @set-font-size 1;vis"
