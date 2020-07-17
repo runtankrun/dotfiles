@@ -121,8 +121,8 @@ alias gpsh='git push -u origin master'
 alias gpll='git pull'
 
 #stow
-alias store-n='stow --adopt -n -v -t ~ *'
-alias store='stow --adopt -v -t ~ *'
+alias store-n='stow --adopt -nv'
+alias store='stow --adopt -v'
 
 #ProtonVPN
 alias prof='sudo protonvpn c -f'
@@ -139,8 +139,8 @@ alias gpu='watch -d -n 0.5 nvidia-smi'
 alias tm='tty-clock -c -x -t'
 
 #feh image
-alias feh='feh --scale-down --auto-zoom'
-alias feh-ss='feh -Z -. -D 5'
+alias pic='feh --scale-down --auto-zoom'
+alias pic-ss='feh -Z -. -D 5'
 
 #Feh background (2 monitors)
 alias wp='feh --bg-max ~/.config/wall.png --bg-max ~/.config/wall2.png'
@@ -167,16 +167,16 @@ alias win='obxprop | grep "^_OB_APP"'
 #CLI Music
 alias music='ncmpcpp'
 
-#Ranger exit to Shell
+#Ranger
 alias fm='ranger'
 
 #Font Cache Refresh
 alias rf='fc-cache -f -v'
-alias fl='fc-list | grep "/home/ellio/.fonts/"'
+alias fl='fc-list | grep "~/.fonts/"'
 
 #Youtube-DL
 alias yd='youtube-dl'
-alias ydm='youtube-dl --extract-audio --embed-thumbnail --audio-format'
+alias ydm='youtube-dl --extract-audio --embed-thumbnail --audio-format mp3'
 
 #vim
 alias vim-s='vim -S ~/.vim/sessions/main.vim'
@@ -194,9 +194,12 @@ alias tf='xrdm font'
 
 #timeshift
 alias bu='sudo timeshift --create --comments'
+alias bun='sudo timeshift --create --comments "housekeeping"'
 alias bu-l='sudo timeshift --list'
-alias bu-ln='sudo timeshift --list | grep -o "2020-[0-9][0-9]-[0-9][0-9]_[0-9][0-9]-[0-9][0-9]-[0-9][0-9]"'
 alias bu-d='sudo timeshift --delete --snapshot'
+
+#bspwm border colors
+alias bc='. "${HOME}/.cache/wal/colors.sh";bspc config normal_border_color "$color1";bspc config active_border_color "$color2";bspc config focused_border_color "$color15";bspc config presel_feedback_color "$color1"'
 
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d

@@ -1,0 +1,40 @@
+#!/bin/sh
+
+if [[ $1 = "-all" ]]; then
+bspc node @^1:/ -i 
+bspc node @^1:/ -p east -i 
+bspc node @2:/ -i 
+bspc node @2:/ -o 0.602267 -p east -i
+bspc node @2:/2 -o 0.421183 -p east -i
+
+bspc rule -a URxvt:urxvt -o node=@^1:^1:/1 state=pseudo_tiled
+bspc rule -a URxvt:urxvt -o node=@^1:^1:/2 state=pseudo_tiled
+bspc rule -a kitty -o node=@^2:^1:/1
+bspc rule -a mpv:gl -o node=@^2:^1:/2/1
+bspc rule -a URxvt:urxvt -o node=@^2:^1:/2/2/
+
+clock &
+gotop-pos &
+launch 
+
+elif [[ $1 = "-left" ]]; then
+bspc node @^1:/ -i 
+bspc node @^1:/ -p east -i 
+
+bspc rule -a URxvt:urxvt -o node=@^1:^1:/1 state=pseudo_tiled
+bspc rule -a URxvt:urxvt -o node=@^1:^1:/2 state=pseudo_tiled
+
+clock &
+gotop-pos 
+
+else
+bspc node @2:/ -i 
+bspc node @2:/ -o 0.602267 -p east -i
+bspc node @2:/2 -o 0.421183 -p east -i
+
+bspc rule -a kitty -o node=@^2:^1:/1
+bspc rule -a mpv:gl -o node=@^2:^1:/2/1
+bspc rule -a URxvt:urxvt -o node=@^2:^1:/2/2/
+
+launch
+fi

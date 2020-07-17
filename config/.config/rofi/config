@@ -1,7 +1,1 @@
 rofi.theme: /home/ellio/.config/rofi/themes/main.rasi
-
-# Dark theme.
-theme: "~/.cache/wal/colors-rofi-dark";
-
-# Light theme.
-theme: "~/.cache/wal/colors-rofi-light";

@@ -23,6 +23,9 @@ button9
 Pause
     skippy-xd-toggle
 
+super + End
+    systemctl suspend
+
 ## program launcher
 super + d
 	rofi -modi run,drun,window -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font "Noto Sans 8"
@@ -57,15 +60,17 @@ super + z
 super + alt + z
     kitty
 
+## proton
 super + 0
     ~/.scripts/pro -f
-
 super + alt + 0
     ~/.scripts/pro -s
 
+##neofetch
 super + F1
     ~/.scripts/neo-pos
 
+##gotop
 super + F2
     ~/.scripts/gotop-pos
 super + alt + F2
@@ -73,21 +78,23 @@ super + alt + F2
 super + ctrl + F2
     ~/.scripts/gotop-pos -h
 
+#nvtop
 super + F3
     ~/.scripts/nvtop-pos
 
+#matrix/pipes toys
 super + F4
-    urxvtc -e sh -c "pipes-diagonal;zsh"
+    urxvtc -e sh -c "sleep .5s; cmatrix" 
 super + alt + F4
+    urxvtc -e sh -c "pipes-diagonal;zsh"
+super + ctrl + F4
     urxvtc -e sh -c "pipes-vertical;zsh"
 
 ## launch ranger
 super + r
 	ranger-slim
-
 super + alt + r
     ranger-slim -k
-
 super + ctrl + r
     ranger-slim -s
 
@@ -98,16 +105,20 @@ super + b
 ## launch vim
 super + v
 	vim-sessions -main
-super + alt + v
-    mpv ~/Videos/h/ --video-zoom=0.2
 super + shift + v
     vim-sessions -kitty
 super + n 
     vim-sessions -notes
 
+# launch videos
+super + alt + v
+    mpv ~/Videos/h/b/ --video-zoom=0.2
+super + ctrl + v
+    mpv ~/Videos/h/*.*
+
 ## launch spotify
 super + s
-    ~/.scripts/spot
+    spot
 
 ## launch mega
 super + alt + m
@@ -119,11 +130,11 @@ super + l
 	
 ## take a screenshot
 Print
-	scrot 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~ ; viewnior ~/$f'
+	sleep 0.2s; scrot -s -q 100 '%d-%m-%y-%S_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/'
 
-## induce window layout
+## record screen
 super + Print
-    savewins -l
+    simplescreenrecorder & sleep .3s; bspc node --state floating
 
 ## log out
 ctrl + alt + End
@@ -131,15 +142,15 @@ ctrl + alt + End
 
 ## feh
 super + alt + p
-    feh -Z -. -D 5 -H 1365px /home/ellio/Pictures/feh/
+    feh -Z -. -D 5 -H 1365px /home/ellio/Pictures/chx/f/
+super + ctrl + p
+    feh -Z -. -D 5 -H 1440px ~/Pictures/chx/
 
 ## color
 super + c
     gcolor3
-
 super + ctrl + c
     wal --theme random -a 95 --saturate 0.85
-
 super + alt + c 
     wal --theme random_light -a 95 --saturate 0.85
 
@@ -147,9 +158,11 @@ super + alt + c
 super + e
     easystroke
 
-## equalizer
+## visualizer
 super + alt + e
-    kitty -e sh -c "kitty @set-font-size 1;vis"
+    visualizer 
+
+
 ######################
 ##  BSPWM COMMANDS  ##
 ######################
@@ -166,10 +179,6 @@ super + Escape
 ## he disobey you? kill!
 super + shift + Escape
 	bspc node -k
-
-## fullscreen
-super + f
-	bspc desktop -l next
 
 ##-----PRESELECT-----##
 ## spit horizontal & split vertical, like in i3-gaps :D
@@ -205,14 +214,22 @@ super + space
 super + t
     bspc node -t tiled
 
+## fullscreen
+super + f
+	bspc desktop -l next
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
 ##-----MOVE-----##
 ## send the window in the given direction
 ##super + {_,shift + }{Left,Down,Up,Right}
 ##	bspc node -{f,s} {west,south,north,east}
 
-## focus window in given direction
-super + {Left,Down,Up,Right}
-    bspc node -f {west,south,north,east}
+## move floating windows
+alt + shift + {Left,Down,Up,Right}
+	bspc node -v {-10 0,0 10,0 -10,10 0}
 
 ## send the window in the given direction
 super + shift + {Left,Down,Up,Right}
@@ -221,6 +238,15 @@ super + shift + {Left,Down,Up,Right}
 # Rotate tree
 super + shift + {d,a}
     bspc node @/ -C {forward,backward}
+
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
+
+##-----FOCUS----##
+## focus window in given direction
+super + {Left,Down,Up,Right}
+    bspc node -f {west,south,north,east}
 
 ## focus the next node in the current desktop
 alt + Tab
@@ -249,9 +275,6 @@ super + {_,shift + }{1-8}
 super + {1-8}
 	bspc desktop --focus^{1-8}
 
-# swap the current node and the biggest node
-super + g
-	bspc node -s biggest
 
 ##-----RESIZE-----##
 ## expanding windows
@@ -271,17 +294,10 @@ super + ctrl { + d,+ a }
 	bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
 
 ##-----MISC-----##
-## move floating windows
-alt + shift + {Left,Down,Up,Right}
-	bspc node -v {-10 0,0 10,0 -10,10 0}
 
 ## receptacle
 super + BackSpace
     bspc node -i
-
-# set the node flags
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
 
 ## make sxhkd reload its configuration files
 super + control + s
