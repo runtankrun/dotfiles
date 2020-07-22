@@ -1,15 +1,15 @@
 #! /bin/sh
-sleep .5s; setxkbmap -option caps:swapescape &
+sleep .5s; xfsettingsd &
 sleep .5s; picom -b &
+sleep .5s; xcape -e 'Super_L=Super_L|D' &
+sleep .5s; setxkbmap -option caps:swapescape &
 sleep .5s; sxhkd &
 sleep .5s; urxvtd -q &
-xfsettingsd &
-xcape -e 'Super_L=Super_L|D' &
 mpd &
+easystroke &
 skippy-xd --config ~/.config/skippy-xd/skippy-xd.rc --start-daemon &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 xdg-user-dirs-gtk-update &
-easystroke &
 
 bspc config focus_follows_pointer true
 
@@ -27,6 +27,8 @@ bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a SimpleScreenRecorder state=floating
+bspc rule -a MEGAsync state=floating
 
 . "${HOME}/.cache/wal/colors.sh"
 bspc config normal_border_color "$color1"

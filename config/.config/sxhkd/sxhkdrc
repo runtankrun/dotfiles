@@ -20,6 +20,9 @@ button10
 button9
     bspc node -t {pseudo_tiled, tiled} 
 
+super + button9
+    bspc node --to-monitor {HDMI-1-2, HDMI-0}
+
 Pause
     skippy-xd-toggle
 
@@ -84,7 +87,7 @@ super + F3
 
 #matrix/pipes toys
 super + F4
-    urxvtc -e sh -c "sleep .5s; cmatrix" 
+    urxvtc -e sh -c "sleep .2s; cmatrix" 
 super + alt + F4
     urxvtc -e sh -c "pipes-diagonal;zsh"
 super + ctrl + F4
@@ -134,7 +137,7 @@ Print
 
 ## record screen
 super + Print
-    simplescreenrecorder & sleep .3s; bspc node --state floating
+    simplescreenrecorder 
 
 ## log out
 ctrl + alt + End

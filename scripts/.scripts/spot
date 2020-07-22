@@ -1,2 +1,24 @@
 #!/bin/sh
-urxvtc -geometry 95x34 -e "spt";kitty -e sh -c "kitty @set-font-size 1;vis"
+
+#Launch spt
+urxvtc -e "spt" &
+
+#Launch Visualizer
+visualizer &
+
+#layout
+sleep .3s; bspc node -p south &
+
+#Video Eye Candy
+mpv ~/Videos/zCYCLE_1080.mp4 &
+
+#Play audio from local file in background
+sleep .3s; urxvtc -e mpv ~/Music/lf.mp3 --mute=no --no-video &
+
+#split horizontal
+#sleep .3s; bspc node -o 0.140751 -p south &
+sleep .3s; bspc node -o 0.270809 -p south &
+
+##GIF
+#mpv ~/Pictures/gifs/robin.GIF
+mpv ~/Pictures/gifs/muziq_hey.GIF

@@ -1,2 +1,2 @@
 #!/bin/sh
-urxvtc -geometry 74x14 -e zsh -c "neofetch --w3m ~/.config/neofetch/arch.png --loop --size 150px;zsh"
+urxvtc -name "neofetch" -title "neofetch" -geometry 74x14 -e sh -c "neofetch --w3m ~/.config/neofetch/arch.png --size 150px;zsh"

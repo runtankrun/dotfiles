@@ -4,9 +4,9 @@ bspc node @3:/ -i focus=on
 bspc node @3:/ -o 0.206628 -p east -i
 bspc node @3:/2 -o 0.25975 -p east -i
 
-bspc rule -a mpv:gl -o node=@^2:^2:/1
-bspc rule -a mpv:gl -o node=@^2:^2:/2/1
+bspc rule -a mpv:alexa -o node=@^2:^2:/1
+bspc rule -a mpv:h -o node=@^2:^2:/2/1
 bspc rule -a \*:\* -o node=@^2:^2:/2/2
 
-mpv ~/Videos/h/ap/ --video-zoom=0.2 &
-mpv ~/Videos/h/b/ --video-zoom=0.2
+mpv --x11-name="alexa" --title="alexa" ~/Videos/h/ap/ --video-zoom=0.2 &
+mpv --x11-name="h" --title="h" ~/Videos/h/b/ --video-zoom=0.2

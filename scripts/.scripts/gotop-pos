@@ -1,8 +1,8 @@
 #!/bin/sh
 if [[ $1 = "-v" ]]; then
-urxvtc -e sh -c "vtop --theme certs;zsh"
+urxvtc -name "vtop" -title "vtop" -e sh -c "vtop --theme certs;zsh"
 elif [[ $1 = "-h" ]]; then
-urxvtc -e sh -c "htop;zsh"
+urxvtc -name "htop" -title "htop" -e sh -c "htop;zsh"
 else
-urxvtc -geometry 74x42 -e "gotop"
+urxvtc -name "gotop" -title "gotop" -geometry 74x42 -e "gotop"
 fi

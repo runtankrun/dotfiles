@@ -1,9 +1,9 @@
 #!/bin/sh
 
 #urxvtc -e ranger --selectfile=Pictures/wal/1.jpg &
-kitty -e ~/.scripts/ranger/ranger.py -r ~/.config/ranger/kitty --selectfile=/run/media/ellio/TB_1/Phone/HR/IMG_1084.JPG &
-sleep .25s; mpv /home/ellio/Videos/1.mov &
-sleep .25s; gotop-pos &
-sleep .25s; feh -Z -. ~/Pictures/1r.png &
-sleep .25s; pro -f &
-urxvtc -e sh -c "tty-clock -c -x -t;zsh"
+kitty --name="ranger" --title="ranger-k" -e ~/.scripts/ranger/ranger.py -r ~/.config/ranger/kitty --selectfile=/run/media/ellio/TB_1/Phone/HR/IMG_1084.JPG &
+sleep .2s; mpv --x11-name="gifs" --title="gifs" ~/Videos/1.mov &
+sleep .2s; gotop-pos &
+feh -Z -. ~/Pictures/1r.png &
+pro -f &
+clock

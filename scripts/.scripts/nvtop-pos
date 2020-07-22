@@ -1,2 +1,2 @@
 #!/bin/sh
-urxvtc -geometry 74x17 -e "nvtop"
+urxvtc -name "nvtop" -title "nvtop" -geometry 74x17 -e "nvtop"

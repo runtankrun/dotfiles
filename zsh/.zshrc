@@ -146,7 +146,7 @@ alias pic-ss='feh -Z -. -D 5'
 alias wp='feh --bg-max ~/.config/wall.png --bg-max ~/.config/wall2.png'
 
 #Neofetch
-alias nf='neofetch --w3m ~/.config/neofetch/arch.png --loop --size 150px;zsh'
+alias nf='neofetch --w3m ~/.config/neofetch/arch.png --size 150px;zsh'
 
 #Wal
 alias wc='wal -i ~/.config/wall.png'
