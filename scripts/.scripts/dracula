@@ -1,0 +1,10 @@
+#!/bin/sh
+export XRDM_DIR=~/.Xresource.d
+export XRDM_FONT_DIR=$XRDM_DIR/fonts
+export XRDM_COLOR_DIR=$XRDM_DIR/colors
+export XRDM_PRESET_DIR=$XRDM_DIR/presets
+export XRDM_PROGRAM_DIR=$XRDM_DIR/programs
+
+source xrdm
+
+xrdm color dracula

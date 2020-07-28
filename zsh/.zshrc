@@ -148,9 +148,6 @@ alias wp='feh --bg-max ~/.config/wall.png --bg-max ~/.config/wall2.png'
 #Neofetch
 alias nf='neofetch --w3m ~/.config/neofetch/arch.png --size 150px;zsh'
 
-#Wal
-alias wc='wal -i ~/.config/wall.png'
-
 #Colors
 alias col='cb-small;colorpanes;colorline'
 
@@ -166,6 +163,7 @@ alias win='obxprop | grep "^_OB_APP"'
 
 #CLI Music
 alias music='ncmpcpp'
+alias music2='~/.ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug'
 
 #Ranger
 alias fm='ranger'
@@ -177,7 +175,7 @@ alias fl='fc-list | grep "~/.fonts/"'
 #Youtube-DL
 alias yd='youtube-dl'
 alias ydm='youtube-dl --extract-audio --embed-thumbnail --audio-format mp3'
-
+alias ydb='cd ~/Videos/yd/; youtube-dl --batch-file=~/Videos/yd/yd'
 #vim
 alias vim-s='vim -S ~/.vim/sessions/main.vim'
 

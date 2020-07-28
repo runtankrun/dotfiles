@@ -1,0 +1,3 @@
+#!/bin/sh
+
+kitty --name "vis" --title "vis" -e sh -c "kitty @set-font-size 1;vis"

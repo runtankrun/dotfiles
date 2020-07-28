@@ -1,43 +1,58 @@
 #!/bin/sh
 
-if [[ $1 = "-all" ]]; then
-#INSERT RECEPTACLES
+######
+#LEFT#
+######
+if [[ $1 = "-left" ]]; then
+##INSERT RECEPTACLES
 bspc node @^1:/ -i 
-bspc node @^1:/ -p east -i 
-bspc node @2:/ -i 
-bspc node @2:/ -o 0.602267 -p east -i
-bspc node @2:/2 -o 0.421183 -p east -i
-#ADD RULES
-bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1 state=pseudo_tiled
-bspc rule -a URxvt:gotop -o node=@^1:^1:/2 state=pseudo_tiled
-bspc rule -a kitty:ranger -o node=@^2:^1:/1
-bspc rule -a mpv:gifs -o node=@^2:^1:/2/1
-bspc rule -a URxvt:gotop -o node=@^2:^1:/2/2/
-#LAUNCH APPS
+bspc node @^1:/ -p east -i
+bspc node @^1:/1 -p north -i
+
+##ADD RULES
+bspc rule -a mpv:panel-gifs -o node=@^1:^1:/1/1
+bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2
+bspc rule -a URxvt:gotop -o node=@^1:^1:/2
+
+##LAUNCH APPS
+mpv --x11-name="panel-gifs" --title="panel-gifs" ~/Pictures/gifs/ps.GIF &
 clock &
 gotop-pos &
-launch 
 
-elif [[ $1 = "-left" ]]; then
-#INSERT RECEPTACLES
-bspc node @^1:/ -i 
-bspc node @^1:/ -p east -i 
-#ADD RULES
-bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1 state=pseudo_tiled
-bspc rule -a mpv:gl -o node=@^1:^1:/2 state=pseudo_tiled
-#LAUNCH APPS
-clock &
-mpv /home/ellio/Pictures/gifs
+##COLORS
+wal -n -i ~/Pictures/screenshots/rx.jpg -a 95; 
+. "${HOME}/.cache/wal/colors.sh";
+bspc config normal_border_color "$color12";
+bspc config active_border_color "$color0";
+bspc config focused_border_color "$color2";
+bspc config presel_feedback_color "$color2" &
+dracula
 
+#######
+#RIGHT#
+#######
 else
-#INSERT RECEPTACLES
-bspc node @2:/ -i 
-bspc node @2:/ -o 0.602267 -p east -i
-bspc node @2:/2 -o 0.421183 -p east -i
-#ADD RULES
-bspc rule -a kitty:ranger -o node=@^2:^1:/1
+##INSERT RECEPTACLES
+bspc node @^2:/ -i 
+bspc node @^2:/ -o 0.602267 -p east -i
+bspc node @^2:/2 -o 0.421183 -p east -i
+bspc node @^2:/2/2 -o 0.52 -p south -i
+bspc node @^2:/2/2/2 -o 0.52 -p east -i
+bspc node @^2:/2/2/2/2  -o 0.52 -p south -i
+
+##ADD RULES
+bspc rule -a URxvt:ranger -o node=@^2:^1:/1
 bspc rule -a mpv:gifs -o node=@^2:^1:/2/1
-bspc rule -a URxvt:gotop -o node=@^2:^1:/2/2/
-#LAUNCH APPS
-launch
+bspc rule -a URxvt:htop -o node=@^2:^1:/2/2/1
+bspc rule -a feh:feh -o node=@^2:^1:/2/2/2/1
+bspc rule -a URxvt:pro -o node=@^2:^1:/2/2/2/2/1
+bspc rule -a URxvt:tty-clock -o node=@^2:^1:/2/2/2/2/2
+
+##LAUNCH APPS
+urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &
+mpv --x11-name="gifs" --title="gifs" ~/Videos/1.mov &
+gotop-pos -h &
+feh -Z -. ~/Pictures/1r.png &
+pro -f &
+clock
 fi

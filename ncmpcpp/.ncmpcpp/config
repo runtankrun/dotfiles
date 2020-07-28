@@ -2,7 +2,7 @@
 # -----------------------
 
 # MPD
-mpd_music_dir = "~/Music/"
+mpd_music_dir = "/run/media/ellio/TB_1/iTunes Media/Music/"
 mpd_host = "127.0.0.1"
 mpd_port = "6600"
 

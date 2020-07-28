@@ -1,0 +1,3 @@
+#!/bin/sh
+
+urxvtc -name "tty-clock" -title "TTY-Clock" -e sh -c "tty-clock -c -x -t -C 7"

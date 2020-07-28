@@ -1,0 +1,2 @@
+#!/bin/sh
+urxvtc -name "matrix" -title "matrix" -bg 000000 --color2 green --color1 red --color3 blue -e sh -c "sleep .2s;cmatrix"

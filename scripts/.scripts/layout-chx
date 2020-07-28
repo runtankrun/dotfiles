@@ -1,8 +1,8 @@
 #!/bin/sh
 
-bspc node @3:/ -i focus=on
-bspc node @3:/ -o 0.206628 -p east -i
-bspc node @3:/2 -o 0.25975 -p east -i
+bspc node @^3:/ -i
+bspc node @^3:/ -o 0.206628 -p east -i
+bspc node @^3:/2 -o 0.25975 -p east -i
 
 bspc rule -a mpv:alexa -o node=@^2:^2:/1
 bspc rule -a mpv:h -o node=@^2:^2:/2/1

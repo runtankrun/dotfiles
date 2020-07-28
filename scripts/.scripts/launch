@@ -1,9 +1,0 @@
-#!/bin/sh
-
-#urxvtc -e ranger --selectfile=Pictures/wal/1.jpg &
-kitty --name="ranger" --title="ranger-k" -e ~/.scripts/ranger/ranger.py -r ~/.config/ranger/kitty --selectfile=/run/media/ellio/TB_1/Phone/HR/IMG_1084.JPG &
-sleep .2s; mpv --x11-name="gifs" --title="gifs" ~/Videos/1.mov &
-sleep .2s; gotop-pos &
-feh -Z -. ~/Pictures/1r.png &
-pro -f &
-clock
