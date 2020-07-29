@@ -6,9 +6,9 @@
 if [[ $1 = "-left" ]]; then
 
 ##INSERT RECEPTACLES
-bspc node @^1:/ -i 
-bspc node @^1:/ -p east -i
-bspc node @^1:/1 -p north -i
+bspc node @^1:^1:/ -i 
+bspc node @^1:^1:/ -p east -i
+bspc node @^1:^1:/1 -p north -i
 
 ##ADD RULES
 bspc rule -a mpv:panel-gifs -o node=@^1:^1:/1/1
@@ -16,9 +16,9 @@ bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2
 bspc rule -a URxvt:gotop -o node=@^1:^1:/2
 
 ##LAUNCH APPS
-mpv --x11-name="panel-gifs" --title="panel-gifs" ~/Pictures/gifs/ps.GIF &
-clock &
-gotop-pos &
+sleep .3s; mpv --x11-name="panel-gifs" --title="panel-gifs" ~/Pictures/gifs/ps.GIF &
+sleep .3s; clock &
+sleep .3s; gotop-pos &
 
 ##COLORS
 wal -n -i ~/Pictures/wal/nasa.png -a 95; 
@@ -35,14 +35,14 @@ dracula
 else
 
 ##INSERT RECEPTACLES
-bspc node @^2:/ -i 
-bspc node @^2:/ -p east -i
-bspc node @^2:/1 -p south -i
-bspc node @^2:/2 -o 0.348692 -p east -i
-bspc node @^2:/2/2 -o 0.7 -p south -i
-bspc node @^2:/2/2/2 -o .52 -p east -i
-bspc node @^2:/2/2/2/1 -o .52 -p south -i
-bspc node @^2:/2/2/2/2 -o .52 -p south -i
+bspc node @^2:^1:/ -i 
+bspc node @^2:^1:/ -p east -i
+bspc node @^2:^1:/1 -p south -i
+bspc node @^2:^1:/2 -o 0.348692 -p east -i
+bspc node @^2:^1:/2/2 -o 0.7 -p south -i
+bspc node @^2:^1:/2/2/2 -o .52 -p east -i
+bspc node @^2:^1:/2/2/2/1 -o .52 -p south -i
+bspc node @^2:^1:/2/2/2/2 -o .52 -p south -i
 
 ##ADD RULES
 bspc rule -a URxvt:ranger -o node=@^2:^1:/1/1
@@ -52,16 +52,16 @@ bspc rule -a URxvt:vim -o node=@^2:^1:/2/2/1
 bspc rule -a URxvt:TANK -o node=@^2:^1:/2/2/2/1/1
 bspc rule -a URxvt:matrix -o node=@^2:^1:/2/2/2/1/2
 bspc rule -a URxvt:pro -o node=@^2:^1:/2/2/2/2/1
-bspc rule -a URxvt:tty-clock -o node=@^2:^1:/2/2/2/2/2
+bspc rule -a URxvt:tty-clock2 -o node=@^2:^1:/2/2/2/2/2
 
 ##LAUNCH APPS
 urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &
 mpv --x11-name="gifs" --title="gifs" ~/Videos/1.mov &
 gotop-pos -h &
 sleep .3s; vim-sessions -main
-message &
+sleep .3s; message &
 urxvtc -name "matrix" -title "matrix" -bg 000000 -e sh -c "sleep .2s;cmatrix -u 6;zsh" &
 pro -f &
-clock
+urxvtc -name "tty-clock2" -title "TTY-Clock" -e sh -c "tty-clock -c -x -t -C 7"
 
 fi
