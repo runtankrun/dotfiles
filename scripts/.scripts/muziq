@@ -1,0 +1,10 @@
+#!/bin/sh
+
+bspc node @^2:^3:/ -i 
+bspc node @^2:^3:/ -p south -i
+
+bspc rule -a kitty:music -o node=@^2:^3:/1
+bspc rule -a kitty:vis -o node=@^2:^3:/2
+
+kitty --name "music" --title "music" -e sh -c "~/.ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug;zsh" &
+visualizer
