@@ -279,8 +279,8 @@ super + {grave}
 	bspc {desktop} -f last
 
 ## focus or send to the given desktop
-super + {_,shift + }{0-7}
-	bspc {desktop -f,node -d} '^{1-8}'
+super + {_,shift + }{0-8}
+	bspc {desktop -f,node -d} '^{1-9}'
 
 ##-----RESIZE-----##
 ## expanding windows

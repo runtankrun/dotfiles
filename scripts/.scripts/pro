@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [[ $1 = "-f" ]]; then
-urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c -f;sleep 1.5s"
+urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c -f;sleep 1.5s;zsh"
 elif [[ $1 = "-s" ]]; then
-urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c --sc;sleep 1.5s"
+urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c --sc;sleep 1.5s;zsh"
 fi

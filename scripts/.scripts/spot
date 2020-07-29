@@ -1,24 +1,12 @@
 #!/bin/sh
+bspc node @^2:^7:/ -i
+bspc node @^2:^7:/ -p east -i
+bspc node @^2:^7:/2 -o 0.9 -p south -i
 
-#Launch spt
-urxvtc -e "spt" &
+bspc rule -a URxvt:spot -o node=@^2:^7:/1
+bspc rule -a kitty:vis -o node=@^2:^7:/2/1
+bspc rule -a URxvt:lofi -o node=@^2:^7:/2/2
 
-#Launch Visualizer
+urxvtc -geometry 100x100 -name "spot" -title "spot" -e sh -c "spt;zsh" &
 visualizer &
-
-#layout
-sleep .3s; bspc node -p south &
-
-#Video Eye Candy
-mpv ~/Videos/zCYCLE_1080.mp4 &
-
-#Play audio from local file in background
-sleep .3s; urxvtc -e mpv ~/Music/1am.mp3 --mute=no --no-video &
-
-#split horizontal
-#sleep .3s; bspc node -o 0.140751 -p south &
-sleep .3s; bspc node -o 0.270809 -p south &
-
-##GIF
-#mpv ~/Pictures/gifs/muziq_robin.GIF
-mpv ~/Pictures/gifs/muziq_hey.GIF
+urxvtc -name "lofi" -title "lofi" -e sh -c 'mpv --x11-name="lofi" --title="lofi" ~/Music/1am.mp3 --mute=no --no-video;zsh'

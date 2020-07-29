@@ -1,2 +1,6 @@
 #!/bin/sh
-urxvtc -name "tty-clock" -title "TTY-Clock" -e sh -c "tty-clock -c -x -t -C 7"
+if [[ $1 = "-2" ]]; then
+urxvtc -name "tty-clock2" -title "tty-clock2" -e sh -c "tty-clock -c -t -C 7 -b"
+else
+urxvtc -name "tty-clock" -title "tty-clock" -e sh -c "tty-clock -c -t -C 7 -b;zsh"
+fi

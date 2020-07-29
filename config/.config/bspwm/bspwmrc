@@ -16,7 +16,7 @@ bspc config focus_follows_pointer true
 #mouse refresh rate (1000/100hz=10)
 bspc config pointer_motion_interval 10
 
-bspc monitor -d 1 2 3 4 5 6 7
+bspc monitor -d 1 2 3 4 5 6 7 8
 
 bspc config border_width         2
 bspc config window_gap           0
