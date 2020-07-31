@@ -16,18 +16,10 @@ bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2
 bspc rule -a URxvt:gotop -o node=@^1:^1:/2
 
 ##LAUNCH APPS
-sleep .5s; mpv --x11-name="panel-gifs" --title="panel-gifs" ~/Pictures/gifs/ps.GIF &
-sleep .5s; clock &
-sleep .5s; gotop-pos &
-
-##COLORS
-sleep .5s; wal -n -i ~/Pictures/wal/nasa.png -a 95; 
-. "${HOME}/.cache/wal/colors.sh";
-bspc config normal_border_color "$color12";
-bspc config active_border_color "$color0";
-bspc config focused_border_color "$color2";
-bspc config presel_feedback_color "$color2" &
-dracula
+mpv --x11-name="panel-gifs" --title="panel-gifs" ~/Pictures/gifs/ps.GIF &
+clock &
+gotop-pos &
+sleep .3s; dracula
 
 ##############
 #   LEFT 2   #
@@ -45,12 +37,90 @@ bspc rule -a mpv:naruto -o node=@^1:^1:/2/1
 bspc rule -a URxvt:gotop -o node=@^1:^1:/2/2
 
 ##LAUNCH APPS
-sleep .5s; clock &
-sleep .5s; gotop-pos &
-sleep .5s; mpv --x11-name="naruto" --title="naruto" ~/Videos/N.mp4 &
+clock &
+gotop-pos &
+mpv --x11-name="naruto" --title="naruto" ~/Videos/N.mp4 &
+sleep .3s; dracula
 
-##COLORS
-sleep .5s; dracula
+###################
+#   RIGHT-TITAN   #
+###################
+
+elif [[ $1 = "--titan" ]]; then
+
+##INSERT RECEPTACLES
+bspc node @^2:^1:/ -i 
+bspc node @^2:^1:/ -o 0.438895 -p east -i
+bspc node @^2:^1:/1 -p south -i
+bspc node @^2:^1:/2 -o 0.298829 -p east -i
+bspc node @^2:^1:/2/2 -o 0.7 -p south -i
+bspc node @^2:^1:/2/2/2 -o .52 -p east -i
+bspc node @^2:^1:/2/2/2/1 -o .52 -p south -i
+bspc node @^2:^1:/2/2/2/2 -o .52 -p south -i
+
+##ADD RULES
+bspc rule -a URxvt:ranger -o node=@^2:^1:/1/1
+bspc rule -a URxvt:htop -o node=@^2:^1:/1/2
+bspc rule -a mpv:gifs -o node=@^2:^1:/2/1
+bspc rule -a URxvt:vim -o node=@^2:^1:/2/2/1
+bspc rule -a URxvt:TANK -o node=@^2:^1:/2/2/2/1/1
+bspc rule -a URxvt:matrix -o node=@^2:^1:/2/2/2/1/2
+bspc rule -a URxvt:pro -o node=@^2:^1:/2/2/2/2/1
+bspc rule -a URxvt:tty-clock2 -o node=@^2:^1:/2/2/2/2/2
+
+##LAUNCH APPS
+titan &
+sleep 3.4s; urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &
+sleep .7s; gotop-pos -h &
+sleep .5s; mpv --x11-name="gifs" --title="gifs" ~/Videos/1.mov &
+sleep .5s; vim-sessions -main
+sleep .7s; message &
+sleep 2.4s; matrix &
+sleep 1s; pro -f &
+sleep .8s; clock -2
+
+###############
+#   RIGHT 2   #
+###############
+
+elif [[ $1 = "--right-2" ]]; then
+
+##INSERT RECEPTACLES
+bspc node @^2:^1:/ -i 
+bspc node @^2:^1:/ -o 0.438895 -p east -i
+bspc node @^2:^1:/1 -p south -i
+bspc node @^2:^1:/1/1 -o 0.718807 -p east -i
+bspc node @^2:^1:/1/1/1 -o 0.52 -p south -i
+bspc node @^2:^1:/2 -o 0.298829 -p east -i
+bspc node @^2:^1:/2/2 -o 0.718807 -p south -i
+bspc node @^2:^1:/2/2/2 -o .52 -p east -i
+bspc node @^2:^1:/2/2/2/1 -o .52 -p south -i
+bspc node @^2:^1:/2/2/2/2 -o .52 -p south -i
+
+
+##ADD RULES
+bspc rule -a URxvt:ranger -o node=@^2:^1:/1/1/1/1
+bspc rule -a URxvt:nvtop -o node=@^2:^1:/1/1/1/2
+bspc rule -a mpv:pc -o node=@^2:^1:/1/1/2
+bspc rule -a URxvt:htop -o node=@^2:^1:/1/2
+bspc rule -a mpv:gifs -o node=@^2:^1:/2/1
+bspc rule -a URxvt:vim -o node=@^2:^1:/2/2/1
+bspc rule -a URxvt:TANK -o node=@^2:^1:/2/2/2/1/1
+bspc rule -a URxvt:matrix -o node=@^2:^1:/2/2/2/1/2
+bspc rule -a URxvt:pro -o node=@^2:^1:/2/2/2/2/1
+bspc rule -a URxvt:tty-clock2 -o node=@^2:^1:/2/2/2/2/2
+
+##LAUNCH APPS
+urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &
+mpv --x11-name="pc" --title="pc" ~/Videos/pc.mp4 &
+nvtop-pos &
+gotop-pos -h &
+mpv --x11-name="gifs" --title="gifs" ~/Videos/1.mov &
+vim-sessions -main
+sleep .3s; message &
+matrix &
+pro -f &
+clock -2
 
 #############
 #   RIGHT   #
@@ -79,11 +149,11 @@ bspc rule -a URxvt:tty-clock2 -o node=@^2:^1:/2/2/2/2/2
 
 ##LAUNCH APPS
 urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &
-mpv --x11-name="gifs" --title="gifs" ~/Videos/1.mov &
 gotop-pos -h &
-sleep .3s; vim-sessions -main
+mpv --x11-name="gifs" --title="gifs" ~/Videos/1.mov &
+vim-sessions -main
 sleep .3s; message &
 matrix &
-pro -f &
+urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c -f;zsh" &
 clock -2
 fi

@@ -1,2 +1,2 @@
 #!/bin/sh
-urxvtc -title "TANK" -name "TANK" -e sh -c "figlet -f 3D-ASCII TANK;zsh"
+urxvtc -title "TANK" -name "TANK" -e sh -c "figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf TANK;zsh"

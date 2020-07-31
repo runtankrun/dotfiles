@@ -14,18 +14,24 @@
 ######################
 ##  COMMON COMMAND  ##
 ######################
+
+## focus next occupied desktop
 button10
-    bspc node -t floating
+    bspc desktop -f next.local.occupied
 
+## focus previous occupied desktop
 button9
-    bspc node -t pseudo_tiled
+    bspc desktop -f prev.local.occupied
 
+## toggle floating on/off
 super + button9
-    bspc node -t tiled 
+    bspc node -t \~floating 
 
+## view open windows
 Pause
     skippy-xd-toggle
 
+## sleep
 super + End
     systemctl suspend
 
@@ -34,12 +40,6 @@ super + d
 	rofi -modi run,drun,window -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font "Noto Sans 8"
 Menu
     rofi -show combi
-
-## polybar
-ctrl + p
-    ~/.config/polybar/launch.sh
-ctrl + alt + p
-    pkill polybar
 
 ## audio
 super + a
@@ -57,11 +57,17 @@ ctrl + F11
 super + w
     networkmanager_dmenu
 
-## launch terminal & commands
+## launch terminal
 super + z
-	urxvtc	
+	message	
 super + alt + z
     kitty
+
+## polybar
+super + F5
+    ~/.config/polybar/launch.sh
+super + ctrl + F5
+    pkill polybar
 
 ## proton
 super + F12
@@ -69,23 +75,23 @@ super + F12
 super + alt + F12
     pro -s
 
-##neofetch
+## neofetch
 super + F1
-    ~/.scripts/neo-pos
+    neo-pos
 
-##gotop
+## gotop
 super + F2
-    ~/.scripts/gotop-pos
+    gotop-pos
 super + alt + F2
-    ~/.scripts/gotop-pos -v
+    gotop-pos -v
 super + ctrl + F2
-    ~/.scripts/gotop-pos -h
+    gotop-pos -h
 
-#nvtop
+## nvtop
 super + F3
-    ~/.scripts/nvtop-pos
+    nvtop-pos
 
-#matrix/pipes toys
+## matrix/pipes toys
 super + F4
     matrix 
 super + alt + F4
@@ -131,11 +137,11 @@ super + alt + g
 
 ## launch spotify
 super + s
-    spot
+    layout-spot
 
 ## launch music
 super + m
-    muziq
+    layout-muziq
 
 ## launch mega
 super + alt + m
@@ -252,7 +258,7 @@ super + shift + {d,a}
 
 # swap the current node and the biggest node
 super + g
-	bspc node -s biggest
+	bspc node -s biggest.local
 
 ##-----FOCUS----##
 ## focus window in given direction

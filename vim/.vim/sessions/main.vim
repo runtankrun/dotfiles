@@ -102,12 +102,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 12 + 26) / 53)
-exe 'vert 1resize ' . ((&columns * 8 + 63) / 126)
-exe '2resize ' . ((&lines * 12 + 26) / 53)
-exe 'vert 2resize ' . ((&columns * 110 + 63) / 126)
-exe '3resize ' . ((&lines * 12 + 26) / 53)
-exe 'vert 3resize ' . ((&columns * 6 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 80 + 108) / 217)
+exe 'vert 2resize ' . ((&columns * 68 + 108) / 217)
+exe 'vert 3resize ' . ((&columns * 67 + 108) / 217)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -233,12 +230,12 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 6) / 12)
+let s:l = 1 - ((0 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
-let s:c = 19 - ((1 * winwidth(0) + 4) / 8)
+let s:c = 19 - ((2 * winwidth(0) + 40) / 80)
 if s:c > 0
   exe 'normal! ' . s:c . '|zs' . 19 . '|'
 else
@@ -371,7 +368,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 39 - ((5 * winheight(0) + 6) / 12)
+let s:l = 39 - ((36 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -504,24 +501,21 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 44 - ((6 * winheight(0) + 6) / 12)
+let s:l = 44 - ((41 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 44
-let s:c = 18 - ((1 * winwidth(0) + 3) / 6)
+let s:c = 18 - ((2 * winwidth(0) + 33) / 67)
 if s:c > 0
   exe 'normal! ' . s:c . '|zs' . 18 . '|'
 else
   normal! 018|
 endif
 wincmd w
-exe '1resize ' . ((&lines * 12 + 26) / 53)
-exe 'vert 1resize ' . ((&columns * 8 + 63) / 126)
-exe '2resize ' . ((&lines * 12 + 26) / 53)
-exe 'vert 2resize ' . ((&columns * 110 + 63) / 126)
-exe '3resize ' . ((&lines * 12 + 26) / 53)
-exe 'vert 3resize ' . ((&columns * 6 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 80 + 108) / 217)
+exe 'vert 2resize ' . ((&columns * 68 + 108) / 217)
+exe 'vert 3resize ' . ((&columns * 67 + 108) / 217)
 tabnext
 edit .config/polybar/config.ini
 set splitbelow splitright
@@ -536,10 +530,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 4 + 26) / 53)
-exe 'vert 1resize ' . ((&columns * 113 + 63) / 126)
-exe '2resize ' . ((&lines * 4 + 26) / 53)
-exe 'vert 2resize ' . ((&columns * 12 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 195 + 108) / 217)
+exe 'vert 2resize ' . ((&columns * 21 + 108) / 217)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -665,7 +657,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 4 - ((1 * winheight(0) + 2) / 4)
+let s:l = 4 - ((3 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -798,22 +790,20 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 45 - ((1 * winheight(0) + 2) / 4)
+let s:l = 45 - ((32 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 45
-let s:c = 9 - ((4 * winwidth(0) + 6) / 12)
+let s:c = 9 - ((7 * winwidth(0) + 10) / 21)
 if s:c > 0
   exe 'normal! ' . s:c . '|zs' . 9 . '|'
 else
   normal! 09|
 endif
 wincmd w
-exe '1resize ' . ((&lines * 4 + 26) / 53)
-exe 'vert 1resize ' . ((&columns * 113 + 63) / 126)
-exe '2resize ' . ((&lines * 4 + 26) / 53)
-exe 'vert 2resize ' . ((&columns * 12 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 195 + 108) / 217)
+exe 'vert 2resize ' . ((&columns * 21 + 108) / 217)
 tabnext
 edit .config/sxhkd/sxhkdrc
 set splitbelow splitright
@@ -828,10 +818,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 11 + 26) / 53)
-exe 'vert 1resize ' . ((&columns * 113 + 63) / 126)
-exe '2resize ' . ((&lines * 11 + 26) / 53)
-exe 'vert 2resize ' . ((&columns * 12 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 195 + 108) / 217)
+exe 'vert 2resize ' . ((&columns * 21 + 108) / 217)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -957,7 +945,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 5) / 11)
+let s:l = 1 - ((0 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1090,17 +1078,15 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 5) / 11)
+let s:l = 1 - ((0 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 11 + 26) / 53)
-exe 'vert 1resize ' . ((&columns * 113 + 63) / 126)
-exe '2resize ' . ((&lines * 11 + 26) / 53)
-exe 'vert 2resize ' . ((&columns * 12 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 195 + 108) / 217)
+exe 'vert 2resize ' . ((&columns * 21 + 108) / 217)
 tabnext
 edit .config/picom/picom.conf
 set splitbelow splitright
@@ -1236,7 +1222,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 122 - ((47 * winheight(0) + 25) / 50)
+let s:l = 122 - ((73 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1266,13 +1252,13 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 27 + 63) / 126)
-exe 'vert 2resize ' . ((&columns * 27 + 63) / 126)
-exe 'vert 3resize ' . ((&columns * 27 + 63) / 126)
-exe '4resize ' . ((&lines * 25 + 26) / 53)
-exe 'vert 4resize ' . ((&columns * 42 + 63) / 126)
-exe '5resize ' . ((&lines * 24 + 26) / 53)
-exe 'vert 5resize ' . ((&columns * 42 + 63) / 126)
+exe 'vert 1resize ' . ((&columns * 36 + 108) / 217)
+exe 'vert 2resize ' . ((&columns * 36 + 108) / 217)
+exe 'vert 3resize ' . ((&columns * 35 + 108) / 217)
+exe '4resize ' . ((&lines * 76 + 40) / 81)
+exe 'vert 4resize ' . ((&columns * 107 + 108) / 217)
+exe '5resize ' . ((&lines * 1 + 40) / 81)
+exe 'vert 5resize ' . ((&columns * 107 + 108) / 217)
 argglobal
 vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
 nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
@@ -1410,7 +1396,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 44 - ((28 * winheight(0) + 25) / 50)
+let s:l = 44 - ((43 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1543,12 +1529,12 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 25 - ((16 * winheight(0) + 25) / 50)
+let s:l = 25 - ((24 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 25
-let s:c = 18 - ((8 * winwidth(0) + 13) / 27)
+let s:c = 18 - ((14 * winwidth(0) + 18) / 36)
 if s:c > 0
   exe 'normal! ' . s:c . '|zs' . 18 . '|'
 else
@@ -1681,7 +1667,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 36 - ((23 * winheight(0) + 25) / 50)
+let s:l = 36 - ((35 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1814,7 +1800,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 152 - ((12 * winheight(0) + 12) / 25)
+let s:l = 152 - ((37 * winheight(0) + 38) / 76)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1947,21 +1933,21 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 12) / 24)
+let s:l = 1 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
 wincmd w
-5wincmd w
-exe 'vert 1resize ' . ((&columns * 27 + 63) / 126)
-exe 'vert 2resize ' . ((&columns * 27 + 63) / 126)
-exe 'vert 3resize ' . ((&columns * 27 + 63) / 126)
-exe '4resize ' . ((&lines * 25 + 26) / 53)
-exe 'vert 4resize ' . ((&columns * 42 + 63) / 126)
-exe '5resize ' . ((&lines * 24 + 26) / 53)
-exe 'vert 5resize ' . ((&columns * 42 + 63) / 126)
+4wincmd w
+exe 'vert 1resize ' . ((&columns * 36 + 108) / 217)
+exe 'vert 2resize ' . ((&columns * 36 + 108) / 217)
+exe 'vert 3resize ' . ((&columns * 35 + 108) / 217)
+exe '4resize ' . ((&lines * 76 + 40) / 81)
+exe 'vert 4resize ' . ((&columns * 107 + 108) / 217)
+exe '5resize ' . ((&lines * 1 + 40) / 81)
+exe 'vert 5resize ' . ((&columns * 107 + 108) / 217)
 tabnext
 edit .mozilla/firefox/v2nnvt6o.default-release/startpage/index.html
 set splitbelow splitright
@@ -2097,7 +2083,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 19 - ((8 * winheight(0) + 25) / 50)
+let s:l = 19 - ((12 * winheight(0) + 39) / 78)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2118,6 +2104,7 @@ badd +1 .config/bspwm/bspwmrc
 badd +1 .config/ranger/kitty/rc.conf
 badd +34 .config/ranger/rc.conf
 badd +147 .config/ranger/rifle.conf
+badd +0 .config/ranger/kitty/rifle.conf
 badd +234 .config/openbox/rc.xml
 badd +62 .themes/ad/openbox-3/themerc
 badd +1 .mozilla/firefox/v2nnvt6o.default-release/chrome/userChrome.css
@@ -2128,7 +2115,6 @@ badd +24 .vimrc-min
 badd +19 .mozilla/firefox/v2nnvt6o.default-release/chrome/userContent.css
 badd +12 .config/polybar/launch.sh
 badd +1 .mozilla/.firefox/v2nnvt6o.default-release/startpage/index.html
-badd +1 .config/ranger/kitty/rifle.conf
 badd +34 .config/mpv/mpv.conf
 badd +1 .config/ranger/scope.sh
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0

@@ -143,7 +143,8 @@ alias pic='feh --scale-down --auto-zoom'
 alias pic-ss='feh -Z -. -D 5'
 
 #Feh background (2 monitors)
-alias wp='feh --bg-max ~/.config/wall.png --bg-max ~/.config/wall2.png'
+alias wp='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png'
+alias wpc='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png map; wal -n -i ~/.config/wall.png -a 95'
 
 #Neofetch
 alias nf='neofetch --w3m ~/.config/neofetch/arch.png --size 150px;zsh'

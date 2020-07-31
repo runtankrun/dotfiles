@@ -81,6 +81,6 @@ song_status_format = "{$b$7 $2%a $3〃 $5%t $3〃 $6%b}|{$b$7 $6%f}"
 song_window_title_format = "{%a - %t}|{%f}"
 
 # EXEC SCRIPT
-#execute_on_song_change="bash -c '~/.ncmpcpp/scripts/notify'"
+#execute_on_song_change="bash -c '~/.ncmpcpp/scripts/album-notify'"
 #execute_on_song_change=notify-send "Now Playing ♫:" "$(mpc current)"
-execute_on_song_change="~/.ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh"
+execute_on_song_change="~/.ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh & bash -c ~/.ncmpcpp/scripts/notify"

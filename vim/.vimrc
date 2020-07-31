@@ -106,4 +106,4 @@ let NERDTreeShowHidden=1
 let g:NERDTreeNodeDelimiter = "\u00a0"
 let g:colorizer_maxlines=1000
 let g:colorizer_startup = 0
-let g:lens#width_resize_min = 2000
+let g:lens#width_resize_min = 300
