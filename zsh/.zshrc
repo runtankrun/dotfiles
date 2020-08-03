@@ -105,24 +105,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias cl='clear'
-
-#bsp-layout
-alias wide='bsp-layout set wide'
-alias even='bsp-layout set even'
-alias rl='bsp-layout remove'
-
 #Git
 alias gi='git init'
 alias gs='git status'
-alias ga='git add'
+alias ga='git add -A'
 alias gc='git commit -m'
 alias gpsh='git push -u origin master'
 alias gpll='git pull'
+alias ptg='cd ~/dotfiles/; git status'
 
 #stow
-alias store-n='stow --adopt -nv'
-alias store='stow --adopt -v'
+alias tlinks='stow --adopt -nv'
+alias clink='stow --adopt -v'
 
 #ProtonVPN
 alias prof='sudo protonvpn c -f'
@@ -144,7 +138,8 @@ alias pic-ss='feh -Z -. -D 5'
 
 #Feh background (2 monitors)
 alias wp='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png'
-alias wpc='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png map; wal -n -i ~/.config/wall.png -a 95'
+alias wpc='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png; wal -n -i ~/.config/wall.png -a 95'
+alias wpt='wal -n -i ~/.config/wall.png -a'
 
 #Neofetch
 alias nf='neofetch --w3m ~/.config/neofetch/arch.png --size 150px;zsh'

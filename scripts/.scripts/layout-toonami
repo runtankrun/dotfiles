@@ -1,0 +1,43 @@
+/bin/sh
+
+#############
+#   RIGHT   #
+#############
+
+bspc desktop -f ^2:^1;
+
+##INSERT RECEPTACLES
+bspc node @^2:^1:/ -i 
+bspc node @^2:^1:/ -o 0.438895 -p east -i
+bspc node @^2:^1:/1 -p south -i
+bspc node @^2:^1:/1/1 -o 0.718807 -p east -i
+bspc node @^2:^1:/1/1/1 -o 0.52 -p south -i
+bspc node @^2:^1:/2 -o 0.298829 -p east -i
+bspc node @^2:^1:/2/2 -o 0.741724 -p south -i
+bspc node @^2:^1:/2/2/2 -o .52 -p east -i
+bspc node @^2:^1:/2/2/2/1 -o .53 -p south -i
+bspc node @^2:^1:/2/2/2/1/1 -o .52 -p east -i
+
+
+##ADD RULES
+bspc rule -a URxvt:ranger -o node=@^2:^1:/1/1/1/1
+bspc rule -a URxvt:nvtop -o node=@^2:^1:/1/1/1/2
+bspc rule -a mpv:pc -o node=@^2:^1:/1/1/2
+bspc rule -a URxvt:htop -o node=@^2:^1:/1/2
+bspc rule -a mpv:gifs -o node=@^2:^1:/2/1
+bspc rule -a URxvt:vim -o node=@^2:^1:/2/2/1
+bspc rule -a URxvt:TANK -o node=@^2:^1:/2/2/2/1/1/1
+bspc rule -a URxvt:matrix -o node=@^2:^1:/2/2/2/1/2
+bspc rule -a URxvt:pro -o node=@^2:^1:/2/2/2/1/1/2
+bspc rule -a mpv:toonami -o node=@^2:^1:/2/2/2/2
+
+##LAUNCH APPS
+urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &
+mpv --x11-name="pc" --title="pc" ~/Videos/pc.mp4 &
+nvtop-pos &
+gotop-pos -h &
+mpv --x11-name="gifs" --title="gifs" ~/Videos/1.mov &
+vim-sessions -main &
+sleep .3s; message &
+sleep .3s; urxvtc -name "matrix" -title "matrix" -bg 000000 -e sh -c "sleep .2s; cmatrix -u 7; urxvtc -e sh -c 'ranger --selectfile=.scripts/layout-home'" &
+urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c -f & mpv --x11-name=toonami --title=toonami ~/Pictures/gifs/mf-toonami.GIF --terminal=no"

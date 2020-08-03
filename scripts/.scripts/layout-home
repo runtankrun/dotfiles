@@ -1,52 +1,10 @@
 #!/bin/sh
 
-##############
-#   LEFT 1   #
-##############
-if [[ $1 = "--left-1" ]]; then
-
-##INSERT RECEPTACLES
-bspc node @^1:^1:/ -i 
-bspc node @^1:^1:/ -p east -i
-bspc node @^1:^1:/1 -p north -i
-
-##ADD RULES
-bspc rule -a mpv:panel-gifs -o node=@^1:^1:/1/1
-bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2
-bspc rule -a URxvt:gotop -o node=@^1:^1:/2
-
-##LAUNCH APPS
-mpv --x11-name="panel-gifs" --title="panel-gifs" ~/Pictures/gifs/ps.GIF &
-clock &
-gotop-pos &
-sleep .3s; dracula
-
-##############
-#   LEFT 2   #
-##############
-elif [[ $1 = "--left-2" ]]; then
-
-##INSERT RECEPTACLES
-bspc node @^1:^1:/ -i 
-bspc node @^1:^1:/ -p east -i
-bspc node @^1:^1:/2 -o 0.354756 -p north -i
-
-##ADD RULES
-bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1
-bspc rule -a mpv:naruto -o node=@^1:^1:/2/1
-bspc rule -a URxvt:gotop -o node=@^1:^1:/2/2
-
-##LAUNCH APPS
-clock &
-gotop-pos &
-mpv --x11-name="naruto" --title="naruto" ~/Videos/N.mp4 &
-sleep .3s; dracula
-
 ###################
 #   RIGHT-TITAN   #
 ###################
 
-elif [[ $1 = "--titan" ]]; then
+if [[ $1 = "--titan" ]]; then
 
 ##INSERT RECEPTACLES
 bspc node @^2:^1:/ -i 
@@ -79,9 +37,9 @@ sleep 2.4s; matrix &
 sleep 1s; pro -f &
 sleep .8s; clock -2
 
-###############
-#   RIGHT 2   #
-###############
+############################
+#   RIGHT 2 (PC + nvtop)   #
+############################
 
 elif [[ $1 = "--right-2" ]]; then
 

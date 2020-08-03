@@ -1,0 +1,61 @@
+#!/bin/sh
+
+##########
+#   PS   #
+##########
+if [[ $1 = "-ps" ]]; then
+
+##INSERT RECEPTACLES
+bspc node @^1:^1:/ -i 
+bspc node @^1:^1:/ -p east -i
+bspc node @^1:^1:/1 -p north -i
+
+##ADD RULES
+bspc rule -a mpv:panel-gifs -o node=@^1:^1:/1/1 
+bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2
+bspc rule -a kitty:gotop -o node=@^1:^1:/2
+
+##LAUNCH APPS
+mpv --x11-name="panel-gifs" --title="panel-gifs" ~/Pictures/gifs/ps.GIF & 
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
+kitty --name "gotop" --title "gotop" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "gotop"
+
+##############
+#   NARUTO   #
+##############
+elif [[ $1 = "-naruto" ]]; then
+
+##INSERT RECEPTACLES
+bspc node @^1:^1:/ -i 
+bspc node @^1:^1:/ -o 0.52 -p east -i
+bspc node @^1:^1:/2 -o 0.354756 -p north -i   
+
+##ADD RULES
+
+bspc rule -a kitty:tty-clock -o node=@^1:^1:/1
+bspc rule -a mpv:naruto -o node=@^1:^1:/2/1
+bspc rule -a kitty:gotop -o node=@^1:^1:/2/2
+
+##LAUNCH APPS
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
+kitty --name "gotop" --title "gotop" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "gotop" &
+mpv --x11-name="naruto" --title="naruto" ~/Videos/N.mp4
+
+###############
+#   MINIMAL   #
+###############
+else
+##INSERT RECEPTACLES
+bspc node @^1:^1:/ -i 
+bspc node @^1:^1:/ -o 0.52 -p east -i
+
+
+##ADD RULES
+
+bspc rule -a kitty:tty-clock -o node=@^1:^1:/1
+bspc rule -a kitty:gotop -o node=@^1:^1:/2
+
+##LAUNCH APPS
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
+kitty --name "gotop" --title "gotop" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "gotop"
+fi

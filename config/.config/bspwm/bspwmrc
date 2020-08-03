@@ -9,7 +9,7 @@ mpd &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 xdg-user-dirs-gtk-update &
 skippy-xd --config ~/.config/skippy-xd/skippy-xd.rc --start-daemon &
-sleep .5s; easystroke &
+easystroke &
 
 bspc config focus_follows_pointer true
 
@@ -33,6 +33,7 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a SimpleScreenRecorder state=floating
 bspc rule -a MEGAsync state=floating
+bspc rule -a Gcolor3 state=floating
 
 . "${HOME}/.cache/wal/colors.sh"
 bspc config normal_border_color "$color12"

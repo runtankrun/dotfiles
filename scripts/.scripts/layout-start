@@ -1,0 +1,6 @@
+#!/bin/sh
+
+feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png & 
+sleep .5s; wal -n -i ~/.config/wall.png -a 95 &
+layout-case &
+sleep .3s; layout-toonami

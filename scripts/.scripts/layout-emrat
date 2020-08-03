@@ -1,0 +1,14 @@
+#!/bin/sh
+bspc node @^2:^6:/ -i
+bspc node @^2:^6:/ -o 0.323488 -p east -i
+bspc node @^2:^6:/2 -o 0.545 -p south -i
+bspc node @^2:^6:/2/2 -o 0.5 -p east -i
+
+bspc rule -a feh:feh -o node=@^2:^6:/1
+#bspc rule -a \*:\* -o node=@^2:^6:/2/1
+bspc rule -a mpv:em1 -o node=@^2:^6:/2/2/1
+bspc rule -a mpv:em2 -o node=@^2:^6:/2/2/2
+
+sleep .3s; feh -Z -. -D 5 ~/Pictures/chx/em &
+sleep .3s; mpv --x11-name="em1" --title="em1" ~/Videos/h/wide/*em.mp4 &
+sleep .3s; mpv --x11-name="em2" --title="em2" ~/Videos/h/wide/*em2.mp4 

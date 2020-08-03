@@ -14,6 +14,8 @@
 ######################
 ##  COMMON COMMAND  ##
 ######################
+super + Home
+    bspc desktop -f ^2:^1; layout-home --right-2
 
 ## focus next occupied desktop
 button10
