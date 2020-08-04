@@ -1,0 +1,4 @@
+#!/bin/sh
+bspc rule -a URxvt:titan -o state=floating
+urxvtc -name "titan" -title "titan" -e mpv ~/Music/aot.mp3 --mute=no --volume=100 --start=00:00:04 --no-video &
+sleep 3.4s; bspc node -d '^3'

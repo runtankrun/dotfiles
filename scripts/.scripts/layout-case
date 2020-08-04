@@ -16,9 +16,9 @@ bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2
 bspc rule -a kitty:gotop -o node=@^1:^1:/2
 
 ##LAUNCH APPS
-sleep .5s; mpv --x11-name="panel-gifs" --title="panel-gifs" ~/Pictures/gifs/ps.GIF & 
-sleep .5s; kitty --name "tty-clock" --title "tty-clock" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
-sleep .5s; kitty --name "gotop" --title "gotop" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "gotop"
+mpv --x11-name="panel-gifs" --title="panel-gifs" ~/Pictures/gifs/ps.GIF & 
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop"
 
 ##############
 #   NARUTO   #
@@ -37,8 +37,8 @@ bspc rule -a mpv:naruto -o node=@^1:^1:/2/1
 bspc rule -a kitty:gotop -o node=@^1:^1:/2/2
 
 ##LAUNCH APPS
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
-kitty --name "gotop" --title "gotop" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "gotop" &
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop" &
 mpv --x11-name="naruto" --title="naruto" ~/Videos/N.mp4
 
 ###############
@@ -56,6 +56,6 @@ bspc rule -a kitty:tty-clock -o node=@^1:^1:/1
 bspc rule -a kitty:gotop -o node=@^1:^1:/2
 
 ##LAUNCH APPS
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
-kitty --name "gotop" --title "gotop" -o include="~/.colorschemes/blue/colors-kitty.conf" -e sh -c "gotop"
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop"
 fi

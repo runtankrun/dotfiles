@@ -65,45 +65,52 @@ super + z
 super + alt + z
     kitty
 
+super + F1
+    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png & wal -n -i ~/.config/wall.png -a 90
+super + F2
+    layout-case -ps
+super + F3
+    layout-toonami
+
 ## polybar
-super + F5
+super + F4
     ~/.config/polybar/launch.sh
-super + ctrl + F5
+super + ctrl + F4
     pkill polybar
+
+## neofetch
+super + F5
+    neo-pos
+super + alt + F5
+    neo-pos -ascii
+super + ctrl + F5
+    neo-pos -pic
+
+## gotop
+super + F6
+    gotop-pos
+super + alt + F6
+    gotop-pos -v
+super + ctrl + F6
+    gotop-pos -h
+
+## nvtop
+super + F7
+    nvtop-pos
+
+## matrix/pipes toys
+super + F8
+    matrix 
+super + alt + F8
+    urxvtc -e sh -c "pipes-diagonal;zsh"
+super + ctrl + F8
+    urxvtc -e sh -c "pipes-vertical;zsh"
 
 ## proton
 super + F12
     pro -f
 super + alt + F12
     pro -s
-
-## neofetch
-super + F1
-    neo-pos
-super + alt + F1
-    neo-pos -ascii
-super + ctrl + F1
-    neo-pos -pic
-
-## gotop
-super + F2
-    gotop-pos
-super + alt + F2
-    gotop-pos -v
-super + ctrl + F2
-    gotop-pos -h
-
-## nvtop
-super + F3
-    nvtop-pos
-
-## matrix/pipes toys
-super + F4
-    matrix 
-super + alt + F4
-    urxvtc -e sh -c "pipes-diagonal;zsh"
-super + ctrl + F4
-    urxvtc -e sh -c "pipes-vertical;zsh"
 
 ## launch ranger
 super + r
@@ -112,6 +119,8 @@ super + alt + r
     ranger-slim -k
 super + ctrl + r
     ranger-slim -s
+super + shift + r
+    ranger-slim -ks
 
 ## launch firefox
 super + b

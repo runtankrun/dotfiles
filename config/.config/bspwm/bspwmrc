@@ -1,15 +1,37 @@
 #! /bin/sh
-sleep .5s; xfsettingsd &
-sleep .5s; setxkbmap -option caps:swapescape &
+
+## Compositor
 sleep .5s; picom -b &
+
+## swap caps and escape buttons
+sleep .5s; setxkbmap -option caps:swapescape &
+
+## Keybinds
 sleep .5s; sxhkd &
-urxvtd -q &
+
+## super key for menu
 xcape -e 'Super_L=Super_L|D' &
-mpd &
+
+## font
+xset +fp ~/.fonts/misc/ &
+
+### PolicyKit authentication
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+### Localize user system folders
 xdg-user-dirs-gtk-update &
+
+## skippy windowswitcher
 skippy-xd --config ~/.config/skippy-xd/skippy-xd.rc --start-daemon &
+
+## Apps
 easystroke &
+urxvtd -q &
+mpd &
+
+## xfce4-settings daemon
+sleep .5s; xfsettingsd &
+sleep .5s; nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceCompositionPipeline=On, ForceFullCompositionPipeline=On }" &
 
 bspc config focus_follows_pointer true
 
@@ -40,8 +62,3 @@ bspc config normal_border_color "$color12"
 bspc config active_border_color "$color0"
 bspc config focused_border_color "$color2"
 bspc config presel_feedback_color "$color2"
-
-#bspc config normal_border_color "#887E80"
-#bspc config active_border_color "#5E81AC"
-#bspc config focused_border_color "#00E7FF"
-#bspc config focused_border_color "#FF0000"

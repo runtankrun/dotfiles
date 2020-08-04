@@ -18,6 +18,8 @@ map   /
 nmap \tc <Plug>Colorizer
 map ct :ColorToggle
 map cs :colorscheme 
+map dc :hi ColorColumn ctermbg=
+map dt :DimInactiveToggle
 vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
 map sd :DimInactiveToggle
@@ -102,9 +104,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 80 + 108) / 217)
-exe 'vert 2resize ' . ((&columns * 68 + 108) / 217)
-exe 'vert 3resize ' . ((&columns * 67 + 108) / 217)
+exe 'vert 1resize ' . ((&columns * 55 + 70) / 140)
+exe 'vert 2resize ' . ((&columns * 57 + 70) / 140)
+exe 'vert 3resize ' . ((&columns * 26 + 70) / 140)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -230,12 +232,12 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 39) / 78)
+let s:l = 1 - ((0 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
-let s:c = 19 - ((2 * winwidth(0) + 40) / 80)
+let s:c = 19 - ((0 * winwidth(0) + 27) / 55)
 if s:c > 0
   exe 'normal! ' . s:c . '|zs' . 19 . '|'
 else
@@ -368,7 +370,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 39 - ((36 * winheight(0) + 39) / 78)
+let s:l = 39 - ((18 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -501,21 +503,21 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 44 - ((41 * winheight(0) + 39) / 78)
+let s:l = 44 - ((20 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 44
-let s:c = 18 - ((2 * winwidth(0) + 33) / 67)
+let s:c = 18 - ((0 * winwidth(0) + 13) / 26)
 if s:c > 0
   exe 'normal! ' . s:c . '|zs' . 18 . '|'
 else
   normal! 018|
 endif
 wincmd w
-exe 'vert 1resize ' . ((&columns * 80 + 108) / 217)
-exe 'vert 2resize ' . ((&columns * 68 + 108) / 217)
-exe 'vert 3resize ' . ((&columns * 67 + 108) / 217)
+exe 'vert 1resize ' . ((&columns * 55 + 70) / 140)
+exe 'vert 2resize ' . ((&columns * 57 + 70) / 140)
+exe 'vert 3resize ' . ((&columns * 26 + 70) / 140)
 tabnext
 edit .config/polybar/config.ini
 set splitbelow splitright
@@ -530,8 +532,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 195 + 108) / 217)
-exe 'vert 2resize ' . ((&columns * 21 + 108) / 217)
+exe 'vert 1resize ' . ((&columns * 56 + 70) / 140)
+exe 'vert 2resize ' . ((&columns * 83 + 70) / 140)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -657,7 +659,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 39) / 78)
+let s:l = 4 - ((2 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -790,20 +792,20 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 45 - ((32 * winheight(0) + 39) / 78)
+let s:l = 45 - ((20 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 45
-let s:c = 9 - ((7 * winwidth(0) + 10) / 21)
+let s:c = 9 - ((1 * winwidth(0) + 41) / 83)
 if s:c > 0
   exe 'normal! ' . s:c . '|zs' . 9 . '|'
 else
   normal! 09|
 endif
 wincmd w
-exe 'vert 1resize ' . ((&columns * 195 + 108) / 217)
-exe 'vert 2resize ' . ((&columns * 21 + 108) / 217)
+exe 'vert 1resize ' . ((&columns * 56 + 70) / 140)
+exe 'vert 2resize ' . ((&columns * 83 + 70) / 140)
 tabnext
 edit .config/sxhkd/sxhkdrc
 set splitbelow splitright
@@ -818,8 +820,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 195 + 108) / 217)
-exe 'vert 2resize ' . ((&columns * 21 + 108) / 217)
+exe 'vert 1resize ' . ((&columns * 103 + 70) / 140)
+exe 'vert 2resize ' . ((&columns * 36 + 70) / 140)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -945,7 +947,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 39) / 78)
+let s:l = 1 - ((0 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1078,15 +1080,15 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 39) / 78)
+let s:l = 60 - ((27 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+60
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 195 + 108) / 217)
-exe 'vert 2resize ' . ((&columns * 21 + 108) / 217)
+exe 'vert 1resize ' . ((&columns * 103 + 70) / 140)
+exe 'vert 2resize ' . ((&columns * 36 + 70) / 140)
 tabnext
 edit .config/picom/picom.conf
 set splitbelow splitright
@@ -1222,12 +1224,12 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 122 - ((73 * winheight(0) + 39) / 78)
+let s:l = 87 - ((0 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-122
-normal! 0
+87
+normal! 034|
 tabnext
 edit .vimrc
 set splitbelow splitright
@@ -1235,15 +1237,8 @@ wincmd _ | wincmd |
 vsplit
 wincmd _ | wincmd |
 vsplit
-wincmd _ | wincmd |
-vsplit
-3wincmd h
+2wincmd h
 wincmd w
-wincmd w
-wincmd w
-wincmd _ | wincmd |
-split
-1wincmd k
 wincmd w
 set nosplitbelow
 set nosplitright
@@ -1252,13 +1247,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 36 + 108) / 217)
-exe 'vert 2resize ' . ((&columns * 36 + 108) / 217)
-exe 'vert 3resize ' . ((&columns * 35 + 108) / 217)
-exe '4resize ' . ((&lines * 76 + 40) / 81)
-exe 'vert 4resize ' . ((&columns * 107 + 108) / 217)
-exe '5resize ' . ((&lines * 1 + 40) / 81)
-exe 'vert 5resize ' . ((&columns * 107 + 108) / 217)
+exe 'vert 1resize ' . ((&columns * 29 + 70) / 140)
+exe 'vert 2resize ' . ((&columns * 80 + 70) / 140)
+exe 'vert 3resize ' . ((&columns * 29 + 70) / 140)
 argglobal
 vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
 nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
@@ -1396,149 +1387,16 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 44 - ((43 * winheight(0) + 39) / 78)
+let s:l = 90 - ((23 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-44
-normal! 03|
-wincmd w
-argglobal
-if bufexists(".config/ranger/kitty/rc.conf") | buffer .config/ranger/kitty/rc.conf | else | edit .config/ranger/kitty/rc.conf | endif
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=:#
-setlocal commentstring=#\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=inc
-setlocal conceallevel=2
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'conf'
-setlocal filetype=conf
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'conf'
-setlocal syntax=conf
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal undofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-set nowrap
-setlocal nowrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 25 - ((24 * winheight(0) + 39) / 78)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-25
-let s:c = 18 - ((14 * winwidth(0) + 18) / 36)
+90
+let s:c = 25 - ((14 * winwidth(0) + 14) / 29)
 if s:c > 0
-  exe 'normal! ' . s:c . '|zs' . 18 . '|'
+  exe 'normal! ' . s:c . '|zs' . 25 . '|'
 else
-  normal! 018|
+  normal! 025|
 endif
 wincmd w
 argglobal
@@ -1667,12 +1525,17 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 36 - ((35 * winheight(0) + 39) / 78)
+let s:l = 46 - ((25 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-36
-normal! 016|
+46
+let s:c = 20 - ((1 * winwidth(0) + 40) / 80)
+if s:c > 0
+  exe 'normal! ' . s:c . '|zs' . 20 . '|'
+else
+  normal! 020|
+endif
 wincmd w
 argglobal
 if bufexists(".config/ranger/rifle.conf") | buffer .config/ranger/rifle.conf | else | edit .config/ranger/rifle.conf | endif
@@ -1800,154 +1663,17 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 152 - ((37 * winheight(0) + 38) / 76)
+let s:l = 44 - ((24 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-152
-normal! 0
+44
+normal! 010|
 wincmd w
-argglobal
-if bufexists(".config/ranger/kitty/rifle.conf") | buffer .config/ranger/kitty/rifle.conf | else | edit .config/ranger/kitty/rifle.conf | endif
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=#\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=inc
-setlocal conceallevel=2
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'cfg'
-setlocal filetype=cfg
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'cfg'
-setlocal syntax=cfg
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal undofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-set nowrap
-setlocal nowrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 0) / 1)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 0
-wincmd w
-4wincmd w
-exe 'vert 1resize ' . ((&columns * 36 + 108) / 217)
-exe 'vert 2resize ' . ((&columns * 36 + 108) / 217)
-exe 'vert 3resize ' . ((&columns * 35 + 108) / 217)
-exe '4resize ' . ((&lines * 76 + 40) / 81)
-exe 'vert 4resize ' . ((&columns * 107 + 108) / 217)
-exe '5resize ' . ((&lines * 1 + 40) / 81)
-exe 'vert 5resize ' . ((&columns * 107 + 108) / 217)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 29 + 70) / 140)
+exe 'vert 2resize ' . ((&columns * 80 + 70) / 140)
+exe 'vert 3resize ' . ((&columns * 29 + 70) / 140)
 tabnext
 edit .mozilla/firefox/v2nnvt6o.default-release/startpage/index.html
 set splitbelow splitright
@@ -2083,7 +1809,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 19 - ((12 * winheight(0) + 39) / 78)
+let s:l = 19 - ((8 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2101,10 +1827,10 @@ badd +1 .config/kitty/kitty.conf
 badd +38 .Xresources
 badd +28 .config/polybar/scripts/polywins.sh
 badd +1 .config/bspwm/bspwmrc
-badd +1 .config/ranger/kitty/rc.conf
 badd +34 .config/ranger/rc.conf
-badd +147 .config/ranger/rifle.conf
-badd +0 .config/ranger/kitty/rifle.conf
+badd +1 .config/ranger/rifle.conf
+badd +53 .config/ranger/kitty/rc.conf
+badd +13 .config/ranger/kitty/rifle.conf
 badd +234 .config/openbox/rc.xml
 badd +62 .themes/ad/openbox-3/themerc
 badd +1 .mozilla/firefox/v2nnvt6o.default-release/chrome/userChrome.css
@@ -2128,6 +1854,7 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &so = s:so_save | let &siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

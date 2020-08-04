@@ -6,7 +6,7 @@ elif [[ $1 = "-pic" ]]; then
 urxvtc -name "neofetch-pic" -title "neofetch-pic" -e sh -c "neofetch --w3m ~/.config/neofetch/arch.png --size 150px;zsh"
 
 else
-bspc rule -a URxvt -o node=@^2:^2 state=floating
+bspc rule -a URxvt -o state=floating
 urxvtc -name"neofetch" -title "neofetch" -e sh -c "neofetch --loop"
-
+bspc node -d '^3'
 fi

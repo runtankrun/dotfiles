@@ -29,7 +29,7 @@ set ignorecase
 set smartcase
 set number
 highlight LineNr ctermfg=white
-"set t_Co=256
+set t_Co=256
 set viminfo='100,<9999,s100
 
 "" Set status line display
@@ -60,7 +60,8 @@ set statusline+=\                   " Padding
 map ss :mks! ~/.vim/sessions/
 map sh :sp
 map sv :vsp
-map sd :DimInactiveToggle
+map dt :DimInactiveToggle<CR>
+map dc :hi ColorColumn ctermbg=
 map cs :colorscheme<space>
 map ct :ColorToggle<CR>
 
@@ -83,8 +84,7 @@ nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
 nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
 nnoremap <silent> <Tab> :tabnext<CR>
 
-
-""Plug
+""Plug-ins
 call plug#begin('~/.vim/plugged')
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
@@ -92,7 +92,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'vim-python/python-syntax'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
-"Plug 'blueyed/vim-diminactive'
+Plug 'blueyed/vim-diminactive'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-pencil'
@@ -100,10 +100,10 @@ Plug 'lilydjwg/colorizer'
 call plug#end()
 
 ""Plug Config
-":hi ColorColumn ctermbg=0 guibg=#D3D3D3
 "autocmd VimEnter * NERDTree
+:hi ColorColumn ctermbg=8
 let NERDTreeShowHidden=1
 let g:NERDTreeNodeDelimiter = "\u00a0"
 let g:colorizer_maxlines=1000
 let g:colorizer_startup = 0
-let g:lens#width_resize_min = 300
+let g:lens#width_resize_min = 50
