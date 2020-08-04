@@ -92,7 +92,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'vim-python/python-syntax'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
-Plug 'blueyed/vim-diminactive'
+"Plug 'blueyed/vim-diminactive'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-pencil'
@@ -101,7 +101,7 @@ call plug#end()
 
 ""Plug Config
 "autocmd VimEnter * NERDTree
-:hi ColorColumn ctermbg=8
+":hi ColorColumn ctermbg=8
 let NERDTreeShowHidden=1
 let g:NERDTreeNodeDelimiter = "\u00a0"
 let g:colorizer_maxlines=1000

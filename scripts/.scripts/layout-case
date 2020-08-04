@@ -4,57 +4,67 @@
 #   PS   #
 ##########
 if [[ $1 = "-ps" ]]; then
-
+while bspc node 'any.marked.window' -c; do :; done;
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i 
-bspc node @^1:^1:/ -p east -i
-bspc node @^1:^1:/1 -o .498 -p north -i
-
+bspc node @^1:^1:/ -o .52 -p east -i
+bspc node @^1:^1:/1 -o .498 -p south -i
 ##ADD RULES
-bspc rule -a mpv:panel-gifs -o node=@^1:^1:/1/1 
-bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2
-bspc rule -a kitty:gotop -o node=@^1:^1:/2
-
+bspc rule -a mpv:ps -o node=@^1:^1:/1/1 marked=on
+bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on
+bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on
 ##LAUNCH APPS
-mpv --x11-name="panel-gifs" --title="panel-gifs" ~/Pictures/gifs/ps.GIF & 
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop"
+mpv --x11-name="ps" --title="ps" ~/Pictures/gifs/ps.GIF & 
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop" &
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh"
 
 ##############
 #   NARUTO   #
 ##############
 elif [[ $1 = "-naruto" ]]; then
-
+while bspc node 'any.marked.window' -c; do :; done;
 ##INSERT RECEPTACLES
-bspc node @^1:^1:/ -i 
+bspc node @^1:^1:/ -i
 bspc node @^1:^1:/ -o 0.52 -p east -i
-bspc node @^1:^1:/2 -o 0.34 -p north -i   
-
+bspc node @^1:^1:/2 -o 0.34 -p south -i
 ##ADD RULES
-
-bspc rule -a kitty:tty-clock -o node=@^1:^1:/1
-bspc rule -a mpv:naruto -o node=@^1:^1:/2/1
-bspc rule -a kitty:gotop -o node=@^1:^1:/2/2
-
+bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on
+bspc rule -a mpv:naruto -o node=@^1:^1:/2/1 marked=on
+bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on
 ##LAUNCH APPS
 kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop" &
-mpv --x11-name="naruto" --title="naruto" ~/Videos/N.mp4
+mpv --x11-name="naruto" --title="naruto" ~/Videos/N.mp4 &
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop"
+
+############
+#   DARK   #
+#############
+elif [[ $1 = "-dark" ]]; then
+while bspc node 'any.marked.window' -c; do :; done;
+## INSERT RECEPTACLES
+bspc node @^1:^1:/ -i 
+bspc node @^1:^1:/ i-o .52 -p east -i
+bspc node @^1:^1:/1 -o .498 -p south -i
+## ADD RULES
+bspc rule -a mpv:walking -o node=@^1:^1:/1/1 marked=on
+bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on
+bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on
+##LAUNCH APPS
+mpv --x11-name="walking" --title="walking" ~/Pictures/gifs/walking.GIF &
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/black-kitty.conf" -e sh -c "gotop" &
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/black-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh"
 
 ###############
 #   MINIMAL   #
 ###############
 else
+while bspc node 'any.marked.window' -c; do :; done;
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i 
 bspc node @^1:^1:/ -o 0.52 -p east -i
-
-
 ##ADD RULES
-
-bspc rule -a kitty:tty-clock -o node=@^1:^1:/1
-bspc rule -a kitty:gotop -o node=@^1:^1:/2
-
+bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on
+bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on
 ##LAUNCH APPS
 kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop"

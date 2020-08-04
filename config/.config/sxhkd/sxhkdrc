@@ -65,10 +65,21 @@ super + z
 super + alt + z
     kitty
 
+## set previously saved wallpaper, colorscheme, & border colors
 super + F1
-    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png & wal -n -i ~/.config/wall.png -a 90
+    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png & wal -n -i ~/.config/wall.png -a 90 & pywal-bspwm-border
+
+## auto-launch apps on case panel
 super + F2
+    layout-case
+super + alt + F2
     layout-case -ps
+super + ctrl + F2
+    layout-case -naruto
+super + shift + F2
+    layout-case -dark
+
+## auto-launch apps on main monitor
 super + F3
     layout-toonami
 
@@ -223,7 +234,7 @@ super + ctrl + {h,j,k,l}
 
 ## cancel preselection
 super + ctrl + space
-	bspc node -p cancel | while bspc node 'any.leaf.!window' -k; do :; done
+	bspc node -p cancel & while bspc node 'any.leaf.!window' -k; do :; done
 
 # send the newest marked node to the newest preselected node
 super + y
