@@ -1,2 +1,12 @@
 #!/bin/sh
-urxvtc -name "neofetch" -title "neofetch" -geometry 74x14 -e sh -c "neofetch --w3m ~/.config/neofetch/arch.png --size 150px;zsh"
+if [[ $1 = "-ascii" ]]; then
+urxvtc -name "neofetch-ascii" -title "neofetch-ascii" -e sh -c 'neofetch --ascii "$(figlet -f /home/ellio/.fonts/misc/figlet/isometric.flf CT)";zsh'
+
+elif [[ $1 = "-pic" ]]; then
+urxvtc -name "neofetch-pic" -title "neofetch-pic" -e sh -c "neofetch --w3m ~/.config/neofetch/arch.png --size 150px;zsh"
+
+else
+bspc rule -a URxvt -o node=@^2:^2 state=floating
+urxvtc -name"neofetch" -title "neofetch" -e sh -c "neofetch --loop"
+
+fi

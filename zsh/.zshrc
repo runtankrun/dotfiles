@@ -112,11 +112,11 @@ alias ga='git add -A'
 alias gc='git commit -m'
 alias gpsh='git push -u origin master'
 alias gpll='git pull'
-alias ptg='cd ~/dotfiles/; git status'
+alias dotg='cd ~/dotfiles/; git status'
 
 #stow
 alias tlinks='stow --adopt -nv'
-alias clink='stow --adopt -v'
+alias clinks='stow --adopt -v'
 
 #ProtonVPN
 alias prof='sudo protonvpn c -f'
@@ -138,11 +138,11 @@ alias pic-ss='feh -Z -. -D 5'
 
 #Feh background (2 monitors)
 alias wp='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png'
-alias wpc='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png; wal -n -i ~/.config/wall.png -a 95'
-alias wpt='wal -n -i ~/.config/wall.png -a'
+alias wpc='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png; wal -n -i ~/.config/wall.png -a 90'
+alias tt='wal -n -i ~/.config/wall.png -a'
 
 #Neofetch
-alias nf='neofetch --w3m ~/.config/neofetch/arch.png --size 150px;zsh'
+alias nf='neofetch'
 
 #Colors
 alias col='cb-small;colorpanes;colorline'
@@ -176,8 +176,8 @@ alias ydb='cd ~/Videos/yd/; youtube-dl --batch-file=~/Videos/yd/yd'
 alias vim-s='vim -S ~/.vim/sessions/main.vim'
 
 #Figlet
-alias yo='figlet -f 3d'
-alias yo2='figlet -f 3D-ASCII'
+alias yo='figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf'
+alias yo2='figlet -f ~/.fonts/misc/figlet/isometric.flf'
 
 #Shred
 alias shreddit='shred -n 5 -v -z'
@@ -189,11 +189,12 @@ alias tf='xrdm font'
 #timeshift
 alias bu='sudo timeshift --create --comments'
 alias bun='sudo timeshift --create --comments "housekeeping"'
-alias bu-l='sudo timeshift --list'
-alias bu-d='sudo timeshift --delete --snapshot'
+alias bul='sudo timeshift --list'
+alias bud='sudo timeshift --delete --snapshot'
+alias bus='sudo timeshift --create --comments "stable"'
 
 #bspwm border colors
-alias bc='. "${HOME}/.cache/wal/colors.sh";bspc config normal_border_color "$color1";bspc config active_border_color "$color2";bspc config focused_border_color "$color15";bspc config presel_feedback_color "$color1"'
+alias bc='. "${HOME}/.cache/wal/colors.sh";bspc config normal_border_color "$color12";bspc config active_border_color "$color0";bspc config focused_border_color "$color2";bspc config presel_feedback_color "$color2"'
 
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d

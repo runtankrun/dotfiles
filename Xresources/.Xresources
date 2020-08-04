@@ -23,9 +23,9 @@ URxvt*depth: 32
 
 !! URxvt Appearance
 URxvt.font: -*-sundae-*
-URxvt.boldFont: -*-pretzel-*
+URxvt.boldFont: -*-sundae-*
 URxvt.italicFont: -*-sundae-*
-URxvt.boldItalicfont: -*-pretzel-*
+URxvt.boldItalicfont: -*-sundae-*
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.geometry: 74x16

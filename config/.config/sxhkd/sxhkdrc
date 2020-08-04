@@ -80,6 +80,10 @@ super + alt + F12
 ## neofetch
 super + F1
     neo-pos
+super + alt + F1
+    neo-pos -ascii
+super + ctrl + F1
+    neo-pos -pic
 
 ## gotop
 super + F2
