@@ -1,4 +1,4 @@
-/bin/sh
+#!/bin/sh
 
 #############
 #   RIGHT   #
@@ -20,16 +20,16 @@ bspc node @^2:^1:/2/2/2/1/1 -o .52 -p east -i
 
 
 ##ADD RULES
-bspc rule -a URxvt:ranger -o node=@^2:^1:/1/1/1/1
-bspc rule -a URxvt:nvtop -o node=@^2:^1:/1/1/1/2
-bspc rule -a mpv:pc -o node=@^2:^1:/1/1/2
-bspc rule -a URxvt:htop -o node=@^2:^1:/1/2
-bspc rule -a mpv:gifs -o node=@^2:^1:/2/1
-bspc rule -a URxvt:vim -o node=@^2:^1:/2/2/1
-bspc rule -a URxvt:TANK -o node=@^2:^1:/2/2/2/1/1/1
-bspc rule -a URxvt:matrix -o node=@^2:^1:/2/2/2/1/2
-bspc rule -a URxvt:pro -o node=@^2:^1:/2/2/2/1/1/2
-bspc rule -a mpv:toonami -o node=@^2:^1:/2/2/2/2
+bspc rule -a URxvt:ranger -o node=@^2:^1:/1/1/1/1 marked=on
+bspc rule -a URxvt:nvtop -o node=@^2:^1:/1/1/1/2 marked=on
+bspc rule -a mpv:pc -o node=@^2:^1:/1/1/2 marked=on
+bspc rule -a URxvt:htop -o node=@^2:^1:/1/2 marked=on
+bspc rule -a mpv:gifs -o node=@^2:^1:/2/1 marked=on
+bspc rule -a URxvt:vim -o node=@^2:^1:/2/2/1 marked=on
+bspc rule -a URxvt:TANK -o node=@^2:^1:/2/2/2/1/1/1 marked=on
+bspc rule -a URxvt:matrix -o node=@^2:^1:/2/2/2/1/2 marked=on
+bspc rule -a URxvt:pro -o node=@^2:^1:/2/2/2/1/1/2 marked=on
+bspc rule -a mpv:toonami -o node=@^2:^1:/2/2/2/2 marked=on
 
 ##LAUNCH APPS
 urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &

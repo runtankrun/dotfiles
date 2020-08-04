@@ -14,8 +14,6 @@
 ######################
 ##  COMMON COMMAND  ##
 ######################
-super + Home
-    bspc desktop -f ^2:^1; layout-home --right-2
 
 ## focus next occupied desktop
 button10
@@ -29,65 +27,37 @@ button9
 super + button9
     bspc node -t \~floating 
 
-## view open windows
-Pause
-    skippy-xd-toggle
-
-## sleep
-super + End
-    systemctl suspend
-
-## program launcher
-super + d
-	rofi -modi run,drun,window -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font "Noto Sans 8"
-Menu
-    rofi -show combi
-
-## audio
-super + a
-    pavucontrol
-F12
-    amixer set Master -M 5%+
-F11
-    amixer set Master -M 5%-
-ctrl + F12
-    amixer -D pulse sset Master unmute
-ctrl + F11
-    amixer -D pulse sset Master mute
-
-## wifi
-super + w
-    networkmanager_dmenu
-
-## launch terminal
-super + z
-	message	
-super + alt + z
-    kitty
-
 ## set previously saved wallpaper, colorscheme, & border colors
-super + F1
+super + Home
     feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png & wal -n -i ~/.config/wall.png -a 90 & pywal-bspwm-border
 
 ## auto-launch apps on case panel
-super + F2
+super + F1
     layout-case
-super + alt + F2
+super + alt + F1
     layout-case -ps
-super + ctrl + F2
+super + ctrl + F1
     layout-case -naruto
-super + shift + F2
+super + shift + F1
     layout-case -dark
 
 ## auto-launch apps on main monitor
-super + F3
+super + F2
     layout-toonami
 
-## polybar
+## auto-launch chx apps
+super + F3
+    layout-chx
+super + alt + F3
+    layout-emrat
+
+## proton
 super + F4
-    ~/.config/polybar/launch.sh
+    pro
+super + alt + F4
+    pro -s
 super + ctrl + F4
-    pkill polybar
+    pro -r
 
 ## neofetch
 super + F5
@@ -117,12 +87,45 @@ super + alt + F8
 super + ctrl + F8
     urxvtc -e sh -c "pipes-vertical;zsh"
 
-## proton
+## close marked windows on current desktop
 super + F12
-    pro -f
-super + alt + F12
-    pro -s
+    while bspc node 'any.marked.local' -c; do :; done
 
+## view open windows
+Pause
+    skippy-xd-toggle
+
+## sleep
+super + End
+    systemctl suspend
+
+## program launcher
+super + d
+	rofi -show drun
+    rofi -show combi
+
+## audio
+super + a
+    pavucontrol
+F12
+    amixer set Master -M 5%+
+F11
+    amixer set Master -M 5%-
+ctrl + F12
+    amixer -D pulse sset Master unmute
+ctrl + F11
+    amixer -D pulse sset Master mute
+
+## wifi
+super + w
+    networkmanager_dmenu
+
+## launch terminal
+super + z
+	message	
+super + alt + z
+    kitty
+    
 ## launch ranger
 super + r
 	ranger-slim
@@ -192,10 +195,6 @@ ctrl + alt + End
 ## color
 super + c
     gcolor3
-super + ctrl + c
-    wal --theme random -a 95 --saturate 0.85
-super + alt + c 
-    wal --theme random_light -a 95 --saturate 0.85
 
 ## easystroke
 super + e
@@ -209,7 +208,6 @@ super + alt + e
 ######################
 ##  BSPWM COMMANDS  ##
 ######################
-
 
 ## quit bspwm normally
 super + control + Escape
