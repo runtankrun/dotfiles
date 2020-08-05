@@ -1,6 +1,22 @@
 #!/bin/sh
+
+
+#############
+#   kitty    #
+#############
 if [[ $1 = "-k" ]]; then
-kitty --name "TANK-K" --title "TANK-K" -e sh -c "figlet -f ~/.fonts/misc/figlet/isometric.flf TANK;zsh"
+kitty --name "TANK-K" --title "TANK-K" -e sh -c "figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf TANK;zsh"
+
+#####################
+#   URXVTC RANDOM   #
+#####################
+elif [[ $1 = "-r" ]]; then
+ffont=$(find Downloads/figlet-fonts/ -type f | sort -R | tail -1)
+urxvtc -title "TANK" -name "TANK" -e sh -c "echo $ffont; figlet -f $ffont TANK; zsh"
+
+##############
+#   URXVTC   #
+##############
 else
 urxvtc -title "TANK" -name "TANK" -e sh -c "figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf TANK;zsh"
 fi

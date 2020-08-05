@@ -123,10 +123,12 @@ super + w
 
 ## launch terminal
 super + z
-	message	
+	message
 super + alt + z
     message -k
-    
+super + ctrl + z
+    message -r
+
 ## launch ranger
 super + r
 	ranger-slim

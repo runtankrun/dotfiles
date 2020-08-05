@@ -10,14 +10,18 @@ bspc desktop -f ^2:^6; while bspc node 'any.leaf.local' -c; do :; done;
 bspc node @^2:^6:/ -i
 bspc node @^2:^6:/ -o 0.323488 -p east -i
 bspc node @^2:^6:/2 -o 0.545 -p south -i
+bspc node @^2:^6:/2/1 -o 0.5 -p east -i
 bspc node @^2:^6:/2/2 -o 0.5 -p east -i
 ## add rules
 bspc rule -a feh:feh -o node=@^2:^6:/1 marked=on
-bspc rule -a \*:\* -o node=@^2:^6:/2/1 
+bspc rule -a kitty:ranger-em -o node=@^2:^6:/2/1/1 marked=on 
+bspc rule -a firefox:Navigator -o node=@^2:^6:/2/1/2 marked=on
 bspc rule -a mpv:em1 -o node=@^2:^6:/2/2/1 marked=on
 bspc rule -a mpv:em2 -o node=@^2:^6:/2/2/2 marked=on
 ## launch apps
-feh -Z -. -D 5 ~/Pictures/chx/em &
+feh -Z -. -D 5 ~/Pictures/chx/em/em-tall-* &
+kitty --title "ranger-em" --name "ranger-em" -e sh -c "~/.scripts/ranger/ranger.py --cmd='set preview_images_method ueberzug' --cmd='default_linemode devicons2' --cmd='set draw_borders false' --cmd='set column_ratios 1,1,6' --selectfile='Pictures/chx/em/em-wide-murica.jpg'" &
+firefox &
 mpv --x11-name="em1" --title="em1" ~/Videos/h/wide/*em.mp4 &
 mpv --x11-name="em2" --title="em2" ~/Videos/h/wide/*em2.mp4 
 

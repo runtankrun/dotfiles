@@ -1,0 +1,6 @@
+#!/bin/sh
+if [[ $1 = "-pipes-v" ]]; then
+kitty --name "pipes-vertical" --title "pipes-vertical" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "sleep .3s; pipes-vertical"
+elif [[ $1 = "-matrix" ]]; then
+urxvtc -name "matrix" -title "matrix" -e sh -c "sleep .2s;cmatrix -u 7;zsh"
+fi
