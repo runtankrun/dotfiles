@@ -1,4 +1,30 @@
 #!/bin/sh
+
+##########
+#   EM   #
+##########
+if [[ $1 = "-em" ]]; then
+## move to desktop and clear windows
+bspc desktop -f ^2:^6; while bspc node 'any.leaf.local' -c; do :; done;
+## insert receptacles
+bspc node @^2:^6:/ -i
+bspc node @^2:^6:/ -o 0.323488 -p east -i
+bspc node @^2:^6:/2 -o 0.545 -p south -i
+bspc node @^2:^6:/2/2 -o 0.5 -p east -i
+## add rules
+bspc rule -a feh:feh -o node=@^2:^6:/1 marked=on
+bspc rule -a \*:\* -o node=@^2:^6:/2/1 
+bspc rule -a mpv:em1 -o node=@^2:^6:/2/2/1 marked=on
+bspc rule -a mpv:em2 -o node=@^2:^6:/2/2/2 marked=on
+## launch apps
+feh -Z -. -D 5 ~/Pictures/chx/em &
+mpv --x11-name="em1" --title="em1" ~/Videos/h/wide/*em.mp4 &
+mpv --x11-name="em2" --title="em2" ~/Videos/h/wide/*em2.mp4 
+
+###########
+#   CHX   #
+###########
+else
 ## move to desktop and clear windows
 bspc desktop -f ^2:^5; while bspc node 'any.leaf.local' -c; do :; done;
 ## insert receptacles
@@ -12,3 +38,4 @@ bspc rule -a \*:\* -o node=@^2:^5:/2/2
 ## launch apps
 mpv --x11-name="alexa" --title="alexa" ~/Videos/h/ap/ --video-zoom=0.2 &
 mpv --x11-name="h" --title="h" ~/Videos/h/b/ --video-zoom=0.2
+fi

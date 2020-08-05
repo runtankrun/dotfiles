@@ -1,2 +1,6 @@
 #!/bin/sh
+if [[ $1 = "-k" ]]; then
+kitty --name "TANK-K" --title "TANK-K" -e sh -c "figlet -f ~/.fonts/misc/figlet/isometric.flf TANK;zsh"
+else
 urxvtc -title "TANK" -name "TANK" -e sh -c "figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf TANK;zsh"
+fi

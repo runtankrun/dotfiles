@@ -1,2 +1,0 @@
-#!/bin/sh
-urxvtc -name "matrix" -title "matrix" -e sh -c "sleep .2s;cmatrix -u 7;zsh"

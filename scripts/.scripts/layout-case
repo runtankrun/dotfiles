@@ -16,7 +16,8 @@ bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 ##LAUNCH APPS
 mpv --x11-name="ps" --title="ps" ~/Pictures/gifs/ps.GIF & 
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop" &
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh"
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
+sleep .5s; bspc desktop --focus ^2:focused
 
 ##############
 #   NARUTO   #
@@ -32,9 +33,10 @@ bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on focus=off
 bspc rule -a mpv:naruto -o node=@^1:^1:/2/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on focus=off
 ##LAUNCH APPS
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
 mpv --x11-name="naruto" --title="naruto" ~/Videos/N.mp4 &
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop"
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop" &
+sleep .5s; bspc desktop --focus ^2:focused
 
 ############
 #   DARK   #
@@ -43,7 +45,7 @@ elif [[ $1 = "-dark" ]]; then
 while bspc node 'any.marked.!local' -c; do :; done;
 ## INSERT RECEPTACLES
 bspc node @^1:^1:/ -i 
-bspc node @^1:^1:/ i-o .52 -p east -i
+bspc node @^1:^1:/ -o .52 -p east -i
 bspc node @^1:^1:/1 -o .498 -p south -i
 ## ADD RULES
 bspc rule -a mpv:walking -o node=@^1:^1:/1/1 marked=on focus=off
@@ -52,7 +54,8 @@ bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 ##LAUNCH APPS
 mpv --x11-name="walking" --title="walking" ~/Pictures/gifs/walking.GIF &
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/black-kitty.conf" -e sh -c "gotop" &
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/black-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh"
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/black-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
+sleep .5s; bspc desktop --focus ^2:focused
 
 ###############
 #   MINIMAL   #
@@ -66,6 +69,7 @@ bspc node @^1:^1:/ -o 0.52 -p east -i
 bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
 ##LAUNCH APPS
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop"
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/white-kitty.conf" -e sh -c "gotop" &
+sleep .5s; bspc desktop --focus ^2:focused
 fi

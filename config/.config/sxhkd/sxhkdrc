@@ -49,7 +49,7 @@ super + F2
 super + F3
     layout-chx
 super + alt + F3
-    layout-emrat
+    layout-chx -em
 
 ## proton
 super + F4
@@ -81,12 +81,12 @@ super + F7
 
 ## matrix/pipes toys
 super + F8
-    matrix 
+    toys -matrix 
 super + alt + F8
-    urxvtc -e sh -c "pipes-diagonal;zsh"
+    toys -pipes-v
 super + ctrl + F8
-    urxvtc -e sh -c "pipes-vertical;zsh"
-
+    toys -pipes-h
+    
 ## close marked windows on current desktop
 super + F12
     while bspc node 'any.marked.local' -c; do :; done
@@ -102,6 +102,7 @@ super + End
 ## program launcher
 super + d
 	rofi -show drun
+Menu
     rofi -show combi
 
 ## audio
@@ -124,7 +125,7 @@ super + w
 super + z
 	message	
 super + alt + z
-    kitty
+    message -k
     
 ## launch ranger
 super + r
@@ -166,7 +167,7 @@ super + alt + g
 
 ## launch spotify
 super + s
-    layout-spot
+    layout-muziq -spot
 
 ## launch music
 super + m
