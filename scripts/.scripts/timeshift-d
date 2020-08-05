@@ -1,0 +1,4 @@
+#!/bin/sh
+
+tsd=$(sudo timeshift --list | grep -o "2020-[0-9][0-9]-[0-9][0-9]_[0-9][0-9]-[0-9][0-9]-[0-9][0-9]" | sort -r | tail -1)
+sudo timeshift --list; sudo timeshift --delete --snapshot $tsd

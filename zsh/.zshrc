@@ -193,9 +193,6 @@ alias bul='sudo timeshift --list'
 alias bud='sudo timeshift --delete --snapshot'
 alias bus='sudo timeshift --create --comments "stable"'
 
-#bspwm border colors
-alias bc='. "${HOME}/.cache/wal/colors.sh";bspc config normal_border_color "$color12";bspc config active_border_color "$color0";bspc config focused_border_color "$color2";bspc config presel_feedback_color "$color2"'
-
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
 export XRDM_FONT_DIR=$XRDM_DIR/fonts
