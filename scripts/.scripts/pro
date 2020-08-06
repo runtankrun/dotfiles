@@ -1,9 +1,16 @@
 #!/bin/sh
 
 if [[ $1 = "-r" ]]; then
-urxvtc -name "pro" -title "pro" -e sh -c "figlet -f ~/.fonts/misc/figlet/3D-ASCII 'Pro'; protonvpn refresh; sleep 1.5s"
+urxvtc -name "pro-r" -title "pro-r" -e sh -c \
+"figlet -f ~/.fonts/misc/figlet/3D-ASCII 'Pro'; \
+protonvpn refresh; sleep 1.5s"
+
 elif [[ $1 = "-s" ]]; then
-urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c --sc;sleep 1.5s"
+urxvtc -name "pro-s" -title "pro-s" -e sh -c \
+"sudo protonvpn c --sc;sleep 1.5s"
+
 else
-urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c -f;sleep 1.5s"
+urxvtc -name "pro" -title "pro" -e sh -c \
+"sudo protonvpn c -f;sleep 1.5s"
+
 fi

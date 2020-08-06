@@ -37,7 +37,7 @@ super + F1
 super + alt + F1
     layout-case -ps
 super + ctrl + F1
-    layout-case -naruto
+    layout-case -mob
 super + shift + F1
     layout-case -dark
 
@@ -50,14 +50,6 @@ super + F3
     layout-chx
 super + alt + F3
     layout-chx -em
-
-## proton
-super + F4
-    pro
-super + alt + F4
-    pro -s
-super + ctrl + F4
-    pro -r
 
 ## neofetch
 super + F5
@@ -85,8 +77,20 @@ super + F8
 super + alt + F8
     toys -pipes-v
 super + ctrl + F8
-    toys -pipes-h
-    
+    toys -pipes-d
+
+## proton
+super + F9
+    pro
+super + alt + F9
+    pro -s
+super + ctrl + F9
+    pro -r
+
+## timeshift back-up
+super + F10
+    kitty -e sh -c "timeshift-d"
+
 ## close marked windows on current desktop
 super + F12
     while bspc node 'any.marked.local' -c; do :; done
@@ -139,9 +143,11 @@ super + ctrl + r
 super + shift + r
     ranger-slim -ks
 
-## launch firefox
+## launch browser 
 super + b
 	firefox
+super + alt + b
+    surf duckduckgo.com
 	
 ## launch vim
 super + v
@@ -206,7 +212,8 @@ super + e
 ## visualizer
 super + alt + e
     visualizer 
-
+super + ctrl + e
+    visualizer -w
 
 ######################
 ##  BSPWM COMMANDS  ##

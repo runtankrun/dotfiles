@@ -1,12 +1,13 @@
 #!/bin/sh
 
-col=$(cat ~/.scripts/layout-case-color)
+col=$(cat ~/.config/kitty/layout-case-color)
+while bspc node 'any.leaf.!window' -k; do :; done;
+while bspc node 'any.marked.!local' -c; do :; done;
 
 ##########
 #   PS   #
 ##########
 if [[ $1 = "-ps" ]]; then
-while bspc node 'any.marked.!local' -c; do :; done;
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i 
 bspc node @^1:^1:/ -o .52 -p east -i
@@ -25,7 +26,6 @@ sleep .5s; bspc desktop --focus ^2:focused
 #   NARUTO   #
 ##############
 elif [[ $1 = "-naruto" ]]; then
-while bspc node 'any.marked.!local' -c; do :; done;
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i
 bspc node @^1:^1:/ -o 0.52 -p east -i
@@ -41,10 +41,29 @@ kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf
 sleep .5s; bspc desktop --focus ^2:focused
 
 ############
+#   MOB    #
+############
+elif [[ $1 = "-mob" ]]; then
+##INSERT RECEPTACLES
+bspc node @^1:^1:/ -i
+bspc node @^1:^1:/ -o 0.4575 -p east -i
+bspc node @^1:^1:/2 -o 0.383281 -p south -i
+
+## ADD RULES
+bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on focus=off
+bspc rule -a mpv:mob -o node=@^1:^1:/2/1 marked=on focus=off
+bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on focus=off
+
+## LAUNCH COMMANDS 
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
+mpv --x11-name="mob" --title="mob" ~/Videos/mob.mkv &
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
+sleep .5s; bspc desktop --focus ^2:focused
+
+############
 #   DARK   #
 #############
 elif [[ $1 = "-dark" ]]; then
-while bspc node 'any.marked.!local' -c; do :; done;
 ## INSERT RECEPTACLES
 bspc node @^1:^1:/ -i 
 bspc node @^1:^1:/ -o .52 -p east -i
@@ -63,7 +82,6 @@ sleep .5s; bspc desktop --focus ^2:focused
 #   MINIMAL   #
 ###############
 else
-while bspc node 'any.marked.!local' -c; do :; done;
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i 
 bspc node @^1:^1:/ -o 0.52 -p east -i

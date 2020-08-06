@@ -105,6 +105,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#grep arguments
+alias lookf='--help | grep' search options
+
 #Git
 alias gi='git init'
 alias gs='git status'
@@ -169,7 +172,7 @@ alias rf='fc-cache -f -v'
 alias fl='fc-list | grep "~/.fonts/"'
 
 #Youtube-DL
-alias yd='youtube-dl'
+alias yd='youtube-dl --restrict-filenames'
 alias ydm='youtube-dl --extract-audio --embed-thumbnail --audio-format mp3'
 alias ydb='cd ~/Videos/yd/; youtube-dl --batch-file=~/Videos/yd/yd'
 #vim
