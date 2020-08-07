@@ -1,8 +1,10 @@
 #!/bin/sh
+col=$(cat ~/.config/kitty/layout-case-color)
+
 if [[ $1 = "-w" ]]; then
 bspc rule -a kitty:vis-case -o desktop='^1' marked=on
 kitty --name "vis-case" --title "vis-case" \
--o include="~/.config/kitty/white-kitty.conf" -e sh -c \
+-o include="~/.config/kitty/$col-kitty.conf" -e sh -c \
 "kitty @set-font-size 1; vis"
 
 else

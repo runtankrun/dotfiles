@@ -17,7 +17,7 @@ kitty --name "ranger" --title "ranger" \
 --cmd='default_linemode devicons2' \
 --cmd='set draw_borders false' \
 ~ \
---selectfile=$(grep ^$: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
+--selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
 
 #############
 #   KITTY   #

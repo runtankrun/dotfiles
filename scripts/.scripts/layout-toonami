@@ -34,8 +34,8 @@ bspc rule -a mpv:toonami -o node=@^2:^1:/2/2/2/2 marked=on
 ##LAUNCH APPS
 urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &
 mpv --x11-name="pc" --title="pc" ~/Videos/pc.mp4 &
-nvtop-pos &
-gotop-pos -h &
+c-nvtop &
+c-gotop -h &
 mpv --x11-name="gifs" --title="gifs" ~/Videos/1.mov &
 vim-sessions -main &
 sleep .3s; message &

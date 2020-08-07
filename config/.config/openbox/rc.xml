@@ -116,32 +116,32 @@
     <chainQuitKey>C-g</chainQuitKey>
     <keybind key="W-0">
       <action name="Execute">
-        <command>~/.scripts/pro -f</command>
+        <command>pro -f</command>
       </action>
     </keybind>
     <keybind key="A-W-0">
       <action name="Execute">
-        <command>~/.scripts/pro -s</command>
+        <command>pro -s</command>
       </action>
     </keybind>
     <keybind key="C-W-0">
       <action name="Execute">
-        <command>~/.scripts/pro -F</command>
+        <command>pro -F</command>
       </action>
     </keybind>
     <keybind key="W-1">
       <action name="Execute">
-        <command>~/.scripts/neo-pos</command>
+        <command>c-neo</command>
       </action>
     </keybind>
     <keybind key="W-2">
       <action name="Execute">
-        <command>~/.scripts/gotop-pos</command>
+        <command>c-gotop</command>
       </action>
     </keybind>
     <keybind key="W-3">
       <action name="Execute">
-        <command>~/.scripts/nvtop-pos</command>
+        <command>c-nvtop</command>
       </action>
     </keybind>
     <keybind key="C-S-A-r">
@@ -372,12 +372,12 @@
     </keybind>
     <keybind key="W-r">
       <action name="Execute">
-        <command>~/.scripts/ranger-slim</command>
+        <command>c-ranger</command>
       </action>
     </keybind>
     <keybind key="A-W-r">
       <action name="Execute">
-        <command>~/.scripts/ranger-slim -s</command>
+        <command>c-ranger -s</command>
       </action>
     </keybind>
     <keybind key="W-e">
@@ -387,7 +387,7 @@
     </keybind>
     <keybind key="S-W-v">
       <action name="Execute">
-        <command>~/.scripts/vim-sessions -kitty</command>
+        <command>vim-sessions -kitty</command>
       </action>
     </keybind>
     <keybind key="W-k">
@@ -406,7 +406,7 @@
     </keybind>
     <keybind key="W-n">
       <action name="Execute">
-        <command>~/.scripts/vim-sessions -notes</command>
+        <command>vim-sessions -notes</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>notes</name>
@@ -420,12 +420,12 @@
     </keybind>
     <keybind key="W-m">
       <action name="Execute">
-        <command>~/.scripts/spot</command>
+        <command>spot</command>
       </action>
     </keybind>
     <keybind key="W-v">
       <action name="Execute">
-        <command>~/.scripts/vim-sessions -main</command>
+        <command>vim-sessions -main</command>
       </action>
     </keybind>
     <keybind key="W-b">

@@ -47,14 +47,19 @@ elif [[ $1 = "-mob" ]]; then
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i
 bspc node @^1:^1:/ -o 0.4575 -p east -i
+bspc node @^1:^1:/1 -o 0.617656 -p south -i 
 bspc node @^1:^1:/2 -o 0.383281 -p south -i
 
 ## ADD RULES
-bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on focus=off
+bspc rule -a kitty:vis-case -o node=@^1:^1:/1/1 marked=on focus=off
+bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 bspc rule -a mpv:mob -o node=@^1:^1:/2/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on focus=off
 
 ## LAUNCH COMMANDS 
+kitty --name "vis-case" --title "vis-case" \
+-o include="~/.config/kitty/$col-kitty.conf" -e sh -c \
+"kitty @set-font-size 1; vis" &
 kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
 mpv --x11-name="mob" --title="mob" ~/Videos/mob.mkv &
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &

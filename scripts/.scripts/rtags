@@ -1,0 +1,17 @@
+#!/bin/sh
+read -p 'ranger tag: ' tag
+read -p 'application: ' app
+tag_count=$(grep -c ^$tag: ~/.config/ranger/tagged)
+
+if [ "$app" == "feh" ]; then
+feh -Z -. $(while IFS= read -r line
+do 
+    echo "$line" | grep ^$tag: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged) & 
+
+else
+$app $(while IFS= read -r line
+do 
+    echo "$line" | grep ^$tag: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged) &
+fi

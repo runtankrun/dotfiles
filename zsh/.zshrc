@@ -170,8 +170,9 @@ alias fl='fc-list | grep "~/.fonts/"'
 
 #Youtube-DL
 alias yd='youtube-dl --restrict-filenames'
-alias ydm='youtube-dl --extract-audio --embed-thumbnail --audio-format mp3'
-alias ydb='cd ~/Videos/yd/; youtube-dl --batch-file=~/Videos/yd/yd'
+alias ydm='youtube-dl --restrict-filenames --extract-audio --embed-thumbnail --audio-format mp3'
+alias ydb='cd ~/Videos/yd/; youtube-dl --restrict-filenames --batch-file=~/Videos/yd/yd'
+
 #vim
 alias vim-s='vim -S ~/.vim/sessions/main.vim'
 

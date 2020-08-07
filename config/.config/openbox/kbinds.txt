@@ -1,9 +1,9 @@
-x W-0             	~/.scripts/pro -f
-x A-W-0           	~/.scripts/pro -s
-x C-W-0           	~/.scripts/pro -F
-x W-1             	~/.scripts/neo-pos
-x W-2             	~/.scripts/gotop-pos
-x W-3             	~/.scripts/nvtop-pos
+x W-0             	pro -f
+x A-W-0           	pro -s
+x C-W-0           	pro -F
+x W-1             	c-neo
+x W-2             	c-gotop
+x W-3             	c-nvtop
 o W-grave         	MoveResizeTo
 o S-W-asciitilde  	MoveResizeTo
 o S-W-F1          	MoveResizeTo
@@ -56,7 +56,7 @@ x A-W-w           	nm-connection-editor
 x W-z             	urxvtc
 x A-W-z           	alacritty
 x S-W-z           	kitty
-x W-r             	~/.scripts/ranger-slim
+x W-r             	c-ranger
 x W-e             	thunar
 x A-W-e           	gksu thunar
 x S-W-d           	thunar ~/Downloads
@@ -66,10 +66,10 @@ x A-W-k           	obkey
 x W-g             	geany
 x W-k             	geany /home/ellio/.config/openbox/rc.xml
 x S-W-b           	geany ~/.zshrc
-x W-n             	~/.scripts/vim-sessions -notes
+x W-n             	vim-sessions -notes
 x A-W-m           	megasync
-x W-m             	~/.scripts/spot
-x W-v             	~/.scripts/vim-sessions -main
+x W-m             	spot
+x W-v             	vim-sessions -main
 x W-b             	firefox
 x W-A-b           	surf duckduckgo.com
 x W-c             	wal --theme random -a 95 --saturate 0.85

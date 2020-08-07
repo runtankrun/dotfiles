@@ -53,19 +53,19 @@ super + alt + F3
 
 ## neofetch
 super + F5
-    neo-pos
+    c-neo
 super + alt + F5
-    neo-pos -ascii
+    c-neo -ascii
 super + ctrl + F5
-    neo-pos -pic
+    c-neos -pic
 
 ## gotop
 super + F6
-    gotop-pos
+    c-gotop
 super + alt + F6
-    gotop-pos -v
+    c-gotop -v
 super + ctrl + F6
-    gotop-pos -h
+    c-gotop -h
 
 ## nvtop
 super + F7
@@ -135,19 +135,19 @@ super + ctrl + z
 
 ## launch ranger
 super + r
-	ranger-slim
+	c-ranger
 super + alt + r
-    ranger-slim -k
+    c-ranger -k
 super + ctrl + r
-    ranger-slim -s
+    c-ranger -s
 super + shift + r
-    ranger-slim -ks
+    c-ranger -ks
 
 ## launch browser 
 super + b
 	firefox
 super + alt + b
-    surf duckduckgo.com
+    surf https://www.youtube.com/
 	
 ## launch vim
 super + v

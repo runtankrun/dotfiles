@@ -32,11 +32,6 @@
 			<command>firefox https://www.whoer.net/</command>
 		</action>
 	</item>
-	<item label="BoutineLA">
-		<action name="Execute">
-			<command>firefox https://www.redditp.com/r/boutinela/top/?t=week</command>
-		</action>
-	</item>
 	<item label="Youtube">
 		<action name="Execute">
 			<command>firefox https://www.youtube.com</command>
@@ -162,7 +157,7 @@
 	</item>
 	<item label="File Manager">
 		<action name="Execute">
-			<command>~/.scripts/ranger-slim</command>
+			<command>c-ranger</command>
 		</action>
 	</item>
 	<item label="Text Editor">
@@ -177,7 +172,7 @@
 	<separator/>
 	<item label="Music">
 		<action name="Execute">
-			<command>~/.scripts/spot</command>
+			<command>spot</command>
 		</action>
 	</item>
 	<separator/>
