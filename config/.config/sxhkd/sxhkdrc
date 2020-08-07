@@ -89,7 +89,7 @@ super + ctrl + F9
 
 ## timeshift back-up
 super + F10
-    kitty -e sh -c "timeshift-d"
+    kitty -e timeshift-d
 
 ## close marked windows on current desktop
 super + F12
@@ -181,9 +181,9 @@ super + s
 super + m
     layout-muziq
 
-## launch mega
+## mpv - launch last tagged directory 
 super + alt + m
-    megasync
+    mpv $(grep ^/ ~/.config/ranger/tagged | tail -n 1)
 	
 ## fancy lockscreen :)
 super + l

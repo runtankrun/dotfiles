@@ -16,8 +16,8 @@ kitty --name "ranger" --title "ranger" \
 --cmd='set preview_images_method ueberzug' \
 --cmd='default_linemode devicons2' \
 --cmd='set draw_borders false' \
---cmd='tab_new ~' \
---selectfile=$(cat ~/.config/ranger/tagged | tail -1)"
+~ \
+--selectfile=$(grep ^$: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
 
 #############
 #   KITTY   #

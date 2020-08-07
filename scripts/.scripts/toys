@@ -2,21 +2,19 @@
 
 if [[ $1 = "-pipes-v" ]]; then
 kitty --name "pipes-vertical" --title "pipes-vertical" \
--o include="~/.config/kitty/white-kitty.conf" \
--e sh -c "sleep .3s; pipes-vertical"
+-o include="~/.config/kitty/white-kitty.conf" -e sh -c \
+"sleep .3s; pipes-vertical"
 
 elif [[ $1 = "-pipes-d" ]]; then
 kitty --name "pipes-diagonal" --title "pipes-diagonal" \
--o include="~/.config/kitty/white-kitty.conf" \
--e sh -c "sleep .3s; pipes-diagonal"
+-o include="~/.config/kitty/white-kitty.conf" -e sh -c \
+"sleep .3s; pipes-diagonal"
 
 elif [[ $1 = "-matrix" ]]; then
 urxvtc -name "matrix" -title "matrix" -e sh -c \
 "sleep .2s; cmatrix -u 7; zsh"
 
-elif [[ $1 = "-matrix-w" ]]; then
-kitty --name "matrix-w" --title "matrix-w" \
--o include="~/.config/kitty/white-kitty.conf" -e sh -c \
-"sleep .3s; cmatrix -u 7; zsh"
+else
+echo "options: -pipes-v | -pipeps-d | -matrix"
 
 fi

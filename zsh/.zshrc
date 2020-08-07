@@ -106,7 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #grep arguments
-alias lookf='--help | grep' search options
+alias mpvt='mpv $(grep ^$: ~/.config/ranger/tagged | tail -n 1 | tail -c +3)'
 
 #Git
 alias gi='git init'
