@@ -43,21 +43,27 @@ super + shift + F1
 
 ## auto-launch apps on main monitor
 super + F2
-    layout-toonami
+    layout-home
+
+## auto-launch apps on desktop 2
+super + F3
+    layout-home -d2
+super + alt + F3
+    layout-home -d4
 
 ## auto-launch chx apps
-super + F3
+super + F4
     layout-chx
-super + alt + F3
+super + alt + F4
     layout-chx -em
 
 ## neofetch
 super + F5
-    c-neo
-super + alt + F5
     c-neo -ascii
+super + alt + F5
+    c-neo -wal 
 super + ctrl + F5
-    c-neos -pic
+    c-neo -pic
 
 ## gotop
 super + F6
@@ -69,7 +75,7 @@ super + ctrl + F6
 
 ## nvtop
 super + F7
-    nvtop-pos
+    c-nvtop
 
 ## matrix/pipes toys
 super + F8
@@ -79,16 +85,20 @@ super + alt + F8
 super + ctrl + F8
     toys -pipes-d
 
-## proton
+## input file tag & execute with command <any>
 super + F9
+    kitty -e sh -c rtags
+
+## proton
+super + F10
     pro
-super + alt + F9
+super + alt + F10
     pro -s
-super + ctrl + F9
+super + ctrl + F10
     pro -r
 
 ## timeshift back-up
-super + F10
+super + F11
     kitty -e timeshift-d
 
 ## close marked windows on current desktop
@@ -130,7 +140,7 @@ super + z
 	message
 super + alt + z
     message -k
-super + ctrl + z
+super + shift + z
     message -r
 
 ## launch ranger
@@ -159,15 +169,13 @@ super + n
 
 # launch videos
 super + alt + v
-    mpv ~/Videos/h/b/ --video-zoom=0.2
-super + ctrl + v
-    mpv ~/Videos/h/*.*
+    rtags-quicklaunch -vid 
+super + ctrl + shift + v
+    rtags-quicklaunch -p 
 
 ## launch pictures
 super + alt + p
-    feh -Z -. -D 5 -H 1365px /home/ellio/Pictures/chx/f/
-super + ctrl + p
-    feh -Z -. -D 5 -H 1440px ~/Pictures/chx/
+    rtags-quicklaunch -pic
 
 ## launch gifs
 super + alt + g
@@ -181,9 +189,9 @@ super + s
 super + m
     layout-muziq
 
-## mpv - launch last tagged directory 
+## mpv - launch last directory tagged with "m" 
 super + alt + m
-    mpv $(grep ^/ ~/.config/ranger/tagged | tail -n 1)
+    mpv $(grep ^m: ~/.config/ranger/tagged | tail -n 1 | tail -c +3 )
 	
 ## fancy lockscreen :)
 super + l

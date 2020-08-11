@@ -60,8 +60,8 @@ bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on focus=off
 kitty --name "vis-case" --title "vis-case" \
 -o include="~/.config/kitty/$col-kitty.conf" -e sh -c \
 "kitty @set-font-size 1; vis" &
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
-mpv --x11-name="mob" --title="mob" ~/Videos/mob.mkv &
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
+mpv --x11-name="mob" --title="mob" ~/Videos/zodiac.mp4 &
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
 sleep .5s; bspc desktop --focus ^2:focused
 
@@ -94,7 +94,7 @@ bspc node @^1:^1:/ -o 0.52 -p east -i
 bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
 ##LAUNCH APPS
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop;zsh" &
 sleep .5s; bspc desktop --focus ^2:focused
 fi

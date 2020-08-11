@@ -1,13 +1,13 @@
 #!/bin/sh
-
+#CYAN="\e[36m"; printf "${CYAN}"; figlet -f ~/.fonts/misc/figlet/spliff.flf 'Tank'
 
 #############
 #   kitty    #
 #############
 if [[ $1 = "-k" ]]; then
 kitty --name "TANK-K" --title "TANK-K" -e sh -c \
-"figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf 'TANK'; \
-zsh"
+'figlet -f ~/.fonts/misc/figlet/rectangles.flf 'TANK'; \
+zsh'
 
 #####################
 #   URXVTC RANDOM   #
@@ -25,7 +25,7 @@ zsh"
 ##############
 else
 urxvtc -title "TANK" -name "TANK" -e sh -c \
-"figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf TANK; \
-zsh"
+'figlet -f ~/.fonts/misc/figlet/rectangles.flf 'TANK'; \
+zsh'
 
 fi

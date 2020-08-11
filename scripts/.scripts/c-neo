@@ -1,18 +1,16 @@
 #!/bin/sh
 if [[ $1 = "-ascii" ]]; then
-bspc rule -a URxvt:neofetch-ascii -o state=floating rectangle=432x312+2782+562 desktop='^3'
 urxvtc -name "neofetch-ascii" -title "neofetch-ascii" -e sh -c \
 'neofetch --ascii "$(figlet -f /home/ellio/.fonts/misc/figlet/alpha.flf T)"; \
 zsh'
 
 elif [[ $1 = "-pic" ]]; then
 urxvtc -name "neofetch-pic" -title "neofetch-pic" -e sh -c \
-"neofetch --w3m ~/.config/neofetch/arch.png --size 150px; \
+"neofetch --w3m ~/.config/neofetch/arch.png --loop; \
 zsh"
 
-else
-bspc rule -a URxvt -o state=pseudo_tiled desktop='^4'
-urxvtc -name"neofetch" -title "neofetch" -e sh -c \
+elif [[ $1 = "-wal" ]]; then
+urxvtc -name "neofetch" -title "neofetch" -e sh -c \
 "neofetch --loop; \
 zsh"
 

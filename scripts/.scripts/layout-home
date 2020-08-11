@@ -1,9 +1,61 @@
 #!/bin/sh
 
-#############
-#   RIGHT   #
-#############
+##############
+#   RANGER   #
+##############
+if [[ $1 = "-d4" ]]; then
+## move to desktop & close windows
+bspc desktop -f ^2:^4; while bspc node 'any.leaf.local' -c; do :; done;
 
+##INSERT RECEPTACLES
+bspc node @^2:^4:/ -i
+
+##ADD RULES
+bspc rule -a kitty:ranger -o node=@^2:^4:/ marked=on
+
+##LAUNCH APPS
+kitty --name "ranger" --title "ranger" -e sh -c \
+"~/.scripts/ranger/ranger.py \
+--cmd='set preview_images_method ueberzug' \
+--cmd='default_linemode devicons2' \
+--cmd='set draw_borders false' \
+~ \
+--selectfile=$(grep ^H: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
+
+###########
+#   Neo   #
+###########
+elif [[ $1 = "-d2" ]]; then
+## move to desktop & close windows
+bspc desktop -f ^2:^2; while bspc node 'any.leaf.local' -c; do :; done;
+
+##INSERT RECEPTACLES
+bspc node @^2:^2:/ -i 
+bspc node @^2:^2:/ -o .5 -p east -i
+bspc node @^2:^2:/1 -o .5 -p south -i
+
+##ADD RULES
+bspc rule -a URxvt:neofetch-ascii -o node=@^2:^2:/1/1 marked=on focus=off state=pseudo_tiled
+bspc rule -a URxvt:neofetch -o node=@^2:^2:/2 marked=on focus=off state=pseudo_tiled
+bspc rule -a URxvt:neofetch-pic -o node=@^2:^2:/1/2 marked=on focus=off state=pseudo_tiled
+
+##LAUNCH APPS
+urxvtc -name "neofetch-ascii" -title "neofetch-ascii" -e sh -c \
+'neofetch --ascii "$(figlet -f /home/ellio/.fonts/misc/figlet/alpha.flf T)"; \
+zsh' &
+
+urxvtc -name "neofetch" -title "neofetch" -e sh -c \
+"neofetch --loop; \
+zsh" &
+
+urxvtc -name "neofetch-pic" -title "neofetch-pic" -e sh -c \
+"neofetch --w3m ~/.config/neofetch/arch.png --loop; \
+zsh"
+
+###############
+#   TOONAMI   #
+###############
+else
 bspc desktop -f ^2:^1;
 
 ##INSERT RECEPTACLES
@@ -41,3 +93,4 @@ vim-sessions -main &
 sleep .3s; message &
 sleep .3s; urxvtc -name "matrix" -title "matrix" -bg 000000 -e sh -c "sleep .2s; cmatrix -u 7; urxvtc -e sh -c 'ranger --selectfile=.scripts/layout-home'" &
 urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c -f & mpv --x11-name=toonami --title=toonami ~/Pictures/gifs/mf-toonami.GIF --terminal=no"
+fi

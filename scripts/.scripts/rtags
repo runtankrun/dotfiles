@@ -1,17 +1,39 @@
 #!/bin/sh
+
+##title
+figlet -f .fonts/misc/figlet/3D-ASCII.flf 'open';
+
+##"current tags:"
+echo "current tags:" | lolcat; 
+
+##get unique tags (exclude tags using keybinding: h,H,m,p,v,V)
+grep --only-matching .: ~/.config/ranger/tagged | sort --unique |grep -Ev "h|H|m|p|v|V" | tr '\n' ' '| lolcat;
+echo '';
+
+##variables
 read -p 'ranger tag: ' tag
 read -p 'application: ' app
 tag_count=$(grep -c ^$tag: ~/.config/ranger/tagged)
+tag_count2=$(grep -c ^/ ~/.config/ranger/tagged)
 
-if [ "$app" == "feh" ]; then
-feh -Z -. $(while IFS= read -r line
+##default tags
+if [ "$tag" == "*" ]; then
+nohup $app $(while IFS= read -r line
 do 
-    echo "$line" | grep ^$tag: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged) & 
+    echo $line | grep ^/ | tail -n $tag_count2 | tr '\n' ' '
+done < ~/.config/ranger/tagged)
 
+##feh rules
+elif [ "$app" == "feh" ]; then
+nohup feh -Z -. -D 5 $(while IFS= read -r line
+do 
+    echo $line | grep ^$tag: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged) 
+
+##launch with app
 else
-$app $(while IFS= read -r line
+nohup $app $(while IFS= read -r line
 do 
-    echo "$line" | grep ^$tag: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged) &
-fi
+    echo $line | grep ^$tag: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged)
+fi 

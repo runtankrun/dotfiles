@@ -4,15 +4,15 @@
 #   MINIMAL-UI   #
 ##################
 if [[ $1 = "-s" ]]; then
-urxvtc -name "ranger" -title "ranger" \
--e sh -c "~/.scripts/ranger/ranger.py"
+urxvtc -name "ranger" -title "ranger" -e sh -c \
+"~/.scripts/ranger/ranger.py"
 
 ########################
 #   MINIMAL-UI KITTY   #
 ########################
 elif [[ $1 = "-ks" ]]; then
-kitty --name "ranger" --title "ranger" \
--e sh -c "~/.scripts/ranger/ranger.py \
+kitty --name "ranger" --title "ranger" -e sh -c \
+"~/.scripts/ranger/ranger.py \
 --cmd='set preview_images_method ueberzug' \
 --cmd='default_linemode devicons2' \
 --cmd='set draw_borders false' \
@@ -23,8 +23,8 @@ kitty --name "ranger" --title "ranger" \
 #   KITTY   #
 #############
 elif [[ $1 = "-k" ]]; then
-kitty --name "ranger" --title "ranger" \
--e sh -c "ranger \
+kitty --name "ranger" --title "ranger" -e sh -c \
+"ranger \
 --cmd='set preview_images_method ueberzug' \
 --cmd='default_linemode devicons2' \
 --cmd='set draw_borders false'"
