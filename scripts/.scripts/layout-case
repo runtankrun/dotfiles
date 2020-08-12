@@ -1,7 +1,7 @@
 #!/bin/sh
 
 col=$(cat ~/.config/kitty/layout-case-color)
-while bspc node 'any.leaf.!window' -k; do :; done;
+while bspc node 'any.leaf.!window.!local' -k; do :; done;
 while bspc node 'any.marked.!local' -c; do :; done;
 
 ##########
@@ -89,7 +89,7 @@ sleep .5s; bspc desktop --focus ^2:focused
 else
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i 
-bspc node @^1:^1:/ -o 0.52 -p east -i
+bspc node @^1:^1:/ -o 0.5 -p east -i
 ##ADD RULES
 bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off

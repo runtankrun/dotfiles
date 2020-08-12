@@ -33,5 +33,7 @@ kitty --name "ranger" --title "ranger" -e sh -c \
 #   URXVTC   #
 ##############
 else
-urxvtc -name "ranger" -title "ranger" -e ranger
+urxvtc -name "ranger" -title "ranger" -e sh -c \
+"ranger \
+--selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
 fi

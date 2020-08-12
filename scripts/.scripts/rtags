@@ -7,7 +7,7 @@ figlet -f .fonts/misc/figlet/3D-ASCII.flf 'open';
 echo "current tags:" | lolcat; 
 
 ##get unique tags (exclude tags using keybinding: h,H,m,p,v,V)
-grep --only-matching .: ~/.config/ranger/tagged | sort --unique |grep -Ev "h|H|m|p|v|V" | tr '\n' ' '| lolcat;
+grep --only-matching .: ~/.config/ranger/tagged | sort --unique |grep -Ev "h|m|p|v|V" | tr '\n' ' '| lolcat;
 echo '';
 
 ##variables

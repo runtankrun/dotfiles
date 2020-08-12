@@ -1,12 +1,16 @@
 #!/bin/sh
 if [[ $1 = "-ascii" ]]; then
 urxvtc -name "neofetch-ascii" -title "neofetch-ascii" -e sh -c \
-'neofetch --ascii "$(figlet -f /home/ellio/.fonts/misc/figlet/alpha.flf T)"; \
+'neofetch --ascii "$(figlet -f ~/.fonts/misc/figlet/alpha.flf T)"; \
 zsh'
 
 elif [[ $1 = "-pic" ]]; then
 urxvtc -name "neofetch-pic" -title "neofetch-pic" -e sh -c \
-"neofetch --w3m ~/.config/neofetch/arch.png --loop; \
+"neofetch --w3m $(while IFS= read -r line
+do 
+    echo "$line" | grep ^n: | tail -n 1 | tail -c +3
+done < ~/.config/ranger/tagged) \
+--loop; \
 zsh"
 
 elif [[ $1 = "-wal" ]]; then

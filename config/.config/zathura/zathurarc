@@ -12,3 +12,5 @@ map s toggle_statusbar
 #Dual Page
 set window-height 862
 set window-width 1239
+
+#set page-cache-size 100 

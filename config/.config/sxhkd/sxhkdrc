@@ -29,8 +29,8 @@ super + button9
 
 ## set previously saved wallpaper, colorscheme, & border colors
 super + Home
-    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png & wal -n -i ~/.config/wall.png -a 90 & pywal-bspwm-border
-
+   bspc rule -a feh:feh -o state=floating; feh ~/Pictures/screenshots/cover.png
+ 
 ## auto-launch apps on case panel
 super + F1
     layout-case
@@ -47,15 +47,15 @@ super + F2
 
 ## auto-launch apps on desktop 2
 super + F3
-    layout-home -d2
-super + alt + F3
-    layout-home -d4
+    layout-home -neo
 
 ## auto-launch chx apps
 super + F4
-    layout-chx
-super + alt + F4
+    layout-chx -r
+super + ctrl + F4
     layout-chx -em
+super + alt + F4
+    layout-chx
 
 ## neofetch
 super + F5
@@ -87,7 +87,7 @@ super + ctrl + F8
 
 ## input file tag & execute with command <any>
 super + F9
-    kitty -e sh -c rtags
+    urxvtc -e sh -c rtags
 
 ## proton
 super + F10
@@ -99,11 +99,11 @@ super + ctrl + F10
 
 ## timeshift back-up
 super + F11
-    kitty -e timeshift-d
+    urxvtc -e timeshift-d
 
-## close marked windows on current desktop
+## open cover image
 super + F12
-    while bspc node 'any.marked.local' -c; do :; done
+    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png; wal -n -i ~/.config/wall.png -a 50; pywal-bspwm-border
 
 ## view open windows
 Pause
@@ -250,8 +250,8 @@ super + ctrl + {h,j,k,l}
 
 ## cancel preselection
 super + ctrl + space
-	bspc node -p cancel & while bspc node 'any.leaf.!window' -k; do :; done
-
+	bspc node -p cancel
+ 
 # send the newest marked node to the newest preselected node
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
@@ -341,7 +341,7 @@ super + alt + {Left,Right,Up,Down}
 
 ##Toggle Gaps
 super + Tab
-	bspc config window_gap {15,0}
+	bspc config window_gap {51,0}
 
 ##Resize Gaps
 super + ctrl { + d,+ a }
@@ -352,6 +352,10 @@ super + ctrl { + d,+ a }
 ## receptacle
 super + BackSpace
     bspc node -i
+
+## remove receptacles
+super + alt + BackSpace
+    while bspc node 'any.leaf.!window.local' -k; do :; done
 
 ## make sxhkd reload its configuration files
 super + control + s
