@@ -27,10 +27,10 @@ button9
 super + button9
     bspc node -t \~floating 
 
-## set previously saved wallpaper, colorscheme, & border colors
-super + Home
+## open cover image
+super + F12
    bspc rule -a feh:feh -o state=floating; feh ~/Pictures/screenshots/cover.png
- 
+
 ## auto-launch apps on case panel
 super + F1
     layout-case
@@ -101,9 +101,11 @@ super + ctrl + F10
 super + F11
     urxvtc -e timeshift-d
 
-## open cover image
-super + F12
+## set previously saved wallpaper, colorscheme, & border colors
+super + Home
     feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png; wal -n -i ~/.config/wall.png -a 50; pywal-bspwm-border
+super + alt + Home
+    feh --bg-fill ~/.config/wall3.png --bg-fill ~/.config/wall2.png; wal -n -i ~/.config/wall3.jpg -a 50; pywal-bspwm-border
 
 ## view open windows
 Pause
@@ -170,6 +172,8 @@ super + n
 # launch videos
 super + alt + v
     rtags-quicklaunch -vid 
+super + ctrl + v
+    rtags-quicklaunch -wide-vid 
 super + ctrl + shift + v
     rtags-quicklaunch -p 
 
@@ -240,9 +244,6 @@ super + shift + Escape
 	bspc node -k
 
 ##-----PRESELECT-----##
-## spit horizontal & split vertical, like in i3-gaps :D
-super + ctrl + {h,v}
-	bspc node -p {west,south}
 
 # preselect the direction
 super + ctrl + {h,j,k,l}

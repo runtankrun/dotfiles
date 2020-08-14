@@ -13,22 +13,19 @@ while bspc node 'any.leaf.!window.local' -k; do :; done;
 bspc node @^2:^2:/ -i 
 bspc node @^2:^2:/ -o .5 -p east -i
 bspc node @^2:^2:/1 -o .5 -p south -i
+bspc node @^2:^2:/2 -o .5 -p south -i
 
 ##ADD RULES
 bspc rule -a URxvt:neofetch-ascii -o node=@^2:^2:/1/1 focus=off state=pseudo_tiled
-bspc rule -a URxvt:neofetch -o node=@^2:^2:/2 focus=off state=pseudo_tiled
 bspc rule -a URxvt:neofetch-pic -o node=@^2:^2:/1/2 focus=off state=pseudo_tiled
+bspc rule -a URxvt:neofetch -o node=@^2:^2:/2/1 focus=off state=pseudo_tiled
+bspc rule -a URxvt:TANK -o node=@^2:^2:/2/2 focus=off state=pseudo_tiled
 
 ##LAUNCH APPS
-urxvtc -name "neofetch-ascii" -title "neofetch-ascii" -e sh -c \
-'neofetch --ascii "$(figlet -f /home/ellio/.fonts/misc/figlet/alpha.flf T)"; \
-zsh' &
-
-urxvtc -name "neofetch" -title "neofetch" -e sh -c \
-"neofetch --loop; \
-zsh" &
-
-c-neo -pic
+c-neo -ascii &
+c-neo -pic &
+c-neo -wal &
+message
 
 ###############
 #   TOONAMI   #

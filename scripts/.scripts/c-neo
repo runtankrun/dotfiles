@@ -6,12 +6,9 @@ zsh'
 
 elif [[ $1 = "-pic" ]]; then
 urxvtc -name "neofetch-pic" -title "neofetch-pic" -e sh -c \
-"neofetch --w3m $(while IFS= read -r line
-do 
-    echo "$line" | grep ^n: | tail -n 1 | tail -c +3
-done < ~/.config/ranger/tagged) \
---loop; \
-zsh"
+"neofetch --w3m \
+$(grep ^n:  ~/.config/ranger/tagged | tail -n 1 | tail -c +3) \
+--loop"
 
 elif [[ $1 = "-wal" ]]; then
 urxvtc -name "neofetch" -title "neofetch" -e sh -c \
