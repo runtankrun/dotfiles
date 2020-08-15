@@ -27,6 +27,41 @@ c-neo -pic &
 c-neo -wal &
 message
 
+###########
+#   MOB   #
+###########
+elif [[ $1 = "-mob" ]]; then
+##VARIABLES
+tag_count_M=$(grep -c ^M: ~/.config/ranger/tagged)
+
+## MOVE TO DESKTOP AND CLEAR WINDOWS
+bspc desktop -f ^2:^3;
+while bspc node 'any.leaf.local' -c; do :; done;
+while bspc node 'any.leaf.!window.local' -k; do :; done;
+
+##INSERT RECEPTACLES
+bspc node @^2:^3:/ -i
+bspc node @^2:^3:/ -o 0.272314 -p east -i
+bspc node @^2:^3:/2 -o 0.505506 -p east -i
+bspc node @^2:^3:/2/1 -o 0.5 -p south -i
+bspc node @^2:^3:/2/2 -o 0.48946 -p south -i
+
+##ADD RULES
+bspc rule -a feh:feh -o node=@^2:^3:/1
+bspc rule -a URxvt:TANK -o node=@^2:^3:/2/1/1
+bspc rule -a kitty:vis -o node=@^2:^3:/2/1/2
+bspc rule -a URxvt:ranger -o node=@^2:^3:/2/2/1
+bspc rule -a mpv:wide -o node=@^2:^3:/2/2/2
+
+##LAUNCH APPS
+feh -r -z -Z -. -D 5 /run/media/ellio/TB_1/Comicbooks &
+message &
+visualizer &
+c-ranger &
+mpv --x11-name="wide" --title="wide" $(while IFS= read -r line
+do 
+    echo "$line" | grep ^M: | tail -n $tag_count_M | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged) 
 ###############
 #   TOONAMI   #
 ###############

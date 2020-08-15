@@ -27,10 +27,6 @@ button9
 super + button9
     bspc node -t \~floating 
 
-## open cover image
-super + F12
-   bspc rule -a feh:feh -o state=floating; feh ~/Pictures/screenshots/cover.png
-
 ## auto-launch apps on case panel
 super + F1
     layout-case
@@ -51,11 +47,11 @@ super + F3
 
 ## auto-launch chx apps
 super + F4
-    layout-chx -r
+    layout-home -mob 
 super + ctrl + F4
     layout-chx -em
 super + alt + F4
-    layout-chx
+    layout-chx -r
 
 ## neofetch
 super + F5
@@ -100,6 +96,10 @@ super + ctrl + F10
 ## timeshift back-up
 super + F11
     urxvtc -e timeshift-d
+
+## open cover image
+super + F12
+   bspc rule -a feh:feh -o state=floating; feh ~/Pictures/screenshots/cover.png
 
 ## set previously saved wallpaper, colorscheme, & border colors
 super + Home
