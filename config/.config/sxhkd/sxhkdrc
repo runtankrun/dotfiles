@@ -33,7 +33,7 @@ super + F1
 super + alt + F1
     layout-case -ps
 super + ctrl + F1
-    layout-case -mob
+    layout-case -zodiac
 super + shift + F1
     layout-case -dark
 
@@ -47,11 +47,11 @@ super + F3
 
 ## auto-launch chx apps
 super + F4
-    layout-home -mob 
-super + ctrl + F4
-    layout-chx -em
+    layout-home -mpv
 super + alt + F4
     layout-chx -r
+super + ctrl + F4
+    layout-home -cb
 
 ## neofetch
 super + F5
@@ -103,9 +103,9 @@ super + F12
 
 ## set previously saved wallpaper, colorscheme, & border colors
 super + Home
-    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png; wal -n -i ~/.config/wall.png -a 50; pywal-bspwm-border
+    feh --bg-fill ~/.config/wall2.png --bg-fill ~/.config/wall.png & wal -n -i ~/.config/wall.png -a 50; pywal-bspwm-border; layout-case
 super + alt + Home
-    feh --bg-fill ~/.config/wall3.png --bg-fill ~/.config/wall2.png; wal -n -i ~/.config/wall3.jpg -a 50; pywal-bspwm-border
+    feh --bg-fill ~/.config/wall2.png --bg-fill ~/.config/wall-alt.png & wal -n -i ~/.config/wall-alt.png -a 50; pywal-bspwm-border; layout-case
 
 ## view open windows
 Pause
@@ -159,7 +159,7 @@ super + shift + r
 super + b
 	firefox
 super + alt + b
-    surf https://www.youtube.com/
+    surf https://www.duckduckgo.com/
 	
 ## launch vim
 super + v
@@ -184,10 +184,6 @@ super + alt + p
 ## launch gifs
 super + alt + g
     mpv ~/Pictures/gifs/* --loop
-
-## launch spotify
-super + s
-    layout-muziq -spot
 
 ## launch music
 super + m

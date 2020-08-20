@@ -1,8 +1,24 @@
 #!/bin/sh
 
 tsd=$(sudo timeshift --list | grep -m 2 -o "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]_[0-9][0-9]-[0-9][0-9]-[0-9][0-9]" | tail -1)
-figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf 'Back-Up'; \
+
+figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf 'Back-Up';
+
+if [[ $1 = "-d" ]]; then
+sudo timeshift --list; \
+sudo timeshift --delete --snapshot $tsd; \
+zsh
+
+elif [[ $1 = "-c" ]]; then
+read -p 'comment: ' comment
+sudo timeshift --list; \
+sudo timeshift --delete --snapshot $tsd; \
+sudo timeshift --create --comments $comment; \
+zsh
+
+else
 sudo timeshift --list; \
 sudo timeshift --delete --snapshot $tsd; \
 sudo timeshift --create --comments "house-keeping"; \
 zsh
+fi

@@ -29,10 +29,7 @@ bspc rule -a mpv:wide -o node=@^2:^3:/2/2/2
 feh -Z -. -D 5 ~/Pictures/chx/rachel/ &
 message &
 c-ranger &
-mpv --x11-name="wide" --title="wide" $(while IFS= read -r line
-do 
-    echo "$line" | grep ^w: | tail -n $tag_count_w | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged)  
+mpv --x11-name="wide" --title="wide" ~/Videos/h/rachel/*.m4v
 
 ##########
 #   EM   #
@@ -75,6 +72,7 @@ mpv --x11-name="em2" --title="em2" ~/Videos/h/wide/*em2.mp4
 #   CHX   #
 ###########
 else
+tag_count=$(grep -c ^v: ~/.config/ranger/tagged)
 
 ## move to desktop and clear windows
 bspc desktop -f ^2:^5;
@@ -93,7 +91,10 @@ bspc rule -a kitty:ranger -o node=@^2:^5:/2/2
 
 ## launch apps
 mpv --x11-name="alexa" --title="alexa" ~/Videos/h/ap/ --video-zoom=0.2 &
-mpv --x11-name="h" --title="h" ~/Videos/h/b/ --video-zoom=0.2 &
+mpv --x11-name="h" --title="h" $(while IFS= read -r line
+do 
+    echo "$line" | grep ^v: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged) --video-zoom=0.2 &
 kitty --name "ranger" --title "ranger" -e sh -c \
 "~/.scripts/ranger/ranger.py \
 --cmd='set preview_images_method ueberzug' \

@@ -40,10 +40,10 @@ mpv --x11-name="naruto" --title="naruto" ~/Videos/N.mp4 &
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
 sleep .5s; bspc desktop --focus ^2:focused
 
-############
-#   MOB    #
-############
-elif [[ $1 = "-mob" ]]; then
+##############
+#   ZODIAC   #
+##############
+elif [[ $1 = "-zodiac" ]]; then
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i
 bspc node @^1:^1:/ -o 0.4575 -p east -i
@@ -95,6 +95,6 @@ bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
 ##LAUNCH APPS
 kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop;zsh" &
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
 sleep .5s; bspc desktop --focus ^2:focused
 fi

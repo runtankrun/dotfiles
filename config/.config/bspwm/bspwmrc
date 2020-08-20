@@ -1,5 +1,8 @@
 #! /bin/sh
 
+## xfce4-settings daemon
+xfsettingsd & 
+
 ## Compositor
 sleep .5s; picom -b &
 
@@ -29,18 +32,13 @@ easystroke &
 urxvtd -q &
 mpd &
 
-## xfce4-settings daemon
-xfsettingsd & 
-
-## Nvidia
-#sleep.5s; nvidia-settings --assign "CurrentMetaMode=DPY-2: nvidia-auto-select @3440x1440 +1280+0 {ViewPortIn=3440x1440, ViewPortOut=3440x1440+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}" &
-
 bspc config focus_follows_pointer true
 
 #mouse refresh rate (1000/100hz=10)
-bspc config pointer_motion_interval 10
+#bspc config pointer_motion_interval 10
 
-bspc monitor -d 1 2 3 4 5 6 7 8
+bspc monitor DP-1 -d 1 2 3 4 5 6 7 8
+bspc monitor HDMI-0 -d 0
 
 bspc config border_width         2
 bspc config window_gap           0
@@ -55,12 +53,13 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a SimpleScreenRecorder state=floating
-bspc rule -a MEGAsync state=floating desktop='^5'
+bspc rule -a MEGAsync state=floating
 bspc rule -a Gcolor3 state=floating
 bspc rule -a Surf state=tiled
+bspc rule -a Nvidia-settings state=floating
 
 . "${HOME}/.cache/wal/colors.sh"
-bspc config normal_border_color "$color12"
+bspc config normal_border_color "#A8A8A6"
 bspc config active_border_color "$color0"
-bspc config focused_border_color "$color2"
-bspc config presel_feedback_color "$color2"
+bspc config focused_border_color "$color1"
+bspc config presel_feedback_color "$color1"

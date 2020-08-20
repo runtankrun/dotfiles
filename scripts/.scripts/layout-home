@@ -27,12 +27,12 @@ c-neo -pic &
 c-neo -wal &
 message
 
-###########
-#   MOB   #
-###########
-elif [[ $1 = "-mob" ]]; then
+##########
+#   CB   #
+##########
+elif [[ $1 = "-cb" ]]; then
 ##VARIABLES
-tag_count_M=$(grep -c ^M: ~/.config/ranger/tagged)
+tag_count_H=$(grep -c ^H: ~/.config/ranger/tagged)
 
 ## MOVE TO DESKTOP AND CLEAR WINDOWS
 bspc desktop -f ^2:^3;
@@ -60,8 +60,34 @@ visualizer &
 c-ranger &
 mpv --x11-name="wide" --title="wide" $(while IFS= read -r line
 do 
-    echo "$line" | grep ^M: | tail -n $tag_count_M | tail -c +3 | tr '\n' ' '
+    echo "$line" | grep ^H: | tail -n $tag_count_H | tail -c +3 | tr '\n' ' '
 done < ~/.config/ranger/tagged) 
+
+###########
+#   MPV   #
+###########
+elif [[ $1 = "-mpv" ]]; then
+## move to desktop & close windows
+bspc desktop -f ^2:^3;
+while bspc node 'any.leaf.local' -c; do :; done;
+while bspc node 'any.leaf.!window.local' -k; do :; done;
+
+##INSERT RECEPTACLES
+bspc node @^2:^3:/ -i
+bspc node @^2:^3:/ -o 0.256628 -p east -i
+bspc node @^2:^3:/1 -o 0.460972 -p south -i
+
+##ADD RULES
+bspc rule -a feh:feh -o node=@^2:^3:/1/1
+bspc rule -a URxvt:ranger -o node=@^2:^3:/1/2
+bspc rule -a mpv:gl -o node=@^2:^3:/2
+
+##LAUNCH APPS
+feh -Z -. ~/Pictures/zero-two-01.jpg &
+#feh -B black -Z -. ~/Pictures/toonami.JPG &
+c-ranger &
+mpv $(grep ^m: ~/.config/ranger/tagged | tail -n 1 | tail -c +3 )
+
 ###############
 #   TOONAMI   #
 ###############

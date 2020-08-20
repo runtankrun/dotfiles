@@ -4,5 +4,5 @@ urxvtc -name "vtop" -title "vtop" -e sh -c "vtop --theme certs"
 elif [[ $1 = "-h" ]]; then
 urxvtc -name "htop" -title "htop" -e sh -c "htop"
 else
-urxvtc -name "gotop" -title "gotop" -geometry 74x42 -e "gotop"
+urxvtc -name "gotop" -title "gotop" -e "gotop"
 fi
