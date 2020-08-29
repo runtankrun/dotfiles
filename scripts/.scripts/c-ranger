@@ -1,5 +1,3 @@
-#!/bin/sh
-
 ##################
 #   MINIMAL-UI   #
 ##################
@@ -17,6 +15,16 @@ kitty --name "ranger" --title "ranger" -e sh -c \
 --cmd='default_linemode devicons2' \
 --cmd='set draw_borders false' \
 ~ \
+--selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
+
+#################
+#   ALACRITTY   #
+#################
+elif [[ $1 = "-a" ]]; then
+alacritty --title "ranger" --class "ranger"  -e sh -c \
+"ranger \
+--cmd='set preview_images_method ueberzug' \
+--cmd='set draw_borders false' \
 --selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
 
 #############

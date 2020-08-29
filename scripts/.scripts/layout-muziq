@@ -14,7 +14,7 @@ bspc node @^2:^7:/2 -o 0.9 -p south -i
 ##ADD RULES
 bspc rule -a URxvt:spot -o node=@^2:^7:/1/1
 bspc rule -a kitty:music -o node=@^2:^7:/1/2
-bspc rule -a kitty:vis -o node=@^2:^7:/2/1
+bspc rule -a URxvt:vis -o node=@^2:^7:/2/1
 bspc rule -a URxvt:lofi -o node=@^2:^7:/2/2
 
 ##LAUNCH APPS

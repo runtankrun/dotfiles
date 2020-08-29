@@ -1,10 +1,17 @@
 #!/bin/sh
-#CYAN="\e[36m"; printf "${CYAN}"; figlet -f ~/.fonts/misc/figlet/spliff.flf 'Tank'
+
+#################
+#   ALACRITTY   #
+#################
+if [[ $1 = "-a" ]]; then
+alacritty --class "TANK-A" --title "TANK-A" -e sh -c \
+'figlet -f ~/.fonts/misc/figlet/rectangles.flf 'TANK'; \
+zsh'
 
 #############
 #   kitty    #
 #############
-if [[ $1 = "-k" ]]; then
+elif [[ $1 = "-k" ]]; then
 kitty --name "TANK-K" --title "TANK-K" -e sh -c \
 'figlet -f ~/.fonts/misc/figlet/rectangles.flf 'TANK'; \
 zsh'

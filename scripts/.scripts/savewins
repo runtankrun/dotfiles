@@ -1,0 +1,7 @@
+#!/bin/bash
+bspc rule -a URxvt:savewins state=floating
+
+bspc wm -d > dump.json;
+sleep .5s;extract_canvas dump.json >> ~/Documents/savewins; induce_rules dump.json >> ~/Documents/savewins; 
+urxvtc -title savewins -name savewins -e sh -c \
+"vim ~/Documents/savewins"

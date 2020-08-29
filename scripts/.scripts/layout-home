@@ -4,6 +4,9 @@
 #   Neo   #
 ###########
 if [[ $1 = "-neo" ]]; then
+#VARIABLE
+tag_count_f=$(grep -c ^f: ~/.config/ranger/tagged)
+
 ## move to desktop & close windows
 bspc desktop -f ^2:^2;
 while bspc node 'any.leaf.local' -c; do :; done;
@@ -11,21 +14,27 @@ while bspc node 'any.leaf.!window.local' -k; do :; done;
 
 ##INSERT RECEPTACLES
 bspc node @^2:^2:/ -i 
-bspc node @^2:^2:/ -o .5 -p east -i
+bspc node @^2:^2:/ -o .4 -p east -i
+bspc node @^2:^2:/2 -o .4 -p east -i
 bspc node @^2:^2:/1 -o .5 -p south -i
-bspc node @^2:^2:/2 -o .5 -p south -i
+bspc node @^2:^2:/2/1 -o .5 -p south -i
 
 ##ADD RULES
 bspc rule -a URxvt:neofetch-ascii -o node=@^2:^2:/1/1 focus=off state=pseudo_tiled
-bspc rule -a URxvt:neofetch-pic -o node=@^2:^2:/1/2 focus=off state=pseudo_tiled
-bspc rule -a URxvt:neofetch -o node=@^2:^2:/2/1 focus=off state=pseudo_tiled
-bspc rule -a URxvt:TANK -o node=@^2:^2:/2/2 focus=off state=pseudo_tiled
+bspc rule -a URxvt:neofetch -o node=@^2:^2:/1/2 focus=off state=pseudo_tiled
+bspc rule -a URxvt:neofetch-pic -o node=@^2:^2:/2/1/1 focus=off state=pseudo_tiled
+bspc rule -a URxvt:TANK -o node=@^2:^2:/2/1/2 focus=off state=pseudo_tiled
+bspc rule -a feh:feh -o node=@^2:^2:/2/2 focus=off state=pseudo_tiled
 
 ##LAUNCH APPS
 c-neo -ascii &
-c-neo -pic &
 c-neo -wal &
-message
+c-neo -pic &
+message &
+feh -. -Z -D 5 $(while IFS= read -r line
+do 
+    echo "$line" | grep ^f: | tail -n $tag_count_f | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged) 
 
 ##########
 #   CB   #
@@ -43,20 +52,17 @@ while bspc node 'any.leaf.!window.local' -k; do :; done;
 bspc node @^2:^3:/ -i
 bspc node @^2:^3:/ -o 0.272314 -p east -i
 bspc node @^2:^3:/2 -o 0.505506 -p east -i
-bspc node @^2:^3:/2/1 -o 0.5 -p south -i
 bspc node @^2:^3:/2/2 -o 0.48946 -p south -i
 
 ##ADD RULES
 bspc rule -a feh:feh -o node=@^2:^3:/1
-bspc rule -a URxvt:TANK -o node=@^2:^3:/2/1/1
-bspc rule -a kitty:vis -o node=@^2:^3:/2/1/2
+bspc rule -a firefox:Navigator -o node=@^2:^3:/2/1
 bspc rule -a URxvt:ranger -o node=@^2:^3:/2/2/1
 bspc rule -a mpv:wide -o node=@^2:^3:/2/2/2
 
 ##LAUNCH APPS
 feh -r -z -Z -. -D 5 /run/media/ellio/TB_1/Comicbooks &
-message &
-visualizer &
+firefox &
 c-ranger &
 mpv --x11-name="wide" --title="wide" $(while IFS= read -r line
 do 
@@ -78,13 +84,13 @@ bspc node @^2:^3:/ -o 0.256628 -p east -i
 bspc node @^2:^3:/1 -o 0.460972 -p south -i
 
 ##ADD RULES
-bspc rule -a feh:feh -o node=@^2:^3:/1/1
+bspc rule -a URxvt:nvtop -o node=@^2:^3:/1/1
 bspc rule -a URxvt:ranger -o node=@^2:^3:/1/2
 bspc rule -a mpv:gl -o node=@^2:^3:/2
 
 ##LAUNCH APPS
-feh -Z -. ~/Pictures/zero-two-01.jpg &
 #feh -B black -Z -. ~/Pictures/toonami.JPG &
+c-nvtop &
 c-ranger &
 mpv $(grep ^m: ~/.config/ranger/tagged | tail -n 1 | tail -c +3 )
 
@@ -92,6 +98,7 @@ mpv $(grep ^m: ~/.config/ranger/tagged | tail -n 1 | tail -c +3 )
 #   TOONAMI   #
 ###############
 else
+#!/bin/sh
 ## move to desktop & close windows
 bspc desktop -f ^2:^1; 
 while bspc node 'any.leaf.local' -c; do :; done;
@@ -103,33 +110,35 @@ bspc node @^2:^1:/ -o 0.438895 -p east -i
 bspc node @^2:^1:/1 -p south -i
 bspc node @^2:^1:/1/1 -o 0.718807 -p east -i
 bspc node @^2:^1:/1/1/1 -o 0.52 -p south -i
+bspc node @^2:^1:/1/1/1/1 -o 0.52 -p east -i
+bspc node @^2:^1:/1/1/1/1/1 -o 0.52 -p south -i
+bspc node @^2:^1:/1/1/1/1/2 -o 0.251959 -p south -i
 bspc node @^2:^1:/2 -o 0.298829 -p east -i
 bspc node @^2:^1:/2/2 -o 0.741724 -p south -i
-bspc node @^2:^1:/2/2/2 -o .52 -p east -i
-bspc node @^2:^1:/2/2/2/1 -o .53 -p south -i
-bspc node @^2:^1:/2/2/2/1/1 -o .52 -p east -i
-
 
 ##ADD RULES
-bspc rule -a URxvt:ranger -o node=@^2:^1:/1/1/1/1
+bspc rule -a URxvt:TANK -o node=@^2:^1:/1/1/1/1/1/1
+bspc rule -a URxvt:matrix -o node=@^2:^1:/1/1/1/1/1/2
+bspc rule -a URxvt:pro -o node=@^2:^1:/1/1/1/1/2/1
+bspc rule -a mpv:toonami -o node=@^2:^1:/1/1/1/1/2/2
 bspc rule -a URxvt:nvtop -o node=@^2:^1:/1/1/1/2
 bspc rule -a mpv:pc -o node=@^2:^1:/1/1/2
 bspc rule -a URxvt:htop -o node=@^2:^1:/1/2
 bspc rule -a mpv:gifs -o node=@^2:^1:/2/1
 bspc rule -a URxvt:vim -o node=@^2:^1:/2/2/1
-bspc rule -a URxvt:TANK -o node=@^2:^1:/2/2/2/1/1/1
-bspc rule -a URxvt:matrix -o node=@^2:^1:/2/2/2/1/2
-bspc rule -a URxvt:pro -o node=@^2:^1:/2/2/2/1/1/2
-bspc rule -a mpv:toonami -o node=@^2:^1:/2/2/2/2
+bspc rule -a URxvt:ranger -o node=@^2:^1:/2/2/2
+bspc config -m HDMI-0 -d ^2 window_gap 0
 
 ##LAUNCH APPS
-urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &
-mpv --x11-name="pc" --title="pc" ~/Videos/pc.mp4 &
+sleep .3s; \ 
+message &
+toys -matrix &
+mpv --x11-name=toonami --title=toonami --osc=no ~/Pictures/gifs/mf-toonami.GIF &
+mpv --x11-name="pc" --title="pc" --osc=no ~/Videos/pc.mp4 &
 c-nvtop &
 c-gotop -h &
-mpv --x11-name="gifs" --title="gifs" ~/Videos/1.mov &
+mpv --x11-name="gifs" --title="gifs" --osc=no ~/Videos/1.mov &
 vim-sessions -main &
-sleep .3s; message &
-sleep .3s; urxvtc -name "matrix" -title "matrix" -bg 000000 -e sh -c "sleep .2s; cmatrix -u 7" &
-urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c -f & mpv --x11-name=toonami --title=toonami ~/Pictures/gifs/mf-toonami.GIF --terminal=no"
+urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &
+urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c -f; bspc node @^2:^1:/1/1/1/1/2/2 -c; bspc node @^2:^1:/1/1/1/1/1/2 -c; bspc node @^2:^1:/1/1/1/1/1/1 -p east; toys -matrix"
 fi

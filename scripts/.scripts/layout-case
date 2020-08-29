@@ -19,7 +19,7 @@ bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 ##LAUNCH APPS
 mpv --x11-name="ps" --title="ps" ~/Pictures/gifs/ps.GIF & 
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 1 -b" &
 sleep .5s; bspc desktop --focus ^2:focused
 
 ##############
@@ -35,33 +35,36 @@ bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on focus=off
 bspc rule -a mpv:naruto -o node=@^1:^1:/2/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on focus=off
 ##LAUNCH APPS
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 1 -b" &
 mpv --x11-name="naruto" --title="naruto" ~/Videos/N.mp4 &
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
 sleep .5s; bspc desktop --focus ^2:focused
 
-##############
-#   ZODIAC   #
-##############
-elif [[ $1 = "-zodiac" ]]; then
+################
+#   VID-CASE   #
+################
+elif [[ $1 = "-vid" ]]; then
+##VARIABLE
+tag_count=$(grep -c ^c: ~/.config/ranger/tagged)
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i
 bspc node @^1:^1:/ -o 0.4575 -p east -i
-bspc node @^1:^1:/1 -o 0.617656 -p south -i 
+bspc node @^1:^1:/1 -o 0.2 -p south -i 
 bspc node @^1:^1:/2 -o 0.383281 -p south -i
 
 ## ADD RULES
-bspc rule -a kitty:vis-case -o node=@^1:^1:/1/1 marked=on focus=off
-bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
-bspc rule -a mpv:mob -o node=@^1:^1:/2/1 marked=on focus=off
+bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/1 marked=on focus=off
+bspc rule -a URxvt:vis-case -o node=@^1:^1:/1/2 marked=on focus=off
+bspc rule -a mpv:vid-case -o node=@^1:^1:/2/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on focus=off
 
 ## LAUNCH COMMANDS 
-kitty --name "vis-case" --title "vis-case" \
--o include="~/.config/kitty/$col-kitty.conf" -e sh -c \
-"kitty @set-font-size 1; vis" &
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b;zsh" &
-mpv --x11-name="mob" --title="mob" ~/Videos/zodiac.mp4 &
+visualizer -w &
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -t -C 1 -b -r" &
+mpv --x11-name="vid-case" --title="vid-case" $(while IFS= read -r line
+do 
+    echo "$line" | grep ^c: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged) &
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
 sleep .5s; bspc desktop --focus ^2:focused
 
@@ -74,11 +77,13 @@ bspc node @^1:^1:/ -i
 bspc node @^1:^1:/ -o .52 -p east -i
 bspc node @^1:^1:/1 -o .498 -p south -i
 ## ADD RULES
-bspc rule -a mpv:walking -o node=@^1:^1:/1/1 marked=on focus=off
+#bspc rule -a mpv:walking -o node=@^1:^1:/1/1 marked=on focus=off
+bspc rule -a URxvt:cava -o node=@^1:^1:/1/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
 bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 ##LAUNCH APPS
-mpv --x11-name="walking" --title="walking" ~/Pictures/gifs/walking.GIF &
+#mpv --x11-name="walking" --title="walking" ~/Pictures/gifs/walking.GIF &
+urxvtc -name "cava" -title "cava" -bg black -bd black -e sh -c "cava" &
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/black-kitty.conf" -e sh -c "gotop" &
 kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/black-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
 sleep .5s; bspc desktop --focus ^2:focused
@@ -90,11 +95,12 @@ else
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i 
 bspc node @^1:^1:/ -o 0.5 -p east -i
+bspc node @^1:^1:/1 -o 0.502585 -p south -i
 ##ADD RULES
-bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
+bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 ##LAUNCH APPS
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 1 -b;zsh" &
+kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 1 -b" &
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
 sleep .5s; bspc desktop --focus ^2:focused
 fi

@@ -13,7 +13,7 @@ elif [[ $1 = "-c" ]]; then
 read -p 'comment: ' comment
 sudo timeshift --list; \
 sudo timeshift --delete --snapshot $tsd; \
-sudo timeshift --create --comments $comment; \
+sudo timeshift --create --comments "$comment"; \
 zsh
 
 else

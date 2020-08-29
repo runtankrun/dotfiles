@@ -5,9 +5,6 @@
 ############
 if [[ $1 = "-r" ]]; then
 
-##VARIABLES
-tag_count_w=$(grep -c ^w: ~/.config/ranger/tagged)
-
 ## MOVE TO DESKTOP AND CLEAR WINDOWS
 bspc desktop -f ^2:^3;
 while bspc node 'any.leaf.local' -c; do :; done;

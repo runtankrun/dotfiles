@@ -33,7 +33,7 @@ super + F1
 super + alt + F1
     layout-case -ps
 super + ctrl + F1
-    layout-case -zodiac
+    layout-case -vid
 super + shift + F1
     layout-case -dark
 
@@ -81,31 +81,25 @@ super + alt + F8
 super + ctrl + F8
     toys -pipes-d
 
-## input file tag & execute with command <any>
-super + F9
-    urxvtc -e sh -c rtags
-
 ## proton
-super + F10
+super + F11
     pro
-super + alt + F10
+super + alt + F11
     pro -s
-super + ctrl + F10
+super + ctrl + F11
     pro -r
 
 ## timeshift back-up
-super + F11
-    urxvtc -e timeshift-d
-
-## open cover image
 super + F12
-   bspc rule -a feh:feh -o state=floating; feh ~/Pictures/screenshots/cover.png
+    urxvtc -e timeshift-d
 
 ## set previously saved wallpaper, colorscheme, & border colors
 super + Home
-    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png & wal -n -i ~/.config/wall.png -a 50; pywal-bspwm-border; layout-case
+    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall.png -a 50; pywal-bspwm-border; layout-case
 super + alt + Home
-    feh --bg-fill ~/.config/wall-alt.png --bg-fill ~/.config/wall2.png & wal -n -i ~/.config/wall-alt.png -a 50; pywal-bspwm-border; layout-case
+    feh --bg-fill ~/.config/wall-alt.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-alt.png -a 50; pywal-bspwm-border; layout-case
+super + shift + Home
+    feh --bg-fill ~/.config/wall-dark.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-dark.png -a 50; pywal-bspwm-border; layout-case -dark
 
 ## view open windows
 Pause
@@ -141,17 +135,19 @@ super + w
 super + z
 	message
 super + alt + z
+    message -a
+super + ctrl + z
     message -k
 super + shift + z
     message -r
 
 ## launch ranger
 super + r
-	c-ranger
+	c-ranger -a
 super + alt + r
-    c-ranger -k
+    c-ranger
 super + ctrl + r
-    c-ranger -s
+    c-ranger -k
 super + shift + r
     c-ranger -ks
 
@@ -172,10 +168,10 @@ super + n
 # launch videos
 super + alt + v
     rtags-quicklaunch -vid 
+super + ctrl + shift + v
+    rtags-quicklaunch -p
 super + ctrl + v
     rtags-quicklaunch -wide-vid 
-super + ctrl + shift + v
-    rtags-quicklaunch -p 
 
 ## launch pictures
 super + alt + p
@@ -203,7 +199,7 @@ Print
 
 ## record screen
 super + Print
-    simplescreenrecorder 
+    urxvtc -e sh -c "giph --format webm -s -d 3 -l -c 1,1,1,0.3 -b 5 -p -5 ~/Videos/giph.webm"
 
 ## log out
 ctrl + alt + End
@@ -338,11 +334,11 @@ super + alt + {Left,Right,Up,Down}
 
 ##Toggle Gaps
 super + Tab
-	bspc config window_gap {51,0}
+	bspc config -m HDMI-0 window_gap {51,0}
 
 ##Resize Gaps
 super + ctrl { + d,+ a }
-	bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
+	bspc config -m HDMI-0 window_gap $(($(bspc config -m HDMI-0 window_gap) {+,-} 3))
 
 ##-----MISC-----##
 

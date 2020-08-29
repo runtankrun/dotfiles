@@ -11,8 +11,10 @@ kitty --name "pipes-diagonal" --title "pipes-diagonal" \
 "sleep .3s; pipes-diagonal"
 
 elif [[ $1 = "-matrix" ]]; then
-urxvtc -name "matrix" -title "matrix" -e sh -c \
-"sleep .2s; cmatrix -u 7; zsh"
+. "${HOME}/.cache/wal/colors.sh"
+urxvtc -name "matrix" -title "matrix" -bg "$background" -bd "$background" \
+-e sh -c \
+"sleep .2s; cmatrix -u 7"
 
 else
 echo "options: -pipes-v | -pipeps-d | -matrix"

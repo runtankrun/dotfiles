@@ -106,7 +106,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #Nvidia
-alias nv='nvidia-settings --assign "CurrentMetaMode=DPY-2: nvidia-auto-select @1280x1024 +0+0 {ViewPortIn=1280x1024, ViewPortOut=1280x1024+0+0, Rotation=180}, DPY-1: nvidia-auto-select @3440x1440 +1280+0 {ViewPortIn=3440x1440, ViewPortOut=3440x1440+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}'
+alias nv='nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceCompositionPipeline=On, ForceFullCompositionPipeline=On }"'
+
+#wget website images
+alias wget-i='wget -nd --page-requisites --span-host -A'
 
 #Git
 alias gi='git init'

@@ -72,7 +72,7 @@ let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/
+cd ~
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -103,9 +103,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 50 + 77) / 154)
-exe 'vert 2resize ' . ((&columns * 51 + 77) / 154)
-exe 'vert 3resize ' . ((&columns * 51 + 77) / 154)
+exe 'vert 1resize ' . ((&columns * 47 + 72) / 145)
+exe 'vert 2resize ' . ((&columns * 48 + 72) / 145)
+exe 'vert 3resize ' . ((&columns * 48 + 72) / 145)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -204,6 +204,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
@@ -231,7 +232,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 20) / 41)
+let s:l = 1 - ((0 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -337,6 +338,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
@@ -364,7 +366,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 20) / 41)
+let s:l = 1 - ((0 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -470,6 +472,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
@@ -497,16 +500,16 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 20) / 41)
+let s:l = 1 - ((0 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 50 + 77) / 154)
-exe 'vert 2resize ' . ((&columns * 51 + 77) / 154)
-exe 'vert 3resize ' . ((&columns * 51 + 77) / 154)
+exe 'vert 1resize ' . ((&columns * 47 + 72) / 145)
+exe 'vert 2resize ' . ((&columns * 48 + 72) / 145)
+exe 'vert 3resize ' . ((&columns * 48 + 72) / 145)
 tabnext
 edit .config/polybar/config.ini
 set splitbelow splitright
@@ -615,6 +618,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
@@ -642,7 +646,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 106 - ((0 * winheight(0) + 20) / 41)
+let s:l = 106 - ((0 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -756,6 +760,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
@@ -783,7 +788,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 28 - ((0 * winheight(0) + 20) / 41)
+let s:l = 28 - ((0 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -803,8 +808,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 73 + 77) / 154)
-exe 'vert 2resize ' . ((&columns * 80 + 77) / 154)
+exe 'vert 1resize ' . ((&columns * 124 + 72) / 145)
+exe 'vert 2resize ' . ((&columns * 20 + 72) / 145)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -903,6 +908,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
@@ -930,7 +936,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 44 - ((17 * winheight(0) + 20) / 41)
+let s:l = 44 - ((18 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1036,6 +1042,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
@@ -1063,16 +1070,15 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 54 - ((28 * winheight(0) + 20) / 41)
+let s:l = 54 - ((30 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 54
 normal! 011|
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 73 + 77) / 154)
-exe 'vert 2resize ' . ((&columns * 80 + 77) / 154)
+exe 'vert 1resize ' . ((&columns * 124 + 72) / 145)
+exe 'vert 2resize ' . ((&columns * 20 + 72) / 145)
 tabnext
 edit .config/ranger/rc.conf
 set splitbelow splitright
@@ -1087,10 +1093,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 21 + 22) / 44)
-exe 'vert 1resize ' . ((&columns * 119 + 77) / 154)
-exe '2resize ' . ((&lines * 21 + 22) / 44)
-exe 'vert 2resize ' . ((&columns * 34 + 77) / 154)
+exe '1resize ' . ((&lines * 22 + 23) / 47)
+exe 'vert 1resize ' . ((&columns * 112 + 72) / 145)
+exe '2resize ' . ((&lines * 22 + 23) / 47)
+exe 'vert 2resize ' . ((&columns * 32 + 72) / 145)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -1189,6 +1195,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
@@ -1216,12 +1223,12 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 25 - ((6 * winheight(0) + 10) / 21)
+let s:l = 25 - ((6 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 25
-normal! 09|
+normal! 0
 wincmd w
 argglobal
 if bufexists(".vimrc") | buffer .vimrc | else | edit .vimrc | endif
@@ -1334,6 +1341,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
@@ -1361,17 +1369,17 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 21 - ((5 * winheight(0) + 10) / 21)
+let s:l = 21 - ((5 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 21
 normal! 014|
 wincmd w
-exe '1resize ' . ((&lines * 21 + 22) / 44)
-exe 'vert 1resize ' . ((&columns * 119 + 77) / 154)
-exe '2resize ' . ((&lines * 21 + 22) / 44)
-exe 'vert 2resize ' . ((&columns * 34 + 77) / 154)
+exe '1resize ' . ((&lines * 22 + 23) / 47)
+exe 'vert 1resize ' . ((&columns * 112 + 72) / 145)
+exe '2resize ' . ((&lines * 22 + 23) / 47)
+exe 'vert 2resize ' . ((&columns * 32 + 72) / 145)
 tabnext
 edit .mozilla/firefox/v2nnvt6o.default-release/startpage/index.html
 set splitbelow splitright
@@ -1480,6 +1488,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
@@ -1507,7 +1516,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 20) / 41)
+let s:l = 1 - ((0 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1517,14 +1526,14 @@ tabnext 4
 set stal=1
 badd +1 .config/kitty/kitty.conf
 badd +1 .zshrc
-badd +0 .config/picom/picom.conf
+badd +1 .config/polybar/config.ini
+badd +1 .config/picom/picom.conf
 badd +1 .config/bspwm/bspwmrc
 badd +1 .config/ranger/rc.conf
 badd +1 .mozilla/firefox/v2nnvt6o.default-release/startpage/index.html
 badd +1 .Xresources
-badd +1 .config/sxhkd/sxhkdrc
+badd +0 .config/sxhkd/sxhkdrc
 badd +1 .vimrc
-badd +0 .config/polybar/config.ini
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -1536,6 +1545,7 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &so = s:so_save | let &siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
