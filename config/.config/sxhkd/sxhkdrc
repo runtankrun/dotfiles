@@ -47,11 +47,11 @@ super + F3
 
 ## auto-launch chx apps
 super + F4
-    layout-home -mpv
-super + alt + F4
-    layout-chx -r
-super + ctrl + F4
     layout-home -cb
+super + ctrl + F4
+    layout-chx -r
+super + alt + F4
+    layout-home -mpv
 
 ## neofetch
 super + F5
@@ -95,9 +95,9 @@ super + F12
 
 ## set previously saved wallpaper, colorscheme, & border colors
 super + Home
-    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall.png -a 50; pywal-bspwm-border; layout-case
+    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall.png -a 50; pywal-bspwm-border; layout-case -vid; layout-home -neo
 super + alt + Home
-    feh --bg-fill ~/.config/wall-alt.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-alt.png -a 50; pywal-bspwm-border; layout-case
+    feh --bg-fill ~/.config/wall-alt.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-alt.png -a 50; pywal-bspwm-border; layout-case -vid; layout-home -neo
 super + shift + Home
     feh --bg-fill ~/.config/wall-dark.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-dark.png -a 50; pywal-bspwm-border; layout-case -dark
 

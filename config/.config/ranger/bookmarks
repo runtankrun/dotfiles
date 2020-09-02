@@ -6,11 +6,11 @@ D:/home/ellio/Documents
 v:/home/ellio/Videos
 h:/home/ellio
 f:/home/ellio/Pictures/chx/f
-m:/run/media/ellio/TB_1/a1_Manjaro-Back-Up
-q:/run/media/ellio/TB_1/Phone/HR
+m:/mnt/TB_1/a1_Manjaro-Back-Up
+q:/mnt/TB_1/Phone/HR
 r:/home/ellio/.config/ranger
 d:/home/ellio/Downloads
-t:/run/media/ellio/TB_1/timeshift/snapshots
+t:/mnt/TB_1/timeshift
 F:/home/ellio/.fonts/misc/figlet
 T:/home/ellio/Downloads/dotfiles-thunar/.color-toys
 s:/home/ellio/.scripts
@@ -18,9 +18,9 @@ V:/home/ellio/.vim/sessions
 x:/home/ellio/Pictures/chx
 W:/home/ellio/Pictures/chx/rachel/wtvr
 S:/home/ellio/Pictures/screenshots
-a:/run/media/ellio/TB_1/a1_Manjaro-Back-Up/Anime
+a:/mnt/TB_1/a1_Manjaro-Back-Up/Anime
 g:/home/ellio/Pictures/gifs
-y:/run/media/ellio/TB_1/a1_Manjaro-Back-Up/yd
+y:/mnt/TB_1/a1_Manjaro-Back-Up/yd
 C:/home/ellio/.cache/wal
 k:/home/ellio/.config/kitty
 n:/home/ellio/.config/neofetch

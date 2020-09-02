@@ -21,7 +21,7 @@ kitty --name "ranger" --title "ranger" -e sh -c \
 #   ALACRITTY   #
 #################
 elif [[ $1 = "-a" ]]; then
-alacritty --title "ranger" --class "ranger"  -e sh -c \
+alacritty --title "ranger" --class "ranger" -e sh -c \
 "ranger \
 --cmd='set preview_images_method ueberzug' \
 --cmd='set draw_borders false' \

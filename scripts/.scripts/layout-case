@@ -1,6 +1,5 @@
 #!/bin/sh
 
-col=$(cat ~/.config/kitty/layout-case-color)
 while bspc node 'any.leaf.!window.!local' -k; do :; done;
 while bspc node 'any.marked.!local' -c; do :; done;
 
@@ -14,30 +13,12 @@ bspc node @^1:^1:/ -o .52 -p east -i
 bspc node @^1:^1:/1 -o .498 -p south -i
 ##ADD RULES
 bspc rule -a mpv:ps -o node=@^1:^1:/1/1 marked=on focus=off
-bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
-bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
+bspc rule -a URxvt:gotop -o node=@^1:^1:/2 marked=on focus=off
+bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 ##LAUNCH APPS
 mpv --x11-name="ps" --title="ps" ~/Pictures/gifs/ps.GIF & 
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 1 -b" &
-sleep .5s; bspc desktop --focus ^2:focused
-
-##############
-#   NARUTO   #
-##############
-elif [[ $1 = "-naruto" ]]; then
-##INSERT RECEPTACLES
-bspc node @^1:^1:/ -i
-bspc node @^1:^1:/ -o 0.52 -p east -i
-bspc node @^1:^1:/2 -o 0.34 -p south -i
-##ADD RULES
-bspc rule -a kitty:tty-clock -o node=@^1:^1:/1 marked=on focus=off
-bspc rule -a mpv:naruto -o node=@^1:^1:/2/1 marked=on focus=off
-bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on focus=off
-##LAUNCH APPS
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 1 -b" &
-mpv --x11-name="naruto" --title="naruto" ~/Videos/N.mp4 &
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
+urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black -e sh -c "gotop" &
+urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" &
 sleep .5s; bspc desktop --focus ^2:focused
 
 ################
@@ -46,26 +27,25 @@ sleep .5s; bspc desktop --focus ^2:focused
 elif [[ $1 = "-vid" ]]; then
 ##VARIABLE
 tag_count=$(grep -c ^c: ~/.config/ranger/tagged)
+
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i
 bspc node @^1:^1:/ -o 0.4575 -p east -i
 bspc node @^1:^1:/1 -o 0.2 -p south -i 
-bspc node @^1:^1:/2 -o 0.383281 -p south -i
-
+bspc node @^1:^1:/2 -o 0.616719 -p south -i
 ## ADD RULES
-bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/1 marked=on focus=off
+bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/1 marked=on focus=off
 bspc rule -a URxvt:vis-case -o node=@^1:^1:/1/2 marked=on focus=off
-bspc rule -a mpv:vid-case -o node=@^1:^1:/2/1 marked=on focus=off
-bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on focus=off
-
+bspc rule -a URxvt:gotop -o node=@^1:^1:/2/1 marked=on focus=off
+bspc rule -a mpv:vid-case -o node=@^1:^1:/2/2 marked=on focus=off
 ## LAUNCH COMMANDS 
 visualizer -w &
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -t -C 1 -b -r" &
+urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" &
 mpv --x11-name="vid-case" --title="vid-case" $(while IFS= read -r line
 do 
     echo "$line" | grep ^c: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
 done < ~/.config/ranger/tagged) &
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
+urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black -e sh -c "gotop" &
 sleep .5s; bspc desktop --focus ^2:focused
 
 ############
@@ -77,15 +57,14 @@ bspc node @^1:^1:/ -i
 bspc node @^1:^1:/ -o .52 -p east -i
 bspc node @^1:^1:/1 -o .498 -p south -i
 ## ADD RULES
-#bspc rule -a mpv:walking -o node=@^1:^1:/1/1 marked=on focus=off
 bspc rule -a URxvt:cava -o node=@^1:^1:/1/1 marked=on focus=off
-bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
-bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
+bspc rule -a URxvt:gotop -o node=@^1:^1:/2 marked=on focus=off
+bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 ##LAUNCH APPS
 #mpv --x11-name="walking" --title="walking" ~/Pictures/gifs/walking.GIF &
-urxvtc -name "cava" -title "cava" -bg black -bd black -e sh -c "cava" &
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/black-kitty.conf" -e sh -c "gotop" &
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/black-kitty.conf" -e sh -c "tty-clock -c -t -C 7 -b" &
+urxvtc -name "cava" -title "cava" -bg white -bd black -e sh -c "cava" &
+urxvtc -name "gotop" -title "gotop" -bg black -bd black --color0 white --color1 red --color2 white --color3 white --color4 cyan --color5 white --color6 cyan --color7 white --color11 white -e sh -c "gotop" &
+urxvtc -name "tty-clock" -title "tty-clock" -bg black -bd black --color1 white -e sh -c "tty-clock -c -t -C 1" &
 sleep .5s; bspc desktop --focus ^2:focused
 
 ###############
@@ -97,10 +76,10 @@ bspc node @^1:^1:/ -i
 bspc node @^1:^1:/ -o 0.5 -p east -i
 bspc node @^1:^1:/1 -o 0.502585 -p south -i
 ##ADD RULES
-bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
-bspc rule -a kitty:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
+bspc rule -a URxvt:gotop -o node=@^1:^1:/2 marked=on focus=off
+bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 ##LAUNCH APPS
-kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "tty-clock -c -t -C 1 -b" &
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/$col-kitty.conf" -e sh -c "gotop" &
+urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" &
+urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black -e sh -c "gotop" &
 sleep .5s; bspc desktop --focus ^2:focused
 fi

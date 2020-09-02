@@ -31,7 +31,7 @@ skippy-xd --config ~/.config/skippy-xd/skippy-xd.rc --start-daemon &
 easystroke &
 urxvtd -q &
 mpd &
-floating-desk &
+sleep .5s; floating-desk &
 
 #Display
 #sleep .5s; xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 99.98 --output HDMI-1-2 --mode 1280x1024 --orientation inverted --rate 60.02 --left-of HDMI-0 &
