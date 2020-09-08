@@ -31,12 +31,11 @@ skippy-xd --config ~/.config/skippy-xd/skippy-xd.rc --start-daemon &
 easystroke &
 urxvtd -q &
 mpd &
-sleep .5s; floating-desk &
 
 #Display
 #sleep .5s; xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 99.98 --output HDMI-1-2 --mode 1280x1024 --orientation inverted --rate 60.02 --left-of HDMI-0 &
 sleep .5s; nvidia-settings -l &
-sleep .5s; feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall.png -a 50; pywal-bspwm-border &
+sleep .5s; feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall-case.png & 
 
 #mouse refresh rate (1000/100hz=10) bspc config pointer_motion_interval 10
 bspc config pointer_motion_interval 10

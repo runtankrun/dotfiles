@@ -2,7 +2,7 @@
 
 if [[ $1 = "-w" ]]; then
 urxvtc -name "vis-case" -title "vis-case" --transparent -e sh -c \
-"cava"
+"cava -p ~/.config/cava/config_2"
 
 else
 urxvtc -name "vis" -title "vis" -e sh -c \

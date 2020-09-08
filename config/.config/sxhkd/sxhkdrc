@@ -81,25 +81,31 @@ super + alt + F8
 super + ctrl + F8
     toys -pipes-d
 
+## timeshift back-up
+super + F9
+    urxvtc -e timeshift-d
+
 ## proton
-super + F11
+super + F10
     pro
-super + alt + F11
+super + alt + F10
     pro -s
-super + ctrl + F11
+super + ctrl + F10
     pro -r
 
-## timeshift back-up
-super + F12
-    urxvtc -e timeshift-d
+## tank-ui
+super + ctrl + c
+    ~/.scripts/ui/edex-ui/dist/linux-unpacked/tank-ui
 
 ## set previously saved wallpaper, colorscheme, & border colors
 super + Home
-    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall.png -a 50; pywal-bspwm-border; layout-case -vid; layout-home -neo
+    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall.png -a 50 --saturate .8; pywal-bspwm-border; pywal-alacritty; layout-case -vid; layout-home -neo
 super + alt + Home
-    feh --bg-fill ~/.config/wall-alt.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-alt.png -a 50; pywal-bspwm-border; layout-case -vid; layout-home -neo
+    feh --bg-fill ~/.config/wall-alt.png --bg-fill ~/.config/wall-case.png; wal --theme material; pywal-bspwm-border; pywal-alacritty; layout-case -vid; layout-home -neo
+super + ctrl + Home
+    feh --bg-fill ~/.config/wall-alt-02.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-alt-02.png -a 50 --saturate .8; pywal-bspwm-border; pywal-alacritty; layout-case -vid; layout-home -neo
 super + shift + Home
-    feh --bg-fill ~/.config/wall-dark.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-dark.png -a 50; pywal-bspwm-border; layout-case -dark
+    feh --bg-fill ~/.config/wall-dark.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-dark.png -a 50; pywal-bspwm-border; pywal-alacritty; layout-case -dark; layout-home -neo
 
 ## view open windows
 Pause
@@ -130,6 +136,10 @@ ctrl + F11
 ## wifi
 super + w
     networkmanager_dmenu
+
+## material colorscheme
+super + alt + w
+    wal --theme material; ~/.config/alacritty/pywal-alacritty
 
 ## launch terminal
 super + z
@@ -176,6 +186,8 @@ super + ctrl + v
 ## launch pictures
 super + alt + p
     rtags-quicklaunch -pic
+super + alt + f
+    c-feh -i
 
 ## launch gifs
 super + alt + g
@@ -316,11 +328,11 @@ ctrl + alt + Right
 	bspc desktop -f next.local
 
 ## focus the last node/desktop
-super + {grave}
-	bspc {desktop} -f last
+#super + {grave}
+#	bspc {desktop} -f last
 
 ## focus or send to the given desktop
-super + {_,shift + }{0-8}
+super + {_,shift + }{grave,1-8}
 	bspc {desktop -f,node -d} '^{1-9}'
 
 ##-----RESIZE-----##

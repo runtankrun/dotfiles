@@ -175,7 +175,7 @@ alias rf='fc-cache -f -v'
 alias fl='fc-list | grep "~/.fonts/"'
 
 #Youtube-DL
-alias yd='cd /mnt/TB_1/a1_Manjaro-Back-Up/yd; youtube-dl --restrict-filenames'
+alias yd='cd /mnt/TB_2/Media/yd; youtube-dl --restrict-filenames'
 alias ydm='youtube-dl --restrict-filenames --extract-audio --embed-thumbnail --audio-format mp3'
 
 #vim

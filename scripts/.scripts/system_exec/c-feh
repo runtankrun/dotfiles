@@ -1,0 +1,19 @@
+#!/bin/sh
+#bspc rule -a zero2:feh -o state=pseudo_tiled
+#bspc rule -a zero:feh -o state=pseudo_tiled
+
+if [[ $1 = "-i" ]]; then
+tag_count_I=$(grep -c ^I: ~/.config/ranger/tagged)
+
+feh --class images -B white -r -Z -. -D 5 $(while IFS= read -r line
+do 
+    echo "$line" | grep ^I: | tail -n $tag_count_I | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged)
+
+else
+start1=$(cat ~/Documents/02/bookmark)
+start2=$(cat ~/Documents/02/bookmark2)
+
+feh --class zero2 -B white -r -Z -. -d -D 60 --sort filename --start-at $start2 --action1 ";echo %f > ~/Documents/02/bookmark2" ~/Documents/02/*/*{2,4,6,8,0}.* &
+feh --class zero -B white -r -Z -. -d -D 60 --sort filename --start-at $start1 --action1 ";echo %f > ~/Documents/02/bookmark" ~/Documents/02/*/*{1,3,5,7,9}.*
+fi
