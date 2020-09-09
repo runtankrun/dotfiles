@@ -42,7 +42,7 @@ done < ~/.config/ranger/tagged)
 elif [[ $1 = "-cb" ]]; then
 ##VARIABLES
 tag_count_I=$(grep -c ^I: ~/.config/ranger/tagged)
-tag_count_M=$(grep -c ^M: ~/.config/ranger/tagged)
+tag_count_V=$(grep -c ^V: ~/.config/ranger/tagged)
 
 ## MOVE TO DESKTOP AND CLEAR WINDOWS
 bspc desktop -f ^2:^3;
@@ -71,7 +71,7 @@ firefox &
 c-ranger &
 mpv --x11-name="wide" --title="wide" --osc=no $(while IFS= read -r line
 do 
-    echo "$line" | grep ^M: | tail -n $tag_count_M | tail -c +3 | tr '\n' ' '
+    echo "$line" | grep ^V: | tail -n $tag_count_V | tail -c +3 | tr '\n' ' '
 done < ~/.config/ranger/tagged) 
 
 ###########
