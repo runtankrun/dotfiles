@@ -8,7 +8,9 @@ alsa-plugins
 alsa-utils
 arandr
 arp-scan
+atool
 autoconf-archive
+autojump
 b43-fwcutter
 bash
 bind
@@ -44,7 +46,6 @@ dunst
 e2fsprogs
 easystroke
 ecryptfs-utils
-edex-ui-git
 efibootmgr
 engrampa
 etcher

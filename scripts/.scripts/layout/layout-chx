@@ -78,13 +78,13 @@ while bspc node 'any.leaf.!window.local' -k; do :; done;
 
 ## insert receptacles
 bspc node @^2:^5:/ -i
-bspc node @^2:^5:/ -o 0.206628 -p east -i
-bspc node @^2:^5:/2 -o 0.25975 -p east -i
+bspc node @^2:^5:/ -o 0.210169 -p east -i
+bspc node @^2:^5:/2 -o 0.265023 -p east -i
 
 ## add rules
 bspc rule -a mpv:alexa -o node=@^2:^5:/1
 bspc rule -a mpv:h -o node=@^2:^5:/2/1
-bspc rule -a kitty:ranger -o node=@^2:^5:/2/2
+bspc rule -a Alacritty:ranger -o node=@^2:^5:/2/2
 
 ## launch apps
 mpv --x11-name="alexa" --title="alexa" ~/Videos/h/ap/ --video-zoom=0.2 &
@@ -92,11 +92,10 @@ mpv --x11-name="h" --title="h" $(while IFS= read -r line
 do 
     echo "$line" | grep ^v: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
 done < ~/.config/ranger/tagged) --video-zoom=0.2 &
-kitty --name "ranger" --title "ranger" -e sh -c \
+alacritty --class "ranger" --title "ranger" -e sh -c \
 "~/.scripts/ranger/ranger.py \
 --cmd='set preview_images_method ueberzug' \
---cmd='default_linemode devicons2' \
 --cmd='set draw_borders false' \
 ~ \
---selectfile='Pictures/chx/rachel/Nirvana_Issue_2_p24'"
+--selectfile=$(grep ^H: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
 fi

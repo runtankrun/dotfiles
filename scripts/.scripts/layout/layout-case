@@ -17,7 +17,7 @@ bspc rule -a URxvt:gotop -o node=@^1:^1:/2 marked=on focus=off
 bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 ##LAUNCH APPS
 mpv --x11-name="ps" --title="ps" ~/Pictures/gifs/ps.GIF & 
-urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black -e sh -c "gotop" &
+urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black --color15 black -e sh -c "gotop" &
 urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" &
 sleep .5s; bspc desktop --focus ^2:focused
 
@@ -26,7 +26,7 @@ sleep .5s; bspc desktop --focus ^2:focused
 ################
 elif [[ $1 = "-vid" ]]; then
 ##VARIABLE
-tag_count=$(grep -c ^c: ~/.config/ranger/tagged)
+tag_count=$(grep -c ^C: ~/.config/ranger/tagged)
 
 ##INSERT RECEPTACLES
 bspc node @^1:^1:/ -i
@@ -43,9 +43,9 @@ visualizer -w &
 urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -r -t -C 1" &
 mpv --x11-name="vid-case" --title="vid-case" $(while IFS= read -r line
 do 
-    echo "$line" | grep ^c: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+    echo "$line" | grep ^C: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
 done < ~/.config/ranger/tagged) &
-urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black -e sh -c "gotop" &
+urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black --color15 black -e sh -c "gotop" &
 sleep .5s; bspc desktop --focus ^2:focused
 
 ############
@@ -80,6 +80,6 @@ bspc rule -a URxvt:gotop -o node=@^1:^1:/2 marked=on focus=off
 bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 ##LAUNCH APPS
 urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" &
-urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black -e sh -c "gotop" &
+urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black --color15 black -e sh -c "gotop" &
 sleep .5s; bspc desktop --focus ^2:focused
 fi

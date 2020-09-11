@@ -16,6 +16,7 @@ export ZSH="/home/ellio/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k"
+#ZSH_THEME="random"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -105,8 +106,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#Nvidia
-alias nv='nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceCompositionPipeline=On, ForceFullCompositionPipeline=On }"'
+#export package list
+alias pkgs='yay -Qqe > ~/.config/pkglist.txt'
 
 #wget website images
 alias wget-i='wget -nd --page-requisites --span-host -A'
@@ -210,3 +211,4 @@ source xrdm
 # End xrdm settings
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+. /usr/share/autojump/autojump.zsh

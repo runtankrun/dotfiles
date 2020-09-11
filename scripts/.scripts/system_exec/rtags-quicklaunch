@@ -1,10 +1,10 @@
 #!/bin/sh
 if [[ $1 = "-p" ]]; then
-tag_count=$(grep -c ^V: ~/.config/ranger/tagged)
+tag_count=$(grep -c ^x: ~/.config/ranger/tagged)
 
 mpv $(while IFS= read -r line
 do 
-    echo "$line" | grep ^V: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+    echo "$line" | grep ^x: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
 done < ~/.config/ranger/tagged)
 
 elif [[ $1 = "-vid" ]]; then
