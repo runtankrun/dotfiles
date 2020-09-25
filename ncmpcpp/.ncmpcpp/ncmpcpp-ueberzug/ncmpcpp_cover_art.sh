@@ -2,7 +2,7 @@
 # Cover art script for ncmpcpp-ueberzug
 
 # SETTINGS
-music_library="/run/media/ellio/TB_1/iTunes Media/Music/"
+music_library="/mnt/TB_1/iTunes Media/Music/"
 fallback_image="$HOME/.ncmpcpp/ncmpcpp-ueberzug/img/fallback.png"
 padding_top=3
 padding_bottom=1

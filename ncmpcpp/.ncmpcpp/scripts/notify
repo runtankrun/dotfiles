@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-MUSIC_DIR="/run/media/ellio/TB_1/iTunes Media/Music/" # Your music directory
+MUSIC_DIR="/mnt/TB_1/iTunes Media/Music/" # Your music directory
 COVER=/tmp/mpd_cover.jpg
 
 {

@@ -1,7 +1,7 @@
 c:/home/ellio/.config
 p:/home/ellio/Pictures
 w:/home/ellio/Pictures/wal
-':/home/ellio/dotfiles/fonts
+':/home/ellio/dotfiles/fonts/.fonts/misc
 D:/home/ellio/Documents
 v:/home/ellio/Videos
 h:/home/ellio
@@ -29,3 +29,4 @@ b:/home/ellio/Documents
 N:/home/ellio/.cache/thumbnails/neofetch
 M:/home/ellio/Music
 A:/home/ellio/.config/alacritty
+J:/home/ellio/Pictures

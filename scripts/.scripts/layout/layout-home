@@ -4,10 +4,11 @@
 #   Neo   #
 ###########
 if [[ $1 = "-neo" ]]; then
+
 #VARIABLE
 tag_count_F=$(grep -c ^F: ~/.config/ranger/tagged)
 
-## move to desktop & close windows
+## MOVE TO DESKTOP + CLOSE WINDOWS + KILL RECEPTACLES
 bspc desktop -f ^2:^2;
 while bspc node 'any.leaf.local' -c; do :; done;
 while bspc node 'any.leaf.!window.local' -k; do :; done;
@@ -36,15 +37,12 @@ do
     echo "$line" | grep ^F: | tail -n $tag_count_F | tail -c +3 | tr '\n' ' '
 done < ~/.config/ranger/tagged)
 
-############
-#   HOME   #
-############
-elif [[ $1 = "-cb" ]]; then
-##VARIABLES
-tag_count_I=$(grep -c ^I: ~/.config/ranger/tagged)
-tag_count_V=$(grep -c ^V: ~/.config/ranger/tagged)
+###########
+#   DEV   #
+###########
 
-## MOVE TO DESKTOP AND CLEAR WINDOWS
+elif [[ $1 = "-dev" ]]; then
+## MOVE TO DESKTOP + CLOSE WINDOWS + KILL RECEPTACLES
 bspc desktop -f ^2:^3;
 while bspc node 'any.leaf.local' -c; do :; done;
 while bspc node 'any.leaf.!window.local' -k; do :; done;
@@ -53,32 +51,25 @@ while bspc node 'any.leaf.!window.local' -k; do :; done;
 bspc node @^2:^3:/ -i
 bspc node @^2:^3:/ -o 0.272314 -p east -i
 bspc node @^2:^3:/2 -o 0.505506 -p east -i
-bspc node @^2:^3:/2/2 -o 0.48946 -p south -i
+bspc node @^2:^3:/2/1 -o 0.48946 -p south -i
 
 ##ADD RULES
-bspc rule -a images:feh -o node=@^2:^3:/1 state=pseudo_tiled
-bspc rule -a firefox:Navigator -o node=@^2:^3:/2/1
-bspc rule -a URxvt:ranger -o node=@^2:^3:/2/2/1
-bspc rule -a mpv:wide -o node=@^2:^3:/2/2/2
-bspc config -m HDMI-0 -d ^4 window_gap 51
+bspc rule -a Alacritty:ranger -o node=@^2:^3:/1
+bspc rule -a URxvt:TANK -o node=@^2:^3:/2/1/1
+bspc rule -a URxvt:TANK -o node=@^2:^3:/2/1/2
+bspc rule -a firefox:Navigator -o node=@^2:^3:/2/2
 
 ##LAUNCH APPS
-feh --class images -B white -r -Z -. -D 5 $(while IFS= read -r line
-do 
-    echo "$line" | grep ^I: | tail -n $tag_count_I | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged) &
-firefox &
-c-ranger &
-mpv --x11-name="wide" --title="wide" --osc=no $(while IFS= read -r line
-do 
-    echo "$line" | grep ^V: | tail -n $tag_count_V | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged) 
+c-ranger -a &
+message &
+message &
+firefox
 
 ###########
 #   MPV   #
 ###########
 elif [[ $1 = "-mpv" ]]; then
-## move to desktop & close windows
+## MOVE TO DESKTOP + CLOSE WINDOWS + KILL RECEPTACLES
 bspc desktop -f ^2:^3;
 while bspc node 'any.leaf.local' -c; do :; done;
 while bspc node 'any.leaf.!window.local' -k; do :; done;
@@ -103,7 +94,7 @@ mpv $(grep ^m: ~/.config/ranger/tagged | tail -n 1 | tail -c +3 )
 #   TOONAMI   #
 ###############
 else
-## move to desktop & close windows
+## MOVE TO DESKTOP + CLOSE WINDOWS + KILL RECEPTACLES
 bspc desktop -f ^2:^1; 
 while bspc node 'any.leaf.local' -c; do :; done;
 while bspc node 'any.leaf.!window.local' -k; do :; done;

@@ -47,9 +47,9 @@ super + F3
 
 ## auto-launch chx apps
 super + F4
-    layout-home -cb
+    layout-home -dev
 super + ctrl + F4
-    layout-chx -r
+    layout-chx
 super + alt + F4
     layout-home -mpv
 
@@ -93,19 +93,25 @@ super + alt + F10
 super + ctrl + F10
     pro -r
 
+## polybar
+super + F11
+    c-polybar
+super + alt + F11
+    c-polybar -h
+
 ## tank-ui
 super + ctrl + c
     ~/.scripts/ui/edex-ui/dist/linux-unpacked/tank-ui
 
 ## set previously saved wallpaper, colorscheme, & border colors
 super + Home
-    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall-case.png; wal --theme material; pywal-alacritty; bspc config focused_border_color "#00F0FF"; bspc config presel_feedback_color "#00F0FF"; layout-case; layout-home -neo
+    feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall.png; wal --theme material -a 95; pywal-alacritty; pywal-bspwm-border; layout-case; layout-home -neo
 super + alt + Home
-    feh --bg-fill ~/.config/wall-alt.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/config/wall-alt.png -a 50 --saturate .8; pywal-bspwm-border; pywal-alacritty; layout-case; layout-home -neo
+    feh --bg-fill ~/.config/wall-alt.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-alt.png -a 50 --saturate .8; pywal-alacritty; pywal-bspwm-border; layout-case; layout-home -neo
 super + ctrl + Home
-    feh --bg-fill ~/.config/wall-alt-02.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-alt-02.png -a 50 --saturate .8; pywal-bspwm-border; pywal-alacritty; layout-case; layout-home -neo
+    feh --bg-fill ~/.config/wall-alt-02.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-alt-02.png -a 50 --saturate .8; pywal-alacritty; pywal-bspwm-border; layout-case; layout-home -neo
 super + shift + Home
-    feh --bg-fill ~/.config/wall-dark.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-dark.png -a 50; pywal-bspwm-border; pywal-alacritty; layout-case -dark; layout-home -neo
+    feh --bg-fill ~/.config/wall-dark.png --bg-fill ~/.config/wall-case.png; wal -n -i ~/.config/wall-dark.png -a 50; pywal-alacritty; pywal-bspwm-border; layout-case -dark; layout-home -neo
 
 ## view open windows
 Pause
@@ -148,8 +154,6 @@ super + alt + z
     message -a
 super + ctrl + z
     message -k
-super + shift + z
-    message -r
 
 ## launch ranger
 super + r
@@ -157,9 +161,7 @@ super + r
 super + alt + r
     c-ranger
 super + ctrl + r
-    c-ranger -k
-super + shift + r
-    c-ranger -ks
+    c-ranger -s
 
 ## launch browser 
 super + b

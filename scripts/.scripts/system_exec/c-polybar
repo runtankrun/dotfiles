@@ -1,0 +1,7 @@
+#/bin/sh
+
+if [[ $1 = "-h" ]]; then
+polybar-msg cmd hide; bspc config -m focused bottom_padding $((`bspc config -m focused bottom_padding` - 43))
+else
+polybar-msg cmd show
+fi

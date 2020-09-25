@@ -6,8 +6,8 @@ figlet -f .fonts/misc/figlet/3D-ASCII.flf 'open';
 ##"current tags:"
 echo "current tags:" | lolcat; 
 
-##get unique tags (exclude tags using keybinding: h,m,p,v,V)
-grep --only-matching .: ~/.config/ranger/tagged | sort --unique |grep -Ev "h|m|p|v|V" | tr '\n' ' '| lolcat;
+##get unique tags (exclude tags assigned to script: C,H,h,m,p,v,w,x)
+grep --only-matching .: ~/.config/ranger/tagged | sort --unique |grep -Ev "C|H|h|m|p|v|w|x" | tr '\n' ' '| lolcat;
 echo '';
 
 ##variables
