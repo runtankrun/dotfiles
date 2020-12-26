@@ -1,0 +1,22 @@
+#!/bin/sh
+urxvtc \
+-name "transparent" -title "transparent" \
+--transparent \
+-bg white \
+-fg black \
+--color0 black \
+--color1 red \
+--color2 black \
+--color3 black \
+--color4 blue \
+--color5 black \
+--color6 blue \
+--color7 black \
+--color8 black \
+--color9 black \
+--color10 black \
+--color11 black \
+--color12 black \
+--color13 black \
+--color14 black \
+--color15 black
