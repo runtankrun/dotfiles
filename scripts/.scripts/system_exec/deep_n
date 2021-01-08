@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cd ~/.scripts/xfrom_source/dn/; convert input.* -resize 512x512^ -gravity Center -extent 512x512+0+0 input.png; python3 main.py

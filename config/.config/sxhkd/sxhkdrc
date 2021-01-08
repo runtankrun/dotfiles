@@ -95,7 +95,7 @@ super + ctrl + F10
 
 ## polybar
 super + F11
-    poly
+    ~/.config/polybar/launch.sh
 super + ctrl + F11
     c-polybar
 super + alt + F11
@@ -103,7 +103,7 @@ super + alt + F11
 
 ## tank-ui
 super + ctrl + c
-    ~/.scripts/xfrom_source/ui/edex-ui/dist/linux-unpacked/tank-ui
+    ~/.scripts/xfrom_source/ui/edex-ui/dist/linux-unpacked/edex-ui
 
 ## set previously saved wallpaper, colorscheme, & border colors
 super + Home
