@@ -9,8 +9,9 @@ sed -i '/background_opacity:/d' ~/.config/alacritty/alacritty.yml; \
 sed -i '/^# Colors/,$d' ~/.config/alacritty/alacritty.yml; \
 
 ##output
-echo " 
-background_opacity: 0$converted
+
+echo \
+"background_opacity: 0$converted
 
 # Colors
 colors:

@@ -1,7 +1,30 @@
 #/bin/sh
-
+############
+#   HIDE   #
+############
 if [[ $1 = "-h" ]]; then
-polybar-msg cmd hide; bspc config -m focused bottom_padding $((`bspc config -m focused bottom_padding` - 43))
-else
+polybar-msg cmd hide; \
+bspc config -m focused bottom_padding $((`bspc config -m focused bottom_padding` - 43))
+
+############
+#   KILL   #
+############
+elif [[ $1 = "-k" ]]; then
+pkill polybar; \
+bspc config -m focused bottom_padding $((`bspc config -m focused bottom_padding` - 43)); \
+bspc config -m HDMI-0 window_gap 0
+
+############
+#   SHOW   #
+############
+elif [[ $1 = "-s" ]]; then
 polybar-msg cmd show
+
+##############
+#   LAUNCH   #
+##############
+else
+bspc config -m HDMI-0 window_gap 51; \
+~/.config/polybar/launch.sh
+
 fi
