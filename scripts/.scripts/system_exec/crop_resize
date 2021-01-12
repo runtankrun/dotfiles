@@ -19,7 +19,7 @@ height=$(identify -format "%h" "$2")
 bs=$(echo "3440-$width" | bc)
 
 #RESIZE TO 3440x1440 WITH BORDER COLOR
-magick $2 -set option:bcolor "%[pixel:u.p{87,87}]" -gravity center -bordercolor "%[bcolor]" -border $bs'x0' -extent 3440x$height $2_wide.png
+magick $2 -set option:bcolor "%[pixel:u.p{87,87}]" -gravity center -bordercolor "%[bcolor]" -border $bs'x0' -extent 3440x$height $2_wide.png; sleep 3s;
 
 #WP
 feh --bg-fill $2_wide.png --bg-fill ~/.config/wall-case.png & wal -n -i $2_wide.png -a 50 --saturate 0.8; pywal-alacritty & pywal-bspwm-border
