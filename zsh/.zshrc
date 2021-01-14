@@ -205,6 +205,12 @@ alias bul='sudo timeshift --list'
 alias bud='sudo timeshift --delete --snapshot'
 alias bus='sudo timeshift --create --comments "stable"'
 
+#duck
+alias evc='cd ~/Downloads/EvilOSX; python start.py --cli --port 1337'
+alias evb='cd ~/Downloads/EvilOSX; python start.py --builder'
+alias duck='mv ~/Downloads/EvilOSX/data/builds/*Launcher* ~/Downloads/EvilOSX/data/builds/e.txt; cd ~/Downloads/USB-Rubber-Ducky/;java -jar duckencoder.jar -i ~/Downloads/EvilOSX/data/builds/e.txt; cp ~/Downloads/USB-Rubber-Ducky/inject.bin ~/Downloads/'
+
+
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
 export XRDM_FONT_DIR=$XRDM_DIR/fonts
