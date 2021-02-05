@@ -100,12 +100,12 @@ super + ctrl + F10
 ## polybar
 super + F11
     c-polybar
-super + ctrl + F11
-    c-polybar -s
 super + alt + F11
-    c-polybar -h
-super + ctrl + shift + F11
     c-polybar -k
+
+## Virtualbox
+super + F12
+    kitty --name "vbox" --title "vbox" & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2020.4-vbox-amd64"
 
 ## tank-ui
 super + ctrl + c

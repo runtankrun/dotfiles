@@ -65,3 +65,5 @@ bspc rule -a MEGAsync state=floating
 bspc rule -a Gcolor3 state=floating
 bspc rule -a Surf state=tiled
 bspc rule -a Nvidia-settings state=floating
+bspc rule -a VirtualBoxVM desktop='^8' state=floating
+bspc rule -a kitty:vbox desktop='^8'

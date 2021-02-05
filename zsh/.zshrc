@@ -111,6 +111,9 @@ alias logz='sudo find /var/log/ -type f \( -name "*.log" \) -exec tail -f "$file
 alias sys-scan='sudo clamscan -r / --log=/tmp/clamav_report.log'
 alias audit='cd ~/.scripts/xfrom_source/lynis-master/; sudo ./lynis audit system'
 
+#pass
+alias inf='gpg -d ~/Documents/i'
+
 #export package list
 alias pkgs='yay -Qqe > ~/.config/pkglist.txt'
 
@@ -133,7 +136,8 @@ alias clinks='stow --adopt -v'
 #ProtonVPN
 alias prof='sudo protonvpn c -f'
 alias pros='sudo protonvpn c --sc'
-alias pror='protonvpn refresh' 
+alias prot='sudo protonvpn c --tor -p tcp'
+alias pror='protonvpn refresh'
 
 #Polybar
 alias poly='~/.config/polybar/launch.sh'
