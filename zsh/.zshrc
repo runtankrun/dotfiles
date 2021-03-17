@@ -214,6 +214,9 @@ alias evc='cd ~/Downloads/EvilOSX; python start.py --cli --port 1337'
 alias evb='cd ~/Downloads/EvilOSX; python start.py --builder'
 alias duck='mv ~/Downloads/EvilOSX/data/builds/*Launcher* ~/Downloads/EvilOSX/data/builds/e.txt; cd ~/Downloads/USB-Rubber-Ducky/;java -jar duckencoder.jar -i ~/Downloads/EvilOSX/data/builds/e.txt; cp ~/Downloads/USB-Rubber-Ducky/inject.bin ~/Downloads/'
 
+#usb
+alias musb='sudo mount -U AEA4-ED67 /mnt/usb'
+alias umusb='sudo umount /mnt/usb'
 
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d

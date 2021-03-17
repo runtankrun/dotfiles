@@ -87,7 +87,7 @@ super + ctrl + F8
 
 ## timeshift back-up
 super + F9
-    urxvtc -e timeshift-d
+    urxvtc -name "timeshift" -title "timeshift" -e timeshift-d
 
 ## proton
 super + F10
@@ -205,7 +205,7 @@ super + alt + g
 
 ## launch music
 super + m
-    layout-muziq
+    megasync
 
 ## mpv - launch last directory tagged with "m" 
 super + alt + m
@@ -229,7 +229,7 @@ ctrl + alt + End
 
 ## color
 super + c
-    gcolor3
+    kcolorchooser
 
 ## easystroke
 super + e

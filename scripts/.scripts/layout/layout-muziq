@@ -21,4 +21,5 @@ bspc rule -a URxvt:lofi -o node=@^2:^8:/2/2
 urxvtc -geometry 100x100 -name "spot" -title "spot" -e sh -c "spt;zsh" &
 alacritty --title "music" --class "music" -e sh -c "~/.ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug" &
 visualizer &
-urxvtc -name "lofi" -title "lofi" -e sh -c 'mpv --x11-name="lofi" --title="lofi" ~/Music/ --mute=no --no-video;zsh'
+urxvtc -name "lofi" -title "lofi" -e sh -c 'mpv --x11-name="lofi" --title="lofi" ~/Music/ --mute=no --no-video;zsh' &
+spotifyd -u chasetank -p $(pass spotify/spotifyd) -B 320

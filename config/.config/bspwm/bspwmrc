@@ -56,14 +56,12 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
 bspc rule -a SimpleScreenRecorder state=floating
 bspc rule -a MEGAsync state=floating
-bspc rule -a Gcolor3 state=floating
 bspc rule -a Surf state=tiled
 bspc rule -a Nvidia-settings state=floating
 bspc rule -a VirtualBoxVM desktop='^8' state=floating
 bspc rule -a kitty:vbox desktop='^8'
+bspc rule -a URxvt:pro state=pseudo_tiled
+bspc rule -a URxvt:timeshift state=pseudo_tiled
+bspc rule -a kcolorchooser:kcolorchooser state=floating

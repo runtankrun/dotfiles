@@ -38,14 +38,14 @@ tag_count=$(grep -c ^C: ~/.config/ranger/tagged)
 ## INSERT RECEPTACLES
 bspc node @^1:^1:/ -i
 bspc node @^1:^1:/ -o 0.4575 -p east -i
-bspc node @^1:^1:/1 -o 0.2 -p south -i 
-bspc node @^1:^1:/2 -o 0.616719 -p south -i
+bspc node @^1:^1:/1 -o 0.616719  -p south -i 
+bspc node @^1:^1:/2 -o 0.385547 -p south -i
 
 ## ADD RULES
 bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/1 marked=on focus=off
 bspc rule -a URxvt:vis-case -o node=@^1:^1:/1/2 marked=on focus=off
-bspc rule -a URxvt:gotop -o node=@^1:^1:/2/1 marked=on focus=off
-bspc rule -a mpv:vid-case -o node=@^1:^1:/2/2 marked=on focus=off
+bspc rule -a mpv:vid-case -o node=@^1:^1:/2/1 marked=on focus=off
+bspc rule -a URxvt:gotop -o node=@^1:^1:/2/2 marked=on focus=off
 
 ## LAUNCH COMMANDS 
 visualizer -w &
