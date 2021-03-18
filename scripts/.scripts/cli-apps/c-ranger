@@ -1,16 +1,16 @@
 #!/bin/sh
 source /usr/share/autojump/autojump.bash
 
-##################
-#   MINIMAL-UI   #
-##################
+#############
+#   KITTY   #
+#############
 if [[ $1 = "-s" ]]; then
 kitty --title "ranger-k" --name "ranger-k" -e sh -c \
-"~/.scripts/ranger/ranger.py \
+"ranger \
+--selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3) \
 --cmd='set preview_images_method ueberzug' \
 --cmd='default_linemode devicons2' \
---cmd='set draw_borders false' 
---selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
+--cmd='set draw_borders false'"
 
 #################
 #   ALACRITTY   #
