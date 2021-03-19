@@ -153,7 +153,7 @@ super + w
 
 ## change colorscheme
 super + alt + c
-    wal --theme {material,outrun,monokai}; pywal-alacritty; pywal-URxvt
+    wal --theme {material,outrun,monokai}; pywal-alacritty; pywal-URxvt; pywal-kitty
 
 ## launch terminal
 super + z

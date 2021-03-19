@@ -509,33 +509,59 @@ key_bindings:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 background_opacity: 0.50
 
 # Colors
 colors:
   # Default colors
   primary:
-    background: '#272822'
-    foreground: '#f8f8f2'
+    background: '#00002A'
+    foreground: '#D0D0FA'
 
   # Normal colors
   normal:
-    black:   '#272822'
-    red:     '#f92672'
-    green:   '#a6e22e'
-    yellow:  '#f4bf75'
-    blue:    '#66d9ef'
-    magenta: '#ae81ff'
-    cyan:    '#a1efe4'
-    white:   '#f8f8f2'
+    black:   '#00002A'
+    red:     '#FF4242'
+    green:   '#59F176'
+    yellow:  '#F3E877'
+    blue:    '#66B0FF'
+    magenta: '#F10596'
+    cyan:    '#0EF0F0'
+    white:   '#D0D0FA'
 
   # Bright colors
   bright:
-    black:   '#75715e'
-    red:     '#f92672'
-    green:   '#a6e22e'
-    yellow:  '#f4bf75'
-    blue:    '#66d9ef'
-    magenta: '#ae81ff'
-    cyan:    '#a1efe4'
-    white:   '#f9f8f5'
+    black:   '#50507A'
+    red:     '#FF4242'
+    green:   '#59F176'
+    yellow:  '#F3E877'
+    blue:    '#66B0FF'
+    magenta: '#F10596'
+    cyan:    '#0EF0F0'
+    white:   '#F5F5FF'
