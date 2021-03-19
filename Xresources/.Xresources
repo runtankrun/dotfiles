@@ -8,13 +8,11 @@ emacs*background:   #2C3E50
 URxvt*foreground:   #e0e0e0
 XTerm*foreground:   #e0e0e0
 UXTerm*foreground:  #e0e0e0
-URxvt*background:   [95]#2C3E50
 XTerm*background:   #2C3E50
 UXTerm*background:  #2C3E50
 URxvt*cursorColor:  #e0e0e0
 XTerm*cursorColor:  #e0e0e0
 UXTerm*cursorColor: #e0e0e0
-URxvt*borderColor:  [95]#2C3E50
 
 ! Colors 0-15.
 *.color0: #2C3E50
@@ -113,3 +111,5 @@ Xft.hintstyle: hintslight
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
+URxvt*background:[95]#FFFFFF
+URxvt*borderColor:[95]#FFFFFF

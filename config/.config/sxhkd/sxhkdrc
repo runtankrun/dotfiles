@@ -151,9 +151,9 @@ ctrl + F11
 super + w
     networkmanager_dmenu
 
-## material colorscheme
-super + alt + w
-    wal --theme material; ~/.config/alacritty/pywal-alacritty
+## change colorscheme
+super + alt + c
+    wal --theme {material,outrun,monokai}; pywal-alacritty; pywal-URxvt
 
 ## launch terminal
 super + z
@@ -221,7 +221,7 @@ Print
 
 ## record screen
 super + Print
-    urxvtc -e sh -c "giph --format webm -s -d 3 -l -c 1,1,1,0.3 -b 5 -p -5 ~/Videos/giph.webm"
+    urxvtc -e sh -c "giph --format mp4 -s -d 3 -l -c 1,1,1,0.3 -b 5 -p -5 ~/Videos/screen.mp4"
 
 ## log out
 ctrl + alt + End
