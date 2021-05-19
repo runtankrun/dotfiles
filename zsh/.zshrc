@@ -106,6 +106,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias enhance='function ne() { docker run --rm -v "$(pwd)/`dirname ${@:$#}`":/ne/input -it alexjc/neural-enhance ${@:1:$#-1} "input/`basename ${@:$#}`"; }; ne'
+
 #sec
 alias logz='sudo find /var/log/ -type f \( -name "*.log" \) -exec tail -f "$file" {} +'
 alias sys-scan='sudo clamscan -r / --log=/tmp/clamav_report.log'
@@ -202,13 +204,6 @@ alias shreddit='shred -n 5 -v -z'
 alias cs='xrdm color'
 alias tf='xrdm font'
 
-#timeshift
-alias bu='sudo timeshift --create --comments'
-alias bun='sudo timeshift --create --comments "housekeeping"'
-alias bul='sudo timeshift --list'
-alias bud='sudo timeshift --delete --snapshot'
-alias bus='sudo timeshift --create --comments "stable"'
-
 #duck
 alias evc='cd ~/Downloads/EvilOSX; python start.py --cli --port 1337'
 alias evb='cd ~/Downloads/EvilOSX; python start.py --builder'
@@ -218,15 +213,18 @@ alias duck='mv ~/Downloads/EvilOSX/data/builds/*Launcher* ~/Downloads/EvilOSX/da
 alias musb='sudo mount -U AEA4-ED67 /mnt/usb'
 alias umusb='sudo umount /mnt/usb'
 
+#update firefox
+alias uff='pkill firefox-bin; sudo mv /usr/lib/firefox /usr/lib/firefox_old; sudo cp -r ~/Downloads/firefox /usr/lib/'
+
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
 export XRDM_FONT_DIR=$XRDM_DIR/fonts
 export XRDM_COLOR_DIR=$XRDM_DIR/colors
 export XRDM_PRESET_DIR=$XRDM_DIR/presets
 export XRDM_PROGRAM_DIR=$XRDM_DIR/programs
-
 source xrdm
 # End xrdm settings
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 . /usr/share/autojump/autojump.zsh

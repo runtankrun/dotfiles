@@ -1,0 +1,22 @@
+#!/bin/sh
+
+while bspc node 'any.leaf.!window.!local' -k; do :; done;
+while bspc node 'any.marked.!local' -c; do :; done;
+
+##INSERT RECEPTACLES
+bspc node @^1:^1:/ -i 
+bspc node @^1:^1:/ -o 0.5 -p east -i
+bspc node @^1:^1:/1 -o 0.133444 -p south -i
+
+##ADD RULES
+bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/1 marked=on focus=off
+bspc rule -a URxvt:gotop -o node=@^1:^1:/2 marked=on focus=off
+bspc rule -a URxvt:slideshow -o node=@^1:^1:/1/2 marked=on focus=off
+
+##LAUNCH APPS
+urxvtc -name "tty-clock" -title "tty-clock" -bg white -bd white --color1 red -e sh -c "tty-clock -c -t -C 1" &
+urxvtc -name "gotop" -title "gotop" -bg white -bd white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black --color15 black -e sh -c "gotop" &
+urxvtc -name "slideshow" -title "slideshow" -bg white -bd white -e sh -c \
+"watch -n 5 feh --no-fehbg --bg-max --image-bg white --randomize -r $1" & \
+##FOCUS PRIMARY MONITOR
+sleep .5s; bspc desktop --focus ^2:focused

@@ -70,24 +70,25 @@ firefox
 ###########
 elif [[ $1 = "-mpv" ]]; then
 ## MOVE TO DESKTOP + CLOSE WINDOWS + KILL RECEPTACLES
-bspc desktop -f ^2:^3;
+bspc desktop -f ^2:^4;
 while bspc node 'any.leaf.local' -c; do :; done;
 while bspc node 'any.leaf.!window.local' -k; do :; done;
 
 ##INSERT RECEPTACLES
-bspc node @^2:^3:/ -i
-bspc node @^2:^3:/ -o 0.256628 -p east -i
-bspc node @^2:^3:/1 -o 0.460972 -p south -i
+bspc node @^2:^4:/ -i
+bspc node @^2:^4:/ -o 0.256628 -p east -i
+bspc node @^2:^4:/1 -o 0.460972 -p south -i
 
 ##ADD RULES
-bspc rule -a URxvt:nvtop -o node=@^2:^3:/1/1
-bspc rule -a URxvt:ranger -o node=@^2:^3:/1/2
-bspc rule -a mpv:gl -o node=@^2:^3:/2
+bspc rule -a feh:feh -o node=@^2:^4:/1/1
+#bspc rule -a URxvt:nvtop -o node=@^2:^4:/1/1
+bspc rule -a Alacritty:ranger -o node=@^2:^4:/1/2
+bspc rule -a mpv:gl -o node=@^2:^4:/2
 
 ##LAUNCH APPS
-#feh -B black -Z -. ~/Pictures/toonami.JPG &
-c-nvtop &
-c-ranger &
+feh -B black -Z -. ~/Pictures/toonami.JPG &
+#c-nvtop &
+alacritty --title "ranger" --class "ranger" -e sh -c "ranger --cmd='set preview_images_method ueberzug' --selectfile=$(grep ^m: ~/.config/ranger/tagged | tail -n 1 | tail -c +3 )" &
 mpv $(grep ^m: ~/.config/ranger/tagged | tail -n 1 | tail -c +3 )
 
 ###############

@@ -16,15 +16,13 @@ kitty --name "TANK-K" --title "TANK-K" -e sh -c \
 'figlet -f ~/.fonts/misc/figlet/rectangles.flf 'TANK'; \
 zsh'
 
+#############
+#   ADMIN   #
 #####################
-#   URXVTC RANDOM   #
-#####################
-elif [[ $1 = "-r" ]]; then
-ffont=$(find Downloads/figlet-fonts/ -type f | sort -R | tail -1)
-
-urxvtc -title "TANK" -name "TANK" -e sh -c \
-"echo $ffont; \
-figlet -f $ffont TANK; \
+elif [[ $1 = "-A" ]]; then
+alacritty --class "admin" --title "admin" -e sh -c \
+"figlet -f ~/.fonts/misc/figlet/rectangles.flf 'TANK'; \
+sudo su;\
 zsh"
 
 ##############

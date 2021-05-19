@@ -16,12 +16,12 @@ bspc node @^1:^1:/1 -o .498 -p south -i
 
 ##ADD RULES
 bspc rule -a mpv:ps -o node=@^1:^1:/1/1 marked=on focus=off
-bspc rule -a URxvt:gotop -o node=@^1:^1:/2 marked=on focus=off
+bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
 bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 
 ##LAUNCH APPS
 mpv --x11-name="ps" --title="ps" ~/Pictures/gifs/ps.GIF & 
-urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black --color15 black -e sh -c "gotop" &
+c-gotop -kt &
 urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" &
 
 ##FOCUS PRIMARY MONITOR
@@ -45,7 +45,7 @@ bspc node @^1:^1:/2 -o 0.385547 -p south -i
 bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/1 marked=on focus=off
 bspc rule -a URxvt:vis-case -o node=@^1:^1:/1/2 marked=on focus=off
 bspc rule -a mpv:vid-case -o node=@^1:^1:/2/1 marked=on focus=off
-bspc rule -a URxvt:gotop -o node=@^1:^1:/2/2 marked=on focus=off
+bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on focus=off
 
 ## LAUNCH COMMANDS 
 visualizer -w &
@@ -54,7 +54,7 @@ mpv --x11-name="vid-case" --title="vid-case" $(while IFS= read -r line
 do 
     echo "$line" | grep ^C: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
 done < ~/.config/ranger/tagged) &
-urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black --color15 black -e sh -c "gotop" &
+c-gotop -kt &
 sleep .5s; bspc desktop --focus ^2:focused
 
 ############
@@ -69,12 +69,12 @@ bspc node @^1:^1:/1 -o .498 -p south -i
 
 ## ADD RULES
 bspc rule -a URxvt:cava -o node=@^1:^1:/1/1 marked=on focus=off
-bspc rule -a URxvt:gotop -o node=@^1:^1:/2 marked=on focus=off
+bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
 bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 
 ##LAUNCH APPS
 urxvtc -name "cava" -title "cava" -bg white -bd black -e sh -c "cava -p ~/.config/cava/config_2" &
-urxvtc -name "gotop" -title "gotop" -bg black -bd black --color0 white --color1 red --color2 white --color3 white --color4 cyan --color5 white --color6 cyan --color7 white --color11 white -e sh -c "gotop" &
+c-gotop -kt &
 urxvtc -name "tty-clock" -title "tty-clock" -bg black -bd black --color1 white -e sh -c "tty-clock -c -t -C 1" &
 
 ##FOCUS PRIMARY MONITOR
@@ -92,12 +92,12 @@ bspc node @^1:^1:/1 -o 0.133444 -p south -i
 
 ##ADD RULES
 bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/1 marked=on focus=off
-bspc rule -a URxvt:gotop -o node=@^1:^1:/2 marked=on focus=off
+bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
 bspc rule -a URxvt:transparent -o node=@^1:^1:/1/2 marked=on focus=off
 
 ##LAUNCH APPS
 urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" &
-urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black --color15 black -e sh -c "gotop" &
+c-gotop -kt &
 c-urxvtc-trans 
 ##FOCUS PRIMARY MONITOR
 sleep .5s; bspc desktop --focus ^2:focused

@@ -95,5 +95,5 @@ alacritty --class "ranger" --title "ranger" -e sh -c \
 "~/.scripts/ranger/ranger.py \
 --cmd='set preview_images_method ueberzug' \
 ~ \
---selectfile=$(grep ^H: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
+--selectfile=$(grep ^p: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
 fi

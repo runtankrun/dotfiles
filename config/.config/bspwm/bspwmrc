@@ -65,3 +65,8 @@ bspc rule -a kitty:vbox desktop='^8'
 bspc rule -a URxvt:pro state=pseudo_tiled
 bspc rule -a URxvt:timeshift state=pseudo_tiled
 bspc rule -a kcolorchooser:kcolorchooser state=floating
+bspc rule -a Alacritty:admin desktop='^2' state=pseudo_tiled
+
+force-composition-pipeline &
+pro &
+layout-case

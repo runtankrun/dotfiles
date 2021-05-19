@@ -1,0 +1,24 @@
+#!/bin/bash
+if [[ $1 = "-trim" ]]; then
+echo input file:
+read input
+echo output file:
+read output
+echo start time: 
+read st
+echo end time:
+read et
+ffmpeg -i $input -ss $st -to $et -c copy $output
+
+elif [[ $1 = "-format" ]]; then
+echo input file:
+read input
+echo output file:
+read output
+ffmpeg -i $input -codec copy $output
+
+elif [[ $1 = "-concat" ]]; then
+echo output file:
+read output  
+urxvtc -e sh -c vim ~/vidlist.txt; ffmpeg -f concat -safe 0 -i ~/vidlist.txt -c copy $output
+fi

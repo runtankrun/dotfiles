@@ -1,0 +1,17 @@
+#!/bin/sh
+if [[ $1 = "-fps" ]]; then
+echo FPS:
+read fps
+echo video path:
+read vid
+
+cd ~/Downloads/arXiv2020-RIFE; python3 inference_video.py --fps=$fps --video=$vid
+
+elif [[ $1 = "-exp" ]]; then
+echo input video path:
+read path
+echo Expression:
+read exp
+
+cd ~/Downloads/arXiv2020-RIFE; python3 inference_video.py --exp=$exp --video=$vid
+fi
