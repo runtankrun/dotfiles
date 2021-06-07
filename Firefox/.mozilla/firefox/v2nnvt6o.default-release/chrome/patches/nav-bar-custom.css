@@ -11,7 +11,7 @@
 }
 
 #nav-bar-customization-target {
-	background-color: #141512 !important;
+	background-color: #141512!important;
 }
 
 #navigator-toolbox{ 
@@ -24,7 +24,7 @@
 
 .toolbarbutton-1 {
     fill: #A3AFC1 !important;
-    background-color: #141512!important;
+    background-color: #141512 !important;
 }
 
   #urlbar-input-container{

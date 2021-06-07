@@ -74,7 +74,9 @@ super + ctrl + F6
 ## nvtop
 super + F7
     c-nvtop
-
+## coin ticker
+super + ctrl + c
+    coins 
 ## matrix/pipes toys
 super + F8
     toys -matrix 
@@ -103,10 +105,10 @@ super + alt + F11
 
 ## Virtualbox
 super + F12
-    kitty --name "vbox" --title "vbox" & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2020.4-vbox-amd64"
+    kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2020.4-vbox-amd64"
 
 ## tank-ui
-super + ctrl + c
+super + ctrl + t
     bspc rule -a eDEX-UI:edex-ui -o state=fullscreen; ~/.scripts/xfrom_source/ui/tank-ui/dist/linux-unpacked/tank-ui
 
 ## set previously saved wallpaper, colorscheme, & border colors
@@ -238,6 +240,10 @@ super + alt + e
     visualizer 
 super + ctrl + e
     visualizer -w
+
+## base64 decode
+super + ctrl + b
+    kitty -e sh -c "b64"
 
 ######################
 ##  BSPWM COMMANDS  ##

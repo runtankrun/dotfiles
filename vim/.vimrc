@@ -57,6 +57,7 @@ set statusline+=%L                  " Total line
 set statusline+=\                   " Padding
 
 "" Mappings
+map <C-s> :w<CR>
 map ss :mks! ~/.vim/sessions/
 map sh :sp
 map sv :vsp
@@ -64,7 +65,6 @@ map dt :DimInactiveToggle<CR>
 map dc :hi ColorColumn ctermbg=
 map cs :colorscheme<space>
 map ct :ColorToggle<CR>
-
 map <C-t> :tabnew<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-u> :UndotreeToggle<CR>
@@ -76,8 +76,8 @@ map <C-l> <C-W>l
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <space> /
-map <silent> <space><cr> :noh<cr>
-
+map <silent> <space><cr> :noh<CR>
+map lf :s/ /_/g
 nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
 nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
 nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
