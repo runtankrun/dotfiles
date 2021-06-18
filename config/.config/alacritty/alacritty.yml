@@ -117,7 +117,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: canele
+    family: cozette
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -136,7 +136,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: canele 
+    family: cozette
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -155,7 +155,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: canele
+    family: cozette
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -174,7 +174,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: canele
+    family: cozette
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -483,57 +483,25 @@ font:
 # binding with the same triggers is defined. To unset a default binding, it can
 # be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
 # a no-op if you do not wish to receive input characters for that binding.
-key_bindings:
-    # (Windows, Linux, and BSD only)
-  - { key: V,        mods: Alt,           action: Paste            }
-  - { key: C,        mods: Alt,           action: Copy             }
-  - { key: Insert,   mods: Shift,         action: PasteSelection   }
-  - { key: Key0,     mods: Control,       action: ResetFontSize    }
-  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  - { key: Add,      mods: Control,       action: IncreaseFontSize }
-  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
-  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
+#key_bindings:
+#    # (Windows, Linux, and BSD only)
+#  - { key: V,        mods: Alt,           action: Paste            }
+#  - { key: C,        mods: Alt,           action: Copy             }
+#  - { key: Insert,   mods: Shift,         action: PasteSelection   }
+#  - { key: Key0,     mods: Control,       action: ResetFontSize    }
+#  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+#  - { key: Add,      mods: Control,       action: IncreaseFontSize }
+#  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+#  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
 
-  - { key: Paste,                    action: Paste                            }
-  - { key: Copy,                     action: Copy                             }
-  - { key: L,         mods: Control, action: ClearLogNotice                   }
-  - { key: L,         mods: Control, chars: "\x0c"                            }
-  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
-  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
-  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
-  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#  - { key: Paste,                    action: Paste                            }
+#  - { key: Copy,                     action: Copy                             }
+#  - { key: L,         mods: Control, action: ClearLogNotice                   }
+#  - { key: L,         mods: Control, chars: "\x0c"                            }
+#  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
+#  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
+#  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
+#  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
 
 background_opacity: 0.50
 
