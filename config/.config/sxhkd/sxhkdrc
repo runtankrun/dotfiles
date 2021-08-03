@@ -66,11 +66,11 @@ super + F3
 
 ## auto-launch chx apps
 super + F4
-    layout-home -mpv
-super + ctrl + F4
-    layout-chx
-super + alt + F4
     layout-home -dev
+super + ctrl + F4
+    {layout-chx,layout-chx -em,layout-chx -r}
+super + alt + F4
+    layout-home -mpv
 
 ## neofetch
 super + F5

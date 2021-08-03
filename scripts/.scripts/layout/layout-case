@@ -68,13 +68,13 @@ bspc node @^1:^1:/ -o .52 -p east -i
 bspc node @^1:^1:/1 -o .498 -p south -i
 
 ## ADD RULES
-bspc rule -a URxvt:cava -o node=@^1:^1:/1/1 marked=on focus=off
+bspc rule -a kitty:dark -o node=@^1:^1:/1/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2 marked=on focus=off
 bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/2 marked=on focus=off
 
 ##LAUNCH APPS
-urxvtc -name "cava" -title "cava" -bg white -bd black -e sh -c "cava -p ~/.config/cava/config_2" &
-c-gotop -kt &
+kitty --name "dark" --title "dark" -o include="~/.config/kitty/kitty-dark.conf" &
+c-gotop -kd &
 urxvtc -name "tty-clock" -title "tty-clock" -bg black -bd black --color1 white -e sh -c "tty-clock -c -t -C 1" &
 
 ##FOCUS PRIMARY MONITOR
@@ -97,7 +97,7 @@ bspc rule -a URxvt:transparent -o node=@^1:^1:/1/2 marked=on focus=off
 
 ##LAUNCH
 urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" &
-mpv ~/Videos/h/em.webm --video-zoom=0.550 &
+mpv ~/Videos/h/em.webm --video-zoom=0.550 --speed=0.50 &
 c-urxvtc-trans
 
 ###############

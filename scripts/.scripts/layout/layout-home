@@ -63,7 +63,7 @@ bspc rule -a Firefox:Navigator -o node=@^2:^3:/2/2
 c-ranger -a &
 message &
 message &
-/usr/lib/firefox/firefox-bin
+/usr/lib/firefox/firefox-bin https://whoer.net/
 
 ###########
 #   MPV   #

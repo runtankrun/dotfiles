@@ -6,27 +6,36 @@
 if [[ $1 = "-r" ]]; then
 
 ##MOVE TO DESKTOP + CLOSE WINDOWS + KILL RECEPTACLES
-bspc desktop -f ^2:^3;
+bspc desktop -f ^2:^7;
 while bspc node 'any.leaf.local' -c; do :; done;
 while bspc node 'any.leaf.!window.local' -k; do :; done;
 
 ##INSERT RECEPTACLES
-bspc node @^2:^3:/ -i
-bspc node @^2:^3:/ -o 0.311854 -p east -i
-bspc node @^2:^3:/2 -o 0.505506 -p east -i
-bspc node @^2:^3:/2/2 -o 0.516098 -p south -i
+bspc node @^2:^7:/ -i
+bspc node @^2:^7:/ -o 0.311854 -p east -i
+bspc node @^2:^7:/2 -o 0.505506 -p east -i
+bspc node @^2:^7:/2/2 -o 0.539726 -p south -i
 
 ##ADD RULES
-bspc rule -a feh:feh -o node=@^2:^3:/1
-bspc rule -a URxvt:TANK -o node=@^2:^3:/2/1
-bspc rule -a URxvt:ranger -o node=@^2:^3:/2/2/1
-bspc rule -a mpv:wide -o node=@^2:^3:/2/2/2
+bspc rule -a feh:feh -o node=@^2:^7:/1
+bspc rule -a URxvt:TANK -o node=@^2:^7:/2/1
+bspc rule -a URxvt:ranger -o node=@^2:^7:/2/2/1
+bspc rule -a mpv:wide -o node=@^2:^7:/2/2/2
 
 ##LAUNCH APPS
 feh -Z -. -D 5 ~/Pictures/chx/rachel/ &
 message &
 c-ranger &
-mpv --x11-name="wide" --title="wide" ~/Videos/h/rachel/*.m4v
+mpv --x11-name="wide" --title="wide" ~/Videos/h/rachel/*.m4v &
+sleep 1s &
+feh \
+--bg-fill ~/.config/wall-alt.png \
+--bg-fill ~/.config/wall-case.png; \
+wal -n -i ~/.config/wall-alt.png -a 50 --saturate .8; \
+pywal-alacritty; \
+pywal-kitty; \
+pywal-bspwm-border; \
+layout-case; \
 
 ##########
 #   EM   #
@@ -48,7 +57,7 @@ bspc node @^2:^6:/2/2 -o 0.5 -p east -i
 ## ADD RULES
 bspc rule -a feh:feh -o node=@^2:^6:/1
 bspc rule -a Alacritty:ranger-em -o node=@^2:^6:/2/1/1 
-bspc rule -a firefox:Navigator -o node=@^2:^6:/2/1/2
+bspc rule -a Firefox:Navigator -o node=@^2:^6:/2/1/2
 bspc rule -a mpv:em1 -o node=@^2:^6:/2/2/1
 bspc rule -a mpv:em2 -o node=@^2:^6:/2/2/2
 
@@ -60,7 +69,7 @@ alacritty --title "ranger-em" --class "ranger-em" -e sh -c \
 --cmd='default_linemode devicons2' \
 --cmd='set column_ratios 1,1,6' \
 --selectfile='Pictures/chx/em/em-wide-murica.jpg'" &
-firefox &
+/usr/lib/firefox/firefox-bin &
 mpv --x11-name="em1" --title="em1" ~/Videos/h/wide/*em.mp4 &
 mpv --x11-name="em2" --title="em2" ~/Videos/h/wide/*em2.mp4 
 

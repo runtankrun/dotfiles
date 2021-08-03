@@ -11,6 +11,9 @@ urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --col
 elif [[ $1 = "-kt" ]]; then
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/kitty-black.conf" -e "gotop"
 
+elif [[ $1 = "-kd" ]]; then
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/kitty-dark.conf" -e "gotop"
+
 else
 urxvtc -name "gotop" -title "gotop" -e "gotop"
 fi
