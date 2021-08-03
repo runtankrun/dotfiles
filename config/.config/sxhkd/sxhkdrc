@@ -31,9 +31,16 @@ super + button9
     bspc node -t \~floating 
 ctrl + shift + 3
     bspc node -t \~floating
+
 ## move floating window
-ctrl + shift + 4
-    bspc node -v {-20 0,0 20,0 -20,20 0} 
+ctrl + shift + h
+    bspc node -v -20 0 
+ctrl + shift + l
+    bspc node -v +20 0
+ctrl + shift + j
+    bspc node -v 0 +20
+ctrl + shift + k
+    bspc node -v 0 -20
 
 ## cover
 super + Pause
