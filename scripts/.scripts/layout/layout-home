@@ -57,13 +57,13 @@ bspc node @^2:^3:/2/1 -o 0.48946 -p south -i
 bspc rule -a Alacritty:ranger -o node=@^2:^3:/1
 bspc rule -a URxvt:TANK -o node=@^2:^3:/2/1/1
 bspc rule -a URxvt:TANK -o node=@^2:^3:/2/1/2
-bspc rule -a firefox:Navigator -o node=@^2:^3:/2/2
+bspc rule -a Firefox:Navigator -o node=@^2:^3:/2/2
 
 ##LAUNCH APPS
 c-ranger -a &
 message &
 message &
-firefox
+/usr/lib/firefox/firefox-bin
 
 ###########
 #   MPV   #

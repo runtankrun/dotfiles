@@ -17,6 +17,6 @@ bspc rule -a URxvt:slideshow -o node=@^1:^1:/1/2 marked=on focus=off
 urxvtc -name "tty-clock" -title "tty-clock" -bg white -bd white --color1 red -e sh -c "tty-clock -c -t -C 1" &
 urxvtc -name "gotop" -title "gotop" -bg white -bd white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black --color15 black -e sh -c "gotop" &
 urxvtc -name "slideshow" -title "slideshow" -bg white -bd white -e sh -c \
-"watch -n 5 feh --no-fehbg --bg-max --image-bg white --randomize -r $1" & \
+"watch -n 2 feh --no-fehbg --bg-fill --image-bg white --randomize -r /mnt/TB_1/BG2" & \
 ##FOCUS PRIMARY MONITOR
 sleep .5s; bspc desktop --focus ^2:focused

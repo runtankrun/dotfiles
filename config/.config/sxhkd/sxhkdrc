@@ -18,14 +18,22 @@
 ## focus next occupied desktop
 button10
     bspc desktop -f next.local.occupied
-
+ctrl +shift + 1
+    bspc desktop -f next.local.occupied
 ## focus previous occupied desktop
 button9
+    bspc desktop -f prev.local.occupied
+ctrl + shift + 2
     bspc desktop -f prev.local.occupied
 
 ## toggle floating on/off
 super + button9
     bspc node -t \~floating 
+ctrl + shift + 3
+    bspc node -t \~floating
+## move floating window
+ctrl + shift + 4
+    bspc node -v {-20 0,0 20,0 -20,20 0} 
 
 ## cover
 super + Pause
@@ -38,6 +46,8 @@ super + alt + F1
     layout-case -ps
 super + ctrl + F1
     layout-case -vid
+super + shift + F1
+    layout-case -em
 
 ## auto-launch apps on main monitor
 super + F2
@@ -256,7 +266,8 @@ super + control + Escape
 ## close app
 super + Escape
 	bspc node -c
-
+ctrl + shift + 5
+    bspc node -c
 ## he disobey you? kill!
 super + shift + Escape
 	bspc node -k

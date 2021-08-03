@@ -49,7 +49,7 @@ bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on focus=off
 
 ## LAUNCH COMMANDS 
 visualizer -w &
-urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -r -t -C 1" &
+urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -t -C 1" &
 mpv --x11-name="vid-case" --title="vid-case" $(while IFS= read -r line
 do 
     echo "$line" | grep ^C: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
@@ -79,6 +79,26 @@ urxvtc -name "tty-clock" -title "tty-clock" -bg black -bd black --color1 white -
 
 ##FOCUS PRIMARY MONITOR
 sleep .5s; bspc desktop --focus ^2:focused
+
+##########
+#   EM   #
+##########
+elif [[ $1 = "-em" ]]; then
+
+##INSERT RECEPTACLES
+bspc node @^1:^1:/ -i 
+bspc node @^1:^1:/ -o .548906 -p east -i
+bspc node @^1:^1:/1 -o .133444 -p south -i
+
+##ADD RUELS
+bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/1 marked=on focus=off
+bspc rule -a mpv:gl -o node=@^1:^1:/2 marked=on focus=off
+bspc rule -a URxvt:transparent -o node=@^1:^1:/1/2 marked=on focus=off
+
+##LAUNCH
+urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" &
+mpv ~/Videos/h/em.webm --video-zoom=0.550 &
+c-urxvtc-trans
 
 ###############
 #   MINIMAL   #

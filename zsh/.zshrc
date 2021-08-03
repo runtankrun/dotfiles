@@ -215,6 +215,7 @@ alias umusb='sudo umount /mnt/usb'
 
 #update firefox
 alias uff='pkill firefox-bin; sudo mv /usr/lib/firefox /usr/lib/firefox_old; sudo cp -r ~/Downloads/firefox /usr/lib/'
+alias dff='sudo rm -rf /usr/lib/firefox_old'
 
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
