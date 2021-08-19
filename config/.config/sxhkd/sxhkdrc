@@ -125,6 +125,8 @@ super + alt + F11
 ## Virtualbox
 super + F12
     kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2020.4-vbox-amd64"
+super + alt + F12 
+    kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Pentoo"
 
 ## tank-ui
 super + ctrl + t
@@ -269,15 +271,12 @@ super + ctrl + b
 ##  BSPWM COMMANDS  ##
 ######################
 
-## quit bspwm normally
-super + control + Escape
-	pkill panel; bspc quit
-
 ## close app
 super + Escape
 	bspc node -c
-ctrl + shift + 5
-    bspc node -c
+super + ctrl + Escape
+    bsp-close
+
 ## he disobey you? kill!
 super + shift + Escape
 	bspc node -k

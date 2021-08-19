@@ -137,7 +137,7 @@ bspc rule -a URxvt:ranger -o node=@^2:^$dt:/2/2/2
 bspc config -m HDMI-0 -d ^2 window_gap 0
 
 ##LAUNCH APPS
-sleep .3s; \ 
+#sleep .3s; \ 
 message &
 toys -matrix &
 mpv --x11-name=toonami --title=toonami --osc=no ~/Pictures/gifs/mf-toonami.GIF &
