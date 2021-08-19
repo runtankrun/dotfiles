@@ -32,19 +32,19 @@ super + button9
 ctrl + shift + 3
     bspc node -t \~floating
 
-## move floating window
-ctrl + shift + h
-    bspc node -v -20 0 
-ctrl + shift + l
-    bspc node -v +20 0
-ctrl + shift + j
-    bspc node -v 0 +20
-ctrl + shift + k
-    bspc node -v 0 -20
+## bsp-layout
+ctrl + shift + 4
+    bsp-layout set even
+ctrl + shift + 5
+    bsp-layout set rtall
+ctrl + shift + 6
+    bsp-layout remove
 
 ## cover
 super + Pause
     bspc rule -a cover:feh state=fullscreen; feh --class cover ~/screen1.png
+super + alt + Pause
+    mpv ~/Videos/1.mov & mpv ~/Videos/2.mov
 
 ## auto-launch apps on case panel
 super + F1
@@ -66,11 +66,13 @@ super + F3
 
 ## auto-launch chx apps
 super + F4
-    layout-home -dev
+    layout-home -ff
 super + ctrl + F4
     {layout-chx,layout-chx -em,layout-chx -r}
 super + alt + F4
     layout-home -mpv
+super + shift + F4
+    layout-home -dev
 
 ## neofetch
 super + F5
@@ -171,7 +173,8 @@ super + w
 ## change colorscheme
 super + alt + c
     wal --theme {material,outrun,monokai}; pywal-alacritty; pywal-URxvt; pywal-kitty
-
+super + alt + shift + c
+    wal --theme {sexy-mostly-bright -l,summerfruit -l}
 ## launch terminal
 super + z
 	message

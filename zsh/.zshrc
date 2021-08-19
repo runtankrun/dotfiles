@@ -224,6 +224,9 @@ export XRDM_COLOR_DIR=$XRDM_DIR/colors
 export XRDM_PRESET_DIR=$XRDM_DIR/presets
 export XRDM_PROGRAM_DIR=$XRDM_DIR/programs
 source xrdm
+
+#alias python='/usr/bin/python3.6'
+
 # End xrdm settings
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
