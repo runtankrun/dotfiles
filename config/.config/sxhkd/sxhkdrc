@@ -34,11 +34,9 @@ ctrl + shift + 3
 
 ## bsp-layout
 ctrl + shift + 4
-    bsp-layout set even
+    bsp-layout once even
 ctrl + shift + 5
-    bsp-layout set rtall
-ctrl + shift + 6
-    bsp-layout remove
+    bsp-layout once {tall,wide,rtall,rwide,grid,rgrid,even}
 
 ## cover
 super + Pause
@@ -86,16 +84,20 @@ super + ctrl + F5
 super + F6
     c-gotop
 super + alt + F6
-    c-gotop -v
-super + ctrl + F6
     c-gotop -h
+super + shift + F6
+    c-fulltop 
 
 ## nvtop
 super + F7
     c-nvtop
+super + shift + F7
+    c-nvtop -f
+
 ## coin ticker
 super + ctrl + c
     coins 
+
 ## matrix/pipes toys
 super + F8
     toys -matrix 
@@ -174,7 +176,7 @@ super + w
 
 ## change colorscheme
 super + alt + c
-    wal --theme {material,outrun,monokai}; pywal-alacritty; pywal-URxvt; pywal-kitty
+    wal --theme {material,outrun,monokai,gotham,gjm,flat,dracula}; pywal-alacritty; pywal-URxvt; pywal-kitty
 super + alt + shift + c
     wal --theme {sexy-mostly-bright -l,summerfruit -l}
 ## launch terminal

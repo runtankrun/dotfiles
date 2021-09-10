@@ -1,2 +1,12 @@
 #!/bin/sh
+if [[ $1 = "-f" ]]; then
+dt=$(bspc query --desktops --names --desktop .\!occupied | head -n 1)
+
+bspc rule -a  kitty:Fullnvtop -o desktop=^2:^$dt
+
+kitty --name "Fullnvtop" --title "Fullnvtop" -o include=/home/ellio/.config/kitty/kitty-dark-zoom.conf -e sh -c \
+"nvtop"
+
+else
 urxvtc -name "nvtop" -title "nvtop" -e "nvtop"
+fi

@@ -1,8 +1,6 @@
 #!/bin/sh
-if [[ $1 = "-v" ]]; then
-urxvtc -name "vtop" -title "vtop" -e sh -c "vtop --theme certs"
 
-elif [[ $1 = "-h" ]]; then
+if [[ $1 = "-h" ]]; then
 urxvtc -name "htop" -title "htop" -e sh -c "htop"
 
 elif [[ $1 = "-ut" ]]; then
@@ -13,6 +11,15 @@ kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/kitty-black.con
 
 elif [[ $1 = "-kd" ]]; then
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/kitty-dark.conf" -e "gotop"
+
+elif [[ $1 = "-full" ]]; then
+dt=$(bspc query --desktops --names --desktop .\!occupied | head -n 1)
+bspc desktop -f ^2:^$dt;
+
+bspc rule -a  kitty:Fullgotop -o desktop=^2:^$dt
+
+kitty --name "Fullgotop" --title "Fullgotop" -o include=/home/ellio/.config/kitty/kitty-dark-zoom.conf -e sh -c \
+"gotop --nvidia --averagecpu --statusbar --mbps --layout kitchensink"
 
 else
 urxvtc -name "gotop" -title "gotop" -e "gotop"
