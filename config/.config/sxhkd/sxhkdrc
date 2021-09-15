@@ -35,7 +35,7 @@ ctrl + shift + 3
 ## bsp-layout
 ctrl + shift + 4
     bsp-layout once even
-ctrl + shift + 5
+super + alt + l
     bsp-layout once {rtall,wide}
 
 ## cover

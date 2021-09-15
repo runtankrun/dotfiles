@@ -1,18 +1,18 @@
 #!/bin/sh
 
 dt=$(bspc query --desktops --names --desktop .\!occupied | head -n 1)
-bspc desktop -f ^2:^$dt;
+#bspc desktop -f ^2:^$dt;
 
 ##INSERT RECEPTACLES
 bspc node @^2:^$dt:/ -i
-bspc node @^2:^$dt:/1 -o 0.50 -p east -i
+bspc node @^2:^$dt:/ -o .5 -p east -i
 
 ##ADD RULES
-bspc rule -a kitty:Fullgotop -o desktop=^2:^$dt:/1
-bspc rule -a kitty:Fullnvtop -o desktop=^2:^$dt:/2
+bspc rule -a kitty:Fullgotop -o node=@^2:^$dt:/1
+bspc rule -a kitty:Fullnvtop -o node=@^2:^$dt:/2
 
 ##LAUNCH APPS
 kitty --name "Fullgotop" --title "Fullgotop" -o include=/home/ellio/.config/kitty/kitty-dark-zoom.conf -e sh -c \
 "gotop --nvidia --averagecpu --statusbar --mbps --layout kitchensink" &
-
+sleep 1s;
 kitty --name "Fullnvtop" --title "Fullnvtop" -o include="/home/ellio/.config/kitty/kitty-dark-zoom.conf" -e sh -c "nvtop"

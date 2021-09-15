@@ -117,7 +117,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: cozette
+    family: canele
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -136,7 +136,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: cozette
+    family: canele
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -155,7 +155,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: cozette
+    family: canele
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -174,7 +174,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: cozette
+    family: canele
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -502,6 +502,63 @@ font:
 #  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
 #  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
 #  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 background_opacity: 0.50
 
