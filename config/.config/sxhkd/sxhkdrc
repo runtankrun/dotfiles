@@ -48,7 +48,7 @@ super + alt + Pause
 super + F1
     layout-case
 super + alt + F1
-    layout-case -ps
+    layout-case -gif
 super + ctrl + F1
     layout-case -vid
 super + shift + F1
@@ -71,7 +71,9 @@ super + alt + F4
     layout-home -mpv
 super + shift + F4
     layout-home -dev
-
+# em
+super + alt + e
+    feh -Z -. -D 5 ~/Pictures/chx/em/em-tall-*
 ## neofetch
 super + F5
     c-neo -ascii
@@ -97,7 +99,8 @@ super + shift + F7
 ## coin ticker
 super + ctrl + c
     coins 
-
+super + ctrl + alt + c
+    coins -ct
 ## matrix/pipes toys
 super + F8
     toys -matrix 
@@ -118,7 +121,7 @@ super + alt + F10
 super + ctrl + F10
     pro -r
 
-## polybar
+## Muziq 
 super + F11
     c-polybar
 super + alt + F11
@@ -127,8 +130,10 @@ super + alt + F11
 ## Virtualbox
 super + F12
     kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2020.4-vbox-amd64"
-super + alt + F12 
+super + shift + F12 
     kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Pentoo"
+super + alt + F12
+    kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"
 
 ## tank-ui
 super + ctrl + t
@@ -154,9 +159,9 @@ super + End
 
 ## program launcher
 super + d
-	rofi -show drun
+	/home/ellio/.config/rofi/launchers/colorful/launcher.sh
 Menu
-    rofi -show combi
+    /home/ellio/.config/rofi/launchers/colorful/launcher_2.sh
 
 ## audio
 super + a
@@ -170,15 +175,22 @@ ctrl + F12
 ctrl + F11
     amixer -D pulse sset Master mute
 
+##muziq
+super + shift + m
+    layout-muziq
+
 ## wifi
 super + w
     networkmanager_dmenu
 
 ## change colorscheme
 super + alt + c
-    wal --theme {material,outrun,monokai,gotham,gjm,flat,dracula}; pywal-alacritty; pywal-URxvt; pywal-kitty
+    wal --theme {material,outrun,monokai,gotham,gjm,flat,dracula,AdventureTime}; pywal-alacritty; pywal-URxvt; pywal-kitty
 super + alt + shift + c
     wal --theme {sexy-mostly-bright -l,summerfruit -l}
+super + shift + c
+    sed -i {'s/50/80/' /home/ellio/.config/wal/colorschemes/dark/*,'s/80/50/' /home/ellio/.config/wal/colorschemes/dark/*}
+
 ## launch terminal
 super + z
 	message
@@ -220,6 +232,8 @@ super + ctrl + v
 ## launch pictures
 super + alt + p
     rtags-quicklaunch -pic
+super + ctrl + p
+    rtags-quicklaunch -ss
 super + alt + f
     c-feh -i
 

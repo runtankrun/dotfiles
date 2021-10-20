@@ -1,6 +1,6 @@
 #!/bin/sh
 
-tag_count=$(grep -c ^C: ~/.config/ranger/tagged)
+tag_count=$(grep -c ^W: ~/.config/ranger/tagged)
 
 xwinwrap -g 3440x1440+1280+0 -ov -- mpv -wid WID $(while IFS= read -r line
 do 

@@ -106,7 +106,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias enhance='function ne() { docker run --rm -v "$(pwd)/`dirname ${@:$#}`":/ne/input -it alexjc/neural-enhance ${@:1:$#-1} "input/`basename ${@:$#}`"; }; ne'
+#docker
+alias dsr='docker container stop $(docker container ls -aq); docker container rm $(docker container ls -aq)'
+alias dri='docker rmi $(docker images -aq)'
 
 #sec
 alias logz='sudo find /var/log/ -type f \( -name "*.log" \) -exec tail -f "$file" {} +'
@@ -196,6 +198,7 @@ alias vim-s='vim -S ~/.vim/sessions/main.vim'
 #Figlet
 alias yo='figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf'
 alias yo2='figlet -f ~/.fonts/misc/figlet/isometric.flf'
+alias f-rndm='figlet -f $(ls -d ~/.fonts/misc/figlet/* | shuf -n 1)'
 
 #Shred
 alias shreddit='shred -n 5 -v -z'
@@ -216,6 +219,9 @@ alias umusb='sudo umount /mnt/usb'
 #update firefox
 alias uff='pkill firefox-bin; sudo mv /usr/lib/firefox /usr/lib/firefox_old; sudo cp -r ~/Downloads/firefox /usr/lib/'
 alias dff='sudo rm -rf /usr/lib/firefox_old'
+
+#YTFZF
+alias yt='ytfzf -tT'
 
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
@@ -247,4 +253,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

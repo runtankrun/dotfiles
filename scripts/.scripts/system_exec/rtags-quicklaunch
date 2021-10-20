@@ -23,6 +23,14 @@ do
     echo "$line" | grep ^p: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
 done < ~/.config/ranger/tagged)
 
+elif [[ $1 = "-ss" ]]; then
+tag_count=$(grep -c ^s: ~/.config/ranger/tagged)
+
+feh -Z -. $(while IFS= read -r line
+do 
+    echo "$line" | grep ^s: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged)
+
 elif [[ $1 = "-wide-vid" ]]; then
 tag_count=$(grep -c ^w: ~/.config/ranger/tagged)
 

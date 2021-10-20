@@ -1,2 +1,8 @@
 #!/bin/sh
+
+if [[ $1 = "-ct" ]]; then
+kitty --name "cointop" --title "cointop" -e "cointop"
+
+else
 kitty --name "ticker" --title "ticker" -e "ticker"
+fi

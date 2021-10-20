@@ -7,6 +7,7 @@ alpha=$(cat ~/.cache/wal/colors.json | head -n 3 | tail -n 1 | tail -c 5 | cut -
 #Delete old color & opacity
 sed -i '/URxvt\*background:/d' ~/.Xresources; \
 sed -i '/URxvt\*borderColor:/d' ~/.Xresources; \
+sed -i '/^! Generated with/,$d' ~/.Xresources; \
 
 #insert new
 echo "URxvt*background:[$alpha]$background" >> ~/.Xresources; \

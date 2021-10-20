@@ -43,12 +43,12 @@ bspc node @^1:^1:/2 -o 0.385547 -p south -i
 
 ## ADD RULES
 bspc rule -a URxvt:tty-clock -o node=@^1:^1:/1/1 marked=on focus=off
-bspc rule -a URxvt:vis-case -o node=@^1:^1:/1/2 marked=on focus=off
+bspc rule -a URxvt:transparent -o node=@^1:^1:/1/2 marked=on focus=off
 bspc rule -a mpv:vid-case -o node=@^1:^1:/2/1 marked=on focus=off
 bspc rule -a kitty:gotop -o node=@^1:^1:/2/2 marked=on focus=off
 
 ## LAUNCH COMMANDS 
-visualizer -w &
+c-urxvtc-trans &
 urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -t -C 1" &
 mpv --x11-name="vid-case" --title="vid-case" $(while IFS= read -r line
 do 
@@ -99,6 +99,29 @@ bspc rule -a URxvt:transparent -o node=@^1:^1:/1/2 marked=on focus=off
 urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" &
 mpv ~/Videos/em.mp4 --video-zoom=0.450 --speed=0.50 &
 c-urxvtc-trans
+###########
+#   GIF   #
+###########
+elif [[ $1 = "-gif" ]]; then
+
+##INSERT RECEPTACLES
+bspc node @^1:^1:/ -i 
+bspc node @^1:^1:/ -o .5 -p east -i
+bspc node @^1:^1:/2 -o .661602 -p south -i
+
+##ADD RULES
+bspc rule -a URxvt:transparent -o node=@^1:^1:/1 marked=on focus=off  
+bspc rule -a mpv:gl -o node=@^1:^1:/2/1 marked=on focus=off state=pseudo_tiled
+bspc rule -a URxvt:tty-clock -o node=@^1:^1:/2/2 marked=on focus=off
+
+##LAUNCH APPS
+c-urxvtc-trans &
+mpv /mnt/PSSD/Gifs/*.GIF --speed=0.66 &
+urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" 
+
+##FOCUS PRIMARY MONITOR
+sleep .5s; bspc desktop --focus ^2:focused
+
 
 ###############
 #   MINIMAL   #

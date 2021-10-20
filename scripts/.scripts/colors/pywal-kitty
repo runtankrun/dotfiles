@@ -1,7 +1,8 @@
 #!/bin/sh
 
 alpha=$(cat ~/.cache/wal/colors.json | head -n 3 | tail -n 1 | tail -c 5 | cut -c1-2)
-
 sed -i '/^background_opacity/d' ~/.config/kitty/kitty.conf
-
 echo "background_opacity 0.$alpha" >> ~/.config/kitty/kitty.conf
+
+sed -i '/^include/d' ~/.config/kitty/kitty.conf
+echo "include ~/.cache/wal/colors-kitty.conf" >> ~/.config//kitty/kitty.conf
