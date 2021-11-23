@@ -1,0 +1,29 @@
+
+{
+    wallpaper: None,
+    alpha: 50,
+    
+    special: {
+        background: #,
+        foreground: #,
+        cursor: #
+    },
+    colors: { 
+        color0: #,
+        color8: #,
+        color1: #,
+        color9: #,
+        color2: #,
+        color10: #,
+        color3: #e6741d,
+        color11: #efc11a,
+        color4: #0f49c6,
+        color12: #1896c6,
+        color5: #665992,
+        color13: #9a5952,
+        color6: #6fa497,
+        color14: #c8f9f3,
+        color7: #f8dbc0,
+        color15: #f5f4fb
+    }
+}

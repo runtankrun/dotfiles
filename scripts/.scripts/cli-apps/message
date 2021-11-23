@@ -1,5 +1,9 @@
 #!/bin/sh
 
+#rectangles,pagga,spliff,Ansi_Regular,Ansi_Shadow,future
+
+rndm_font=$(echo $(ls -d ~/.fonts/misc/figlet/* | shuf -n 1) | grep -o "figlet/.*" | cut -d "/" -f2 | rev | cut -c 5- | rev)
+
 #################
 #   ALACRITTY   #
 #################

@@ -20,6 +20,7 @@ button10
     bspc desktop -f next.local.occupied
 ctrl +shift + 1
     bspc desktop -f next.local.occupied
+
 ## focus previous occupied desktop
 button9
     bspc desktop -f prev.local.occupied
@@ -38,6 +39,9 @@ ctrl + shift + 4
 super + alt + l
     bsp-layout once {rtall,wide}
 
+## aspect
+ctrl + shift + alt + 5
+    aspect
 ## cover
 super + Pause
     bspc rule -a cover:feh state=fullscreen; feh --class cover ~/screen1.png
@@ -58,11 +62,11 @@ super + shift + F1
 super + F2
     layout-home
 
-## auto-launch apps on desktop 2
+## auto-launch neo layout
 super + F3
     layout-home -neo
 
-## auto-launch chx apps
+## auto-launch layouts
 super + F4
     layout-home -ff
 super + ctrl + F4
@@ -72,8 +76,9 @@ super + alt + F4
 super + shift + F4
     layout-home -dev
 # em
-super + alt + e
+super + ctrl + alt + e
     feh -Z -. -D 5 ~/Pictures/chx/em/em-tall-*
+
 ## neofetch
 super + F5
     c-neo -ascii
@@ -101,6 +106,7 @@ super + ctrl + c
     coins 
 super + ctrl + alt + c
     coins -ct
+
 ## matrix/pipes toys
 super + F8
     toys -matrix 
@@ -185,11 +191,11 @@ super + w
 
 ## change colorscheme
 super + alt + c
-    wal --theme {material,outrun,monokai,gotham,gjm,flat,dracula,AdventureTime}; pywal-alacritty; pywal-URxvt; pywal-kitty
+    wal --theme {AdventureTime,dracula,flat,gjm,gotham,icy,material,monokai,outrun,rebecca,sexy-cloud,sexy-material,idk,nasa,Tomorrow_Night_Burns,tycho}; pywal-alacritty; pywal-URxvt; pywal-kitty
 super + alt + shift + c
     wal --theme {sexy-mostly-bright -l,summerfruit -l}
 super + shift + c
-    sed -i {'s/50/80/' /home/ellio/.config/wal/colorschemes/dark/*,'s/80/50/' /home/ellio/.config/wal/colorschemes/dark/*}
+    sed -i {'s/50/90/' /home/ellio/.config/wal/colorschemes/dark/*,'s/90/50/' /home/ellio/.config/wal/colorschemes/dark/*}
 
 ## launch terminal
 super + z
@@ -278,10 +284,6 @@ super + alt + e
     visualizer 
 super + ctrl + e
     visualizer -w
-
-## base64 decode
-super + ctrl + b
-    kitty -e sh -c "b64"
 
 ######################
 ##  BSPWM COMMANDS  ##
@@ -399,8 +401,8 @@ super + Tab
 	bspc config -m HDMI-0 window_gap {51,0}
 
 ##Resize Gaps
-super + ctrl { + d,+ a }
-	bspc config -m HDMI-0 window_gap $(($(bspc config -m HDMI-0 window_gap) {+,-} 3))
+super + button{4,5}
+	bspc config -m HDMI-0 window_gap $(($(bspc config -m HDMI-0 window_gap) {+,-} 4))
 
 ##-----MISC-----##
 

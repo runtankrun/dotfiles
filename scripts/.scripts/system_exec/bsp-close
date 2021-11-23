@@ -1,0 +1,4 @@
+#!/bin/sh
+
+while bspc node 'any.leaf.local' -c; do :; done;
+while bspc node 'any.leaf.!window.local' -k; do :; done;

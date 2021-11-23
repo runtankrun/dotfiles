@@ -117,7 +117,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: cozette
+    family: castella
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -136,7 +136,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: cozette
+    family: castella
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -155,7 +155,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: cozette
+    family: castella
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -174,7 +174,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: cozette
+    family: castella
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -524,7 +524,7 @@ colors:
 
   # Bright colors
   bright:
-    black:   '#50507A'
+    black:   '#95957A'
     red:     '#FF4242'
     green:   '#59F176'
     yellow:  '#F3E877'

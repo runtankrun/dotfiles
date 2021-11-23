@@ -106,6 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#figlet -f $(ls -d ~/.fonts/misc/figlet/* | shuf -n 1) "TANK"
 #docker
 alias dsr='docker container stop $(docker container ls -aq); docker container rm $(docker container ls -aq)'
 alias dri='docker rmi $(docker images -aq)'
@@ -118,8 +119,9 @@ alias audit='cd ~/.scripts/xfrom_source/lynis-master/; sudo ./lynis audit system
 #pass
 alias inf='gpg -d ~/Documents/i'
 
-#export package list
+#Packages
 alias pkgs='yay -Qqe > ~/.config/pkglist.txt'
+alias clean-pkgs='sudo pacman -R $(pacman -Qdtq)'
 
 #wget website images
 alias wget-i='wget -nd --page-requisites --span-host -A'
@@ -223,6 +225,12 @@ alias dff='sudo rm -rf /usr/lib/firefox_old'
 #YTFZF
 alias yt='ytfzf -tT'
 
+#Reddit
+alias reddit='rtv'
+
+#NAS
+alias nas='sudo mount -t nfs 10.0.0.157:/Nasty /mnt/nas/'
+
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
 export XRDM_FONT_DIR=$XRDM_DIR/fonts
@@ -253,3 +261,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+

@@ -141,10 +141,12 @@ bspc config -m HDMI-0 -d ^2 window_gap 0
 message &
 toys -matrix &
 mpv --x11-name=toonami --title=toonami --osc=no ~/Pictures/gifs/mf-toonami.GIF &
+sleep .5;
 mpv --x11-name="pc" --title="pc" --osc=no ~/Videos/pc.mp4 &
 c-nvtop &
 c-gotop -h &
 mpv --x11-name="gifs" --title="gifs" --osc=no ~/Videos/1.mov &
+sleep .5s;
 vim-sessions -kitty &
 urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &
 urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c -f; bspc node @^2:^1:/1/1/1/1/2/2 -c; bspc node @^2:^1:/1/1/1/1/1/2 -c; bspc node @^2:^1:/1/1/1/1/1/1 -p east; toys -matrix"

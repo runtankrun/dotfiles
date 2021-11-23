@@ -10,6 +10,7 @@ map <NL> j
 map  k
 map  l
 map  :NERDTreeToggle
+map  :w
 map  :tabnew
 map  :UndotreeToggle
 map  "+p
@@ -20,6 +21,7 @@ map ct :ColorToggle
 map cs :colorscheme 
 map dc :hi ColorColumn ctermbg=
 map dt :DimInactiveToggle
+map fr :%s/ / /g
 vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
 map sv :vsp
@@ -27,6 +29,10 @@ map sh :sp
 map ss :mks! ~/.vim/sessions/
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
+tnoremap <silent> <Plug>(fzf-normal) 
+tnoremap <silent> <Plug>(fzf-insert) i
+nnoremap <silent> <Plug>(fzf-normal) <Nop>
+nnoremap <silent> <Plug>(fzf-insert) i
 nnoremap <silent> <Plug>Colorizer :ColorToggle
 nnoremap <silent> <Right> :call animate#window_delta_width(-10)
 nnoremap <silent> <Left> :call animate#window_delta_width(10)
@@ -42,6 +48,7 @@ map <C-G> :Goyo
 map <C-U> :UndotreeToggle
 map <C-N> :NERDTreeToggle
 map <C-T> :tabnew
+map <C-S> :w
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set background=dark
@@ -69,7 +76,8 @@ set tabstop=4
 set undodir=~/.vim/undodir
 set undofile
 set viminfo='100,<9999,s100
-let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+set window=69
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
@@ -89,21 +97,26 @@ tabnew
 tabnew
 tabrewind
 edit .Xresources
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
 wincmd w
-set nosplitbelow
-set nosplitright
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
 wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
 set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 51 + 61) / 123)
-exe 'vert 2resize ' . ((&columns * 71 + 61) / 123)
+exe 'vert 1resize ' . ((&columns * 50 + 83) / 167)
+exe 'vert 2resize ' . ((&columns * 116 + 83) / 167)
 argglobal
+balt .Xresources
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -170,6 +183,7 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
@@ -222,6 +236,7 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal virtualedit=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
@@ -229,15 +244,17 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 52) / 104)
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 33) / 67)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-1
+keepjumps 1
 normal! 0
 wincmd w
 argglobal
 if bufexists(".zshrc") | buffer .zshrc | else | edit .zshrc | endif
+balt .Xresources
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -304,6 +321,7 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=zsh\ -n\ --\ %:S
 setlocal matchpairs=(:),{:},[:]
@@ -356,6 +374,7 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal virtualedit=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
@@ -363,26 +382,20 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 52) / 104)
+let &fdl = &fdl
+let s:l = 233 - ((46 * winheight(0) + 33) / 67)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-1
+keepjumps 233
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 51 + 61) / 123)
-exe 'vert 2resize ' . ((&columns * 71 + 61) / 123)
+exe 'vert 1resize ' . ((&columns * 50 + 83) / 167)
+exe 'vert 2resize ' . ((&columns * 116 + 83) / 167)
 tabnext
 edit .config/polybar/config.ini
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
 argglobal
+balt .Xresources
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -449,6 +462,7 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
@@ -501,6 +515,7 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal virtualedit=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
@@ -508,23 +523,17 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 106 - ((0 * winheight(0) + 52) / 104)
+let &fdl = &fdl
+let s:l = 106 - ((31 * winheight(0) + 33) / 67)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-106
+keepjumps 106
 normal! 016|
 tabnext
 edit .config/picom/picom.conf
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
 argglobal
+balt .config/polybar/config.ini
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -591,6 +600,7 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
@@ -643,6 +653,7 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal virtualedit=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
@@ -650,29 +661,35 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 28 - ((0 * winheight(0) + 52) / 104)
+let &fdl = &fdl
+let s:l = 28 - ((27 * winheight(0) + 33) / 67)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-28
+keepjumps 28
 normal! 0
 tabnext
 edit .config/bspwm/bspwmrc
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
 wincmd w
-set nosplitbelow
-set nosplitright
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
 wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
 set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 80 + 61) / 123)
-exe 'vert 2resize ' . ((&columns * 42 + 61) / 123)
+exe 'vert 1resize ' . ((&columns * 20 + 83) / 167)
+exe 'vert 2resize ' . ((&columns * 146 + 83) / 167)
 argglobal
+balt .config/picom/picom.conf
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -739,6 +756,7 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
@@ -791,6 +809,7 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal virtualedit=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
@@ -798,15 +817,17 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 44 - ((43 * winheight(0) + 52) / 104)
+let &fdl = &fdl
+let s:l = 44 - ((31 * winheight(0) + 33) / 67)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-44
+keepjumps 44
 normal! 015|
 wincmd w
 argglobal
 if bufexists(".config/sxhkd/sxhkdrc") | buffer .config/sxhkd/sxhkdrc | else | edit .config/sxhkd/sxhkdrc | endif
+balt .config/bspwm/bspwmrc
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -873,6 +894,7 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
@@ -925,6 +947,7 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal virtualedit=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
@@ -932,32 +955,39 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 54 - ((53 * winheight(0) + 52) / 104)
+let &fdl = &fdl
+let s:l = 166 - ((0 * winheight(0) + 33) / 67)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-54
+keepjumps 166
 normal! 011|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 80 + 61) / 123)
-exe 'vert 2resize ' . ((&columns * 42 + 61) / 123)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 20 + 83) / 167)
+exe 'vert 2resize ' . ((&columns * 146 + 83) / 167)
 tabnext
 edit .config/ranger/rc.conf
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
 wincmd w
-set nosplitbelow
-set nosplitright
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
 wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
 set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 95 + 61) / 123)
-exe 'vert 2resize ' . ((&columns * 27 + 61) / 123)
+exe 'vert 1resize ' . ((&columns * 80 + 83) / 167)
+exe 'vert 2resize ' . ((&columns * 86 + 83) / 167)
 argglobal
+balt .config/bspwm/bspwmrc
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -1024,6 +1054,7 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
@@ -1076,6 +1107,7 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal virtualedit=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
@@ -1083,15 +1115,17 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 25 - ((24 * winheight(0) + 52) / 104)
+let &fdl = &fdl
+let s:l = 25 - ((18 * winheight(0) + 33) / 67)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-25
+keepjumps 25
 normal! 0
 wincmd w
 argglobal
 if bufexists(".vimrc") | buffer .vimrc | else | edit .vimrc | endif
+balt .config/ranger/rc.conf
 vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
 nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
 vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*endf\%[unction]\>', "bW")
@@ -1170,6 +1204,7 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
@@ -1222,6 +1257,7 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal virtualedit=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
@@ -1229,26 +1265,25 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 21 - ((20 * winheight(0) + 52) / 104)
+let &fdl = &fdl
+let s:l = 21 - ((14 * winheight(0) + 33) / 67)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-21
-normal! 014|
+keepjumps 21
+let s:c = 14 - ((2 * winwidth(0) + 43) / 86)
+if s:c > 0
+  exe 'normal! ' . s:c . '|zs' . 14 . '|'
+else
+  normal! 014|
+endif
 wincmd w
-exe 'vert 1resize ' . ((&columns * 95 + 61) / 123)
-exe 'vert 2resize ' . ((&columns * 27 + 61) / 123)
+exe 'vert 1resize ' . ((&columns * 80 + 83) / 167)
+exe 'vert 2resize ' . ((&columns * 86 + 83) / 167)
 tabnext
 edit .mozilla/firefox/v2nnvt6o.default-release/startpage/index.html
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
 argglobal
+balt .config/ranger/rc.conf
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -1315,6 +1350,7 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:],<:>
@@ -1367,6 +1403,7 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal virtualedit=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
@@ -1374,11 +1411,12 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 52) / 104)
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 33) / 67)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-1
+keepjumps 1
 normal! 0
 tabnext 4
 set stal=1
@@ -1397,12 +1435,11 @@ if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
 endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20 shortmess=filnxtToOS
-set winminheight=1 winminwidth=1
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
-let &so = s:so_save | let &siso = s:siso_save
+let &g:so = s:so_save | let &g:siso = s:siso_save
 nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
