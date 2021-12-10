@@ -41,7 +41,7 @@ super + alt + l
 
 ## aspect
 ctrl + shift + alt + 5
-    aspect
+    aspect-ratio
 ## cover
 super + Pause
     bspc rule -a cover:feh state=fullscreen; feh --class cover ~/screen1.png
@@ -57,6 +57,8 @@ super + ctrl + F1
     layout-case -vid
 super + shift + F1
     layout-case -em
+super + ctrl + shift + F1
+    layout-case -trans
 
 ## auto-launch apps on main monitor
 super + F2
@@ -127,7 +129,11 @@ super + alt + F10
 super + ctrl + F10
     pro -r
 
-## Muziq 
+## DL H
+super + h
+    urxvtc -e dl-h
+
+## poly 
 super + F11
     c-polybar
 super + alt + F11
@@ -154,6 +160,8 @@ super + ctrl + Home
     layout-complete -alt
 super + shift + Home
     layout-complete -dark
+super + ctrl + shift + Home
+    wp-vid
 
 ## view open windows
 Pause
@@ -168,6 +176,10 @@ super + d
 	/home/ellio/.config/rofi/launchers/colorful/launcher.sh
 Menu
     /home/ellio/.config/rofi/launchers/colorful/launcher_2.sh
+
+## sysadmin
+super + shift + a
+    sysadmn
 
 ## audio
 super + a
@@ -240,7 +252,7 @@ super + alt + p
     rtags-quicklaunch -pic
 super + ctrl + p
     rtags-quicklaunch -ss
-super + alt + f
+super + i
     c-feh -i
 
 ## launch gifs
@@ -248,6 +260,10 @@ super + alt + g
     mpv ~/Pictures/gifs/* --loop
 
 ## launch music
+super + shift + m
+    layout-muziq
+
+## launch mega
 super + m
     megasync
 
@@ -261,8 +277,7 @@ super + l
 	
 ## take a screenshot
 Print
-	sleep 0.2s; scrot -s -q 100 '%d-%m-%y-%S_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/'
-
+	screenshot
 ## record screen
 super + Print
     urxvtc -e sh -c "giph --format mp4 -s -d 3 -l -c 1,1,1,0.3 -b 5 -p -5 ~/Videos/screen.mp4"
@@ -352,7 +367,7 @@ super + shift + {Left,Down,Up,Right}
     bspwm_smart_move {west,south,north,east}
 
 # Rotate tree
-super + shift + {d,a}
+super + alt + {d,a}
     bspc node @/ -C {forward,backward}
 
 # swap the current node and the biggest node

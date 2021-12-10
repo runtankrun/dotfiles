@@ -1,11 +1,11 @@
 #!/bin/sh
 if [[ $1 = "-a" ]]; then
 font=$(ls -d ~/.fonts/misc/figlet-fonts-all/* | shuf -n 1)
-figlet -f $font "TANK"
+figlet -f $font $2
 echo $font 
 
 else
 font=$(ls -d ~/.fonts/misc/figlet/* | shuf -n 1)
-figlet -f $font "TANK"
+figlet -f $font $1
 echo $font
 fi

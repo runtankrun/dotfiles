@@ -1,5 +1,4 @@
 #!/bin/sh
-
 dt=$(bspc query --desktops --names --desktop .\!occupied | head -n 1)
 bspc desktop -f ^2:^$dt;
 

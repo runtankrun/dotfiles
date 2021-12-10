@@ -7,19 +7,10 @@ elif [[ $1 = "-ut" ]]; then
 urxvtc -name "gotop" -title "gotop" --transparent -bg white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black --color15 black -e sh -c "gotop"
 
 elif [[ $1 = "-kt" ]]; then
-kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/kitty-black.conf" -e "gotop"
+kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/kitty-gotop.conf" -e "gotop"
 
 elif [[ $1 = "-kd" ]]; then
 kitty --name "gotop" --title "gotop" -o include="~/.config/kitty/kitty-dark.conf" -e "gotop"
-
-elif [[ $1 = "-full" ]]; then
-dt=$(bspc query --desktops --names --desktop .\!occupied | head -n 1)
-bspc desktop -f ^2:^$dt;
-
-bspc rule -a  kitty:Fullgotop -o desktop=^2:^$dt
-
-kitty --name "Fullgotop" --title "Fullgotop" -o include=/home/ellio/.config/kitty/kitty-dark-zoom.conf -e sh -c \
-"gotop --nvidia --averagecpu --statusbar --mbps --layout kitchensink"
 
 else
 urxvtc -name "gotop" -title "gotop" -e "gotop"

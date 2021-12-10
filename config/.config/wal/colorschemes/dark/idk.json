@@ -1,9 +1,9 @@
 {
     "wallpaper": "None",
-    "alpha": "50",
+    "alpha": "90",
 
     "special": {
-        "background": "#000000",
+        "background": "#0a0f14",
         "foreground": "#ffffff",
         "cursor": "#7c54b0"
     },

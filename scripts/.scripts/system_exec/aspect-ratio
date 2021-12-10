@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+## Author  : Aditya Shakya
+## Mail    : adi1090x@gmail.com
+## Github  : @adi1090x
+## portrait : @adi1090x
+
+style="$($HOME/.config/rofi/applets/applets/style.sh)"
+
+dir="$HOME/.config/rofi/applets/applets/configs/$style"
+rofi_command="rofi -theme $dir/quicklinks.rasi"
+
+# Error msg
+msg() {
+	rofi -theme "$HOME/.config/rofi/applets/styles/message.rasi" -e "$1"
+}
+
+# Links
+wide="16x9"
+portrait="9x16"
+square="1x1"
+
+# Variable passed to rofi
+options="$wide\n$portrait\n$square"
+
+chosen="$(echo -e "$options" | $rofi_command -p "Open In  :  $app" -dmenu -selected-row 0)"
+case $chosen in
+    $wide)
+        $(aspect 16 9) &
+        ;;
+    $portrait)
+        $(aspect 9 16) &
+        ;;
+    $square)
+        $(aspect 1 1) &
+        ;;
+esac
+

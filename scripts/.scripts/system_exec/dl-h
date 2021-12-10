@@ -1,0 +1,4 @@
+#!/bin/sh
+cd ~/Videos/h;
+wget "$(xclip -out -selection clipboard)";
+echo "v:/home/ellio/Videos/h/$(ls -c | head -n 1)" >> ~/.config/ranger/tagged

@@ -76,7 +76,7 @@ ZSH_THEME="powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions history-substring-search zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -238,10 +238,14 @@ export XRDM_COLOR_DIR=$XRDM_DIR/colors
 export XRDM_PRESET_DIR=$XRDM_DIR/presets
 export XRDM_PROGRAM_DIR=$XRDM_DIR/programs
 source xrdm
-
-#alias python='/usr/bin/python3.6'
-
 # End xrdm settings
+
+# Mcfly
+eval "$(mcfly init zsh)"
+#export MCFLY_FUZZY=1
+source /usr/share/doc/mcfly/mcfly.zsh
+export MCFLY_RESULTS=50
+# End Mcfly
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -17,6 +17,9 @@ elif [[ $1 = "-kitty" ]]; then
 kitty --name "vim" --title "vim" -e sh -c \
 "vim -S ~/.vim/sessions/main.vim"
 
+elif [[ $1 = "-kitty2" ]]; then
+kitty --name "vim2" --title "vim2" -e sh -c \
+"vim -S ~/.vim/sessions/main.vim"
 else
 echo "Options: -main -notes -start-page"
 

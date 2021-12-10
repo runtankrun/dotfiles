@@ -1,6 +1,6 @@
 {
     "wallpaper": "None",
-    "alpha": "50",
+    "alpha": "90",
 
     "special": {
         "background": "#263238",
@@ -9,7 +9,7 @@
     },
     "colors": {
         "color0": "#263238",
-        "color1": "#ff9500",
+        "color1": "#ff9900",
         "color2": "#8bc34a",
         "color3": "#ffc107",
         "color4": "#03a9f4",
@@ -17,7 +17,7 @@
         "color6": "#009688",
         "color7": "#cfd8dc",
         "color8": "#37474f",
-        "color9": "#ff9500",
+        "color9": "#ff9900",
         "color10": "#8bc34a",
         "color11": "#ffc107",
         "color12": "#03a9f4",

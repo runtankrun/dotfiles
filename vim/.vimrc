@@ -77,7 +77,7 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <space> /
 map <silent> <space><cr> :noh<CR>
-map fr :%s/ / /g
+nnoremap fr :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
 nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
 nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
