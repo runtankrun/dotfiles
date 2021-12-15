@@ -3,6 +3,11 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export EDITOR=vim
 export VISUAL=vim
+
+# enable mousekeys (my xmodmap has mousekeys mapped to buttons)
+#/usr/bin/xkbset exp =m
+#/usr/bin/xkbset m
+
 # Make ~/.scripts folder executable
 export PATH="${PATH}:$HOME/.scripts"
 export PATH="${PATH}:$HOME/.scripts/cli-apps"

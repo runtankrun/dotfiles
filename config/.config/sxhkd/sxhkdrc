@@ -14,7 +14,7 @@
 ######################
 ##  COMMON COMMAND  ##
 ######################
-
+#--Mouse--#
 ## focus next occupied desktop
 button10
     bspc desktop -f next.local.occupied
@@ -40,13 +40,23 @@ super + alt + l
     bsp-layout once {rtall,wide}
 
 ## aspect
-ctrl + shift + alt + 5
-    aspect-ratio
-## cover
-super + Pause
-    bspc rule -a cover:feh state=fullscreen; feh --class cover ~/screen1.png
-super + alt + Pause
-    mpv ~/Videos/1.mov & mpv ~/Videos/2.mov
+ctrl + shift + alt + 8
+    aspect 9 16
+ctrl + shift + alt + 6
+    aspect 16 9
+ctrl + shift + alt + 7
+    aspect 1 1
+
+## poly 
+super + F11
+    c-polybar
+super + alt + F11
+    c-polybar -k
+
+#gotop+nvtop
+super + shift + F6
+    c-fulltop 
+#--/Mouse--#
 
 ## auto-launch apps on case panel
 super + F1
@@ -77,6 +87,7 @@ super + alt + F4
     layout-home -mpv
 super + shift + F4
     layout-home -dev
+
 # em
 super + ctrl + alt + e
     feh -Z -. -D 5 ~/Pictures/chx/em/em-tall-*
@@ -94,8 +105,6 @@ super + F6
     c-gotop
 super + alt + F6
     c-gotop -h
-super + shift + F6
-    c-fulltop 
 
 ## nvtop
 super + F7
@@ -133,12 +142,6 @@ super + ctrl + F10
 super + h
     urxvtc -e dl-h
 
-## poly 
-super + F11
-    c-polybar
-super + alt + F11
-    c-polybar -k
-
 ## Virtualbox
 super + F12
     kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2020.4-vbox-amd64"
@@ -148,7 +151,7 @@ super + alt + F12
     kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"
 
 ## tank-ui
-super + ctrl + t
+super + ctrl + alt + t
     bspc rule -a eDEX-UI:edex-ui -o state=fullscreen; ~/.scripts/xfrom_source/ui/tank-ui/dist/linux-unpacked/tank-ui
 
 ## set previously saved wallpaper, colorscheme, & border colors
@@ -164,8 +167,12 @@ super + ctrl + shift + Home
     wp-vid
 
 ## view open windows
-Pause
+super + Pause
     skippy-xd-toggle
+
+## cover
+Pause
+    bspc rule -a cover:feh state=fullscreen; feh --class cover ~/screen1.png
 
 ## sleep
 super + End
@@ -216,6 +223,8 @@ super + alt + z
     message -a
 super + ctrl + z
     message -k
+super + ctrl + shift + z
+    message -kt
 
 ## launch ranger
 super + r

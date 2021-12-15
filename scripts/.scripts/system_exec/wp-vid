@@ -2,6 +2,7 @@
 ##VARIABLES##
 dt=$(bspc query --desktops --names --desktop .\!occupied | head -n 1)
 tag_count=$(grep -c ^W: ~/.config/ranger/tagged)
+
 ##DESKTOP FOCUS
 bspc desktop -f ^2:^$dt;
 
@@ -11,36 +12,38 @@ bspc node @^2:^$dt:/ -o .4 -p east -i
 bspc node @^2:^$dt:/2 -o .4 -p east -i
 bspc node @^2:^$dt:/1 -o .5 -p south -i
 bspc node @^2:^$dt:/2/1 -o .5 -p south -i
+
 ##NODE RULES
-bspc rule -a URxvt:Display1 -o node=@^2:^$dt:/1/1 focus=off state=pseudo_tiled 
-bspc rule -a URxvt:Display2 -o node=@^2:^$dt:/1/2 focus=off state=pseudo_tiled
-bspc rule -a URxvt:wp-vid1 -o node=@^2:^$dt:/2/1/1 state=pseudo_tiled
-bspc rule -a URxvt:wp-vid2 -o node=@^2:^$dt:/2/1/2 state=pseudo_tiled
-bspc rule -a Alacritty:ranger -o node=@^2:^$dt:/2/2 state=pseudo_tiled
+bspc rule -a kitty:Display1 -o node=@^2:^$dt:/1/1 state=pseudo_tiled 
+bspc rule -a kitty:Display2 -o node=@^2:^$dt:/1/2 state=pseudo_tiled
+bspc rule -a wp-vid1:wp-vid1 -o node=@^2:^$dt:/2/1/1 state=pseudo_tiled
+bspc rule -a wp-vid2:wp-vid2 -o node=@^2:^$dt:/2/1/2 state=pseudo_tiled
+bspc rule -a ranger:ranger -o node=@^2:^$dt:/2/2 state=pseudo_tiled
 
 #MESSAGE
-urxvtc -name "Display1" -title "Display1" -e sh -c \
-"figlet -f $(ls -d $HOME/.fonts/misc/figlet/* | shuf -n 1) '2'" &
+kitty -o include=~/.config/kitty/kitty-transparent.conf --title "Display2" --name "Display2" -e sh -c \
+"figlet -f ~/.fonts/misc/figlet/ANSI_Shadow.flf '2';zsh" &
 
-urxvtc -name "Display2" -title "Display2" -e sh -c \
-"figlet -f $(ls -d $HOME/.fonts/misc/figlet/* | shuf -n 1) '2'" &
+kitty -o include=~/.config/kitty/kitty-transparent.conf --title "Display1" --name "Display1" -e sh -c \
+"figlet -f ~/.fonts/misc/figlet/ANSI_Shadow.flf '1';zsh" &
 
 ##MAIN VID
-urxvtc -name "wp-vid1" -title "wp-vid1" -e sh -c "
+kitty -o include=~/.config/kitty/kitty-transparent.conf --title "wp-vid1" --name "wp-vid1" -e sh -c "
 xwinwrap -g 3440x1440+1280+0 -ov -- mpv -wid WID $(while IFS= read -r line
 do 
-    echo "$line" | grep ^W: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged)" & \
+    echo "$line" | grep ^W: | tail -n $tag_count | tail -c +3 | tr '\n' ' ':
+done < ~/.config/ranger/tagged)" &
+
+sleep .5s;
 
 ##CASE VID
-layout-case -trans &
-urxvtc -name "wp-vid2" -title "wp-vid2" -e sh -c "
+kitty -o include=~/.config/kitty/kitty-transparent.conf --title "wp-vid2" --name "wp-vid2" -e sh -c "
 xwinwrap -g 1276x1020+0+0 -ov -- mpv -wid WID $(while IFS= read -r line
 do 
     echo "$line" | grep ^W: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged)" & \
+done < ~/.config/ranger/tagged)" & 
 
 ##RANGER
-alacritty --title "ranger" --class "ranger" -e sh -c \
+kitty -o include=~/.config/kitty/kitty-transparent.conf --title "ranger" --class "ranger" -e sh -c \
 "ranger --selectfile=$(grep ^W: ~/.config/ranger/tagged | tail -1 | tail -c +3) \
 --cmd='set preview_images_method ueberzug'"

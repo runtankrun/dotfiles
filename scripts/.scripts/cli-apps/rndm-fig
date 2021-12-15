@@ -1,11 +1,29 @@
 #!/bin/sh
 if [[ $1 = "-a" ]]; then
-font=$(ls -d ~/.fonts/misc/figlet-fonts-all/* | shuf -n 1)
-figlet -f $font $2
-echo $font 
+count=1
+total=$(ls -d /home/ellio/.fonts/misc/figlet-fonts-all/* | wc -l)
+
+while [ $count -le $total ]
+do
+    font=$(ls -d ~/.fonts/misc/figlet-fonts-all/* | shuf -n 1)
+    font_name=$(echo $font | grep -o "figlet-fonts-all/.*" | cut -d "/" -f2)
+
+    figlet -f $font $2
+    echo $font_name
+    sleep 1s
+done
 
 else
-font=$(ls -d ~/.fonts/misc/figlet/* | shuf -n 1)
-figlet -f $font $1
-echo $font
+count=1
+total=$(ls -d /home/ellio/.fonts/misc/figlet/* | wc -l)
+
+while [ $count -le $total ]
+do
+    font=$(ls -d ~/.fonts/misc/figlet/* | shuf -n 1)
+    font_name=$(echo $font | grep -o "figlet/.*" | cut -d "/" -f2)
+    
+    figlet -f $font $1
+    echo $font_name
+    ((count++))
+done
 fi

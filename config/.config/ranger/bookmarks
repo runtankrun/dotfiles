@@ -1,7 +1,7 @@
 c:/home/ellio/.config
 p:/home/ellio/Pictures
 w:/home/ellio/.cache/wal
-':/home
+':/home/ellio/.scripts/system_exec
 D:/mnt/TB_2/dev
 v:/home/ellio/Videos
 h:/home/ellio
@@ -28,6 +28,6 @@ M:/mnt
 A:/home/ellio/.config/alacritty
 J:/home/ellio/Pictures
 H:/home/ellio/Videos/h
-t:/mnt/PSSD/timeshift
+t:/mnt/PSSD_Storage
 u:/mnt/PSSD_Storage/UpScale
-T:/run/media/ellio
+T:/mnt/PSSD/timeshift

@@ -6,5 +6,5 @@ kitty --name "tty-clock" --title "tty-clock" -o include="~/.config/kitty/kitty-t
 "tty-clock -c -t -C 1;zsh"
 
 else
-kitty --name "transparent" --title "transparent" -o include="~/.config/kitty/kitty-transparent.conf"
+kitty --name "transparent" --title "transparent" -o include="~/.config/kitty/kitty-transparent.conf" 
 fi

@@ -76,7 +76,7 @@ ZSH_THEME="powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search git-open)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -200,7 +200,7 @@ alias vim-s='vim -S ~/.vim/sessions/main.vim'
 #Figlet
 alias yo='figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf'
 alias yo2='figlet -f ~/.fonts/misc/figlet/isometric.flf'
-alias f-rndm='figlet -f $(ls -d ~/.fonts/misc/figlet/* | shuf -n 1)'
+alias figlet_font='figlet -f $(ls -d ~/.fonts/misc/figlet/* | shuf -n 1)'
 
 #Shred
 alias shreddit='shred -n 5 -v -z'

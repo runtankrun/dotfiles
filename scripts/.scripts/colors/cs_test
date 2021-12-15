@@ -30,8 +30,8 @@ sed -i '/*.foreground/d' ~/.Xresources2; sed -i '/*.background/d' ~/.Xresources2
 #sed -i '/^\*.foreground/,$d' ~/.Xresources2; \
 
 cat ~/Downloads/iTerm2-Color-Schemes/Xresources/$cs_name >> ~/.Xresources2; \
-sed -i 's/*.foreground:  /*.foreground:[95]/g' ~/.Xresources2; \
-sed -i 's/*.background:  /*.background:[95]/g' ~/.Xresources2; \
+sed -i 's/*.foreground:  /*.foreground:[90]/g' ~/.Xresources2; \
+sed -i 's/*.background:  /*.background:[90]/g' ~/.Xresources2; \
 
 xrdb ~/.Xresources2
 fi

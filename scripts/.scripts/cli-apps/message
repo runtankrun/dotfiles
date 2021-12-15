@@ -20,6 +20,9 @@ kitty --name "TANK-K" --title "TANK-K" -e sh -c \
 'figlet -f ~/.fonts/misc/figlet/rectangles.flf 'TANK'; \
 zsh'
 
+elif [[ $1 = "-kt" ]]; then
+c-kitty-trans
+
 #############
 #   ADMIN   #
 #####################
