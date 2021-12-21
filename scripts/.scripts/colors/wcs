@@ -1,0 +1,22 @@
+#!/bin/sh
+if [[ $1 = '-r' ]]; then
+image="$(xclip -out -selection clipboard)"
+else
+image=$1
+fi
+
+##variables
+backends='colorz schemer2 wal haishoku'
+counter=1
+
+##loop
+while [ $counter -le 12 ]
+do
+    for backend in $backends
+    do
+        wal -n -a 90 --saturate 0.7 --backend $backend -i $image;pywal-alacritty;pywal-URxvt;pywal-kitty
+        sleep 3s
+        ((counter++))
+    done
+done
+

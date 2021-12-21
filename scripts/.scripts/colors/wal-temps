@@ -1,0 +1,17 @@
+#!/bin/sh
+cs=$(ls -d ~/.config/wal/colorschemes/dark/* | grep -o "dark/.*" | cut -d "/" -f2 | rev | cut -c 6- | rev)
+
+for scheme in $cs
+do
+    wal --theme $scheme;pywal-alacritty;pywal-URxvt;pywal-kitty
+    figlet -f ~/.fonts/misc/figlet/future.tlf $scheme
+    sleep 3s 
+done
+
+select scheme in $cs
+do
+    wal --theme $scheme;pywal-alacritty;pywal-URxvt;pywal-kitty
+    figlet -f ~/.fonts/misc/figlet/future.tlf $scheme
+    sleep 3s
+    ls -d ~/.config/wal/colorschemes/dark/* | grep -o "dark/.*" | cut -d "/" -f2 | rev | cut -c 6- | rev
+done

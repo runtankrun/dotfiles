@@ -9,8 +9,8 @@ do
     font_name=$(echo $font | grep -o "figlet-fonts-all/.*" | cut -d "/" -f2)
 
     figlet -f $font $2
-    echo $font_name
-    sleep 1s
+    echo "cp $font ~/.fonts/misc/figlet/" | lolcat
+    ((count++))
 done
 
 else
@@ -23,7 +23,7 @@ do
     font_name=$(echo $font | grep -o "figlet/.*" | cut -d "/" -f2)
     
     figlet -f $font $1
-    echo $font_name
+    echo $font
     ((count++))
 done
 fi

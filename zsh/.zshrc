@@ -231,6 +231,14 @@ alias reddit='rtv'
 #NAS
 alias nas='sudo mount -t nfs 10.0.0.157:/Nasty /mnt/nas/'
 
+#RVMatting
+alias rvm='python inference.py --variant resnet50 --checkpoint checkpoint/rvm_resnet50.pth --device cuda --input-source input/input.mp4 --output-type video --output-composition output/com.mp4 --output-alpha output/alp.mp4 --output-foreground output/for.mp4 --output-video-mbps 10 --seq-chunk 1'
+
+#Disk Utility
+alias disk-util='ncdu'
+
+#gotop
+alias gotop-f='gotop --nvidia --averagecpu --statusbar --mbps --layout kitchensink'
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
 export XRDM_FONT_DIR=$XRDM_DIR/fonts
@@ -239,6 +247,8 @@ export XRDM_PRESET_DIR=$XRDM_DIR/presets
 export XRDM_PROGRAM_DIR=$XRDM_DIR/programs
 source xrdm
 # End xrdm settings
+
+eval $(thefuck --alias)
 
 # Mcfly
 eval "$(mcfly init zsh)"

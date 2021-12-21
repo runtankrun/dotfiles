@@ -16,8 +16,8 @@ bspc node @^2:^$dt:/2/1 -o .5 -p south -i
 ##NODE RULES
 bspc rule -a kitty:Display1 -o node=@^2:^$dt:/1/1 state=pseudo_tiled 
 bspc rule -a kitty:Display2 -o node=@^2:^$dt:/1/2 state=pseudo_tiled
-bspc rule -a wp-vid1:wp-vid1 -o node=@^2:^$dt:/2/1/1 state=pseudo_tiled
-bspc rule -a wp-vid2:wp-vid2 -o node=@^2:^$dt:/2/1/2 state=pseudo_tiled
+bspc rule -a kitty:wp-vid1 -o node=@^2:^$dt:/2/1/1 state=pseudo_tiled
+bspc rule -a kitty:wp-vid2 -o node=@^2:^$dt:/2/1/2 state=pseudo_tiled
 bspc rule -a ranger:ranger -o node=@^2:^$dt:/2/2 state=pseudo_tiled
 
 #MESSAGE
@@ -28,7 +28,7 @@ kitty -o include=~/.config/kitty/kitty-transparent.conf --title "Display1" --nam
 "figlet -f ~/.fonts/misc/figlet/ANSI_Shadow.flf '1';zsh" &
 
 ##MAIN VID
-kitty -o include=~/.config/kitty/kitty-transparent.conf --title "wp-vid1" --name "wp-vid1" -e sh -c "
+kitty -o include=~/.config/kitty/kitty-transparent.conf --title "wp-vid2" --name "wp-vid2" -e sh -c "
 xwinwrap -g 3440x1440+1280+0 -ov -- mpv -wid WID $(while IFS= read -r line
 do 
     echo "$line" | grep ^W: | tail -n $tag_count | tail -c +3 | tr '\n' ' ':
@@ -37,7 +37,7 @@ done < ~/.config/ranger/tagged)" &
 sleep .5s;
 
 ##CASE VID
-kitty -o include=~/.config/kitty/kitty-transparent.conf --title "wp-vid2" --name "wp-vid2" -e sh -c "
+kitty -o include=~/.config/kitty/kitty-transparent.conf --title "wp-vid1" --name "wp-vid1" -e sh -c "
 xwinwrap -g 1276x1020+0+0 -ov -- mpv -wid WID $(while IFS= read -r line
 do 
     echo "$line" | grep ^W: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
@@ -46,4 +46,6 @@ done < ~/.config/ranger/tagged)" &
 ##RANGER
 kitty -o include=~/.config/kitty/kitty-transparent.conf --title "ranger" --class "ranger" -e sh -c \
 "ranger --selectfile=$(grep ^W: ~/.config/ranger/tagged | tail -1 | tail -c +3) \
---cmd='set preview_images_method ueberzug'"
+--cmd='set preview_images_method ueberzug'" &
+
+layout-case -trans

@@ -210,7 +210,7 @@ super + w
 
 ## change colorscheme
 super + alt + c
-    wal --theme {AdventureTime,dracula,flat,gjm,gotham,icy,material,monokai,outrun,rebecca,sexy-cloud,sexy-material,idk,nasa,Tomorrow_Night_Burns,tycho}; pywal-alacritty; pywal-URxvt; pywal-kitty
+    urxvtc -e sh -c "wal-temps"
 super + alt + shift + c
     wal --theme {sexy-mostly-bright -l,summerfruit -l}
 super + shift + c
@@ -282,7 +282,7 @@ super + alt + m
 
 ## fancy lockscreen :)
 super + l
-	i3lock
+	i3lock -c 050505
 	
 ## take a screenshot
 Print
