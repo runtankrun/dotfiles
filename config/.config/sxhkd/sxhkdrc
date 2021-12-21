@@ -56,6 +56,9 @@ super + alt + F11
 #gotop+nvtop
 super + shift + F6
     c-fulltop 
+#pseudo-desk
+super + shift  + alt + 9
+    {floating-desk, pkill floating-desk}
 #--/Mouse--#
 
 ## auto-launch apps on case panel

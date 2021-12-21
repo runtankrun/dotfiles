@@ -66,7 +66,7 @@ feh \
 --bg-fill ~/.config/wall.png \
 --bg-fill ~/.config/wall-case.png; \
 wal -n -i ~/.config/wall.png; \
-wal --theme outrun; \
+wal -a 50 --theme outrun; \
 pywal-URxvt
 pywal-alacritty; \
 #pywal-kitty; \
