@@ -1,11 +1,11 @@
 c:/home/ellio/.config
 p:/home/ellio/Pictures
 w:/home/ellio/.cache/wal
-':/home/ellio
+':/home/ellio/Pictures/wal
 D:/mnt/TB_2/dev
 v:/home/ellio/Videos
 h:/home/ellio
-f:/home/ellio/Pictures/chx/f
+f:/home/ellio/Pictures
 m:/mnt/TB_2/Media
 r:/home/ellio/.config/ranger
 d:/home/ellio/Downloads
@@ -31,3 +31,4 @@ H:/home/ellio/Videos/h
 t:/mnt/PSSD_Storage
 u:/mnt/PSSD_Storage/UpScale
 T:/mnt/PSSD/timeshift
+i:/home/ellio/.config/ranger

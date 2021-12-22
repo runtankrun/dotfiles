@@ -248,7 +248,9 @@ export XRDM_PROGRAM_DIR=$XRDM_DIR/programs
 source xrdm
 # End xrdm settings
 
+#thefuck
 eval $(thefuck --alias)
+#end thefuck
 
 # Mcfly
 eval "$(mcfly init zsh)"
@@ -256,6 +258,10 @@ eval "$(mcfly init zsh)"
 source /usr/share/doc/mcfly/mcfly.zsh
 export MCFLY_RESULTS=50
 # End Mcfly
+
+#ranger shell prompt
+source /home/ellio/.scripts/ranger/examples/shell_subshell_notice.sh
+#end ranger shll prompt
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

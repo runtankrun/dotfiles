@@ -14,7 +14,8 @@ elif [[ $1 = "-start-page" ]]; then
 urxvtc -e sh -c "vim -S ~/.vim/sessions/start-page.vim"
 
 elif [[ $1 = "-kitty" ]]; then
-kitty --name "vim" --title "vim" -e sh -c \
+kitty -o="initial_window_width 1017" -o="initial_window_height 1162" \
+ --name "vim" --title "vim"  -e sh -c \
 "vim -S ~/.vim/sessions/main.vim"
 
 elif [[ $1 = "-kitty2" ]]; then
