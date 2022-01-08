@@ -1,12 +1,12 @@
 #!/bin/sh
 source /usr/share/autojump/autojump.bash
-
+export TERMCMD=kitty
 #############
 #   KITTY   #
 #############
-if [[ $1 = "-s" ]]; then
+if [[ $1 = "-k" ]]; then
 kitty --title "ranger-k" --name "ranger-k" -e sh -c \
-"ranger \
+"ranger-slim \
 --selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3) \
 --cmd='set preview_images_method ueberzug' \
 --cmd='default_linemode devicons2' \
@@ -17,7 +17,7 @@ kitty --title "ranger-k" --name "ranger-k" -e sh -c \
 #################
 elif [[ $1 = "-a" ]]; then
 alacritty --title "ranger" --class "ranger" -e sh -c \
-"ranger \
+"ranger-slim \
 --cmd='set preview_images_method ueberzug' \
 --selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
 
@@ -26,6 +26,6 @@ alacritty --title "ranger" --class "ranger" -e sh -c \
 ##############
 else
 urxvtc -name "ranger" -title "ranger" -e sh -c \
-"ranger \
+"ranger-slim \
 --selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
 fi

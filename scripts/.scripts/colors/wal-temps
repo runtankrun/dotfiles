@@ -1,19 +1,15 @@
 #!/bin/sh
 cs=$(ls -d ~/.config/wal/colorschemes/dark/* | grep -o "dark/.*" | cut -d "/" -f2 | rev | cut -c 6- | rev)
-echo alpha:
+echo "alpha (0-100): "
 read alpha
-
-for scheme in $cs
-do
-    wal -a $alpha --theme $scheme;pywal-alacritty;pywal-URxvt;pywal-kitty
-    figlet -f ~/.fonts/misc/figlet/future.tlf $scheme
-    sleep 2s 
-done
+echo "saturation (0-1): "
+read sat
 
 select scheme in $cs
 do
-    wal -a $alpha --theme $scheme;pywal-alacritty;pywal-URxvt;pywal-kitty
-    figlet -f ~/.fonts/misc/figlet/future.tlf $scheme
-    sleep 2s
+    wal -n -a $alpha --saturate $sat --theme $scheme;
+    r-wal;
+    figlet -f ~/.fonts/misc/figlet/future.tlf $scheme;
+    sleep 2s;
     ls -d ~/.config/wal/colorschemes/dark/* | grep -o "dark/.*" | cut -d "/" -f2 | rev | cut -c 6- | rev
 done

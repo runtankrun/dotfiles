@@ -9,7 +9,7 @@ rndm_font=$(echo $(ls -d ~/.fonts/misc/figlet/* | shuf -n 1) | grep -o "figlet/.
 #################
 if [[ $1 = "-a" ]]; then
 alacritty --class "TANK-A" --title "TANK-A" -e sh -c \
-'figlet -f ~/.fonts/misc/figlet/rectangles.flf 'TANK'; \
+'figlet -f ~/.fonts/misc/figlet/Rectangles.flf 'TANK'; \
 zsh'
 
 #############
@@ -17,7 +17,7 @@ zsh'
 #############
 elif [[ $1 = "-k" ]]; then
 kitty --name "TANK-K" --title "TANK-K" -e sh -c \
-'figlet -f ~/.fonts/misc/figlet/rectangles.flf 'TANK'; \
+'figlet -f ~/.fonts/misc/figlet/Rectangles.flf 'TANK'; \
 zsh'
 
 elif [[ $1 = "-kt" ]]; then
@@ -28,7 +28,7 @@ c-kitty-trans
 #####################
 elif [[ $1 = "-A" ]]; then
 alacritty --class "admin" --title "admin" -e sh -c \
-"figlet -f ~/.fonts/misc/figlet/rectangles.flf 'TANK'; \
+"figlet -f ~/.fonts/misc/figlet/Rectangles.flf 'TANK'; \
 sudo su;\
 zsh"
 
@@ -37,7 +37,7 @@ zsh"
 ##############
 else
 urxvtc -title "TANK" -name "TANK" -e sh -c \
-'figlet -f ~/.fonts/misc/figlet/rectangles.flf 'TANK'; \
+'figlet -f ~/.fonts/misc/figlet/Rectangles.flf 'TANK'; \
 zsh'
 
 fi

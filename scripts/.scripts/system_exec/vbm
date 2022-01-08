@@ -1,6 +1,5 @@
 #!/bin/sh
 tag_count=$(grep -c ^V: ~/.config/ranger/tagged)
-bspc rule -a mpv:bm -o state=pseudo_tiled
 
 mpv --x11-name="bm" $(while IFS= read -r line
 do 

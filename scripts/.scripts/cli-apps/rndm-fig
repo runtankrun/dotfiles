@@ -1,29 +1,30 @@
 #!/bin/sh
-if [[ $1 = "-a" ]]; then
-count=1
-total=$(ls -d /home/ellio/.fonts/misc/figlet-fonts-all/* | wc -l)
+if [[ $1 = "-a" ]]; 
+then
+    count=1
+    total=$(ls -d /home/ellio/.fonts/misc/figlet-fonts-all/* | wc -l)
 
 while [ $count -le $total ]
 do
-    font=$(ls -d ~/.fonts/misc/figlet-fonts-all/* | shuf -n 1)
-    font_name=$(echo $font | grep -o "figlet-fonts-all/.*" | cut -d "/" -f2)
+        font=$(ls -d ~/.fonts/misc/figlet-fonts-all/* | shuf -n 1)
+        font_name=$(echo $font | grep -o "figlet-fonts-all/.*" | cut -d "/" -f2)
 
-    figlet -f $font $2
-    echo "cp $font ~/.fonts/misc/figlet/" | lolcat
-    ((count++))
+        figlet -f $font $2
+        echo "cp $font ~/.fonts/misc/figlet/" | lolcat
+        ((count++))
 done
 
 else
-count=1
-total=$(ls -d /home/ellio/.fonts/misc/figlet/* | wc -l)
+    count=1
+    total=$(ls -d /home/ellio/.fonts/misc/figlet/* | wc -l)
 
-while [ $count -le $total ]
-do
-    font=$(ls -d ~/.fonts/misc/figlet/* | shuf -n 1)
-    font_name=$(echo $font | grep -o "figlet/.*" | cut -d "/" -f2)
+    while [ $count -le $total ]
+    do
+        font=$(ls -d ~/.fonts/misc/figlet/* | shuf -n 1)
+        font_name=$(echo $font | grep -o "figlet/.*" | cut -d "/" -f2)
     
-    figlet -f $font $1
-    echo $font
-    ((count++))
+        figlet -f $font $1
+        echo $font
+        ((count++))
 done
 fi

@@ -25,7 +25,6 @@ Use your favorite package-manager to install, and enjoy!
 | [deep-space] | Intergalactic friendly color scheme based off Hybrid | ✓ | ✓ |
 | [deus] | For the late night coder | ✓ | ✓ |
 | [dogrun] | Dark purple | ✓ | ✓ |
-| [dracula] | Dark theme | ✓ | ✓ |
 | [flattened] | Solarized, without the bullshit | ✓ (16) | ✓ |
 | [focuspoint] | Maintain color coordination and important keyword focus |   | ✓ |
 | [fogbell] | Minimal grey monotone with 3 variants | ✓ | ✓ |
@@ -48,10 +47,13 @@ Use your favorite package-manager to install, and enjoy!
 | [minimalist] | Darker version of material theme inspired by Sublime Text | ✓ | ✓ |
 | [molokai] | Molokai color scheme | ✓ | ✓ |
 | [molokayo] | Very tweaked molokai based theme | ✓ | ✓ |
+| [mountaineer] | A dark and adventurous theme | ✓ | ✓ |
 | [nord] | An arctic, north-bluish clean and elegant theme | ✓ (16) | ✓ |
 | [oceanicnext] | Oceanic Next theme | ✓ | ✓ |
+| [oceanic-material] | Material dark colorscheme | ✓ | ✓ |
 | [one] | Adaptation of one-light and one-dark | ✓ | ✓ |
 | [onedark] | Inspired by Atom's One Dark syntax theme | ✓ | ✓ |
+| [onehalf] | Clean, vibrant and pleasing color scheme | ✓ | ✓ |
 | [orbital] | Dark blue base16 theme | ✓ | ✓ |
 | [paramount] | Minimal colorscheme that only puts emphasis on the paramount | ✓ | ✓ |
 | [pink-moon] | Dark pastel theme | ✓ | ✓ |
@@ -62,8 +64,10 @@ Use your favorite package-manager to install, and enjoy!
 | [seoul256] | Low-contrast color scheme based on Seoul Colors | ✓ | ✓ |
 | [sierra] | Dark vintage colors | ✓ | ✓ |
 | [solarized8] | Optimized Solarized colorschemes | ✓ (16) | ✓ |
+| [sonokai] | Vivid and high contrast based on Monokai Pro | ✓ | ✓ |
 | [space-vim-dark] | Dark magenta colors | ✓ | ✓ |
 | [spacecamp] | Colors for the final frontier | ✓ | ✓ |
+| [sunbather] | Minimal pink colorscheme | ✓ | ✓ |
 | [tender] | 24bit colorscheme for Vim | ✓ | ✓ |
 | [termschool] | Based on the "codeschool" theme, with lots of tweaks | ✓ | ✓ |
 | [twilight256] | Imitates the Twilight theme for TextMate | ✓ | ✓ |
@@ -85,7 +89,6 @@ Use your favorite package-manager to install, and enjoy!
 [deep-space]: https://github.com/tyrannicaltoucan/vim-deep-space
 [deus]: https://github.com/ajmwagar/vim-deus
 [dogrun]: https://github.com/wadackel/vim-dogrun
-[dracula]: https://github.com/dracula/vim
 [flattened]: https://github.com/romainl/flattened
 [focuspoint]: https://github.com/chase/focuspoint-vim
 [fogbell]: https://github.com/jaredgorski/fogbell.vim
@@ -108,10 +111,13 @@ Use your favorite package-manager to install, and enjoy!
 [minimalist]: https://github.com/dikiaap/minimalist
 [molokai]: https://github.com/tomasr/molokai
 [molokayo]: https://github.com/fmoralesc/molokayo
+[mountaineer]: https://github.com/co1ncidence/mountaineer
 [nord]: https://github.com/arcticicestudio/nord-vim
 [oceanicnext]: https://github.com/mhartington/oceanic-next
+[oceanic-material]: https://github.com/hardcoreplayers/oceanic-material
 [one]: https://github.com/rakr/vim-one
 [onedark]: https://github.com/joshdick/onedark.vim
+[onehalf]: https://github.com/sonph/onehalf
 [orbital]: https://github.com/fcpg/vim-orbital
 [paramount]: https://github.com/owickstrom/vim-colors-paramount
 [pink-moon]: https://github.com/sts10/vim-pink-moon
@@ -122,8 +128,10 @@ Use your favorite package-manager to install, and enjoy!
 [seoul256]: https://github.com/junegunn/seoul256.vim
 [sierra]: https://github.com/AlessandroYorba/Sierra
 [solarized8]: https://github.com/lifepillar/vim-solarized8
+[sonokai]: https://github.com/sainnhe/sonokai
 [space-vim-dark]: https://github.com/liuchengxu/space-vim-dark
 [spacecamp]: https://github.com/jaredgorski/SpaceCamp
+[sunbather]: https://github.com/nikolvs/vim-sunbather
 [tender]: https://github.com/jacoborus/tender.vim
 [termschool]: https://github.com/marcopaganini/termschool-vim-theme
 [twilight256]: https://github.com/vim-scripts/twilight256.vim
@@ -132,6 +140,7 @@ Use your favorite package-manager to install, and enjoy!
 
 ## Other Collections
 
+- [`mcchrish/vim-no-color-collections`](https://github.com/mcchrish/vim-no-color-collections) - List of colorschemes with barely any colors
 - [`rainglow/vim`](https://github.com/rainglow/vim) - 320+ color themes for VIM
 - [`nightsense/vimspectr`](https://github.com/nightsense/vimspectr) - Assemble your own Vim theme (choose base hue + saturation curve)
 - [`chriskempson/base16-vim`](https://github.com/chriskempson/base16-vim) - Syntax highlighting for hackers

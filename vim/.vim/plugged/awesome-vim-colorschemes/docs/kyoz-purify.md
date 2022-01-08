@@ -15,6 +15,7 @@
   - [Lightline](#lightline)
 - [Customize](#customize)
   - [Font styles](#font-styles)
+  - [Background](#background)
   - [Overrides colors](#overrides-colors)
 - [Why i have to install other plugins](#why-i-have-to-install-other-plugins)
 - [License](#license)
@@ -27,7 +28,7 @@ You can install purify easily if you are using [vim-plug](https://github.com/jun
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 ```
 
-**Note**: Other vim plugin manager have similar installation, just remember `rtp` option
+**Note**: Other vim plugin manager have similar installation, just remember about `rtp` option
 
 Then add this to your vim config file:
 
@@ -36,11 +37,11 @@ syntax on " This is required
 colorscheme purify
 ```
 
-**Note**: All customize option should be placed before you call `colorscheme purify`. If not, it'll not have any effects.
+**Note**: All custom options should be placed before you call `colorscheme purify`. If not, it'll not have any effect.
 
 ## Languages and Filetypes Support
 
-Purify support consistent color syntax for almost all common languages and file types (base on vim's [runtime syntax](https://github.com/vim/vim/tree/master/runtime/syntax)):
+Purify supports consistent color syntax for almost all common languages and file types (based on vim's [runtime syntax](https://github.com/vim/vim/tree/master/runtime/syntax)):
 
 - [x] Html, Html5...
 - [x] Css, Scss, Sass, Less
@@ -58,7 +59,7 @@ Purify support consistent color syntax for almost all common languages and file 
 
 ### Built-in:
 
-By default, without any configuration, purify auto support consistent colors for:
+By default, without any configuration, purify auto-supports consistent colors for:
 
 - [x] [NERDTree](https://github.com/scrooloose/nerdtree)
 - [x] [fzf.vim](https://github.com/junegunn/fzf.vim)
@@ -99,9 +100,26 @@ let g:purify_inverse = 0     " default: 1
 
 **Note**: Those style formats only working if your terminal, your settings, your fonts support em.
 
-### Overrides colors
+### Background
 
-You can overrides purify's colors if there's some colors you don't like:
+By default, Vim using your terminal background color as the background colors.
+
+If you are using GUI version of vim/neovim, it'll have Purify Background (#252834), but if you are using terminal vim or neovim, you have to choose and set the background yourself:
+
+```
+colorscheme purify "--------------------------------- Set onedark theme
+hi Normal guibg=#252834 ctermbg=234 "---- Place this after you set the colorscheme
+```
+
+P/s: If you are nvim-qt, you may need set this to your `ginit.vim`
+
+```
+set background=dark
+```
+
+### Override colors
+
+You can override purify's colors if there are some colors you don't like:
 
 ```
 let g:purify_override_colors = {
@@ -110,11 +128,11 @@ let g:purify_override_colors = {
 \ }
 ```
 
-## Why i have to install other plugins
+## Why I have to install other plugins
 
-- Purify is only aim for colorscheme, i'v tried my best to make purify colorscheme is the same is all languages support by vim, nvim.
+- Purify is only aim for colorscheme, I've tried my best to make purify colorscheme look the same for all languages supported by vim, neovim.
 
-- But for new languages, frameworks... you have to install other plugins to have correct syntax, I'll tried my best to support plugins that have good syntax for new languages, frameworks like React, Vue...
+- But for new languages, frameworks... you have to install other plugins to have correct syntax, I'll try my best to support plugins that have a good syntax for new languages, frameworks like React, Vue...
 
 ## Lisence
 MIT © [Kyoz](mailto:banminkyoz@gmail.com)

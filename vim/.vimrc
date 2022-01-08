@@ -8,6 +8,8 @@
 "    \  \:\__|:|     /__/:/    \  \:\     
 "     \__\::::/      \__\/      \  \:\    
 "         ~~~~                   \__\/    
+
+
 set mouse=a
 syntax on
 set tabstop=4
@@ -57,6 +59,8 @@ set statusline+=%L                  " Total line
 set statusline+=\                   " Padding
 
 "" Mappings
+
+
 map <C-s> :w<CR>
 map ss :mks! ~/.vim/sessions/
 map sh :sp
@@ -69,13 +73,28 @@ map <C-t> :tabnew<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-u> :UndotreeToggle<CR>
 map <C-g> :Goyo<CR>
-map <C-c> "+y 
-map <C-v> "+p
+
+" Paste system clipboard with Ctrl + v
+inoremap <C-v> <ESC>"+gPi    
+nnoremap <C-v> "+gP<ESC>
+vnoremap <C-v> d"+gP<ESC>
+cnoremap <C-v> <C-r>+
+
+" Cut to system clipboard with Ctrl + x
+vnoremap <C-x> "+d
+nnoremap <C-x> "+dd
+inoremap <C-x> <ESC>"+ddi
+
+" Copy to system clipboard with Ctr + c
+vnoremap <C-c> "+y 
+nnoremap <C-c> "+yy 
+inoremap <C-c> <ESC>"+yyi
+
+map <C-space> :map <space> <Nop>
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 map <C-j> <C-W>j
 map <C-k> <C-W>k
-map <space> /
 map <silent> <space><cr> :noh<CR>
 nnoremap fr :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
@@ -95,8 +114,9 @@ Plug 'camspiers/lens.vim'
 "Plug 'blueyed/vim-diminactive'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'junegunn/goyo.vim'
-Plug 'reedes/vim-pencil'
+Plug 'preservim/vim-pencil'
 Plug 'lilydjwg/colorizer'
+Plug 'arzg/vim-colors-xcode'
 call plug#end()
 
 ""Plug Config

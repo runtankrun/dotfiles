@@ -17,7 +17,7 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-@import "colors.rasi"
+@import "/home/ellio/.config/rofi/launchers/colorful/colors.rasi"
 
 window {
     transparency:                   "real";

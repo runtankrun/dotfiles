@@ -1,0 +1,14 @@
+#!/bin/sh
+case $1 in
+    "")
+    pywal-alacritty &
+    pywal-kitty &
+    pywal-URxvt
+    ;;
+    -b)
+    pywal-alacritty &
+    pywal-kitty &
+    pywal-URxvt &
+    pywal-bspwm-border
+    ;;
+esac

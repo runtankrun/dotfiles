@@ -60,7 +60,7 @@ bspc rule -a mpv:em2 -o node=@^2:^$dt:/2/2/2
 ## LAUNCH APPS
 feh -Z -. -D 5 ~/Pictures/chx/em/em-tall-* &
 alacritty --title "ranger-em" --class "ranger-em" -e sh -c \
-"~/.scripts/ranger/ranger.py \
+"ranger-slim \
 --cmd='set preview_images_method ueberzug' \
 --cmd='default_linemode devicons2' \
 --cmd='set column_ratios 1,1,6' \
@@ -94,7 +94,7 @@ do
     echo "$line" | grep ^v: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
 done < ~/.config/ranger/tagged) --video-zoom=0.2 &
 alacritty --class "ranger" --title "ranger" -e sh -c \
-"~/.scripts/ranger/ranger.py \
+"ranger-slim \
 --cmd='set preview_images_method ueberzug' \
 ~ \
 --selectfile=$(grep ^p: ~/.config/ranger/tagged | tail -1 | tail -c +3)"

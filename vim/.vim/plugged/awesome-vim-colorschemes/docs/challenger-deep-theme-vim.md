@@ -87,3 +87,23 @@ add one of the following lines to your `.vimrc`:
 ``` viml
 let g:lightline = { 'colorscheme': 'challenger_deep'}
 ```
+
+### Lualine Theme ###
+
+Challenger Deep also supports [lualine.vim](https://github.com/nvim-lualine/lualine.nvim). To enable the colorscheme,
+add the following lines to your `init.lua`:
+
+```lua
+require'lualine'.setup {
+  options = { theme = 'challenger_deep' }
+}
+```
+
+### Troubleshooting ###
+ If you are running vim inside tmux with the alacritty terminal, make sure to set `default-terminal` to `xterm-256color` in your tmux config (see [this issue](https://github.com/challenger-deep-theme/vim/issues/18) for more details:
+ 
+```text
+# ... 
+set-option -g default-terminal "xterm-256color"
+# ...
+```

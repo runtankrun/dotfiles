@@ -1,21 +1,20 @@
 #!/bin/sh
+dt=$(bspc query --desktops --names --desktop .\!occupied | head -n 1)
 
-##MOVE TO DESKTOP + CLOSE WINDOWS + KILL RECEPTACLES
-bspc desktop -f ^2:^8;
-while bspc node 'any.leaf.local' -c; do :; done;
-while bspc node 'any.leaf.!window.local' -k; do :; done;
+##MOVE TO DESKTOP 
+bspc desktop -f ^2:^$dt;
 
 ##INSERT RECEPTACLES
-bspc node @^2:^8:/ -i
-bspc node @^2:^8:/ -o 0.52 -p east -i
-bspc node @^2:^8:/1 -o 0.52 -p south -i
-bspc node @^2:^8:/2 -o 0.9 -p south -i
+bspc node @^2:^$dt:/ -i
+bspc node @^2:^$dt:/ -o 0.52 -p east -i
+bspc node @^2:^$dt:/1 -o 0.52 -p south -i
+bspc node @^2:^$dt:/2 -o 0.9 -p south -i
 
 ##ADD RULES
-bspc rule -a URxvt:spot -o node=@^2:^8:/1/1
-bspc rule -a Alacritty:music -o node=@^2:^8:/1/2
-bspc rule -a URxvt:vis -o node=@^2:^8:/2/1
-bspc rule -a URxvt:lofi -o node=@^2:^8:/2/2
+bspc rule -a URxvt:spot -o node=@^2:^$dt:/1/1
+bspc rule -a Alacritty:music -o node=@^2:^$dt:/1/2
+bspc rule -a URxvt:vis -o node=@^2:^$dt:/2/1
+bspc rule -a URxvt:lofi -o node=@^2:^$dt:/2/2
 
 ##LAUNCH APPS
 urxvtc -geometry 100x100 -name "spot" -title "spot" -e sh -c "spt;zsh" &

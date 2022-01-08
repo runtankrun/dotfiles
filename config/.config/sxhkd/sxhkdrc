@@ -26,19 +26,7 @@ button9
     bspc desktop -f prev.local.occupied
 ctrl + shift + 2
     bspc desktop -f prev.local.occupied
-
-## toggle floating on/off
-super + button9
-    bspc node -t \~floating 
-ctrl + shift + 3
-    bspc node -t \~floating
-
-## bsp-layout
-ctrl + shift + 4
-    bsp-layout once even
-super + alt + l
-    bsp-layout once {rtall,wide}
-
+#1
 ## aspect
 ctrl + shift + alt + 8
     aspect 9 16
@@ -46,19 +34,30 @@ ctrl + shift + alt + 6
     aspect 16 9
 ctrl + shift + alt + 7
     aspect 1 1
+#2
+## toggle floating on/off
+ctrl + shift + 3
+    bspc node -t \~floating
+#pseudo-tiled
+super + shift  + alt + 9
+    bspc node -t \~pseudo_tiled
+#3
+#balance
+super + g
+	{bsp-layout once even,bspc node @/ -E}
+## biggest
+ctrl + shift + 4
+   bspc node -s biggest.local
 
 ## poly 
 super + F11
     c-polybar
 super + alt + F11
     c-polybar -k
-
 #gotop+nvtop
 super + shift + F6
     c-fulltop 
-#pseudo-desk
-super + shift  + alt + 9
-    {floating-desk, pkill floating-desk}
+
 #--/Mouse--#
 
 ## auto-launch apps on case panel
@@ -142,7 +141,7 @@ super + ctrl + F10
     pro -r
 
 ## DL H
-super + h
+super + shift + h
     urxvtc -e dl-h
 
 ## Virtualbox
@@ -186,6 +185,8 @@ super + d
 	/home/ellio/.config/rofi/launchers/colorful/launcher.sh
 Menu
     /home/ellio/.config/rofi/launchers/colorful/launcher_2.sh
+ctrl+Menu
+    rofi-pass
 
 ## sysadmin
 super + shift + a
@@ -213,11 +214,9 @@ super + w
 
 ## change colorscheme
 super + alt + c
-    urxvtc -e sh -c "wal-temps"
+    kitty -e sh -c "wal-temps"
 super + alt + shift + c
     wal --theme {sexy-mostly-bright -l,summerfruit -l}
-super + shift + c
-    sed -i {'s/50/90/' /home/ellio/.config/wal/colorschemes/dark/*,'s/90/50/' /home/ellio/.config/wal/colorschemes/dark/*}
 
 ## launch terminal
 super + z
@@ -235,7 +234,7 @@ super + r
 super + alt + r
     c-ranger
 super + ctrl + r
-    c-ranger -s
+    c-ranger -k
 
 ## launch browser 
 super + b
@@ -262,7 +261,7 @@ super + ctrl + v
 ## launch pictures
 super + alt + p
     rtags-quicklaunch -pic
-super + ctrl + p
+super + shift + p
     rtags-quicklaunch -ss
 super + i
     c-feh -i
@@ -362,7 +361,7 @@ super + f
 	bspc desktop -l next
 
 # set the node flags
-super + ctrl + {m,x,y,z}
+super + ctrl + {m,x,y,p}
 	bspc node -g {marked,locked,sticky,private}
 
 ##-----MOVE-----##
@@ -381,10 +380,6 @@ super + shift + {Left,Down,Up,Right}
 # Rotate tree
 super + alt + {d,a}
     bspc node @/ -C {forward,backward}
-
-# swap the current node and the biggest node
-super + g
-	bspc node -s biggest.local
 
 ##-----FOCUS----##
 ## focus window in given direction
@@ -432,6 +427,13 @@ super + button{4,5}
 	bspc config -m HDMI-0 window_gap $(($(bspc config -m HDMI-0 window_gap) {+,-} 4))
 
 ##-----MISC-----##
+##bsp-layout
+super + alt + l
+    bsp-layout once {rtall,wide}
+
+## floating desk
+super + ctrl + alt + p
+    {floating-desk,pkill floating-desk}
 
 ## receptacle
 super + BackSpace

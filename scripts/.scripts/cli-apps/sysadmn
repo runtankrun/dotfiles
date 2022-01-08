@@ -1,9 +1,11 @@
 #!/bin/sh
-
 dt=$(bspc query --desktops --names --desktop .\!occupied | head -n 1)
 bspc desktop -f ^2:^$dt;
 
 bspc node @^2:^$dt:/ -i
-bspc rule -a kitty:sys-admin -o node=@^2:^$dt:/1 state=pseudo_tiled
+bspc rule -a kitty:sys-admin -o node=@^2:^$dt:/1 state=pseudo_tiled locked=on
 
-kitty --name "sys-admin"  -o include="~/.config/kitty/cs/synthwave.conf" -e sh -c "figlet -f ~/.fonts/misc/figlet/ANSI_Regular.flf sys-admin; sudo su; zsh &"
+kitty --name "sys-admin" -e sh -c \
+"figlet -f ~/.fonts/misc/figlet/ANSI_Regular.flf sys-admin; \
+sudo su; \
+zsh &"

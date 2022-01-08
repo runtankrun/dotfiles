@@ -1,28 +1,45 @@
 #!/bin/sh
-
-if [[ $1 = '-r' ]]; then
-image="$(xclip -out -selection clipboard)"
-else
-image=$1
+##variables
+if [[ $1 = '-as' ]]; then
+    echo 'alpha (0-100): '
+    read alpha
+    echo "saturation (0-1): "
+    read sat
+else 
+    alpha=80
+    sat=1
 fi
 
-##variables
-backends='colorz schemer2 wal haishoku'
-counter=1
-read -p 'alpha: ' alpha
+i=0                                                                                                                            INT
+backends="colorz schemer2 wal haishoku"
 
-##loop
-while [ $counter -le 12 ]
+while [[ $i -ge "0" ]] ; 
 do
-    for backend in $backends
-    do
-        wal -n -a $alpha --saturate 0.7 --backend $backend -i $image;pywal-alacritty;pywal-URxvt;pywal-kitty
-        sleep 3s
-        ((counter++))
-    done
-done
+    for backend in $backends 
+    do    
+    
+        if [[ $1 = '-r' ]]; then
+            file="$(xclip -out -selection clipboard)"
+        else
+            file=$(find ~/.scripts/colors/colorschemes/* | shuf -n1)
+        fi
+    
+        wal -n -e -a $alpha --saturate $sat --backend $backend -i $file
+        figlet -f ~/.fonts/misc/figlet/ANSI_Shadow.flf $backend
+        echo $file | lolcat
 
-select backend in $backends
-do 
-    wal -n -a $alpha --saturate 0.7 --backend $backend -i $image;pywal-alacritty;pywal-URxvt;pywal-kitty
+        sed -i '/^! X/,$d' .Xresources_2 
+        cat ~/.cache/wal/colors.Xresources >> ~/.Xresources_2 
+        xrdb ~/.Xresources_2
+
+        read -t 7 -rsn1 input
+        
+        if [ "$input" = "" ]; then
+            continue
+        else
+            cp ~/.cache/wal/colors.json ~/.config/wal/colorschemes/user/$(echo $file | grep -o "colorschemes/.*" | cut -d "/" -f2)
+            figlet -f ~/.fonts/misc/figlet/ANSI_Shadow.flf "Saved"
+            sleep 3s;
+        fi
+    done
 done

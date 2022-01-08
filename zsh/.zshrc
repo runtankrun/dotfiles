@@ -1,3 +1,7 @@
+#ranger shell prompt
+source /home/ellio/.scripts/ranger/examples/shell_subshell_notice.sh
+#end ranger shell prompt
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -106,7 +110,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#figlet -f $(ls -d ~/.fonts/misc/figlet/* | shuf -n 1) "TANK"
 #docker
 alias dsr='docker container stop $(docker container ls -aq); docker container rm $(docker container ls -aq)'
 alias dri='docker rmi $(docker images -aq)'
@@ -228,9 +231,6 @@ alias yt='ytfzf -tT'
 #Reddit
 alias reddit='rtv'
 
-#NAS
-alias nas='sudo mount -t nfs 10.0.0.157:/Nasty /mnt/nas/'
-
 #RVMatting
 alias rvm='python inference.py --variant resnet50 --checkpoint checkpoint/rvm_resnet50.pth --device cuda --input-source input/input.mp4 --output-type video --output-composition output/com.mp4 --output-alpha output/alp.mp4 --output-foreground output/for.mp4 --output-video-mbps 10 --seq-chunk 1'
 
@@ -239,6 +239,11 @@ alias disk-util='ncdu'
 
 #gotop
 alias gotop-f='gotop --nvidia --averagecpu --statusbar --mbps --layout kitchensink'
+
+#pwgen
+alias pwgen='pwgen -sy1 50'
+
+
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
 export XRDM_FONT_DIR=$XRDM_DIR/fonts
@@ -258,10 +263,6 @@ eval "$(mcfly init zsh)"
 source /usr/share/doc/mcfly/mcfly.zsh
 export MCFLY_RESULTS=50
 # End Mcfly
-
-#ranger shell prompt
-source /home/ellio/.scripts/ranger/examples/shell_subshell_notice.sh
-#end ranger shll prompt
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

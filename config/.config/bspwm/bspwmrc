@@ -60,8 +60,8 @@ bspc rule -a SimpleScreenRecorder state=floating
 bspc rule -a MEGAsync state=floating
 bspc rule -a Surf state=tiled
 bspc rule -a Nvidia-settings state=floating
-bspc rule -a VirtualBoxVM desktop='^8' state=floating
-bspc rule -a kitty:vbox desktop='^8'
+bspc rule -a VirtualBoxVM desktop='^5' state=floating
+bspc rule -a kitty:vbox desktop='^5'
 bspc rule -a URxvt:pro state=pseudo_tiled
 bspc rule -a URxvt:timeshift state=pseudo_tiled
 bspc rule -a kcolorchooser:kcolorchooser state=floating

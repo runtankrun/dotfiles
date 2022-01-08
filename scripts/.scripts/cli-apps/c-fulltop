@@ -5,10 +5,10 @@ scheme_name=$(echo $random_scheme | grep -o "cs/.*" | cut -d "/" -f2 | rev | cut
 dt=$(bspc query --desktops --names --desktop .\!occupied | head -n 1)
 
 ##REMOVE PREVIOUS CS##
-sed -i '/include/d' ~/.config/kitty/kitty-fulltop.conf
+#sed -i '/include/d' ~/.config/kitty/kitty-fulltop.conf
 
 ##ADD NEW CS##
-echo "include $random_scheme" >> ~/.config/kitty/kitty-fulltop.conf
+#echo "include $random_scheme" >> ~/.config/kitty/kitty-fulltop.conf
 
 ##SWTICH DESKTOP
 bspc desktop -f ^2:^$dt;
@@ -26,4 +26,3 @@ kitty --name "Fullgotop" --title "Fullgotop" -o include="/home/ellio/.config/kit
 "gotop --nvidia --averagecpu --statusbar --mbps --layout kitchensink" & \
 sleep .5s; \
 kitty --name "Fullnvtop" --title "Fullnvtop" -o include="/home/ellio/.config/kitty/kitty-fulltop.conf" -e sh -c "nvtop" & \
-notify-send -u normal "$(echo $scheme_name)"

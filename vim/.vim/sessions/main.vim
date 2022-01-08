@@ -1,11 +1,15 @@
 let SessionLoad = 1
 if &cp | set nocp | endif
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <C-C> "+yyi
+inoremap <C-X> "+ddi
+cnoremap <C-V> +
+inoremap <C-V> "+gPi    
 map  "+y 
 map  :Goyo
 map  h
 nnoremap <silent> 	 :tabnext
-let s:cpo_save=&cpo
-set cpo&vim
 map <NL> j
 map  k
 map  l
@@ -14,9 +18,14 @@ map  :w
 map  :tabnew
 map  :UndotreeToggle
 map  "+p
+nnoremap  "+dd
+vnoremap  "+d
+map   <Nop>
 map <silent>   :noh
-map   /
+nnoremap C "+yy 
+vnoremap C "+y 
 nmap \tc <Plug>Colorizer
+nnoremap \r :RangerChooser
 map ct :ColorToggle
 map cs :colorscheme 
 map dc :hi ColorColumn ctermbg=
@@ -42,13 +51,21 @@ map <C-K> k
 map <C-J> j
 map <C-L> l
 map <C-H> h
-map <C-V> "+p
+map <C-Space> :map   <Nop>
 map <C-C> "+y 
+nnoremap <C-X> "+dd
+vnoremap <C-X> "+d
+map <C-V> "+p
 map <C-G> :Goyo
 map <C-U> :UndotreeToggle
 map <C-N> :NERDTreeToggle
 map <C-T> :tabnew
 map <C-S> :w
+inoremap  "+yyi
+cnoremap  +
+inoremap  "+gPi    
+inoremap  "+ddi
+inoremap C "+yyi
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set background=dark
@@ -77,6 +94,8 @@ set undodir=~/.vim/undodir
 set undofile
 set viminfo='100,<9999,s100
 set window=69
+set winminheight=0
+set winminwidth=0
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 silent only
@@ -96,7 +115,7 @@ tabnew
 tabnew
 tabnew
 tabrewind
-edit .Xresources
+edit .Xresources_2
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -113,10 +132,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 50 + 83) / 167)
-exe 'vert 2resize ' . ((&columns * 116 + 83) / 167)
+exe 'vert 1resize ' . ((&columns * 58 + 69) / 139)
+exe 'vert 2resize ' . ((&columns * 80 + 69) / 139)
 argglobal
-balt .Xresources
+balt ~/.Xresources2
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -133,7 +152,7 @@ setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,:!
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
 setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=inc
@@ -151,8 +170,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'xdefaults'
-setlocal filetype=xdefaults
+if &filetype != ''
+setlocal filetype=
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -166,13 +185,13 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
+setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=-1
-setlocal include=^\\s*#\\s*include
+setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
@@ -220,8 +239,8 @@ setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'xdefaults'
-setlocal syntax=xdefaults
+if &syntax != ''
+setlocal syntax=
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -232,6 +251,7 @@ setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
@@ -245,11 +265,11 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 33) / 67)
+let s:l = 63 - ((28 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 63
 normal! 0
 wincmd w
 argglobal
@@ -370,6 +390,7 @@ setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
@@ -383,153 +404,15 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 233 - ((46 * winheight(0) + 33) / 67)
+let s:l = 187 - ((70 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 233
+keepjumps 187
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 50 + 83) / 167)
-exe 'vert 2resize ' . ((&columns * 116 + 83) / 167)
-tabnext
-edit .config/polybar/config.ini
-argglobal
-balt .Xresources
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=:;
-setlocal commentstring=;\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=inc
-setlocal conceallevel=2
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'dosini'
-setlocal filetype=dosini
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'dosini'
-setlocal syntax=dosini
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal undofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-set nowrap
-setlocal nowrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 106 - ((31 * winheight(0) + 33) / 67)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 106
-normal! 016|
+exe 'vert 1resize ' . ((&columns * 58 + 69) / 139)
+exe 'vert 2resize ' . ((&columns * 80 + 69) / 139)
 tabnext
 edit .config/picom/picom.conf
 argglobal
@@ -649,6 +532,7 @@ setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
@@ -662,12 +546,151 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 28 - ((27 * winheight(0) + 33) / 67)
+let s:l = 28 - ((27 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 28
 normal! 0
+tabnext
+edit ~/.config/polybar/colorblocks/config.ini
+argglobal
+balt .config/picom/picom.conf
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=:;
+setlocal commentstring=;\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=inc
+setlocal conceallevel=2
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'dosini'
+setlocal filetype=dosini
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'dosini'
+setlocal syntax=dosini
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal undofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+set nowrap
+setlocal nowrap
+setlocal wrapmargin=0
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 179 - ((40 * winheight(0) + 35) / 71)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 179
+normal! 017|
 tabnext
 edit .config/bspwm/bspwmrc
 let s:save_splitbelow = &splitbelow
@@ -686,8 +709,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 20 + 83) / 167)
-exe 'vert 2resize ' . ((&columns * 146 + 83) / 167)
+exe 'vert 1resize ' . ((&columns * 53 + 69) / 139)
+exe 'vert 2resize ' . ((&columns * 85 + 69) / 139)
 argglobal
 balt .config/picom/picom.conf
 setlocal keymap=
@@ -805,6 +828,7 @@ setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
@@ -818,12 +842,12 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 44 - ((31 * winheight(0) + 33) / 67)
+let s:l = 30 - ((29 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 44
-normal! 015|
+keepjumps 30
+normal! 0
 wincmd w
 argglobal
 if bufexists(".config/sxhkd/sxhkdrc") | buffer .config/sxhkd/sxhkdrc | else | edit .config/sxhkd/sxhkdrc | endif
@@ -943,6 +967,7 @@ setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
@@ -956,16 +981,16 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 166 - ((0 * winheight(0) + 33) / 67)
+let s:l = 30 - ((29 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 166
-normal! 011|
+keepjumps 30
+normal! 09|
 wincmd w
 2wincmd w
-exe 'vert 1resize ' . ((&columns * 20 + 83) / 167)
-exe 'vert 2resize ' . ((&columns * 146 + 83) / 167)
+exe 'vert 1resize ' . ((&columns * 53 + 69) / 139)
+exe 'vert 2resize ' . ((&columns * 85 + 69) / 139)
 tabnext
 edit .config/ranger/rc.conf
 let s:save_splitbelow = &splitbelow
@@ -984,8 +1009,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 80 + 83) / 167)
-exe 'vert 2resize ' . ((&columns * 86 + 83) / 167)
+exe '1resize ' . ((&lines * 63 + 37) / 74)
+exe 'vert 1resize ' . ((&columns * 119 + 69) / 139)
+exe '2resize ' . ((&lines * 63 + 37) / 74)
+exe 'vert 2resize ' . ((&columns * 19 + 69) / 139)
 argglobal
 balt .config/bspwm/bspwmrc
 setlocal keymap=
@@ -1103,6 +1130,7 @@ setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
@@ -1116,7 +1144,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 25 - ((18 * winheight(0) + 33) / 67)
+let s:l = 25 - ((21 * winheight(0) + 31) / 63)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1253,6 +1281,7 @@ setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=78
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
@@ -1266,20 +1295,22 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 21 - ((14 * winheight(0) + 33) / 67)
+let s:l = 25 - ((21 * winheight(0) + 31) / 63)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 21
-let s:c = 14 - ((2 * winwidth(0) + 43) / 86)
+keepjumps 25
+let s:c = 18 - ((7 * winwidth(0) + 9) / 19)
 if s:c > 0
-  exe 'normal! ' . s:c . '|zs' . 14 . '|'
+  exe 'normal! ' . s:c . '|zs' . 18 . '|'
 else
-  normal! 014|
+  normal! 018|
 endif
 wincmd w
-exe 'vert 1resize ' . ((&columns * 80 + 83) / 167)
-exe 'vert 2resize ' . ((&columns * 86 + 83) / 167)
+exe '1resize ' . ((&lines * 63 + 37) / 74)
+exe 'vert 1resize ' . ((&columns * 119 + 69) / 139)
+exe '2resize ' . ((&lines * 63 + 37) / 74)
+exe 'vert 2resize ' . ((&columns * 19 + 69) / 139)
 tabnext
 edit .mozilla/firefox/v2nnvt6o.default-release/startpage/index.html
 argglobal
@@ -1399,6 +1430,7 @@ setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
@@ -1412,7 +1444,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 33) / 67)
+let s:l = 1 - ((0 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1420,16 +1452,22 @@ keepjumps 1
 normal! 0
 tabnext 4
 set stal=1
-badd +1 .Xresources
+badd +39 .Xresources_2
 badd +1 .zshrc
-badd +1 .config/polybar/config.ini
 badd +1 .config/picom/picom.conf
+badd +25 ~/.config/polybar/colorblocks/config.ini
 badd +1 .config/bspwm/bspwmrc
 badd +1 .config/ranger/rc.conf
 badd +1 .mozilla/firefox/v2nnvt6o.default-release/startpage/index.html
-badd +1 .config/sxhkd/sxhkdrc
+badd +1 ~/.Xresources2
+badd +115 .Xresources
+badd +1 .config/polybar/config.ini
+badd +0 .config/sxhkd/sxhkdrc
 badd +1 .vimrc
 badd +72 .config/kitty/kitty.conf
+badd +1 ~/.config/polybar/colorblocks/scripts/rofi/colors.rasi
+badd +3 ~/.config/polybar/colorblocks/scripts/launcher.sh
+badd +1108 ~/.config/polybar/colorblocks/modules.ini
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -1440,7 +1478,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

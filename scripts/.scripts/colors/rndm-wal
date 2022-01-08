@@ -1,0 +1,12 @@
+#!/bin/sh
+
+for file in $(ls ~/.config/wal/colorschemes/dark/* | shuf -n 252)
+do
+    wal -n -e -a 80 --saturate 1 --theme $file; r-wal; 
+    read -t 3 -rsn1 input
+    if [ "$input" = "" ]; then
+        continue
+    else
+        cp ~/.cache/wal/colors.json ~/.config/wal/colorschemes/user/$(echo $file | grep -o "dark/.*" | cut -d "/" -f2)    
+    fi
+done

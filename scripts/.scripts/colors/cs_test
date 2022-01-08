@@ -4,7 +4,10 @@ fcs=$(cat /home/ellio/Downloads/iTerm2-Color-Schemes/cs | tail -n 1)
 echo $fcs >> /home/ellio/Downloads/iTerm2-Color-Schemes/f_cs
 
 else
+i=0    
 ## VARIABLES ##
+while [[ $i -ge 0 ]] 
+do
 random_scheme=$(ls -d /home/ellio/Downloads/iTerm2-Color-Schemes/alacritty/* | shuf -n 1)
 dir=$(echo "$random_scheme")
 cs_name=$(echo $random_scheme | grep -o "alacritty/.*" | cut -d "/" -f2 | rev | cut -c 5- | rev)
@@ -34,5 +37,8 @@ sed -i 's/*.foreground:  /*.foreground:[90]/g' ~/.Xresources2; \
 sed -i 's/*.background:  /*.background:[90]/g' ~/.Xresources2; \
 
 xrdb ~/.Xresources2
-fi
 
+echo "~/Downloads/iTerm2-Color-Schemes/Xresources/$cs_name"
+sleep 2.5s;
+done
+fi

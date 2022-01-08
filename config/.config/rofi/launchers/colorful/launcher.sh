@@ -32,9 +32,15 @@ dir="$HOME/.config/rofi/launchers/colorful"
 #ACCENT="${COLORS[$(( $RANDOM % 14 ))]}ff"
 
 # overwrite colors file
+#source ~/.cache/wal/colors.sh
+#ALPHA=#00000000
+#BG=$background
+#SELECT=$color2
+#FG=$foreground
+#ACCENT=$color3
+
 #cat > $dir/colors.rasi <<- EOF
 #	/* colors */
-
 #	* {
 #	  al:  $ALPHA;
 #	  bg:  $BG;

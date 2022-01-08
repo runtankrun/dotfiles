@@ -18,7 +18,7 @@ bspc rule -a URxvt:gotop -o node=@^1:^1:/2 marked=on focus=off
 bspc rule -a URxvt:slideshow -o node=@^1:^1:/1/2 marked=on focus=off
 
 ##LAUNCH APPS
-wal --theme outrun; sleep .3s;
+wal --theme chester; sleep .3s;
 urxvtc -name "tty-clock" -title "tty-clock" -bg white -bd white --color1 red -e sh -c "tty-clock -c -t -C 1" &
 urxvtc -name "gotop" -title "gotop" -bg white -bd white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black --color15 black -e sh -c "gotop" &
 urxvtc -name "slideshow" -title "slideshow" -bg white -bd white -e sh -c \
@@ -65,8 +65,8 @@ else
 feh \
 --bg-fill ~/.config/wall.png \
 --bg-fill ~/.config/wall-case.png; \
-wal -n -i ~/.config/wall.png; \
-wal -a 50 --theme outrun; \
+wal -n -e -t -s -i ~/.config/wall.png; \
+wal -n -a 80 --theme chester; \
 pywal-URxvt
 pywal-alacritty; \
 #pywal-kitty; \
