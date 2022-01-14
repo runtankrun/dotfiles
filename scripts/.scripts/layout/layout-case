@@ -97,7 +97,7 @@ bspc rule -a URxvt:transparent -o node=@^1:^1:/1/2 marked=on focus=off
 
 ##LAUNCH
 urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" &
-mpv ~/Videos/em_t_US.mp4 --video-zoom=0.450 --speed=0.50 &
+mpv ~/Videos/em_t.mp4 --video-zoom=0.050 &
 c-urxvtc-trans
 ###########
 #   GIF   #

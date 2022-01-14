@@ -28,9 +28,9 @@ do
         figlet -f ~/.fonts/misc/figlet/ANSI_Shadow.flf $backend
         echo $file | lolcat
 
-        sed -i '/^! X/,$d' .Xresources_2 
-        cat ~/.cache/wal/colors.Xresources >> ~/.Xresources_2 
-        xrdb ~/.Xresources_2
+        sed -i '/^! X/,$d' .Xresources 
+        cat ~/.cache/wal/colors.Xresources >> ~/.Xresources
+        xrdb ~/.Xresources
 
         read -t 7 -rsn1 input
         

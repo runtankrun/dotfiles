@@ -230,11 +230,11 @@ super + ctrl + shift + z
 
 ## launch ranger
 super + r
-	c-ranger -a
+	c-ranger -k
 super + alt + r
-    c-ranger
+    c-ranger -a
 super + ctrl + r
-    c-ranger -k
+    c-ranger
 
 ## launch browser 
 super + b
