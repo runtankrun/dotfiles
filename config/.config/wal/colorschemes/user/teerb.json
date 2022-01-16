@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/ellio/.scripts/colors/colorschemes/teerb.png",
+    "alpha": "80",
+
+    "special": {
+        "background": "#141d29",
+        "foreground": "#c4c6c9",
+        "cursor": "#c4c6c9"
+    },
+    "colors": {
+        "color0": "#141d29",
+        "color1": "#06ffa9",
+        "color2": "#fe9115",
+        "color3": "#40ccff",
+        "color4": "#55b8fe",
+        "color5": "#4edbfe",
+        "color6": "#ffbe5b",
+        "color7": "#c4c6c9",
+        "color8": "#4e555e",
+        "color9": "#06ffa9",
+        "color10": "#fe9115",
+        "color11": "#40ccff",
+        "color12": "#55b8fe",
+        "color13": "#4edbfe",
+        "color14": "#ffbe5b",
+        "color15": "#c4c6c9"
+    }
+}

@@ -10,10 +10,10 @@
 #     /__/:/        |  |:|       \  \:\        \  \:\         \__\/  
 #     \__\/         |__|/         \__\/         \__\/
 
-     
 ######################
 ##  COMMON COMMAND  ##
 ######################
+
 #--Mouse--#
 ## focus next occupied desktop
 button10
@@ -29,7 +29,7 @@ ctrl + shift + 2
 #1
 ## aspect
 ctrl + shift + alt + 8
-    aspect 9 16
+   aspect 9 16
 ctrl + shift + alt + 6
     aspect 16 9
 ctrl + shift + alt + 7
@@ -58,7 +58,11 @@ super + alt + F11
 super + shift + F6
     c-fulltop 
 
-#--/Mouse--#
+#--\Mouse--#
+
+## show/hide
+super + {h, s}
+    {winhide, winhide -s}    
 
 ## auto-launch apps on case panel
 super + F1
@@ -142,7 +146,9 @@ super + ctrl + F10
 
 ## DL H
 super + shift + h
-    urxvtc -e dl-h
+    urxvtc -e dl-h; bspc node -t floating
+super + ctrl + shift + h
+    urxvtc -e dl-h -x; bspc node -t floating
 
 ## Virtualbox
 super + F12
@@ -277,7 +283,10 @@ super + shift + m
 ## launch mega
 super + m
     megasync
-
+##
+super + ctrl + alt + space
+    touch ~/blank; echo $(pass sys/t) | xclip -i -selection clipboard; sleep 20s; xclip -selection clipboard ~/blank; rm ~/blank; return
+    
 ## mpv - launch last directory tagged with "m" 
 super + alt + m
     mpv $(grep ^m: ~/.config/ranger/tagged | tail -n 1 | tail -c +3 )

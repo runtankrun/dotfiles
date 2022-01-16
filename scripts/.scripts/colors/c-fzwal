@@ -1,0 +1,40 @@
+#!/bin/sh
+# Lists dark themes by default.
+# Light themes are listed if an argument is passed.
+# Export FZWAL_RESET_CURSOR=1 if you don't want Pywal to change
+# the default behaviour of the terminal cursor (inverse fg and bg).
+
+cp -f ~/.cache/wal/colors.json /tmp/fzwal-backup.json
+#THEME=$(wal --theme |
+#            sed '/Light Themes/,$d' |
+#            sed -e '/^\S/d' -e 's/ - //' |
+#            fzf --preview='wal -qet --theme {} && wal --preview')
+if [ -n "$1" ]; then
+    IS_DARK=TRUE
+    fol=dark
+else
+    fol=user
+fi
+
+THEME=$(ls ~/.config/wal/colorschemes/$fol/* | 
+            sd '.*(.*/)*/' '$1' | 
+            sd '.json' '' | 
+            sd ' ' '\n' |
+            fzf --preview='wal -qet --theme {} && wal --preview')
+
+if [ -n "$THEME" ]; then
+    if [ -n "$IS_DARK" ]; then
+        wal -ql --theme $THEME; r-wal
+    else
+        wal -q --theme $THEME; r-wal
+    fi
+else
+    wal -q --theme /tmp/fzwal-backup.json
+fi
+
+if [ -n "$FZWAL_RESET_CURSOR" ]; then
+    for TTY in /dev/pts/*; do
+        [ -w $TTY ] && /bin/printf "\e]112\a" > $TTY
+    done
+    exit 0
+fi

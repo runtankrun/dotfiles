@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/ellio/.scripts/colors/colorschemes/forest_blue.png",
+    "alpha": "80",
+
+    "special": {
+        "background": "#011117",
+        "foreground": "#c6dad9",
+        "cursor": "#c6dad9"
+    },
+    "colors": {
+        "color0": "#011117",
+        "color1": "#0026fd",
+        "color2": "#fe1376",
+        "color3": "#00ccf4",
+        "color4": "#00fabf",
+        "color5": "#ff8a95",
+        "color6": "#7bffa3",
+        "color7": "#c6dad9",
+        "color8": "#8a9897",
+        "color9": "#0026fd",
+        "color10": "#fe1376",
+        "color11": "#00ccf4",
+        "color12": "#00fabf",
+        "color13": "#ff8a95",
+        "color14": "#7bffa3",
+        "color15": "#c6dad9"
+    }
+}

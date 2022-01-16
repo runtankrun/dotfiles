@@ -241,8 +241,9 @@ alias disk-util='ncdu'
 alias gotop-f='gotop --nvidia --averagecpu --statusbar --mbps --layout kitchensink'
 
 #pwgen
-alias pwgen='pwgen -sy1 50'
+alias pwgen='pwgen -sy1'
 
+alias ff='/usr/lib/firefox/firefox-bin'
 
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
@@ -262,10 +263,11 @@ eval "$(mcfly init zsh)"
 #export MCFLY_FUZZY=1
 source /usr/share/doc/mcfly/mcfly.zsh
 export MCFLY_RESULTS=50
-# End Mcfly
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#autojump
 . /usr/share/autojump/autojump.zsh
 
 # >>> conda initialize >>>

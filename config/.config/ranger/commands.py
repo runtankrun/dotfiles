@@ -160,3 +160,5 @@ class YankContent(Command):
 
     def tab(self, tabnum):
         return self._tab_directory_content()
+
+

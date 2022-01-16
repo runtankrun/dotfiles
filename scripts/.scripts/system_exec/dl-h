@@ -1,4 +1,15 @@
 #!/bin/sh
-cd ~/Videos/h;
-wget "$(xclip -out -selection clipboard)";
-echo "v:/home/ellio/Videos/h/$(ls -c | head -n 1)" >> ~/.config/ranger/tagged
+
+case $1 in
+    "")
+        cd ~/Videos/h;
+        wget "$(xclip -out secondary)";
+        echo "v:/home/ellio/Videos/h/$(ls -c | head -n 1)" >> ~/.config/ranger/tagged
+    ;;
+    
+    "-x")    
+        cd ~/Videos/h/wide;
+        wget "$(xclip -out secondary)";
+        echo "x:/home/ellio/Videos/h/$(ls -c | head -n 1)" >> ~/.config/ranger/tagged
+    ;;
+esac

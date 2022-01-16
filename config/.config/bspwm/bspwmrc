@@ -71,5 +71,5 @@ bspc rule -a Google-chrome desktop='^3' state=floating follow=off focus=off
 bspc rule -a kitty:vim state=floating
 
 force-composition-pipeline &
-pro &
+pro & 
 layout-case

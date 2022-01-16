@@ -14,4 +14,7 @@ elif [[ $1 = "-wal" ]]; then
 urxvtc -name "neofetch" -title "neofetch" -e sh -c \
 "neofetch --bg_color white --loop"
 
+elif [[ $1 = "-f" ]]; then
+urxvtc -name "neofetch" -title "neofetch" -e sh -c \
+"neofetch --bg_color white --loop --w3m $(grep ^N:  ~/.config/ranger/tagged | tail -n 1 | tail -c +3)"
 fi

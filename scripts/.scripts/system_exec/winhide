@@ -1,0 +1,27 @@
+#!/bin/sh
+
+hidden=$(bspc query -N -n .hidden -d focused)
+
+case $1 in
+    "-s")
+        if [ -z "$hidden" ]; then
+        	notify-send "0 nodes are currently hidden"
+        else
+            nodes=( $(bspc query -N -n .hidden ) ) && s=$(xtitle ${nodes[@]} |
+            rofi -dmenu -i -format i -p "Hidden windows: ")
+
+            c=n
+
+            if [[ -n "$s" ]]; then
+                bspc query -N -n >/dev/null || c=d
+                bspc node "${nodes[$s]}" -${c} focused -g hidden=off -f
+            fi
+            # bspc node "$hidden" -g hidden=off
+        fi
+    ;;
+
+    "")
+         bspc node focused -g hidden=on
+    ;;
+
+esac

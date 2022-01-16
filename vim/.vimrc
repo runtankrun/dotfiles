@@ -31,6 +31,7 @@ set ignorecase
 set smartcase
 set number
 set termguicolors
+colo humanoid
 highlight LineNr ctermfg=white
 highlight Normal ctermbg=black ctermfg=white
 autocmd VimEnter * DimInactiveOff

@@ -48,4 +48,4 @@ dir="$HOME/.config/rofi/launchers/colorful"
 #themes=($(ls -p --hide="launcher.sh" --hide="colors.rasi" $dir))
 #theme="${themes[$(( $RANDOM % 12 ))]}"
 
-rofi -no-lazy-grab -show run -theme $dir/"$theme"
+rofi -show run -modi run -theme $dir/"$theme"
