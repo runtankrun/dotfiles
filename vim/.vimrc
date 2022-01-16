@@ -30,8 +30,10 @@ set hlsearch
 set ignorecase
 set smartcase
 set number
+set termguicolors
 highlight LineNr ctermfg=white
-set t_Co=256
+highlight Normal ctermbg=black ctermfg=white
+autocmd VimEnter * DimInactiveOff
 set viminfo='100,<9999,s100
 
 "" Set status line display
@@ -59,37 +61,12 @@ set statusline+=%L                  " Total line
 set statusline+=\                   " Padding
 
 "" Mappings
-
-
 map <C-s> :w<CR>
 map ss :mks! ~/.vim/sessions/
 map sh :sp
 map sv :vsp
-map dt :DimInactiveToggle<CR>
 map dc :hi ColorColumn ctermbg=
 map cs :colorscheme<space>
-map ct :ColorToggle<CR>
-map <C-t> :tabnew<CR>
-map <C-n> :NERDTreeToggle<CR>
-map <C-u> :UndotreeToggle<CR>
-map <C-g> :Goyo<CR>
-
-" Paste system clipboard with Ctrl + v
-inoremap <C-v> <ESC>"+gPi    
-nnoremap <C-v> "+gP<ESC>
-vnoremap <C-v> d"+gP<ESC>
-cnoremap <C-v> <C-r>+
-
-" Cut to system clipboard with Ctrl + x
-vnoremap <C-x> "+d
-nnoremap <C-x> "+dd
-inoremap <C-x> <ESC>"+ddi
-
-" Copy to system clipboard with Ctr + c
-vnoremap <C-c> "+y 
-nnoremap <C-c> "+yy 
-inoremap <C-c> <ESC>"+yyi
-
 map <C-space> :map <space> <Nop>
 map <C-h> <C-W>h
 map <C-l> <C-W>l
@@ -97,11 +74,20 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <silent> <space><cr> :noh<CR>
 nnoremap fr :%s/\<<C-r><C-w>\>//g<Left><Left>
-nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
-nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
-nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
-nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
 nnoremap <silent> <Tab> :tabnext<CR>
+" Paste system clipboard with Ctrl + v
+inoremap <C-v> <ESC>"+gPi    
+nnoremap <C-v> "+gP<ESC>
+vnoremap <C-v> d"+gP<ESC>
+cnoremap <C-v> <C-r>+
+" Cut to system clipboard with Ctrl + x
+vnoremap <C-x> "+d
+nnoremap <C-x> "+dd
+inoremap <C-x> <ESC>"+ddi
+" Copy to system clipboard with Ctr + c
+vnoremap <C-c> "+y 
+nnoremap <C-c> "+yy 
+inoremap <C-c> <ESC>"+yyi        
 
 ""Plug-ins
 call plug#begin('~/.vim/plugged')
@@ -111,7 +97,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'vim-python/python-syntax'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
-"Plug 'blueyed/vim-diminactive'
+Plug 'blueyed/vim-diminactive'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'junegunn/goyo.vim'
 Plug 'preservim/vim-pencil'
@@ -120,14 +106,25 @@ Plug 'arzg/vim-colors-xcode'
 call plug#end()
 
 ""Plug Config
-"autocmd VimEnter * NERDTree
-":hi ColorColumn ctermbg=8
 let NERDTreeShowHidden=1
 let g:NERDTreeNodeDelimiter = "\u00a0"
 let g:colorizer_maxlines=1000
 let g:colorizer_startup = 0
 let g:lens#width_resize_min = 50
 
+map ct :ColorToggle<CR>
+map <C-t> :tabnew<CR>
+map <C-n> :NERDTreeToggle<CR>
+map <C-u> :UndotreeToggle<CR>
+map gy :Goyo<CR>
+map dt :DimInactiveToggle<CR>
+nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
+nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
+nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
+nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR    >
+nnoremap <leader>r :<C-U>RangerChooser<CR>
+
+"ranger integration
 function! RangeChooser()
     let temp = tempname()
     " The option "--choosefiles" was added in ranger 1.5.1. Use the next line
@@ -158,4 +155,4 @@ function! RangeChooser()
     redraw!
 endfunction
 command! -bar RangerChooser call RangeChooser()
-nnoremap <leader>r :<C-U>RangerChooser<CR>
+
