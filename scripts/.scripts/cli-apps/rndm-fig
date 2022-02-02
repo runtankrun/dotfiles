@@ -11,6 +11,7 @@ do
 
         figlet -f $font $2
         echo "cp $font ~/.fonts/misc/figlet/" | lolcat
+        sleep 1s
         ((count++))
 done
 

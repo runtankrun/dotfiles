@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/zsh
 source /usr/share/autojump/autojump.bash
+source ~/.scripts/ranger_cd
 export TERMCMD=kitty
 #############
 #   KITTY   #
@@ -27,5 +28,5 @@ alacritty --title "ranger" --class "ranger" -e sh -c \
 else
 urxvtc -name "ranger" -title "ranger" -e sh -c \
 "ranger-slim \
---selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
+--selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3)";
 fi

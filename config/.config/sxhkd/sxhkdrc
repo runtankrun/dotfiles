@@ -39,7 +39,7 @@ ctrl + shift + alt + 7
 ctrl + shift + 3
     bspc node -t \~floating
 #pseudo-tiled
-super + shift  + alt + 9
+ctrl + shift + alt + p
     bspc node -t \~pseudo_tiled
 #3
 #balance
@@ -146,9 +146,9 @@ super + ctrl + F10
 
 ## DL H
 super + shift + h
-    urxvtc -e dl-h; bspc node -t floating
+    urxvtc -name=h-dl -title=h-dl -e dl-h
 super + ctrl + shift + h
-    urxvtc -e dl-h -x; bspc node -t floating
+    urxvtc -name=h-dl -title=h-dl -e dl-h -x
 
 ## Virtualbox
 super + F12
@@ -175,11 +175,11 @@ super + ctrl + shift + Home
     wp-vid
 
 ## view open windows
-super + Pause
+Pause
     skippy-xd-toggle
 
 ## cover
-Pause
+super + Pause
     bspc rule -a cover:feh state=fullscreen; feh --class cover ~/screen1.png
 
 ## sleep
@@ -284,8 +284,8 @@ super + shift + m
 super + m
     megasync
 ##
-super + ctrl + alt + space
-    touch ~/blank; echo $(pass sys/t) | xclip -i -selection clipboard; sleep 20s; xclip -selection clipboard ~/blank; rm ~/blank; return
+super + ctrl + alt + shift + 9
+    pass -c sys/t 
     
 ## mpv - launch last directory tagged with "m" 
 super + alt + m

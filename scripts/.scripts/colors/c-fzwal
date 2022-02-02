@@ -20,16 +20,16 @@ THEME=$(ls ~/.config/wal/colorschemes/$fol/* |
             sd '.*(.*/)*/' '$1' | 
             sd '.json' '' | 
             sd ' ' '\n' |
-            fzf --preview='wal -qet --theme {} && wal --preview')
+            fzf --preview='wal -qet --theme {} && wal -e --preview')
 
 if [ -n "$THEME" ]; then
     if [ -n "$IS_DARK" ]; then
         wal -ql --theme $THEME; r-wal
     else
-        wal -q --theme $THEME; r-wal
+        wal -qe --theme $THEME; r-wal
     fi
 else
-    wal -q --theme /tmp/fzwal-backup.json
+    wal -qe --theme /tmp/fzwal-backup.json
 fi
 
 if [ -n "$FZWAL_RESET_CURSOR" ]; then

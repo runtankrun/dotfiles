@@ -1,6 +1,4 @@
-#ranger shell prompt
-source /home/ellio/.scripts/ranger/examples/shell_subshell_notice.sh
-#end ranger shell prompt
+#keychain --eval --agents gpg,ssh noneya
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -54,7 +52,7 @@ ZSH_THEME="powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -80,7 +78,7 @@ ZSH_THEME="powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search git-open)
+plugins=(kubectl git-open aliases zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,141 +108,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#docker
-alias dsr='docker container stop $(docker container ls -aq); docker container rm $(docker container ls -aq)'
-alias dri='docker rmi $(docker images -aq)'
-
-#sec
-alias logz='sudo find /var/log/ -type f \( -name "*.log" \) -exec tail -f "$file" {} +'
-alias sys-scan='sudo clamscan -r / --log=/tmp/clamav_report.log'
-alias audit='cd ~/.scripts/xfrom_source/lynis-master/; sudo ./lynis audit system'
-
-#pass
-alias inf='gpg -d ~/Documents/i'
-
-#Packages
-alias pkgs='yay -Qqe > ~/.config/pkglist.txt'
-alias clean-pkgs='sudo pacman -R $(pacman -Qdtq)'
-
-#wget website images
-alias wget-i='wget -nd --page-requisites --span-host -A'
-
-#Git
-alias gi='git init'
-alias gs='git status'
-alias ga='git add -A'
-alias gc='git commit -m'
-alias gpsh='git push -u origin master'
-alias gpll='git pull'
-alias dotg='cd ~/dotfiles/; git status'
-
-#stow
-alias tlinks='stow --adopt -nv'
-alias clinks='stow --adopt -v'
-
-#ProtonVPN
-alias prof='sudo protonvpn c -f'
-alias pros='sudo protonvpn c --sc'
-alias prot='sudo protonvpn c --tor -p tcp'
-alias pror='protonvpn refresh'
-
-#Polybar
-alias poly='~/.config/polybar/launch.sh'
-
-#GPU
-alias gpu='watch -d -n 0.5 nvidia-smi'
-
-#tty-clock
-alias tm='tty-clock -c -x -t'
-
-#feh image
-alias pic='feh --scale-down --auto-zoom'
-alias pic-ss='feh -Z -. -D 5'
-
-#Feh background (2 monitors)
-alias wp='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png'
-alias wpc='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png; wal -n -i ~/.config/wall.png -a 90'
-alias tt='wal -n -i ~/.config/wall.png -a'
-
-#Neofetch
-alias nf='neofetch'
-
-#Colors
-alias col='cb-small;colorpanes;colorline'
-
-#refresh bash
-alias rb='source ~/.bashrc'
-alias rz='source ~/.zshrc'
-
-#fix terminal
-alias fixur='xrdb ~/.Xresources'
-
-#Openbox Window Identifier
-alias win='obxprop | grep "^_OB_APP"'
-
-#CLI Music
-alias music='ncmpcpp'
-alias music2='~/.ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug'
-
-#Ranger
-alias fm='ranger'
-
-#Font Cache Refresh
-alias rf='fc-cache -f -v'
-alias fl='fc-list | grep "~/.fonts/"'
-
-#Youtube-DL
-alias yd='cd /mnt/TB_2/Media/yd; youtube-dl --restrict-filenames'
-alias ydm='youtube-dl --restrict-filenames --extract-audio --embed-thumbnail --audio-format mp3'
-
-#vim
-alias vim-s='vim -S ~/.vim/sessions/main.vim'
-
-#Figlet
-alias yo='figlet -f ~/.fonts/misc/figlet/3D-ASCII.flf'
-alias yo2='figlet -f ~/.fonts/misc/figlet/isometric.flf'
-alias figlet_font='figlet -f $(ls -d ~/.fonts/misc/figlet/* | shuf -n 1)'
-
-#Shred
-alias shreddit='shred -n 5 -v -z'
-
-#XRDM
-alias cs='xrdm color'
-alias tf='xrdm font'
-
-#duck
-alias evc='cd ~/Downloads/EvilOSX; python start.py --cli --port 1337'
-alias evb='cd ~/Downloads/EvilOSX; python start.py --builder'
-alias duck='mv ~/Downloads/EvilOSX/data/builds/*Launcher* ~/Downloads/EvilOSX/data/builds/e.txt; cd ~/Downloads/USB-Rubber-Ducky/;java -jar duckencoder.jar -i ~/Downloads/EvilOSX/data/builds/e.txt; cp ~/Downloads/USB-Rubber-Ducky/inject.bin ~/Downloads/'
-
-#usb
-alias musb='sudo mount -U AEA4-ED67 /mnt/usb'
-alias umusb='sudo umount /mnt/usb'
-
-#update firefox
-alias uff='pkill firefox-bin; sudo mv /usr/lib/firefox /usr/lib/firefox_old; sudo cp -r ~/Downloads/firefox /usr/lib/'
-alias dff='sudo rm -rf /usr/lib/firefox_old'
-
-#YTFZF
-alias yt='ytfzf -tT'
-
-#Reddit
-alias reddit='rtv'
-
-#RVMatting
-alias rvm='python inference.py --variant resnet50 --checkpoint checkpoint/rvm_resnet50.pth --device cuda --input-source input/input.mp4 --output-type video --output-composition output/com.mp4 --output-alpha output/alp.mp4 --output-foreground output/for.mp4 --output-video-mbps 10 --seq-chunk 1'
-
-#Disk Utility
-alias disk-util='ncdu'
-
-#gotop
-alias gotop-f='gotop --nvidia --averagecpu --statusbar --mbps --layout kitchensink'
-
-#pwgen
-alias pwgen='pwgen -sy1'
-
-alias ff='/usr/lib/firefox/firefox-bin'
-
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
 export XRDM_FONT_DIR=$XRDM_DIR/fonts
@@ -262,7 +125,7 @@ eval $(thefuck --alias)
 eval "$(mcfly init zsh)"
 #export MCFLY_FUZZY=1
 source /usr/share/doc/mcfly/mcfly.zsh
-export MCFLY_RESULTS=50
+export MCFLY_RESULTS=1000
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
