@@ -1,6 +1,7 @@
 {
   "special":{
-      "background": "#1a1b26    ",
+      "alpha": "99",
+      "background": "#1a1b26",
       "foreground": "#a9b1d6",
       "cursor": "#c0caf5"
   },
@@ -23,5 +24,3 @@
     "color15": "#c0caf5"
   }
 }
-
-
