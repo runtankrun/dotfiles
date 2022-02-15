@@ -17,6 +17,7 @@ alias dri='docker rmi $(docker images -aq)'
 alias logz='sudo find /var/log/ -type f \( -name "*.log" \) -exec tail -f "$file" {} +'
 alias sys-scan='sudo clamscan -r / --log=/tmp/clamav_report.log'
 alias audit='cd ~/.scripts/xfrom_source/lynis-master/; sudo ./lynis audit system'
+alias ssys="sudo systemctl $1 $2"
 
 #pass
 alias inf='gpg -d ~/Documents/i'
@@ -47,6 +48,7 @@ alias prof='sudo protonvpn c -f'
 alias pros='sudo protonvpn c --sc'
 alias prot='sudo protonvpn c --tor -p tcp'
 alias pror='protonvpn refresh'
+alias prod='sudo protonvpn d'
 
 #Polybar
 alias poly='~/.config/polybar/launch.sh'
@@ -141,7 +143,7 @@ alias disk-util='ncdu'
 alias gotop-f='gotop --nvidia --averagecpu --statusbar --mbps --layout kitchensink'
 
 #pwgen
-alias pwgen='pwgen -sy1'
+alias pwgen='pwgen -syn'
 
 #who
 alias whor='curlie post https://whoer.net/ | rg -A 10 -e 'ip_plain' -e 'anonymizer :' -e 'tor :' -e 'webrtc:' -e 'dsbl :' -e 'vpn_provider' -e 'proxy :' -e 'proxy_ports :' -e 'track :' -e 'langs :' -e 'ua_mismatch :' -e 'datacenter_ip: ' | head -n300 | tail -n46'
@@ -152,3 +154,7 @@ alias ff='/usr/lib/firefox/firefox-bin'
 #k-reset
 alias k-reset='sudo kubeadm reset; sudo rm -rf /etc/cni/net.d; rm ~/.kube/config; sudo iptables -F && sudo iptables -t nat -F && sudo iptables -t mangle -F && sudo iptables -X; prof; sudo systemctl restart kubelet; sudo iptables --list; sudo systemctl status kubelet'
 
+#ip
+alias ip-flush='sudo iptables -F && sudo iptables -t nat -F && sudo iptables -t mangle -F && sudo iptables -X'
+alias ip-list='sudo iptables --list'
+alias vip='ifconfig | rg -A 5 proton0 | rg "inet " | sd "netmask.*" "" | sd "inet" "" | sd " " ""'

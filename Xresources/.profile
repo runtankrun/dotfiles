@@ -15,3 +15,4 @@ export PATH="${PATH}:$HOME/.scripts/colors"
 export PATH="${PATH}:$HOME/.scripts/layout"
 export PATH="${PATH}:$HOME/.scripts/system_exec"
 export PATH="${PATH}:$HOME/.scripts/ranger"
+

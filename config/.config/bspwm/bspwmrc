@@ -4,7 +4,7 @@
 sleep .5s; xfsettingsd & 
 
 ## Compositor
-sleep .5s; picom -b &
+sleep .5s; picom -b --experimental-backends &
 
 ## swap caps and escape buttons
 setxkbmap -option caps:swapescape &
@@ -72,5 +72,5 @@ bspc rule -a kitty:vim state=floating
 bspc rule -a URxvt:h-dl state=floating
 
 force-composition-pipeline &
-pro & 
-layout-case
+kitty -e sh -c "sudo prof & sudo input-remapper-gtk" &
+layout-case -gif

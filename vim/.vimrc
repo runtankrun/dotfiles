@@ -30,12 +30,13 @@ set hlsearch
 set ignorecase
 set smartcase
 set number
-set termguicolors
-colo humanoid
+"set termguicolors
+"set t_Co=256
+"colo humanoid
 highlight LineNr ctermfg=white
-highlight Normal ctermbg=black ctermfg=white
-autocmd VimEnter * DimInactiveOff
+"highlight Normal ctermbg=black ctermfg=white
 set viminfo='100,<9999,s100
+autocmd VimEnter * DimInactiveOff
 
 "" Set status line display
 set laststatus=2

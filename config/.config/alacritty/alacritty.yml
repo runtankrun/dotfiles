@@ -503,32 +503,32 @@ font:
 #  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
 #  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
 
-background_opacity: 0.80
+window.opacity: 0.99
 # Colors
 colors:
   # Default colors
   primary:
-    background: '#1a1b26'
-    foreground: '#a9b1d6'
+    background: '#1E1E2E'
+    foreground: '#d9e0ee'
 
   # Normal colors
   normal:
-    black:   '#282c34'
-    red:     '#f7768e'
-    green:   '#73daca'
-    yellow:  '#e0af68'
-    blue:    '#7aa2f7'
-    magenta: '#bb9af7'
-    cyan:    '#7dcfff'
-    white:   '#c0caf5'
+    black:   '#6E6C7E'
+    red:     '#f28fad'
+    green:   '#abe9b3'
+    yellow:  '#fae3b0'
+    blue:    '#96cdfb'
+    magenta: '#f5c2e7'
+    cyan:    '#89dceb'
+    white:   '#d9e0ee'
 
   # Bright colors
   bright:
-    black:   '#414868'
-    red:     '#f7768e'
-    green:   '#73daca'
-    yellow:  '#e0af68'
-    blue:    '#7aa2f7'
-    magenta: '#bb9af7'
-    cyan:    '#7dcfff'
-    white:   '#c0caf5'
+    black:   '#988ba2'
+    red:     '#f28fad'
+    green:   '#abe9b3'
+    yellow:  '#fae3b0'
+    blue:    '#96cdfb'
+    magenta: '#f5c2e7'
+    cyan:    '#89dceb'
+    white:   '#d9e0ee'

@@ -29,7 +29,7 @@ elif [[ $1 = "-kitty" ]]; then
     -o="background=#232629" \
     --name "vim" --title "vim" \
     -e sh -c \
-    "vim -S ~/.vim/sessions/main.vim"
+    "nvim -S ~/.config/nvim/main.vim"
 
 elif [[ $1 = "-kitty2" ]]; then
     kitty \

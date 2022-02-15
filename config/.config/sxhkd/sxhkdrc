@@ -51,9 +51,9 @@ ctrl + shift + 4
 
 ## poly 
 super + F11
-    c-polybar
+    c-polybar -e
 super + alt + F11
-    c-polybar -k
+    c-polybar -ek
 #gotop+nvtop
 super + shift + F6
     c-fulltop 

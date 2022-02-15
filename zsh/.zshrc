@@ -105,8 +105,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
@@ -125,26 +125,10 @@ eval $(thefuck --alias)
 eval "$(mcfly init zsh)"
 #export MCFLY_FUZZY=1
 source /usr/share/doc/mcfly/mcfly.zsh
-export MCFLY_RESULTS=1000
+export MCFLY_RESULTS=30
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #autojump
 . /usr/share/autojump/autojump.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/ellio/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/ellio/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/ellio/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/ellio/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-

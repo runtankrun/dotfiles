@@ -81,6 +81,10 @@ case "$extension" in
         try lynx   -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         try elinks -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         ;; # fall back to highlight/cat if the text browsers fail
+    json|ipynb)
+        try jq --color-output . "$path" && { dump | trim; exit 0; } || exit 1
+#        try python -m json.tool -- "$path " && exit 5
+    ;;
 esac
 
 case "$mimetype" in
@@ -103,13 +107,13 @@ case "$mimetype" in
         try mediainfo "$path" && { dump | trim | sed 's/  \+:/: /;';  exit 5; } || exit 1;;
 esac
 
-handle_extension() {
-    case "${FILE_EXTENSION_LOWER}" in
-        ## JSON
-        json|ipynb)
-            jq --color-output . "${FILE_PATH}" && exit 0
-            python -m json.tool -- "${FILE_PATH}" && exit 5
-            ;;
-    esac
-}
+#handle_extension() {
+#    case "${FILE_EXTENSION_LOWER}" in
+#        ## JSON
+#        json|ipynb)
+#            jq --color-output . "${FILE_PATH}" && exit 0
+#            python -m json.tool -- "${FILE_PATH}" && exit 5
+#            ;;
+#    esac
+#}
 exit 1

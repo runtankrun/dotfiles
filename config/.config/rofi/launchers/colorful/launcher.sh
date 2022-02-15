@@ -14,44 +14,34 @@
 theme="style_2"
 dir="$HOME/.config/rofi/launchers/colorful"
 
-# dark
-#ALPHA="#00000000"
-#BG="#000000ff"
-#FG="#FFFFFFff"
-#SELECT="#101010ff"
+pycolors () {
+source ~/.cache/wal/colors.sh
+ALPHA=#00000000
+BG=$background
+SELECT=$color8
+FG=$color7
+ACCENT=$color2
 
-# light
-#ALPHA="#00000000"
-#BG="#FFFFFFff"
-#FG="#000000ff"
-#SELECT="#f3f3f3ff"
+cat > $dir/colors.rasi <<- EOF
+	/* colors */
+	* {
+	  al:  $ALPHA;
+	  bg:  $BG;
+	  se:  $SELECT;
+	  fg:  $FG;
+	  ac:  $ACCENT;
+      red: #EC7875ff;
+      green: #61C766ff;
+      yellow: #FDD835ff;
+      blue: #42A5F5ff;
+      purple: #BA68C8ff;
+      cyan: #4DD0E1ff;
+	}
+EOF
+}
 
-# accent colors
-#COLORS=('#EC7875' '#61C766' '#FDD835' '#42A5F5' '#BA68C8' '#4DD0E1' '#00B19F' \
-#		'#FBC02D' '#E57C46' '#AC8476' '#6D8895' '#EC407A' '#B9C244' '#6C77BB')
-#ACCENT="${COLORS[$(( $RANDOM % 14 ))]}ff"
-
-# overwrite colors file
-#source ~/.cache/wal/colors.sh
-#ALPHA=#00000000
-#BG=$background
-#SELECT=$color2
-#FG=$foreground
-#ACCENT=$color3
-
-#cat > $dir/colors.rasi <<- EOF
-#	/* colors */
-#	* {
-#	  al:  $ALPHA;
-#	  bg:  $BG;
-#	  se:  $SELECT;
-#	  fg:  $FG;
-#	  ac:  $ACCENT;
-#	}
-#EOF
-
-# comment these lines to disable random style
+## comment these lines to disable random style
 #themes=($(ls -p --hide="launcher.sh" --hide="colors.rasi" $dir))
 #theme="${themes[$(( $RANDOM % 12 ))]}"
-
+pycolors
 rofi -no-lazy-grab -show drun -modi drun -theme $dir/"$theme"
