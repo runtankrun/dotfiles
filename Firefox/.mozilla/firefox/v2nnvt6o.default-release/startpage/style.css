@@ -8,11 +8,11 @@ html{
   width: 100%;
   margin: 0;
   padding: 0;
-  background:#141512;
+  background:#1a1b26;
     }
 
 body {
-  background: #141512;
+  background: #1a1b26;
   color: #BBC4C8;
   height: 100%;
   width: 100%;
@@ -53,7 +53,7 @@ body {
   align-items: center;
   padding-top: 20px;
   padding-bottom: 20px;
-  background: #141512;
+  background: #1a1b26;
 }
 
 .logo {
@@ -110,7 +110,7 @@ form {
 
 .search_box {
   display: flex;
-  background: #141512;
+  background: #1a1b26;
   width: 600px;
   padding: 0px;
   margin-bottom: 40px;

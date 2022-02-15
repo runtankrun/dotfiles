@@ -17,10 +17,10 @@ dir="$HOME/.config/rofi/launchers/colorful"
 pycolors () {
 source ~/.cache/wal/colors.sh
 ALPHA=#00000000
-BG=$background
+BG=$color0
 SELECT=$color8
 FG=$color7
-ACCENT=$color2
+ACCENT=$color4
 
 cat > $dir/colors.rasi <<- EOF
 	/* colors */

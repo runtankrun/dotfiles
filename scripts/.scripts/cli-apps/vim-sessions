@@ -26,7 +26,6 @@ elif [[ $1 = "-kitty" ]]; then
     -o="initial_window_width 1017" \
     -o="initial_window_height 1162" \
     -o="background_opacity=1.00" \
-    -o="background=#232629" \
     --name "vim" --title "vim" \
     -e sh -c \
     "nvim -S ~/.config/nvim/main.vim"

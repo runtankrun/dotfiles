@@ -53,7 +53,8 @@ ctrl + shift + 4
 super + F11
     c-polybar -e
 super + alt + F11
-    c-polybar -ek
+    c-polybar -ek 
+
 #gotop+nvtop
 super + shift + F6
     c-fulltop 
@@ -244,13 +245,13 @@ super + ctrl + r
 
 ## launch browser 
 super + b
-	/usr/lib/firefox/firefox-bin
+	  /usr/lib/firefox/firefox-bin
 super + alt + b
     surf https://www.duckduckgo.com/
 	
 ## launch vim
 super + v
-	vim-sessions -main
+    vim-sessions -main
 super + shift + v
     vim-sessions -kitty
 super + n 
