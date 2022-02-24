@@ -1,0 +1,12 @@
+#!/bin/sh
+case $1 in 
+    
+    "--color")
+        $HOME/.config/rofi/launchers/colorful/launcher.sh
+    ;;
+
+    "--text")
+        $HOME/.config/rofi/launchers/text/launcher_2.sh
+    ;;
+
+esac

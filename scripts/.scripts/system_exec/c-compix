@@ -1,0 +1,3 @@
+#!/bin/sh
+cd ~/.config/picom/compix/out ; 
+./compix -c ../compix.conf &

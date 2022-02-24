@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+editor="vim"
+term="kitty"
+eww="$HOME/.local/bin/eww -c $HOME/.config/eww/dashboard_2"
+
+
+if [[ "$1" == "bspwmrc" ]]; then
+    $eww close-all && $term -e sh -c "$editor $HOME/.config/bspwm/bspwmrc"	
+elif [[ "$1" == "eww_yuck" ]]; then
+    $eww close-all && $term -e sh -c "$editor $HOME/.config/eww/eww.yuck"	
+elif [[ "$1" == "vimrc" ]]; then
+    $eww close-all && $term -e sh -c "$editor $HOME/.vimrc"	
+elif [[ "$1" == "gtk" ]]; then
+	$eww close-all && lxappearance
+fi
+

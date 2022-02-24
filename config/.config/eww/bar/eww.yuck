@@ -18,7 +18,7 @@
 (defvar time_rev false)
 (deflisten workspace "scripts/workspace")
 
-(defvar eww "$HOME/.local/bin/eww/eww -c $HOME/.config/eww/bar")
+(defvar eww "$HOME/.local/bin/eww -c $HOME/.config/eww/bar")
 
 
 (defpoll COL_WLAN :interval "1m" "~/.config/eww/bar/scripts/wifi --COL")
@@ -65,7 +65,7 @@
                 :limit-width 2
                 :tooltip "battery on ${battery}%"
                 :show_truncated false
-                :onclick "$HOME/.config/eww/bar/scripts/pop system"
+                :onclick "c-eww -dashboard2"
                 :wrap false
                 ""))))
 

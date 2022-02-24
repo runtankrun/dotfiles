@@ -13,6 +13,14 @@
 ######################
 ##  COMMON COMMAND  ##
 ######################
+alt + h
+  /bin/sh $HOME/.config/bspwm/resize/shrinkx.sh
+alt + l
+  /bin/sh $HOME/.config/bspwm/resize/expandx.sh
+alt + k
+  /bin/sh $HOME/.config/bspwm/resize/shrinky.sh
+alt + j
+  /bin/sh $HOME/.config/bspwm/resize/expandy.sh
 
 #--Mouse--#
 ## focus next occupied desktop
@@ -51,9 +59,9 @@ ctrl + shift + 4
 
 ## poly 
 super + F11
-    c-polybar -e
+    c-eww -bar
 super + alt + F11
-    c-polybar -ek 
+    c-eww -kill
 
 #gotop+nvtop
 super + shift + F6
@@ -189,7 +197,7 @@ super + End
 
 ## program launcher
 super + d
-	/home/ellio/.config/rofi/launchers/colorful/launcher.sh
+  c-rofi --color
 Menu
     /home/ellio/.config/rofi/launchers/colorful/launcher_2.sh
 ctrl+Menu
@@ -227,11 +235,11 @@ super + alt + shift + c
 
 ## launch terminal
 super + z
-	message
+	message -k
 super + alt + z
     message -a
 super + ctrl + z
-    message -k
+    message
 super + ctrl + shift + z
     message -kt
 
@@ -286,8 +294,8 @@ super + m
     megasync
 ##
 super + ctrl + alt + shift + 9
-    pass -c sys/t 
-    
+    pass -c sys/t; xdotool type $(echo $(xclip -out -selection clipboard))
+
 ## mpv - launch last directory tagged with "m" 
 super + alt + m
     mpv $(grep ^m: ~/.config/ranger/tagged | tail -n 1 | tail -c +3 )
@@ -309,7 +317,7 @@ ctrl + alt + End
 
 ## color
 super + c
-    kcolorchooser
+    xcolor-pick
 
 ## easystroke
 super + e

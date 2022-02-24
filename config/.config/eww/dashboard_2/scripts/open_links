@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+## Open links in firefox
+FILE="$HOME/.cache/eww_launch.xyz"
+eww="$HOME/.local/bin/eww -c $HOME/.config/eww/dashboard_2"
+cmd="/usr/lib/firefox/firefox-bin --new-tab"
+
+if [[ "$1" == "--mail" ]]; then
+	${eww} close-all && rm -rf "$FILE" && xdg-open "https://protonmail.com"
+
+elif [[ "$1" == "--gh" ]]; then
+	${eww} close-all  && rm -rf "$FILE" && xdg-open "https://github.com"
+
+elif [[ "$1" == "--rd" ]]; then
+	${eww} close-all && rm -rf "$FILE" && xdg-open "https://reddit.com"
+
+elif [[ "$1" == "--tw" ]]; then
+	${eww} close-all && rm -rf "$FILE" && xdg-open "https://twitter.com"
+
+elif [[ "$1" == "--nf" ]]; then
+	${eww} close-all && rm -rf "$FILE" && xdg-open "https://nerdfonts.com/cheatsheet"
+
+elif [[ "$1" == "--yt" ]]; then
+	${eww} close-all && rm -rf "$FILE" && xdg-open "https://youtube.com"
+
+fi

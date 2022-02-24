@@ -17,9 +17,9 @@ dir="$HOME/.config/rofi/launchers/colorful"
 pycolors () {
 source ~/.cache/wal/colors.sh
 ALPHA=#00000000
-BG=$color0
-SELECT=$color8
-FG=$color7
+BG=$background
+SELECT=$color0
+FG=$foreground
 ACCENT=$color4
 
 cat > $dir/colors.rasi <<- EOF
@@ -44,4 +44,4 @@ EOF
 #themes=($(ls -p --hide="launcher.sh" --hide="colors.rasi" $dir))
 #theme="${themes[$(( $RANDOM % 12 ))]}"
 pycolors
-rofi -no-lazy-grab -show drun -modi drun -theme $dir/"$theme"
+rofi -no-lazy-grab -show drun -theme $dir/"$theme"

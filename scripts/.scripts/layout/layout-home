@@ -19,17 +19,18 @@ bspc node @^2:^$dt:/1 -o .5 -p south -i
 bspc node @^2:^$dt:/2/1 -o .5 -p south -i
 
 ##ADD RULES
-bspc rule -a URxvt:neofetch-ascii -o node=@^2:^$dt:/1/1 focus=off state=pseudo_tiled
-bspc rule -a URxvt:neofetch -o node=@^2:^$dt:/1/2 focus=off state=pseudo_tiled
-bspc rule -a URxvt:neofetch-pic -o node=@^2:^$dt:/2/1/1 focus=off state=pseudo_tiled
-bspc rule -a URxvt:TANK -o node=@^2:^$dt:/2/1/2 focus=off state=pseudo_tiled
+bspc rule -a kitty:neofetch-ascii -o node=@^2:^$dt:/1/1 focus=off state=pseudo_tiled
+bspc rule -a kitty:neofetch -o node=@^2:^$dt:/1/2 focus=off state=pseudo_tiled
+bspc rule -a kitty:neofetch-pic -o node=@^2:^$dt:/2/1/1 focus=off state=pseudo_tiled
+bspc rule -a kitty:TANK-K -o node=@^2:^$dt:/2/1/2 focus=off state=pseudo_tiled
 bspc rule -a feh:feh -o node=@^2:^$dt:/2/2 focus=off state=pseudo_tiled
 
 ##LAUNCH APPS
 c-neo -ascii &
 c-neo -wal &
 c-neo -pic &
-message &
+sleep .3s;
+message -k &
 feh -. -Z -D 5 -B white $(while IFS= read -r line
 do 
     echo "$line" | grep ^F: | tail -n $tag_count_F | tail -c +3 | tr '\n' ' '
@@ -134,19 +135,19 @@ bspc rule -a URxvt:htop -o node=@^2:^$dt:/1/2
 bspc rule -a mpv:gifs -o node=@^2:^$dt:/2/1
 bspc rule -a kitty:vim2 -o node=@^2:^$dt:/2/2/1
 bspc rule -a URxvt:ranger -o node=@^2:^$dt:/2/2/2
-bspc config -m HDMI-0 -d ^2 window_gap 0
+bspc config -m HDMI-0 -d $dt window_gap 0
 
 ##LAUNCH APPS
 #sleep .3s; \ 
 message &
 toys -matrix &
 mpv --x11-name=toonami --title=toonami --osc=no ~/Pictures/gifs/mf-toonami.GIF &
-sleep .5;
+#sleep .5;
 mpv --x11-name="pc" --title="pc" --osc=no ~/Videos/pc.mp4 &
 c-nvtop &
 c-gotop -h &
 mpv --x11-name="gifs" --title="gifs" --osc=no ~/Videos/1.mov &
-sleep .5s;
+#sleep 1s;
 vim-sessions -kitty2 &
 urxvtc -name "ranger" -title "ranger" -e ranger --selectfile=Pictures/sbpt.png &
 urxvtc -name "pro" -title "pro" -e sh -c "sudo protonvpn c -f; bspc node @^2:^1:/1/1/1/1/2/2 -c; bspc node @^2:^1:/1/1/1/1/1/2 -c; bspc node @^2:^1:/1/1/1/1/1/1 -p east; toys -matrix"

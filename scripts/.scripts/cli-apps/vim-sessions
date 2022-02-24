@@ -34,7 +34,6 @@ elif [[ $1 = "-kitty2" ]]; then
     kitty \
     --name "vim2" \
     --title "vim2" \
-    --geometry 200x100 \
     -e sh -c \
     "vim -S ~/.vim/sessions/main.vim"
 

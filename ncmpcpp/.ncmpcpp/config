@@ -1,86 +1,63 @@
-# NCMPCPP Config - Fancy
-# -----------------------
+## Directories ###
+ncmpcpp_directory 	= ~/.ncmpcpp
+lyrics_directory  	= ~/.ncmpcpp/lyrics
+mpd_music_dir     	= ~/Music/music
+mpd_host 		  	= "localhost"
+mpd_port 		  	= "6600"
+mpd_crossfade_time 	= "2"
 
-# MPD
-mpd_music_dir = "/mnt/TB_1/iTunes Media/Music/"
-mpd_host = "127.0.0.1"
-mpd_port = "6600"
+### Script ###
+execute_on_song_change = "kunst --size 60x60 --silent"
 
-# VISUALIZER
-visualizer_in_stereo = "no"
-visualizer_fifo_path = "/tmp/mpd.fifo"
-visualizer_output_name = "FIFO Visualizer"
-visualizer_sync_interval = "10"
-visualizer_type = "wave"
-#visualizer_look = "▉▉"
-#visualizer_look = "▞▋"
-#visualizer_look = "▍▍"
-#visualizer_look = "││"
-#visualizer_look = "▮▮"
-#visualizer_look = "▋▋"
+### Behaviour ###
+message_delay_time 				 = 1
+autocenter_mode 				 = "yes"
+centered_cursor 				 = "yes"
+ignore_leading_the 				 = "yes"
+playlist_disable_highlight_delay = 2
+allow_for_physical_item_deletion = "no"
 
-visualizer_look = "  "           
-startup_screen = visualizer 
-startup_slave_screen = playlist
-startup_slave_screen_focus = yes 
-locked_screen_width_part = 30
+### Visualizer ###
+visualizer_data_source = /tmp/mpd.fifo
+visualizer_output_name = "mpd_visualizer"
+visualizer_in_stereo   = "yes"
+visualizer_look 	   = ●●
+visualizer_type 	   = "ellipse"
 
-visualizer_color = "white"
-#visualizer_color = "red,magenta,blue,cyan"
+### Appearance ###
+playlist_display_mode = "columns"
+colors_enabled 		  = "yes"
+#user_interface       = classic
+user_interface 		  = alternative
+volume_color 		  = "white"
 
-# GLOBAL
-mouse_support = "yes"
-mouse_list_scroll_whole_page = "yes"
-lines_scrolled = "1"
-message_delay_time = "3"
-playlist_shorten_total_times = "yes"
-playlist_display_mode = "classic"
-browser_display_mode = "columns"
-search_engine_display_mode = "columns"
-playlist_editor_display_mode = "columns"
-autocenter_mode = "yes"
-centered_cursor = "yes"
-user_interface = "alternative"
-follow_now_playing_lyrics = "yes"
-#locked_screen_width_part = "50"
-display_bitrate = "no"
-external_editor = "nano"
-main_window_color = default
-#main_window_highlight_color = 7
+### Window ###
+song_window_title_format = "{%a - }{%t}|{%f}"
+statusbar_visibility 	 = "no"
+header_visibility 		 = "no"
+titles_visibility 		 = "no"
 
-# PROGRESSBAR
-progressbar_look = "━━━"
-#progressbar_look = "─⊙ "
-#progressbar_look = "─╼"
-#progressbar_look = "▃▃▃"
-progressbar_elapsed_color = 7
-progressbar_color = "black"
+### Progress bar ###
+progressbar_look 			= "▂▂▂"
+progressbar_color 			= "black"
+progressbar_elapsed_color   = "yellow"
 
-# UI VISIBILITY
-header_visibility = "no"
-statusbar_visibility = "yes"
-titles_visibility = "no"
-enable_window_title = "yes"
+### Alternative UI ###
+alternative_ui_separator_color 		  = "black"
+alternative_header_first_line_format  = $b$5$/b  $b$8{%t}|{%f}$/b $/b 
+alternative_header_second_line_format = {$b{$2  %a$9}{ - $7  %b$9}{ ($2%y$9)}}|{%D}
 
-# COLOR
-statusbar_color = "white"
+### Song list ###
+song_status_format		 = "$7%t"
+song_list_format 		 = "  %t $R%a %l  "
+song_library_format 	 = {{%a - %t} (%b)}|{%f}
+song_columns_list_format = "(53)[white]{tr} (45)[blue]{a}"
+
+### Colors ###
+main_window_color 					= "blue"
+current_item_prefix 				= "$(blue)$r"
+current_item_suffix 				= "$/r$(end)"
+current_item_inactive_column_prefix = red
+current_item_inactive_column_suffix = red
 color1 = "white"
-color2 = "blue"
-
-# UI FORMAT
-now_playing_prefix = " $b$7$6$5"
-now_playing_suffix = "$/b"
-current_item_prefix = "$/b$3"
-
-song_columns_list_format = "(6)[]{} (25)[blue]{a} (34)[white]{t|f} (5f)[magenta]{l} (1)[]{}"
-
-song_list_format = " {%t $R$7    $2%a$8}|{%f $R$2   %l$8}$8"
-
-song_status_format = "{$b$7 $2%a $3〃 $5%t $3〃 $6%b}|{$b$7 $6%f}"
-
-song_window_title_format = "{%a - %t}|{%f}"
-
-# EXEC SCRIPT
-#execute_on_song_change="bash -c '~/.ncmpcpp/scripts/album-notify'"
-#execute_on_song_change=notify-send "Now Playing ♫:" "$(mpc current)"
-execute_on_song_change="~/.ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh & bash -c ~/.ncmpcpp/scripts/notify"
+color2 = "red"

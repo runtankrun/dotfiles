@@ -18,6 +18,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k"
+#ZSH_THEME="minimal-blackcat"
 #ZSH_THEME="random"
 
 # Set list of themes to pick from when loading at random
@@ -52,7 +53,7 @@ ZSH_THEME="powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -78,7 +79,8 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(kubectl git-open aliases zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
+plugins=(git-open aliases zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
+#plugins=(gpg-agent git-open aliases zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,9 +106,6 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
@@ -116,10 +115,6 @@ export XRDM_PRESET_DIR=$XRDM_DIR/presets
 export XRDM_PROGRAM_DIR=$XRDM_DIR/programs
 source xrdm
 # End xrdm settings
-
-#thefuck
-eval $(thefuck --alias)
-#end thefuck
 
 # Mcfly
 eval "$(mcfly init zsh)"
@@ -132,3 +127,6 @@ export MCFLY_RESULTS=30
 
 #autojump
 . /usr/share/autojump/autojump.zsh
+
+#python venv
+source ~/.venv/bin/activate

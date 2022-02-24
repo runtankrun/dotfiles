@@ -11,14 +11,14 @@ bspc node @^2:^$dt:/1 -o 0.52 -p south -i
 bspc node @^2:^$dt:/2 -o 0.9 -p south -i
 
 ##ADD RULES
-bspc rule -a URxvt:spot -o node=@^2:^$dt:/1/1
-bspc rule -a Alacritty:music -o node=@^2:^$dt:/1/2
+bspc rule -a kitty:spot -o node=@^2:^$dt:/1/1
+bspc rule -a kitty:music -o node=@^2:^$dt:/1/2
 bspc rule -a URxvt:vis -o node=@^2:^$dt:/2/1
 bspc rule -a URxvt:lofi -o node=@^2:^$dt:/2/2
 
 ##LAUNCH APPS
-urxvtc -geometry 100x100 -name "spot" -title "spot" -e sh -c "spt;zsh" &
-alacritty --title "music" --class "music" -e sh -c "~/.ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug" &
+kitty --name "spot" --title "spot" -e sh -c "spt;zsh" &
+kitty --name "music" --title "music" -e sh -c "music" &
 visualizer &
-urxvtc -name "lofi" -title "lofi" -e sh -c 'mpv --x11-name="lofi" --title="lofi" ~/Music/ --mute=no --no-video;zsh' &
+urxvtc -name "lofi" -title "lofi" -e sh -c 'mpv --x11-name="lofi" --title="lofi" ~/Music/ --mute=yes --no-video;zsh' &
 spotifyd -u chasetank -p $(pass spotify/spotifyd) -B 320
