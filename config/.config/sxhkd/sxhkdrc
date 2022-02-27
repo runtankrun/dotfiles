@@ -294,7 +294,7 @@ super + m
     megasync
 ##
 super + ctrl + alt + shift + 9
-    pass -c sys/t; xdotool type $(echo $(xclip -out -selection clipboard))
+    pass -c sys/t; xdotool type $(echo $(xclip -out -selection clipboard)); xdotool key Return
 
 ## mpv - launch last directory tagged with "m" 
 super + alt + m
@@ -317,7 +317,7 @@ ctrl + alt + End
 
 ## color
 super + c
-    xcolor-pick
+    color-picker.sh
 
 ## easystroke
 super + e

@@ -20,7 +20,7 @@ ALPHA=#00000000
 BG=$background
 SELECT=$color0
 FG=$foreground
-ACCENT=$color4
+ACCENT=$color8
 
 cat > $dir/colors.rasi <<- EOF
 	/* colors */

@@ -6,11 +6,11 @@ set statusbar-v-padding 0
 map s toggle_statusbar
 
 #Single Page
-#set window-height 1133
-#set window-width 824
+set window-height 1133
+set window-width 824
 
 #Dual Page
-set window-height 862
-set window-width 1239
+#set window-height 862
+#set window-width 1239
 
 #set page-cache-size 100 

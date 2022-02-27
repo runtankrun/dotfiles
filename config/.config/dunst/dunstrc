@@ -24,19 +24,19 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = (111, 444)
+    width = (300, 60)
 
     # The maximum height of a single notification, excluding the frame.
-    height = 222
+    height = 150
 
     # Position the notification in the top right corner
     origin = top-right
 
     # Offset from the origin
-    offset = 15x55
+    offset = 35x60
 
     # Scale factor. It is auto-detected if value is 0.
-    scale = 0
+    scale = 1
 
     # Maximum number of notification (0 means no limit)
     notification_limit = 0
@@ -72,7 +72,7 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 5
+    separator_height = 4
 
     # Padding between text and separator.
     padding = 15
@@ -85,10 +85,10 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 0
+    frame_width = 8
 
     # Defines color of the frame around the notification window.
-    frame_color = "#16161E"
+    frame_color = "#414868"
 
     # Define a color for the separator.
     # possible values are:
@@ -96,7 +96,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = frame
+    separator_color = "#7dcfff"
 
     # Sort messages by urgency.
     sort = yes
@@ -110,7 +110,7 @@
 
     ### Text ###
 
-    font = Comic Mono 10
+    font = DaddyTimeMono NF 10 #mononoki Ned Font Complete Mono 14
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -173,7 +173,7 @@
     ignore_newline = yes
 
     # Stack together notifications with the same content
-    stack_duplicates = true
+    stack_duplicates = false
 
     # Hide the count of stacked notifications with the same content
     hide_duplicate_count = false
@@ -228,7 +228,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 5
+    corner_radius = 24
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -307,13 +307,14 @@
     highlight-background = "#16161E"
     timeout = 6
     # Icon for notifications with normal urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    default_icon = /home/ellio/Pictures/1l.png
 
 [urgency_critical]
     background = "#1A1B26"
-    foreground = "#A9B1D6"
+    foreground = "#ff0000"
     highlight  = "#A9B1D6"
     timeout = 10
+    frame_color = "#414868"
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
 

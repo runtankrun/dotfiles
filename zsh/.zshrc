@@ -107,6 +107,25 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 
+qa() {
+    echo "alias $1='$2'" >> $HOME/.oh-my-zsh/custom/alias.zsh
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d
 export XRDM_FONT_DIR=$XRDM_DIR/fonts
@@ -120,13 +139,10 @@ source xrdm
 eval "$(mcfly init zsh)"
 #export MCFLY_FUZZY=1
 source /usr/share/doc/mcfly/mcfly.zsh
-export MCFLY_RESULTS=30
+export MCFLY_RESULTS=50
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #autojump
 . /usr/share/autojump/autojump.zsh
-
-#python venv
-source ~/.venv/bin/activate

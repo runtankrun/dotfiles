@@ -60,21 +60,16 @@ alias gpu='watch -d -n 0.5 nvidia-smi'
 alias tm='tty-clock -c -x -t'
 
 #feh image
-alias pic='feh --scale-down --auto-zoom'
-alias pic-ss='feh -Z -. -D 5'
+alias feh='feh --scale-down --auto-zoom'
+alias feh-ss='feh -Z -. -D 5'
 
 #Feh background (2 monitors)
 alias wp='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png'
 alias wpc='feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall2.png; wal -n -i ~/.config/wall.png -a 90'
 alias tt='wal -n -i ~/.config/wall.png -a'
 
-#Neofetch
-alias nf='neofetch'
-alias nfk='neofetch --kitty'
-alias nfp='neofetch --source ~/.config/neofetch/images/$(ls ~/.config/neofetch/images | shuf | tail -n1) --kitty'
-
 #Colors
-alias col='cb-small;colorpanes;colorline'
+alias col='cb-small; colorpanes; colorline && hex && hex-block && colortest && colorblocks && colorbars'
 
 #refresh bash
 alias rb='source ~/.bashrc'
@@ -158,3 +153,8 @@ alias ip-list='sudo iptables --list'
 alias vip='ifconfig | rg -A 5 proton0 | rg "inet " | sd "netmask.*" "" | sd "inet" "" | sd " " ""'
 
 alias cl='clear;nfp'
+alias fig='font="$(ls -d ~/.fonts/misc/figlet/* | shuf | tail -n1)"; figlet -f $(echo "$font")'
+alias firefox='/usr/lib/firefox/firefox-bin'
+alias nfa='neofetch --ascii "$(figlet -f ~/.fonts/misc/figlet/isometric.flf T)"'
+alias gcl='git clone'
+alias py='source ~/.venv/bin/activate'

@@ -1,7 +1,8 @@
 #!/bin/sh
+
 case $1 in
     "-bar")
-        ~/.config/eww/bar/launch_bar
+        ~/.config/eww/bar/launch_bar &
         bspc config -m HDMI-0 window_gap 51
     ;;
 
@@ -14,7 +15,7 @@ case $1 in
         /home/ellio/.config/eww/leftbar/launch_left
     ;;
 
-   "-dashboard")
+    "-dashboard")
         /home/ellio/.config/eww/dashboard/dashboard
     ;;
 
@@ -23,9 +24,9 @@ case $1 in
     ;;
 
     "-kill")
-        bspc config -m focused top_padding 0
-        bspc config -m focused left_padding 0
-        bspc config -m HDMI-0 window_gap 0
+        bspc config -m focused top_padding 0 &
+        bspc config -m focused left_padding 0 &
+        bspc config -m HDMI-0 window_gap 0 &
         pkill eww
     ;;
 esac
