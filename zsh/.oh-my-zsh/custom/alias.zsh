@@ -8,6 +8,16 @@
 # brainstormr=~/Projects/development/planetargon/brainstormr
 # cd $brainstormr
 #
+##Firefox
+alias firefox='/usr/lib/firefox/firefox-bin'
+
+##Search PS
+alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
+
+# check dunst
+alias dun='killall dunst && dunst &                                           
+notify-send "cool1" "yeah it is working"
+notify-send "cool2" "yeah it is working"'
 
 #docker
 alias dsr='docker container stop $(docker container ls -aq); docker container rm $(docker container ls -aq)'
@@ -38,6 +48,7 @@ alias gc='git commit -m'
 alias gpsh='git push -u origin master'
 alias gpll='git pull'
 alias dotg='cd ~/dotfiles/; git status'
+alias gcl='git clone'
 
 #stow
 alias tlinks='stow --adopt -nv'
@@ -152,9 +163,19 @@ alias ip-flush='sudo iptables -F && sudo iptables -t nat -F && sudo iptables -t 
 alias ip-list='sudo iptables --list'
 alias vip='ifconfig | rg -A 5 proton0 | rg "inet " | sd "netmask.*" "" | sd "inet" "" | sd " " ""'
 
-alias cl='clear;nfp'
+#figlet
 alias fig='font="$(ls -d ~/.fonts/misc/figlet/* | shuf | tail -n1)"; figlet -f $(echo "$font")'
-alias firefox='/usr/lib/firefox/firefox-bin'
+
+#neo
 alias nfa='neofetch --ascii "$(figlet -f ~/.fonts/misc/figlet/isometric.flf T)"'
-alias gcl='git clone'
+
+#python
 alias py='source ~/.venv/bin/activate'
+alias cona='conda activate'
+alias cond='conda deactivate'
+
+#RDL
+alias rdl='cd ~/dev/SubredditMediaDownloader; vim config.ini; python main.py'
+
+#bash file rename
+alias bash_name='find "$(pwd)" -type f -print0 | while IFS= read -d  file ; do newfile="$(echo "$file" | sed -E s/s+/_/tg)" ; newcmd=mv'

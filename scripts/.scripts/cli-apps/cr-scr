@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+cd ~/.scripts
+
+read -p 'Script Name: ' name
+
+touch $name
+echo '#!/usr/bin/env sh' > $name
+chmod +x $name
+
+vim $name

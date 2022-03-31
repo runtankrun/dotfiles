@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+#-- VARIABLES --#
+dir="$HOME/Pictures/*.* $HOME/Pictures/HR/*.*"
+term="$(xdotool getwindowclassname $(xdotool getactivewindow))"
+
+#-- TERMINAL TYPE --#
+if [[ $term = "kitty" ]]; then
+  source="--kitty";
+else
+  source="--w3m";
+fi
+
+#-- FUNCTIONS --#
+pic() {
+    echo "$(find $dir | shuf | tail -n1)"
+}
+
+nf() {
+    neofetch --crop_offset north $source $(pic) $@
+}
+
+#-- EXECUTE --#
+if [[ $1 = "--loop" ]]; then
+    i=1                                             
+    while [[ $i -gt 0 ]]; 
+    do 
+        nf; 
+        sleep 3s;
+    done
+else
+    nf
+fi
+

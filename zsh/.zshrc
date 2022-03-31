@@ -17,9 +17,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k"
+#ZSH_THEME="powerlevel10k"
 #ZSH_THEME="minimal-blackcat"
-#ZSH_THEME="random"
+ZSH_THEME="powerlevel9k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -79,7 +79,7 @@ ENABLE_CORRECTION="false"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git-open aliases zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
+plugins=(safe-paste gitfast git-open zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
 #plugins=(gpg-agent git-open aliases zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
 
 source $ZSH/oh-my-zsh.sh
@@ -105,11 +105,80 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
 
+# >>> Functions >>>
+#-- Quick Alias --#
 qa() {
     echo "alias $1='$2'" >> $HOME/.oh-my-zsh/custom/alias.zsh
 }
+
+#-- CPU Temp --#
+brr() {
+        figlet -f ~/.fonts/misc/figlet/future.tlf $(echo $(temp))
+}
+temp() {
+        cat \
+        /sys/class/thermal/thermal_zone*/temp | \
+        column -s $'\t' -t | \
+        sed 's/\(.\)..$/.\1°C/' | \
+        tail -n1
+}
+
+#-- Clear Zombie Processes --#
+clrz() {
+    ps -eal | awk '{ if ($2 == "Z") {print $4}}' | kill -9
+}
+
+#--Colors--#
+xrdb_query()
+{
+    [ -n "$XRDB_QUERY" ] || XRDB_QUERY="$(xrdb -query)"
+
+    echo "$XRDB_QUERY" | while IFS=';' read -r STRING; do
+        [ "${1}" = "${STRING%%\	*}" ] || continue
+        echo "${STRING##*\	}"
+        break
+    done
+}
+getcolors() {
+  FOREGROUND="$(xrdb_query '*.foreground:')"
+  BACKGROUND="$(xrdb_query '*.background:')"
+  BLACK="$(xrdb_query '*.color0:')"
+  RED="$(xrdb_query '*.color1:')"
+  GREEN="$(xrdb_query '*.color2:')"
+  YELLOW="$(xrdb_query '*.color3:')"
+  BLUE="$(xrdb_query '*.color4:')"
+  MAGENTA="$(xrdb_query '*.color5:')"
+  CYAN="$(xrdb_query '*.color6:')"
+  WHITE="$(xrdb_query '*.color7:')"
+}
+
+#-- Git --#
+ginit() {
+    echo "# HTML" >> README.md;
+    git init; 
+    git add .; 
+    git commit -m "first commit"; 
+    git branch -M main; 
+    git remote add origin git@github.com:runtankrun/$1.git ; 
+    git remote set-url origin https://github.com/runtankrun/$1.git;
+    pass -c git/git_token;sleep .3s;
+    git push -u origin main
+    }
+
+git-rollout() {
+    git add . ;
+    git commit -m "$2";
+    pass -c git/git_token; 
+    echo "runtankrun"; 
+    git push origin "$1"
+}
+
+storage() {
+    df -h | rg -e "/dev/sd[a-z][1-9]" -e "Filesystem"
+}
+
+#<<< Functions <<<
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

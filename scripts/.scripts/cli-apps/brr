@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+brr() {
+        figlet -f ~/.fonts/misc/figlet/future.tlf $(echo $(temp))
+}
+temp() {
+        cat \
+        /sys/class/thermal/thermal_zone*/temp | \
+        column -s $'\t' -t | \
+        sed 's/\(.\)..$/.\1°C/' | \
+        tail -n1
+}

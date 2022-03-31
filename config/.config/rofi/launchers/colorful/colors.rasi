@@ -1,14 +1,1 @@
-/* colors */
-* {
-  al:  #00000000;
-  bg:  #1a1b26;
-  se:  #282c34;
-  fg:  #a9b1d6;
-  ac:  #414868;
-      red: #EC7875ff;
-      green: #61C766ff;
-      yellow: #FDD835ff;
-      blue: #42A5F5ff;
-      purple: #BA68C8ff;
-      cyan: #4DD0E1ff;
-}
+../../../../dotfiles/config/.config/rofi/launchers/colorful/colors.rasi

@@ -1,9 +1,16 @@
 #!/bin/sh
+gaps() {
+side="0"
+gap="42"
+bspc config -m HDMI-0 left_padding "$side" &
+bspc config -m HDMI-0 right_padding "$side" &
+bspc config -m HDMI-0 window_gap "$gap"
+}
 
 case $1 in
     "-bar")
         ~/.config/eww/bar/launch_bar &
-        bspc config -m HDMI-0 window_gap 51
+        gaps
     ;;
 
     "-bar2")

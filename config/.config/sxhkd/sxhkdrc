@@ -155,16 +155,14 @@ super + ctrl + F10
 
 ## DL H
 super + shift + h
-    urxvtc -name=h-dl -title=h-dl -e dl-h
+    xdotool click 2; sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h;zsh"
 super + ctrl + shift + h
-    urxvtc -name=h-dl -title=h-dl -e dl-h -x
+    xdotool click 2; sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -x;zsh"
+super + shift + alt + h
+    xdotool click 2; sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -p;zsh"
 
 ## Virtualbox
 super + F12
-    kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2020.4-vbox-amd64"
-super + shift + F12 
-    kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Pentoo"
-super + alt + F12
     kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"
 
 ## tank-ui
@@ -197,9 +195,11 @@ super + End
 
 ## program launcher
 super + d
-  c-rofi --color
+    rofi -show drun -show-icons
+    #c-rofi --color
 Menu
-    /home/ellio/.config/rofi/launchers/colorful/launcher_2.sh
+    rofi -show run 
+    #/home/ellio/.config/rofi/launchers/colorful/launcher_2.sh
 ctrl+Menu
     rofi-pass
 
@@ -261,7 +261,7 @@ super + alt + b
 super + v
     vim-sessions -main
 super + shift + v
-    vim-sessions -kitty
+    vim-sessions -kitty2
 super + n 
     vim-sessions -notes
 
@@ -438,7 +438,7 @@ super + alt + {Left,Right,Up,Down}
 
 ##Toggle Gaps
 super + Tab
-	bspc config -m HDMI-0 window_gap {51,0}
+	bspc config -m HDMI-0 window_gap {15,0}
 
 ##Resize Gaps
 super + button{4,5}

@@ -1,3 +1,16 @@
 #!/bin/sh
-cd ~/.config/picom/compix/out ; 
-./compix -c ../compix.conf &
+case $1 in
+
+    '--compix')
+        pkill picom ;
+        sleep .3s ;
+        cd ~/.config/picom/compix/out ; 
+        ./compix -c ../compix.conf &
+    ;;
+    
+    '--picom')
+        pkill compix;
+        sleep .3s;
+        picom -b --experimental-backends;
+    ;;
+esac

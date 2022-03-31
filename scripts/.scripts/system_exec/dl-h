@@ -1,15 +1,33 @@
 #!/bin/sh
+url(){
+    sleep .3s;
+    xdotool click 2; 
+    sleep 1s; 
+    xdotool key ctrl+l; 
+    sleep 1s; 
+    xdotool key ctrl+c
+}
 
+tags="/home/ellio/.config/ranger/tagged"
+    
 case $1 in
     "")
-        cd ~/Videos/h;
-        wget "$(xclip -out secondary)";
-        echo "v:/home/ellio/Videos/h/$(ls -c | head -n 1)" >> ~/.config/ranger/tagged
+        dir="/home/ellio/Videos/h"
+        tag="v"
+    ;;
+        
+    "-x")
+        dir="/home/ellio/Videos/h/wide"
+        tag="x"
     ;;
     
-    "-x")    
-        cd ~/Videos/h/wide;
-        wget "$(xclip -out secondary)";
-        echo "x:/home/ellio/Videos/h/$(ls -c | head -n 1)" >> ~/.config/ranger/tagged
+    "-p")
+        dir="/home/ellio/Pictures/chx"
+        tag="p"
     ;;
 esac
+    
+cd $dir;
+wget "$(xclip -out secondary)";
+file="$(ls -c | head -n 1)"
+echo "$tag:$dir$file" >> $tags

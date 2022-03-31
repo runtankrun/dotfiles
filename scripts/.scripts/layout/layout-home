@@ -23,7 +23,7 @@ bspc rule -a kitty:neofetch-ascii -o node=@^2:^$dt:/1/1 focus=off state=pseudo_t
 bspc rule -a kitty:neofetch -o node=@^2:^$dt:/1/2 focus=off state=pseudo_tiled
 bspc rule -a kitty:neofetch-pic -o node=@^2:^$dt:/2/1/1 focus=off state=pseudo_tiled
 bspc rule -a kitty:TANK-K -o node=@^2:^$dt:/2/1/2 focus=off state=pseudo_tiled
-bspc rule -a feh:feh -o node=@^2:^$dt:/2/2 focus=off state=pseudo_tiled
+bspc rule -a images:feh -o node=@^2:^$dt:/2/2 focus=off state=pseudo_tiled
 
 ##LAUNCH APPS
 c-neo -ascii &
@@ -31,10 +31,11 @@ c-neo -wal &
 c-neo -pic &
 sleep .3s;
 message -k &
-feh -. -Z -D 5 -B white $(while IFS= read -r line
-do 
-    echo "$line" | grep ^F: | tail -n $tag_count_F | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged)
+c-feh -i
+#feh --class images -. -Z -D 5 -B white $(while IFS= read -r line
+#do 
+#    echo "$line" | grep ^F: | tail -n $tag_count_F | tail -c +3 | tr '\n' ' '
+#done < ~/.config/ranger/tagged)
 
 ###############
 #   Firefox   #
