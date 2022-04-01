@@ -1,8 +1,13 @@
 #!/bin/sh
 
 if [[ $1 = "-ct" ]]; then
-kitty --name "cointop" --title "cointop" -e "cointop"
-
+    kitty --name "cointop" --title "cointop" -e "cointop"
+elif [[ $1 = "--ticker" ]]; then
+    kitty --name "ticker" --title "ticker" -e "ticker"
 else
-kitty --name "ticker" --title "ticker" -e "ticker"
+    kitty --name "cointop" --title "cointop" -e sh -c \
+    "superstonk \
+    -interval 10 \
+    -shares 22.047580743502 \
+    -symbol xmr-usd"
 fi

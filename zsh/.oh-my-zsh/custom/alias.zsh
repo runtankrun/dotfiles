@@ -179,3 +179,7 @@ alias rdl='cd ~/dev/SubredditMediaDownloader; vim config.ini; python main.py'
 
 #bash file rename
 alias bash_name='find "$(pwd)" -type f -print0 | while IFS= read -d  file ; do newfile="$(echo "$file" | sed -E s/s+/_/tg)" ; newcmd=mv'
+
+#ZSH THEME
+alias remove-theme='sd ""$1"" ~/.zsh_favlist'
+alias ez='vim -p ~/.zshrc ~.oh-my-zsh/custom/alias.zsh'
