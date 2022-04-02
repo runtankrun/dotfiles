@@ -9,7 +9,6 @@
 "     \__\::::/      \__\/      \  \:\    
 "         ~~~~                   \__\/    
 
-
 set mouse=a
 syntax on
 set tabstop=4
@@ -90,6 +89,10 @@ inoremap <C-x> <ESC>"+ddi
 vnoremap <C-c> "+y 
 nnoremap <C-c> "+yy 
 inoremap <C-c> <ESC>"+yyi        
+
+" MACROS
+let @i = 'i[[ $1 = " " ]]; then€ýa'
+let @c = 'i# -->>>   -->>># <<<--   <<<--€ku'
 
 ""Plug-ins
 call plug#begin('~/.vim/plugged')

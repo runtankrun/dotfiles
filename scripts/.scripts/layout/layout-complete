@@ -23,9 +23,7 @@ urxvtc -name "tty-clock" -title "tty-clock" -bg white -bd white --color1 red -e 
 urxvtc -name "gotop" -title "gotop" -bg white -bd white --color0 black --color1 red --color2 black --color3 black --color4 blue --color5 black --color6 blue --color7 black --color11 black --color15 black -e sh -c "gotop" &
 urxvtc -name "slideshow" -title "slideshow" -bg white -bd white -e sh -c \
 "watch -n 2 feh --no-fehbg --bg-fill --randomize -r '/mnt/PSSD/BG2'" & \
-pywal-URxvt; \
-pywal-alacritty; \
-#pywal-kitty; \
+r-wal
 
 ##FOCUS PRIMARY MONITOR
 sleep .5s; bspc desktop --focus ^2:focused
@@ -39,9 +37,7 @@ feh \
 --bg-fill ~/.config/wall-alt.png \
 --bg-fill ~/.config/wall-case.png; \
 wal -n -i ~/.config/wall-alt.png -a 50 --saturate .8; \
-pywal-alacritty; \
-#pywal-kitty; \
-pywal-bspwm-border; \
+r-wal
 layout-case
 
 ############
@@ -52,9 +48,7 @@ feh \
 --bg-fill ~/.config/wall-dark.png \
 --bg-fill ~/.config/wall-case.png; \
 wal -n -i ~/.config/wall-dark.png -a 50; \
-pywal-alacritty; \
-#pywal-kitty; \
-pywal-bspwm-border; \
+r-wal
 layout-case -dark
 
 ############
@@ -65,10 +59,7 @@ feh \
 --bg-fill ~/.config/wall.png \
 --bg-fill ~/.config/wall-case.png; \
 wal -n -e -t -s -i ~/.config/wall.png; \
-wal -n -a 99 --theme tokyo-night; \
-pywal-URxvt
-pywal-alacritty; \
-#pywal-kitty; \
-pywal-bspwm-border
+wal -n --theme tokyo-night; \
+r-wal -b
 layout-case
 fi

@@ -5,7 +5,7 @@ if [[ $1 = "-ct" ]]; then
 elif [[ $1 = "--ticker" ]]; then
     kitty --name "ticker" --title "ticker" -e "ticker"
 else
-    kitty --name "cointop" --title "cointop" -e sh -c \
+    kitty --name "xmr" --title "xmr" -e sh -c \
     "superstonk \
     -interval 10 \
     -shares 22.047580743502 \
