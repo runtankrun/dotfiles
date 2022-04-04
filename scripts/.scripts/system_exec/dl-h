@@ -12,17 +12,17 @@ tags="/home/ellio/.config/ranger/tagged"
     
 case $1 in
     "")
-        dir="/home/ellio/Videos/h"
+        dir="/home/ellio/Videos/h/"
         tag="v"
     ;;
         
     "-x")
-        dir="/home/ellio/Videos/h/wide"
+        dir="/home/ellio/Videos/h/wide/"
         tag="x"
     ;;
     
     "-p")
-        dir="/home/ellio/Pictures/chx"
+        dir="/home/ellio/Pictures/chx/"
         tag="p"
     ;;
 esac
@@ -31,3 +31,4 @@ cd $dir;
 wget "$(xclip -out secondary)";
 file="$(ls -c | head -n 1)"
 echo "$tag:$dir$file" >> $tags
+urxvtc -name "dl-h" -title "dl-h" -e sh -c "ranger-slim --selectfile=$dir$file"

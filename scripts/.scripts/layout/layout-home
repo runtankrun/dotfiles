@@ -31,11 +31,11 @@ c-neo -wal &
 c-neo -pic &
 sleep .3s;
 message -k &
-c-feh -i
-#feh --class images -. -Z -D 5 -B white $(while IFS= read -r line
-#do 
-#    echo "$line" | grep ^F: | tail -n $tag_count_F | tail -c +3 | tr '\n' ' '
-#done < ~/.config/ranger/tagged)
+#c-feh -i
+feh --class images -. -Z -D 5 -B white $(while IFS= read -r line
+do 
+    echo "$line" | grep ^F: | tail -n $tag_count_F | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged)
 
 ###############
 #   Firefox   #

@@ -117,7 +117,7 @@ bspc rule -a URxvt:tty-clock -o node=@^1:^1:/2/2 marked=on focus=off
 ##LAUNCH APPS
 c-urxvtc-trans &
 mpv /mnt/PSSD/Gifs/*.GIF --speed=0.66 &
-urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 red -e sh -c "tty-clock -c -t -C 1" 
+urxvtc -name "tty-clock" -title "tty-clock" --transparent --color1 black -e sh -c "tty-clock -c -t -C 1" 
 
 ##FOCUS PRIMARY MONITOR
 sleep .5s; bspc desktop --focus ^2:focused

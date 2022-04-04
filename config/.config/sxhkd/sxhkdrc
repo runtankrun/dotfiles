@@ -155,11 +155,11 @@ super + ctrl + F10
 
 ## DL H
 super + shift + h
-    xdotool click 2; sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h;zsh"
+    xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h"
 super + ctrl + shift + h
-    xdotool click 2; sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -x;zsh"
+    xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -x"
 super + shift + alt + h
-    xdotool click 2; sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -p;zsh"
+    xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -p"
 
 ## Virtualbox
 super + F12

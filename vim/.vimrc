@@ -62,10 +62,11 @@ set statusline+=%L                  " Total line
 set statusline+=\                   " Padding
 
 "" Mappings
+map tt :terminal<CR>
 map <C-s> :w<CR>
 map ss :mks! ~/.vim/sessions/
-map sh :sp
-map sv :vsp
+map sh :sp<CR>
+map sv :vsp<CR>
 map dc :hi ColorColumn ctermbg=
 map cs :colorscheme<space>
 map <C-space> :map <space> <Nop>
