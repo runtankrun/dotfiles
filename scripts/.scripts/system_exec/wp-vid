@@ -23,7 +23,25 @@ if [[ $1 = "-s" ]]; then
     kitty -o include=~/.config/kitty/kitty-transparent.conf --title "ranger" --class "ranger" -e sh -c \
     "ranger --selectfile=$(grep ^W: ~/.config/ranger/tagged | tail -1 | tail -c +3) \
     --cmd='set preview_images_method ueberzug'"
-else
+    
+elif [[ $1 = "-p" ]]; then
+    
+    ##NODE RULES
+    bspc rule -a kitty:wp-vid2 -o state=pseudo_tiled  
+
+    ##MAIN VID
+    vids="/home/ellio/Videos/h_US/compressed_DASH_720.15_scale_1x_alq-13_scale_3x_prob-3_s4_f30_chr-2.mp4 \
+    /home/ellio/Videos/h_US/compressed_tg0fgp_scale_1x_alq-13_scale_2x_prob-3_s4_f30_chr-2.mp4 \
+    /home/ellio/Videos/h_US/compressed_tggery_scale_1x_alq-13_scale_2x_prob-3_s4_f30_chr-2.mp4 \
+    /mnt/PSSD_Storage/UpScale/h/bulk/compressed_dash_1080_03_scale_1x_alq-13_scale_2x_prob-3_s4_f30_chr-2.mp4 \
+    /mnt/PSSD_Storage/UpScale/h/bulk/compressed_emma-wilcott-03_scale_1x_alq-13_scale_2x_prob-3_s4_f30.03_chr-2.mp4 \
+    /mnt/PSSD_Storage/UpScale/h/bulk/3_scale_1x_alq-13_scale_3x_prob-3_s4_f30_chr-2.mp4 \
+    /mnt/PSSD_Storage/UpScale/h/bulk/OrangeColorfulCaimanlizard_scale_1x_alq-13_scale_2x_prob-3_s4_f30.01_chr-2.mp4"
+
+    kitty -o include=~/.config/kitty/kitty-transparent.conf --title "wp-vid2" --name "wp-vid2" -e sh -c "
+    xwinwrap -g 3440x1440+1280+0 -ov -- mpv -wid WID $vids --video-zoom=2.1 --video-pan-y=-0.25"
+
+else    
     ##INSERT NODES
     bspc node @^2:^$dt:/ -i 
     bspc node @^2:^$dt:/ -o .4 -p east -i

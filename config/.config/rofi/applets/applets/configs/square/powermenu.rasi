@@ -9,7 +9,7 @@
 
 configuration {
     show-icons:                     false;
-	font:                      		"Comfortaa 12";
+	font:                      		"Cozette Medium 9";
     disable-history:                false;
 	sidebar-mode: 					false;
 }

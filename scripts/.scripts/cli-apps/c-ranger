@@ -11,7 +11,7 @@ kitty --title "ranger-k" --name "ranger-k" -e sh -c \
 --selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3) \
 --cmd='set preview_images_method ueberzug' \
 --cmd='default_linemode devicons2' \
---cmd='set draw_borders false'"
+--cmd='set draw_borders false';zsh"
 
 #################
 #   ALACRITTY   #

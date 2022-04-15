@@ -3,12 +3,12 @@ if [[ $1 = "-trim" ]]; then
 #inpoint=$(xclip -out -selection clipboard)
 echo input file:
 read input
-echo output file:
-read output
 echo start time: 
 read st
 echo end time:
 read et
+output="$input_"$(date "+%Y_%m_%d_%H_%M_%S_%3N")""
+
 ffmpeg -i $input -ss $st -to $et -c copy $output
 
 elif [[ $1 = "-format" ]]; then

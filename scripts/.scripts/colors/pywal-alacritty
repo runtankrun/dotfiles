@@ -5,12 +5,12 @@ alpha=$(cat ~/.cache/wal/colors.json | head -n 3 | tail -n 1 | tail -c 5 | cut -
 converted=$(bc <<<"$alpha*0.01" | head -c 3)
 
 ##remove previous colors and alpha
-sed -i '/window.opacity:/d' ~/.config/alacritty/alacritty.yml; \
+sed -i '/opacity:/d' ~/.config/alacritty/alacritty.yml; \
 sed -i '/^# Colors/,$d' ~/.config/alacritty/alacritty.yml; \
 
 ##output
 
-echo "window.opacity: 0$converted
+echo "  opacity: 0$converted
 # Colors
 colors:
   # Default colors

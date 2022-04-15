@@ -9,7 +9,7 @@
 
 configuration {
     show-icons:                     false;
-	font:                      		"JetBrainssMono-Regular 12";
+	font:                      		"Cozette Medium 9";
     disable-history:                false;
 	sidebar-mode: 					false;
 }

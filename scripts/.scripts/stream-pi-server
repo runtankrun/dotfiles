@@ -1,2 +1,2 @@
 #!/bin/sh
-exec "/home/ellio/.scripts/xfrom_source/stream-pi-server-1.0.0-EA+3/bin/Stream-Pi Server"
+exec "/home/ellio/.scripts/xfrom_source/stream-pi-server-1.0.0-EA+3/bin/Stream-Pi-Server"

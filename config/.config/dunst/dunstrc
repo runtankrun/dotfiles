@@ -304,7 +304,6 @@
     background = "#1A1B26"
     foreground = "#A9B1D6"
     highlight  = "#A9B1D6"
-    highlight-background = "#16161E"
     timeout = 6
     #script = ~/.config/dunst/scripts/icon
     # Icon for notifications with normal urgency, uncomment to enable

@@ -155,15 +155,16 @@ super + ctrl + F10
 
 ## DL H
 super + shift + h
-    xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h"
+    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h;zsh"
 super + ctrl + shift + h
-    xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -x"
+    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -x;zsh"
 super + shift + alt + h
-    xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -p"
+    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -p;zsh"
 
 ## Virtualbox
 super + F12
-    kitty --name "vbox" --title "vbox" -e ticker & vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"
+    kitty --name "vbox" --title "vbox" -e sh -c \
+    "coins; vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"; sleep 5s; notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png 'Go for It'; pass -c sys/v"
 
 ## tank-ui
 super + ctrl + alt + t
@@ -309,7 +310,8 @@ Print
 	screenshot
 ## record screen
 super + Print
-    urxvtc -e sh -c "giph --format mp4 -s -d 3 -l -c 1,1,1,0.3 -b 5 -p -5 ~/Videos/screen.mp4"
+    urxvtc -e sh -c "ffmpeg -video_size 3440x1440 -framerate 30 -f x11grab -i :0.0+1280,0 -c:v libx264rgb -crf 0 -preset ultrafast ~/Videos/output.mp4"
+#giph --format mp4 -s -d 3 -l -c 1,1,1,0.3 -b 5 -p -5 ~/Videos/screen.mp4
 
 ## log out
 ctrl + alt + End

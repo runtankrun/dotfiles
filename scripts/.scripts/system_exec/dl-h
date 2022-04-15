@@ -1,10 +1,8 @@
 #!/bin/sh
 url(){
-    sleep .3s;
-    xdotool click 2; 
-    sleep 1s; 
+    sleep .5s; 
     xdotool key ctrl+l; 
-    sleep 1s; 
+    sleep .5s; 
     xdotool key ctrl+c
 }
 

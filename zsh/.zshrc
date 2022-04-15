@@ -71,6 +71,32 @@ git-rollout() {
     echo "runtankrun"; 
     git push origin "$1"
 }
+
+gbranch() {
+    git branch -a
+    git branch checkout "$1"
+}
+
+gpsh() {
+    case $1 in 
+        "-m | --master")
+            dest="origin master"
+        ;;
+        "-p | --pages")
+            dest="origin gh-pages"
+        ;;
+        "-h | --help | ''"
+            echo "-m | --master \t branch 'origin master'"
+            echo "-p | --pages  \t branch 'origin gh-pages'"
+            echo "-h | --help \t show help"
+        ;;
+    esac
+    
+    echo "runtankrun"; 
+    pass -c git/git_token; 
+    git push "$dest"
+    git-open
+}
 # <<<--GIT <<<--
 
 # -->>> SYSTEM -->>>
