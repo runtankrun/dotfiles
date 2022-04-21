@@ -4,27 +4,30 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-#ZSH_THEME="powerlevel10k"
+# -->>> THEME -->>>
+ZSH_THEME="powerlevel10k"
+#ZSH_THEME="smt"
 #ZSH_THEME="minimal-blackcat"
 #ZSH_THEME="random"
-ZSH_THEME="pygmalion"
+# <<<-- THEME <<<--
 
-#>>>-- PLUGINS -->>>
-plugins=(safe-paste gitfast git-open zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
-#<<<-- PLUGINS <<--
+# -->>> PLUGINS -->>>
+plugins=(themes git-open zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
+# <<<-- PLUGINS <<<--
 
 source $ZSH/oh-my-zsh.sh
 
-#  -->>> FUNCTIONS -->>>
-
-#-- Quick Alias --#
+#################
+#   FUNCTIONS   #
+#################
+# -->>> QUICK ALIAS -->>>
 qa() {
     echo "alias $1='$2'" >> $HOME/.oh-my-zsh/custom/alias.zsh
 }
+# <<<-- QUICK ALIAS <<<--
 
 # -->>> COLORS -->>>
 xrdb_query()
@@ -62,19 +65,16 @@ ginit() {
     git remote set-url origin https://github.com/runtankrun/$1.git;
     pass -c git/git_token;sleep .3s;
     git push -u origin main
-    }
-
-git-rollout() {
-    git add . ;
-    git commit -m "$2";
-    pass -c git/git_token; 
-    echo "runtankrun"; 
-    git push origin "$1"
 }
 
-gbranch() {
-    git branch -a
-    git branch checkout "$1"
+git-rollout() {
+    read -p 'Branch: ' branch
+    read -p 'Commit Comment: ' comment
+    git add . ;
+    git commit -m "$comment";
+    pass -c git/git_token; 
+    echo "runtankrun"; 
+    git push origin "$branch"
 }
 
 gpsh() {
@@ -85,26 +85,26 @@ gpsh() {
         "-p | --pages")
             dest="origin gh-pages"
         ;;
-        "-h | --help | ''"
-            echo "-m | --master \t branch 'origin master'"
-            echo "-p | --pages  \t branch 'origin gh-pages'"
+        "-h | --help | ''")
+            echo "-m | --master \tbranch 'origin master'"
+            echo "-p | --pages  \tbranch 'origin gh-pages'"
             echo "-h | --help \t show help"
         ;;
     esac
     
     echo "runtankrun"; 
     pass -c git/git_token; 
-    git push "$dest"
-    git-open
+    git push $dest
 }
 # <<<--GIT <<<--
 
-# -->>> SYSTEM -->>>
+# -->>> STORAGE -->>>
 storage() {
     df -h | rg -e "/dev/sd[a-z][1-9]" -e "Filesystem"
 }
+# <<<-- STORAGE <<<--
 
-#-- CPU Temp --#
+# -->>> CPU TEMP -->>>
 brr() {
         figlet -f ~/.fonts/misc/figlet/future.tlf $(echo $(temp))
 }
@@ -115,16 +115,49 @@ temp() {
         sed 's/\(.\)..$/.\1°C/' | \
         tail -n1
 }
+# <<<-- CPU TEMP <<<--
 
-#-- Clear Zombie Processes --#
+# -->>> CLEAR ZOMBIE PROCESSES -->>>
 clrz() {
     ps -eal | awk '{ if ($2 == "Z") {print $4}}' | kill -9
 }
-# <<<-- SYSTEM <<<--
+# <<<-- CLEAR ZOMBIE PROCESSES <<<--
 
-# <<<-- FUNCTIONS <<<-- #
+# -->>> THEME -->>>
+change-theme() {                                            
+        theme_name="$(cat .zsh_favlist | shuf | tail -n1)"
+        theme "$theme_name"
+        echo
+        echo "Random theme '"$theme_name"' loaded from .zsh_favlist"
+        echo
+}
+save-theme() {
+        if grep -q "$RANDOM_THEME" ~/.zsh_favlist; then
+                echo ""$RANDOM_THEME" is already saved"
+        else
+                echo "$RANDOM_THEME" >> ~/.zsh_favlist
+        fi
+}
+# <<<-- THEME <<<--
 
-# >>> conda initialize >>>
+# -->>> STOW  -->>>
+tlinks-a() {
+    cd ${HOME}/dotfiles ;
+    for dir in *; do                         
+            echo "# -->>> $dir -->>>" | lolcat  
+            tlinks "$dir"                      
+            echo "# <<<-- $dir <<<--\n" | lolcat
+    done
+}
+# <<<-- STOW  <<<--
+
+fm() {                                                                        ⏎ [~]
+        source ~/.scripts/ranger/ranger-slim
+}
+
+
+
+# -->>> conda initialize -->>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -137,7 +170,7 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
+# <<<-- conda initialize <<<--
 
 # Begin xrdm settings
 export XRDM_DIR=~/.Xresource.d

@@ -1,25 +1,36 @@
 #!/bin/bash
 if [[ $1 = "-trim" ]]; then
 #inpoint=$(xclip -out -selection clipboard)
-echo input file:
-read input
-echo start time: 
-read st
-echo end time:
-read et
-output="$input_"$(date "+%Y_%m_%d_%H_%M_%S_%3N")""
+    echo input file:
+    read input
+    echo start time: 
+    read st
+    echo end time:
+    read et
+    output="$input_"$(date "+%Y_%m_%d_%H_%M_%S_%3N")""
 
-ffmpeg -i $input -ss $st -to $et -c copy $output
+    ffmpeg -i $input -ss $st -to $et -c copy $output
 
 elif [[ $1 = "-format" ]]; then
-echo input file:
-read input
-echo output file:
-read output
-ffmpeg -i $input -codec copy $output
+    echo input file:
+    read input
+    echo output file:
+    read output
+    ffmpeg -i $input -codec copy $output
 
 elif [[ $1 = "-concat" ]]; then
-echo output file:
-read output  
-ffmpeg -f concat -safe 0 -i ~/vidlist.txt -c copy $output
+    echo output file:
+    read output  
+    ffmpeg -f concat -safe 0 -i ~/vidlist.txt -c copy $output
+elif [[ $1 = "-combine" ]]; then
+    file_timestamp="$(date +%F_%T)"
+    echo Video1:
+    read vid1
+    echo Video2:
+    read vid2
+    echo output:
+    read output
+    ffmpeg -i $vid1 -i $vid2 -filter_complex hstack -c:v libx264 -crf 20 "$file_timestamp.mp4"
+else
+    echo "Usage: ${0##*/}"
 fi

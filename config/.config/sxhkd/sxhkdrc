@@ -155,16 +155,15 @@ super + ctrl + F10
 
 ## DL H
 super + shift + h
-    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h;zsh"
+    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h"
 super + ctrl + shift + h
-    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -x;zsh"
+    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -x"
 super + shift + alt + h
-    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -p;zsh"
+    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -p"
 
 ## Virtualbox
 super + F12
-    kitty --name "vbox" --title "vbox" -e sh -c \
-    "coins; vboxmanage startvm "Whonix-Gateway-XFCE"; sleep 5s; vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"; sleep 5s; notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png 'Go for It'; pass -c sys/v"
+    bspc rule -a kitty:xmr -o desktop='^5'; coins & vboxmanage startvm "Whonix-Gateway-XFCE 1"; sleep 5s; vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"; sleep 5s; notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png 'Go for It'; pass -c sys/v
 
 ## tank-ui
 super + ctrl + alt + t
@@ -416,10 +415,11 @@ alt + shift + Tab
 
 ## focus the next/previous desktop in the current monitor
 ## i'm using control + alt + left/right. you know what they say? old habit, they die hard :D
-ctrl + alt + Left
-	bspc desktop -f prev.local
-ctrl + alt + Right
-	bspc desktop -f next.local
+#ctrl + alt + Left
+#	bspc desktop -f prev.local
+super + button{4,5}
+#ctrl + alt + Right
+	bspc desktop -f {next, prev}.local
 
 ## focus the last node/desktop
 #super + {grave}
@@ -443,8 +443,8 @@ super + Tab
 	bspc config -m HDMI-0 window_gap {15,0}
 
 ##Resize Gaps
-super + button{4,5}
-	bspc config -m HDMI-0 window_gap $(($(bspc config -m HDMI-0 window_gap) {+,-} 4))
+#super + button{4,5}
+#	bspc config -m HDMI-0 window_gap $(($(bspc config -m HDMI-0 window_gap) {+,-} 4))
 
 ##-----MISC-----##
 ##bsp-layout
