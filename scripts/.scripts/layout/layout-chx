@@ -32,9 +32,7 @@ feh \
 --bg-fill ~/.config/wall-alt.png \
 --bg-fill ~/.config/wall-case.png; \
 wal -n -i ~/.config/wall-alt.png -a 50 --saturate .8; \
-pywal-alacritty; \
-pywal-kitty; \
-pywal-bspwm-border; \
+r-wal; \
 layout-case; \
 
 ##########

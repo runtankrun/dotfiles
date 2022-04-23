@@ -155,6 +155,7 @@ fm() {                                                                        â
         source ~/.scripts/ranger/ranger-slim
 }
 
+ctmp(){ echo "file_$(date +%F_%T | sd ':|-' '')" }
 
 
 # -->>> conda initialize -->>>

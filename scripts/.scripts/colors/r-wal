@@ -1,4 +1,72 @@
 #!/bin/sh
+
+pywal-alacritty() {
+    ##set variables 
+    . "${HOME}/.cache/wal/colors.sh"; \
+    alpha=$(cat ~/.cache/wal/colors.json | grep alpha | tail -c 5 | cut -c1-2)
+    converted=$(bc <<<"$alpha*0.01" | head -c 3)
+
+    ##remove previous colors and alpha
+    sed -i '/opacity:/d' ~/.config/alacritty/alacritty.yml; \
+    sed -i '/^# Colors/,$d' ~/.config/alacritty/alacritty.yml; \
+    
+    ##output
+    
+    echo "  opacity: 0$converted
+    # Colors
+    colors:
+      # Default colors
+      primary:
+        background: '$background'
+        foreground: '$foreground'
+    
+      # Normal colors
+      normal:
+        black:   '$color0'
+        red:     '$color1'
+        green:   '$color2'
+        yellow:  '$color3'
+        blue:    '$color4'
+        magenta: '$color5'
+        cyan:    '$color6'
+        white:   '$color7'
+    
+      # Bright colors
+      bright:
+        black:   '$color8'
+        red:     '$color9'
+        green:   '$color10'
+        yellow:  '$color11'
+        blue:    '$color12'
+        magenta: '$color13'
+        cyan:    '$color14'
+        white:   '$color15'" >> ~/.config/alacritty/alacritty.yml
+}
+
+pywal-kitty() {
+
+    alpha=$(cat ~/.cache/wal/colors.json | head -n 3 | tail -n 1 | tail -c 5 | cut -c1-2)
+    sed -i '/^background_opacity/d' ~/.config/kitty/kitty.conf
+    echo "background_opacity 0.$alpha" >> ~/.config/kitty/kitty.conf
+    
+    sed -i '/^include/d' ~/.config/kitty/kitty.conf
+    echo "include ~/.cache/wal/colors-kitty.conf" >> ~/.config//kitty/kitty.conf
+}
+
+pywal-URxvt() {
+    sed -i '/^! X/,$d' ~/.Xresources
+    cat ~/.cache/wal/colors.Xresources >> ~/.Xresources
+    xrdb ~/.Xresources
+}    
+
+pywal-bspwm-border(){
+    . "${HOME}/.cache/wal/colors.sh"
+    bspc config normal_border_color "$color3"
+    bspc config active_border_color "$color0"
+    bspc config focused_border_color "$color2"
+    bspc config presel_feedback_color "$color2"
+}
+
 case $1 in
     "")
     pywal-alacritty &

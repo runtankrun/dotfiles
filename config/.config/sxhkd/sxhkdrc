@@ -207,9 +207,11 @@ ctrl+Menu
 super + shift + a
     sysadmn
 
-## audio
+## window aspect ratio
 super + a
-    pavucontrol
+    aspect-ratio
+
+## audio
 F12
     amixer set Master -M 5%+
 F11
@@ -314,7 +316,7 @@ super + Print
 
 ## log out
 ctrl + alt + End
-    rofr.sh -l
+    /home/ellio/.config/rofi/applets/applets/powermenu.sh
 
 ## color
 super + c

@@ -1,1 +1,0 @@
-../../../../dotfiles/config/.config/rofi/launchers/colorful/launcher_2.sh
