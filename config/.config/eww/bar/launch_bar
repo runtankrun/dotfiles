@@ -3,19 +3,17 @@
 ## Files and cmd
 FILE="$HOME/.cache/eww_launch.xyz"
 EWW="$HOME/.local/bin/eww -c $HOME/.config/eww/bar"
+## Open widgets 
+run_eww() {
+	${EWW} open-many \
+        bar
+}
 
 ## Run eww daemon if not running already
 if [[ ! `pidof eww` ]]; then
 	${EWW} daemon
 	#sleep 1
 fi
-
-## Open widgets 
-run_eww() {
-	${EWW} open-many \
-         bar
-        
-}
 
 ## Launch or close widgets accordingly
 if [[ ! -f "$FILE" ]]; then

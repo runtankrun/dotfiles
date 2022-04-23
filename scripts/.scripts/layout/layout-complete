@@ -58,8 +58,7 @@ else
 feh \
 --bg-fill ~/.config/wall.png \
 --bg-fill ~/.config/wall-case.png; \
-wal -n -e -t -s -i ~/.config/wall.png; \
-wal -n --theme tokyo-night; \
+wal -n -e -q --theme tokyo-night; \
 r-wal -b
 layout-case
 fi

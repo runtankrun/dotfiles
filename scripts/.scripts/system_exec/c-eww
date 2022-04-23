@@ -7,33 +7,34 @@ bspc config -m HDMI-0 right_padding "$side" &
 bspc config -m HDMI-0 window_gap "$gap"
 }
 
-case $1 in
-    "-bar")
-        ~/.config/eww/bar/launch_bar &
-        gaps
-    ;;
-
-    "-bar2")
-       /home/ellio/.config/eww/bar_2/launch_eww    
-       bspc config -m focused left_padding 75
-    ;; 
+if pgrep -x eww >/dev/null 
+then
+    bspc config -m focused top_padding 0 &
+    bspc config -m focused left_padding 0 &
+    bspc config -m HDMI-0 window_gap 0 &
+    pkill eww
+else
+    case $1 in
+        "-bar")
+            ~/.config/eww/bar/launch_bar &
+            gaps
+        ;;
     
-    "-left")
-        /home/ellio/.config/eww/leftbar/launch_left
-    ;;
-
-    "-dashboard")
-        /home/ellio/.config/eww/dashboard/dashboard
-    ;;
-
-    "-dashboard2")
-        /home/ellio/.config/eww/dashboard_2/launch_eww
-    ;;
-
-    "-kill")
-        bspc config -m focused top_padding 0 &
-        bspc config -m focused left_padding 0 &
-        bspc config -m HDMI-0 window_gap 0 &
-        pkill eww
-    ;;
-esac
+        "-bar2")
+           /home/ellio/.config/eww/bar_2/launch_eww    
+           bspc config -m focused left_padding 75
+        ;; 
+        
+        "-left")
+            /home/ellio/.config/eww/leftbar/launch_left
+        ;;
+    
+        "-dashboard")
+            /home/ellio/.config/eww/dashboard/dashboard
+        ;;
+    
+        "-dashboard2")
+            /home/ellio/.config/eww/dashboard_2/launch_eww
+        ;;
+    esac
+fi

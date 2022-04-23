@@ -60,8 +60,7 @@ ctrl + shift + 4
 ## poly 
 super + F11
     c-eww -bar
-super + alt + F11
-    c-eww -kill
+
 
 #gotop+nvtop
 super + shift + F6
@@ -155,19 +154,35 @@ super + ctrl + F10
 
 ## DL H
 super + shift + h
-    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h"
+    sleep 1s; \
+    xdotool key ctrl+l; sleep 1s; \
+    xdotool key ctrl+c; sleep 1s; \
+    urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h"
+
 super + ctrl + shift + h
-    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -x"
+    sleep 1s; \
+    xdotool key ctrl+l; sleep 1s; \
+    xdotool key ctrl+c; sleep 1s; \
+    urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -x"
+
 super + shift + alt + h
-    sleep 1s; xdotool key ctrl+l; sleep 1s; xdotool key ctrl+c; sleep 1s; urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -p"
+    sleep 1s; \
+    xdotool key ctrl+l; sleep 1s; \
+    xdotool key ctrl+c; sleep 1s; \
+    urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -p"
 
 ## Virtualbox
 super + F12
-    bspc rule -a kitty:xmr -o desktop='^5'; coins & vboxmanage startvm "Whonix-Gateway-XFCE 1"; sleep 5s; vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"; sleep 5s; notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png 'Go for It'; pass -c sys/v
+    bspc rule -a kitty:xmr -o desktop='^5'; 
+    coins & \
+    vboxmanage startvm "Whonix-Gateway-XFCE 1"; sleep 5s; \
+    vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"; sleep 5s; \
+    notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png 'Go for It'; \
+    pass -c sys/v
 
 ## tank-ui
 super + ctrl + alt + t
-    bspc rule -a eDEX-UI:edex-ui -o state=fullscreen; ~/.scripts/xfrom_source/ui/tank-ui/dist/linux-unpacked/tank-ui
+    ~/.scripts/xfrom_source/ui/tank-ui/dist/linux-unpacked/tank-ui
 
 ## set previously saved wallpaper, colorscheme, & border colors
 super + Home
@@ -228,12 +243,6 @@ super + shift + m
 ## wifi
 super + w
     networkmanager_dmenu
-
-## change colorscheme
-super + alt + c
-    kitty -e sh -c "wal-temps"
-super + alt + shift + c
-    wal --theme {sexy-mostly-bright -l,summerfruit -l}
 
 ## launch terminal
 super + z
@@ -311,7 +320,16 @@ Print
 	screenshot
 ## record screen
 super + Print
-    urxvtc -e sh -c "ffmpeg -video_size 3440x1440 -framerate 30 -f x11grab -i :0.0+1280,0 -c:v libx264rgb -crf 0 -preset ultrafast ~/Videos/output.mp4"
+    urxvtc -e sh -c \
+    "ffmpeg \
+    -video_size 3440x1440 \
+    -framerate 30 \
+    -f x11grab \
+    -i :0.0+1280,0 \
+    -c:v libx264rgb \
+    -crf 0 \
+    -preset ultrafast ~/Videos/$(date +%F_%T | sd ':|-' '_').mp4"
+
 #giph --format mp4 -s -d 3 -l -c 1,1,1,0.3 -b 5 -p -5 ~/Videos/screen.mp4
 
 ## log out

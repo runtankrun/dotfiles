@@ -64,6 +64,7 @@ bspc rule -a Alacritty:admin desktop='^2' state=pseudo_tiled
 bspc rule -a URxvt:timeshift locked=on
 bspc rule -a kitty:vim state=floating
 bspc rule -a URxvt:dl-h state=floating
+bspc rule -a eDEX-UI:edex-ui -o state=fullscreen
 
 force-composition-pipeline &
 pro &
