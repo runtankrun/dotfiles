@@ -36,7 +36,9 @@ elif [[ $1 = "-p" ]]; then
     /mnt/PSSD_Storage/UpScale/h/bulk/OrangeColorfulCaimanlizard_scale_1x_alq-13_scale_2x_prob-3_s4_f30.01_chr-2.mp4 \
     /home/ellio/Videos/h_US/p.mp4 \
     /mnt/PSSD_Storage/UpScale/h/bulk/sOhzg3o_scale_1x_alq-13_scale_2x_prob-3_s4_f30_chr-2.mp4 \
-    /mnt/PSSD_Storage/UpScale/h/bulk/jP8A0Lk_scale_1x_alq-13_scale_2x_prob-3_s4_f59.94_chr-2.mp4"
+    /mnt/PSSD_Storage/UpScale/h/bulk/jP8A0Lk_scale_1x_alq-13_scale_2x_prob-3_s4_f59.94_chr-2.mp4 \
+    /home/ellio/Videos/h_US/compressed_nzAk7A4_scale_1x_alq-13_scale_2x_prob-3.mp4 \
+    /home/ellio/Videos/h_US/compressed_u3pt2b_scale_1x_alq-13_scale_2x_prob-3_s4_f30_chr-2.mp4"
 
     kitty -o include=~/.config/kitty/kitty-transparent.conf --title "wp-vid2" --name "wp-vid2" -e sh -c "
     xwinwrap -g 3440x1440+1280+0 -ov -- mpv -wid WID $vids --video-zoom=2.1 --video-pan-y=-0.25"

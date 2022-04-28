@@ -81,12 +81,12 @@ bspc node @^2:^$dt:/ -o 0.210169 -p east -i
 bspc node @^2:^$dt:/2 -o 0.265023 -p east -i
 
 ## ADD RULES
-bspc rule -a mpv:alexa -o node=@^2:^$dt:/1
+bspc rule -a mpv:vbm -o node=@^2:^$dt:/1
 bspc rule -a mpv:h -o node=@^2:^$dt:/2/1
 bspc rule -a Alacritty:ranger -o node=@^2:^$dt:/2/2
 
 ## LAUNCH APPS
-mpv --x11-name="alexa" --title="alexa" ~/Videos/h/ap/ --video-zoom=0.2 &
+mpv --x11-name="vbm" --title="vbm" ~/Videos/h_US/ --video-zoom=0.2 &
 mpv --x11-name="h" --title="h" $(while IFS= read -r line
 do 
     echo "$line" | grep ^v: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
@@ -94,6 +94,6 @@ done < ~/.config/ranger/tagged) --video-zoom=0.2 &
 alacritty --class "ranger" --title "ranger" -e sh -c \
 "ranger-slim \
 --cmd='set preview_images_method ueberzug' \
-~ \
+~/Videos/h \
 --selectfile=$(grep ^p: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
 fi

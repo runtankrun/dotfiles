@@ -155,7 +155,7 @@ alias cel='conda env list'
 alias cr='conda env list; echo "env: "; read env; conda env remove -n $env'
 
 ##RDL
-alias rdl='cd ~/dev/SubredditMediaDownloader; vim config.ini; python main.py'
+#alias rdl='cd ~/dev/SubredditMediaDownloader; vim config.ini; python main.py'
 
 ##Bash File Rename
 alias bash_name='find "$(pwd)" -type f -print0 | while IFS= read -d  file ; do newfile="$(echo "$file" | sed -E s/s+/_/tg)" ; newcmd=mv'

@@ -68,8 +68,11 @@ ginit() {
 }
 
 git-rollout() {
-    read -p 'Branch: ' branch
-    read -p 'Commit Comment: ' comment
+    echo "$(git branch -a)" 
+    echo "Branch: "
+    read branch
+    echo "Commit Comment: "
+    read comment
     git add . ;
     git commit -m "$comment";
     pass -c git/git_token; 
@@ -132,7 +135,8 @@ change-theme() {
         echo
 }
 save-theme() {
-        if grep -q "$RANDOM_THEME" ~/.zsh_favlist; then
+        if grep -q "$RANDOM_THEME" ~/.zsh_favlist; 
+        then
                 echo ""$RANDOM_THEME" is already saved"
         else
                 echo "$RANDOM_THEME" >> ~/.zsh_favlist
@@ -151,12 +155,11 @@ tlinks-a() {
 }
 # <<<-- STOW  <<<--
 
-fm() {                                                                        ⏎ [~]
+fm() {
         source ~/.scripts/ranger/ranger-slim
 }
 
 ctmp(){ echo "file_$(date +%F_%T | sd ':|-' '')" }
-
 
 # -->>> conda initialize -->>>
 # !! Contents within this block are managed by 'conda init' !!

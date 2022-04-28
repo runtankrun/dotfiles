@@ -173,7 +173,7 @@ super + shift + alt + h
 
 ## Virtualbox
 super + F12
-    bspc rule -a kitty:xmr -o desktop='^5'; 
+    bspc rule -a kitty:xmr -o desktop='^5'; \
     coins & \
     vboxmanage startvm "Whonix-Gateway-XFCE 1"; sleep 5s; \
     vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"; sleep 5s; \
@@ -184,7 +184,7 @@ super + F12
 super + ctrl + alt + t
     ~/.scripts/xfrom_source/ui/tank-ui/dist/linux-unpacked/tank-ui
 
-## set previously saved wallpaper, colorscheme, & border colors
+## set wallpaper, colorscheme, & border colors
 super + Home
     layout-complete   
 super + alt + Home
@@ -210,11 +210,12 @@ super + End
 
 ## program launcher
 super + d
-    rofi -show drun -show-icons
-    #c-rofi --color
+    . ${HOME}/.config/rofi/launchers/text/launcher.sh
+    #rofi -show drun -show-icons
+
 Menu
-    rofi -show run 
-    #/home/ellio/.config/rofi/launchers/colorful/launcher_2.sh
+    rofi -show run
+
 ctrl+Menu
     rofi-pass
 

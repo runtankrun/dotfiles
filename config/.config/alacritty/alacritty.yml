@@ -33,9 +33,6 @@ window:
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  padding:
-    x: 15
-    y: 15
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -503,32 +500,148 @@ font:
 #  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
 #  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
 
-window.opacity: 0.99
-# Colors
-colors:
-  # Default colors
-  primary:
-    background: '#1a1b26'
-    foreground: '#a9b1d6'
-
-  # Normal colors
-  normal:
-    black:   '#282c34'
-    red:     '#f7768e'
-    green:   '#73daca'
-    yellow:  '#e0af68'
-    blue:    '#7aa2f7'
-    magenta: '#bb9af7'
-    cyan:    '#7dcfff'
-    white:   '#c0caf5'
-
-  # Bright colors
-  bright:
-    black:   '#414868'
-    red:     '#f7768e'
-    green:   '#73daca'
-    yellow:  '#e0af68'
-    blue:    '#7aa2f7'
-    magenta: '#bb9af7'
-    cyan:    '#7dcfff'
-    white:   '#c0caf5'
+window:
+  padding:
+    x: 15
+    y: 15     
+    # Colors
+    colors:
+      # Default colors
+      primary:
+        background: '#1a1b26'
+        foreground: '#a9b1d6'
+    
+      # Normal colors
+      normal:
+        black:   '#282c34'
+        red:     '#f7768e'
+        green:   '#73daca'
+        yellow:  '#e0af68'
+        blue:    '#7aa2f7'
+        magenta: '#bb9af7'
+        cyan:    '#7dcfff'
+        white:   '#c0caf5'
+    
+      # Bright colors
+      bright:
+        black:   '#414868'
+        red:     '#f7768e'
+        green:   '#73daca'
+        yellow:  '#e0af68'
+        blue:    '#7aa2f7'
+        magenta: '#bb9af7'
+        cyan:    '#7dcfff'
+        white:   '#c0caf5'
+    # Colors
+    colors:
+      # Default colors
+      primary:
+        background: '#1a1b26'
+        foreground: '#a9b1d6'
+    
+      # Normal colors
+      normal:
+        black:   '#282c34'
+        red:     '#f7768e'
+        green:   '#73daca'
+        yellow:  '#e0af68'
+        blue:    '#7aa2f7'
+        magenta: '#bb9af7'
+        cyan:    '#7dcfff'
+        white:   '#c0caf5'
+    
+      # Bright colors
+      bright:
+        black:   '#414868'
+        red:     '#f7768e'
+        green:   '#73daca'
+        yellow:  '#e0af68'
+        blue:    '#7aa2f7'
+        magenta: '#bb9af7'
+        cyan:    '#7dcfff'
+        white:   '#c0caf5'
+    # Colors
+    colors:
+      # Default colors
+      primary:
+        background: '#1a1b26'
+        foreground: '#a9b1d6'
+    
+      # Normal colors
+      normal:
+        black:   '#282c34'
+        red:     '#f7768e'
+        green:   '#73daca'
+        yellow:  '#e0af68'
+        blue:    '#7aa2f7'
+        magenta: '#bb9af7'
+        cyan:    '#7dcfff'
+        white:   '#c0caf5'
+    
+      # Bright colors
+      bright:
+        black:   '#414868'
+        red:     '#f7768e'
+        green:   '#73daca'
+        yellow:  '#e0af68'
+        blue:    '#7aa2f7'
+        magenta: '#bb9af7'
+        cyan:    '#7dcfff'
+        white:   '#c0caf5'
+    # Colors
+    colors:
+      # Default colors
+      primary:
+        background: '#1a1b26'
+        foreground: '#a9b1d6'
+    
+      # Normal colors
+      normal:
+        black:   '#282c34'
+        red:     '#f7768e'
+        green:   '#73daca'
+        yellow:  '#e0af68'
+        blue:    '#7aa2f7'
+        magenta: '#bb9af7'
+        cyan:    '#7dcfff'
+        white:   '#c0caf5'
+    
+      # Bright colors
+      bright:
+        black:   '#414868'
+        red:     '#f7768e'
+        green:   '#73daca'
+        yellow:  '#e0af68'
+        blue:    '#7aa2f7'
+        magenta: '#bb9af7'
+        cyan:    '#7dcfff'
+        white:   '#c0caf5'
+  opacity: 0.99
+    # Colors
+    colors:
+      # Default colors
+      primary:
+        background: '#1a1b26'
+        foreground: '#a9b1d6'
+    
+      # Normal colors
+      normal:
+        black:   '#282c34'
+        red:     '#f7768e'
+        green:   '#73daca'
+        yellow:  '#e0af68'
+        blue:    '#7aa2f7'
+        magenta: '#bb9af7'
+        cyan:    '#7dcfff'
+        white:   '#c0caf5'
+    
+      # Bright colors
+      bright:
+        black:   '#414868'
+        red:     '#f7768e'
+        green:   '#73daca'
+        yellow:  '#e0af68'
+        blue:    '#7aa2f7'
+        magenta: '#bb9af7'
+        cyan:    '#7dcfff'
+        white:   '#c0caf5'

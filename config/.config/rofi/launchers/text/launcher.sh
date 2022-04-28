@@ -10,7 +10,7 @@
 #
 # style_1     style_2     style_3     style_4     style_5     style_6     style_7
 
-theme="style_3"
+theme="style_5"
 
 dir="$HOME/.config/rofi/launchers/text"
 styles=($(ls -p --hide="colors.rasi" $dir/styles))
@@ -20,11 +20,8 @@ color="${styles[$(( $RANDOM % 10 ))]}"
 #sed -i -e "s/@import .*/@import \"$color\"/g" $dir/styles/colors.rasi
 
 # comment these lines to disable random style
-themes=($(ls -p --hide="launcher.sh" --hide="styles" $dir))
-theme="${themes[$(( $RANDOM % 7 ))]}"
-
-dunstify $theme
+#themes=($(ls -p --hide="launcher.sh" --hide="styles" $dir))
+#theme="${themes[$(( $RANDOM % 7 ))]}"
+#notify-send "$theme"
 rofi -no-lazy-grab -show drun \
 -theme $dir/"$theme"
-
-

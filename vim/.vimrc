@@ -92,7 +92,6 @@ nnoremap <C-c> "+yy
 inoremap <C-c> <ESC>"+yyi        
 
 " MACROS
-let @i = 'i[[ $1 = " " ]]; then€ýa'
 let @c = 'i# -->>>   -->>># <<<--   <<<--€ku'
 
 ""Plug-ins

@@ -111,7 +111,7 @@ element normal.active {
 }
 element selected.normal {
     background-color: 				@blue;
-    text-color:       				@fg;
+    text-color:       				@bg;
     border-color: 					@blue;
 }
 element selected.urgent {
@@ -145,7 +145,7 @@ sidebar {
 button {
     horizontal-align:               0.5;
     vertical-align:                 0.5;
-    background-color:             	@se;
+    background-color:             	@bg;
     margin: 						5px;
     padding: 						5px;
     text-color: 					@fg;

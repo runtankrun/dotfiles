@@ -154,7 +154,7 @@ button {
 
 button selected {
     background-color:             	@green;
-    text-color: 					@fg;
+    text-color: 					@bg;
     border: 						0px;
     border-radius: 					4px;
     border-color: 					@fg;

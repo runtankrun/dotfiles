@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+dir="${HOME}/dev/SubredditMediaDownloader"
+log="$dir/time"
+
+current_time="$(date +%F)"
+last_time="$(cat "$log" | sort | uniq | tail -n2 | head -n1)"
+day="$(echo $current_time | tail -c 3)"
+month_year="$(echo $current_time | head -c 8)"
+day_after="$(bc <<< $day+1)"
+
+sd 'BEFORE = .*\n' "BEFORE = $month_year$day_after\n" $dir/config.ini
+sd 'AFTER = .*\n' "AFTER = $last_time\n" $dir/config.ini
+
+cd $dir; python main.py
+echo "$(date +%F)" >> $log

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pywal-alacritty() {
+alacritty_fix() {
     ##set variables 
     . "${HOME}/.cache/wal/colors.sh"; \
     alpha=$(cat ~/.cache/wal/colors.json | grep alpha | tail -c 5 | cut -c1-2)
@@ -43,7 +43,7 @@ pywal-alacritty() {
         white:   '$color15'" >> ~/.config/alacritty/alacritty.yml
 }
 
-pywal-kitty() {
+kitty_fix() {
 
     alpha=$(cat ~/.cache/wal/colors.json | head -n 3 | tail -n 1 | tail -c 5 | cut -c1-2)
     sed -i '/^background_opacity/d' ~/.config/kitty/kitty.conf
@@ -53,13 +53,13 @@ pywal-kitty() {
     echo "include ~/.cache/wal/colors-kitty.conf" >> ~/.config//kitty/kitty.conf
 }
 
-pywal-URxvt() {
+URxvt_fix() {
     sed -i '/^! X/,$d' ~/.Xresources
     cat ~/.cache/wal/colors.Xresources >> ~/.Xresources
     xrdb ~/.Xresources
 }    
 
-pywal-bspwm-border(){
+bspwm_border_color(){
     . "${HOME}/.cache/wal/colors.sh"
     bspc config normal_border_color "$color3"
     bspc config active_border_color "$color0"
@@ -69,14 +69,14 @@ pywal-bspwm-border(){
 
 case $1 in
     "")
-    pywal-alacritty &
-    pywal-kitty &
-    pywal-URxvt
+    alacritty_fix &
+    kitty_fix &
+    URxvt_fix
     ;;
     -b)
-    pywal-alacritty &
-    pywal-kitty &
-    pywal-URxvt &
-    pywal-bspwm-border
+    alacritty_fix &
+    kitty_fix &
+    URxvt_fix &
+    bspwm_border_color    
     ;;
 esac

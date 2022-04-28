@@ -88,7 +88,7 @@ element {
 element-text {
     background-color: 				inherit;
     text-color:       				inherit;
-	font:							"feather 20";
+	font:							"cozette 9";
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
