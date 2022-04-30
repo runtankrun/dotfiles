@@ -6,7 +6,6 @@
 
 # You always need to import ranger.api.commands here to get the Command class:
 from ranger.api.commands import *
-from ranger_udisk_menu.mounter import mount
 # A simple command for demonstration purposes follows.
 #------------------------------------------------------------------------------
 
@@ -161,4 +160,4 @@ class YankContent(Command):
     def tab(self, tabnum):
         return self._tab_directory_content()
 
-
+from ranger_udisk_menu.mounter import mount

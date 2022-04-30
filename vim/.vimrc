@@ -113,6 +113,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 call plug#end()
 
 ""Plug Config

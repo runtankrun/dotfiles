@@ -14,13 +14,14 @@ if [[ ! `pidof eww` ]]; then
 	${EWW} daemon
 	#sleep 1
 fi
+run_eww && bspc config -m HDMI-0 top_padding 49
 
 ## Launch or close widgets accordingly
-if [[ ! -f "$FILE" ]]; then
-	touch "$FILE"
-	run_eww && bspc config -m HDMI-0 top_padding 49
-else
-	${EWW} close-all && killall eww
-	rm "$FILE" 
-    bspc config -m HDMI-0 top_padding 0
-fi
+#if [[ ! -f "$FILE" ]]; then
+#	touch "$FILE"
+#	run_eww && bspc config -m HDMI-0 top_padding 49
+#else
+#	${EWW} close-all && killall eww
+#	rm "$FILE" 
+#    bspc config -m HDMI-0 top_padding 0
+#fi

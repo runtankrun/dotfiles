@@ -461,7 +461,7 @@ super + alt + {Left,Right,Up,Down}
 
 ##Toggle Gaps
 super + Tab
-	bspc config -m HDMI-0 window_gap {15,0}
+	bspc config -m HDMI-0 window_gap {40,0}
 
 ##Resize Gaps
 #super + button{4,5}

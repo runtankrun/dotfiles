@@ -7,7 +7,6 @@ alacritty_fix() {
     converted=$(bc <<<"$alpha*0.01" | head -c 3)
 
     ##remove previous colors and alpha
-#    sed -i '/opacity:/d' ~/.config/alacritty/alacritty.yml; \
     sed -i '/^window:/,$d' ~/.config/alacritty/alacritty.yml; \
     
     ##output

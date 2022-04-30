@@ -1,0 +1,47 @@
+#!/bin/sh
+
+file=$1
+## TimeStamp
+tfn=$(date +%Y%m%d_%H%M%S)
+## Output File Name
+output="output_$tfn.gif"
+
+## Print Command for Re-Use
+echo \
+"ffmpeg
+    -ss $start 
+    -t $duration 
+    -i $file 
+    -filter_complex 
+    \"[0:v] 
+    fps=$fps,
+    scale=-1:$scale,
+    split [a][b];[a] palettegen [p];[b][p] paletteuse\" 
+    output_$tfn.gif"
+
+## Options
+
+echo "Start: "
+read start
+echo "Duration: "
+read duration
+echo "fps: "
+read fps
+echo "Scale: "
+read scale
+
+## Video to GIF
+ffmpeg \
+    -ss $start \
+    -t $duration \
+    -i $file \
+    -filter_complex \
+    "[0:v] \
+    fps=$fps,\
+    scale=-1:$scale,\
+    split [a][b];[a] palettegen [p];[b][p] paletteuse" \
+    $output
+
+## Play
+mpv $output
+

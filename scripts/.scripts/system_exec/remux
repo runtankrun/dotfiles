@@ -1,5 +1,8 @@
 #!/bin/bash
-if [[ $1 = "-trim" ]]; then
+
+tfn="$(date +%F_%T)"
+
+if [[ $1 = "--trim" ]]; then
 #inpoint=$(xclip -out -selection clipboard)
     echo input file:
     read input
@@ -7,23 +10,29 @@ if [[ $1 = "-trim" ]]; then
     read st
     echo end time:
     read et
-    output="$input_"$(date "+%Y_%m_%d_%H_%M_%S_%3N")""
 
-    ffmpeg -i $input -ss $st -to $et -c copy $output
+    ffmpeg -i $input -ss $st -to $et -c copy output_$tfn
 
-elif [[ $1 = "-format" ]]; then
+    echo "ffmpeg \
+        -i $input \
+        -ss $st \
+        -to $et \
+        -c copy \
+        output_$tfn"
+
+elif [[ $1 = "--format" ]]; then
     echo input file:
     read input
     echo output file:
     read output
     ffmpeg -i $input -codec copy $output
 
-elif [[ $1 = "-concat" ]]; then
+elif [[ $1 = "--concat" ]]; then
     echo output file:
     read output  
     ffmpeg -f concat -safe 0 -i ~/vidlist.txt -c copy $output
-elif [[ $1 = "-combine" ]]; then
-    file_timestamp="$(date +%F_%T)"
+
+elif [[ $1 = "--side-by-side" ]]; then    
     echo Video1:
     read vid1
     echo Video2:
@@ -31,6 +40,7 @@ elif [[ $1 = "-combine" ]]; then
     echo output:
     read output
     ffmpeg -i $vid1 -i $vid2 -filter_complex hstack -c:v libx264 -crf 20 "$file_timestamp.mp4"
+
 else
-    echo "Usage: ${0##*/}"
+    cat ${HOME}/.scripts/system_exec/remux | grep -o -e '"-.*"' | sd '"' '' 
 fi
