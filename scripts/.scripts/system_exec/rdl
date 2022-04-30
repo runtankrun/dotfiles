@@ -2,14 +2,35 @@
 dir="${HOME}/dev/SubredditMediaDownloader"
 log="$dir/time"
 
+#Variables
 current_time="$(date +%F)"
-last_time="$(cat "$log" | sort | uniq | tail -n2 | head -n1)"
 day="$(echo $current_time | tail -c 3)"
 month_year="$(echo $current_time | head -c 8)"
 day_after="$(bc <<< $day+1)"
+days_in_month="$(cal | grep -ve "[A-z]" | wc -w)"
+last_time="$(cat "$log" | sort | uniq | tail -n2 | head -n1)"
 
+#Determine Number of Days in Month
+if [[ $day_after -gt $days_in_month ]];
+then
+    day_after=$day
+fi
+
+#Get Posts Between Today and the Last Time Ran
 sd 'BEFORE = .*\n' "BEFORE = $month_year$day_after\n" $dir/config.ini
 sd 'AFTER = .*\n' "AFTER = $last_time\n" $dir/config.ini
 
+#Get Posts & Write Date to Log
 cd $dir; python main.py
 echo "$(date +%F)" >> $log
+
+#Prompt for Number of Posts to View & Close Terminal
+echo
+echo "Number of Posts to View: "
+read posts
+xdotool windowclose $(xdotool getactivewindow)
+
+#View Posts 
+cd /mnt/TB_2/Media/yd/boutinelababes/videos 
+nohup mpv --playlist-start=0 $(ls -tr --time=birth | tail -n$posts) 
+
