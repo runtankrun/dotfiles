@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+PS3="Enter Subreddit: "             
+
+select subreddit in $(ls ~/red/fav/)                
+do                                                                                              
+    ls -r ~/red/fav/$subreddit/*.mp4 > /tmp/subs                                            
+    nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subs)
+done

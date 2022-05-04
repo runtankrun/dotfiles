@@ -107,13 +107,13 @@ case "$mimetype" in
         try mediainfo "$path" && { dump | trim | sed 's/  \+:/: /;';  exit 5; } || exit 1;;
 esac
 
-#handle_extension() {
-#    case "${FILE_EXTENSION_LOWER}" in
-#        ## JSON
-#        json|ipynb)
-#            jq --color-output . "${FILE_PATH}" && exit 0
-#            python -m json.tool -- "${FILE_PATH}" && exit 5
-#            ;;
-#    esac
-#}
+handle_extension() {
+    case "${FILE_EXTENSION_LOWER}" in
+        ## JSON
+        json|ipynb)
+            jq --color-output . "${FILE_PATH}" && exit 0
+            python -m json.tool -- "${FILE_PATH}" && exit 5
+            ;;
+    esac
+}
 exit 1

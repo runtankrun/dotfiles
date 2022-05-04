@@ -119,26 +119,26 @@ call plug#end()
 ""Plug Config
 let NERDTreeShowHidden=1
 let g:NERDTreeNodeDelimiter = "\u00a0"
-let g:colorizer_maxlines=1000
+let g:colorizer_maxlines=200
 let g:colorizer_startup = 0
-let g:lens#width_resize_min = 50
+"let g:lens#width_resize_min = 50
 let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 1
+let g:tokyonight_enable_italic = 0 
 map ct :ColorToggle<CR>
 map <C-t> :tabnew<CR>
-map <C-n> :NERDTreeToggle<CR>
+map nt :NERDTreeToggle<CR>
 map <C-u> :UndotreeToggle<CR>
 map gy :Goyo<CR>
 map dt :DimInactiveToggle<CR>
-nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
-nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
-nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
-nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR    >
+"nnoremap <silent> <Up>    :ca#ll animate#window_delta_height(10)<CR>
+"nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
+"nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
+"nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
 nnoremap <leader>r :<C-U>RangerChooser<CR>
 colorscheme tokyonight
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 "LSP
 if executable('pyls')

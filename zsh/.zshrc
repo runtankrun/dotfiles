@@ -8,8 +8,8 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 
 # -->>> THEME -->>>
-ZSH_THEME="powerlevel10k"
-#ZSH_THEME="smt"
+#ZSH_THEME="powerlevel10k"
+ZSH_THEME="smt"
 #ZSH_THEME="minimal-blackcat"
 #ZSH_THEME="random"
 # <<<-- THEME <<<--

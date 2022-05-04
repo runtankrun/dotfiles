@@ -11,6 +11,11 @@ gpg_actions(){
     for current_key in ${key_names[2,$key_count]};
     do
         case $1 in
+            ' ') 
+                gpg -easr
+
+            ;;
+
             "-d" | "--delete")
     
                 gpg --delete-secret-keys $(finger_print);    
