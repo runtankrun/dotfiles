@@ -1,9 +1,50 @@
 #!/usr/bin/env sh
 
-PS3="Enter Subreddit: "             
+view(){
+    PS3="Enter Subreddit: "             
 
-select subreddit in $(ls ~/red/fav/)                
-do                                                                                              
-    ls -r ~/red/fav/$subreddit/*.mp4 > /tmp/subs                                            
-    nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subs)
-done
+    select subreddit in $(ls /mnt/TB_2/Media/yd/red/fav/)                
+    do                                                                                              
+        ls -r /mnt/TB_2/Media/yd/red/fav/$subreddit/*.mp4 > /tmp/subs                                            
+        nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subs)
+    done
+}
+download(){
+
+    echo "Subreddit: "
+    read subreddit
+    echo "Sort: "
+    read srt
+    echo "Time: "
+    read time
+
+    python3 -m bdfr download /mnt/TB_2/Media/yd/red -s "$subreddit" \
+    -t $time \
+    -S $srt \
+    --file-scheme '{POSTID}' \
+    --search-existing \
+    --no-dupes
+}
+rndm(){
+for f in $(ls /mnt/TB_2/Media/yd/red/fav/)
+do
+        ls -t /mnt/TB_2/Media/yd/red/fav/$f/*.mp4 | tail -n 30
+done | shuf > /tmp/subz
+
+nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subz)
+}
+
+
+case $1 in
+    ""| " ")
+        view
+    ;;
+
+    "-s" | "--search")
+        download
+    ;;
+
+    "-r" | "--random")
+        rndm
+    ;;
+esac 

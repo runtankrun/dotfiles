@@ -28,32 +28,32 @@ else
 fi
 
 # Links
-google=""
-facebook=""
-twitter=""
+duckduckgo=""
+reddit=""
+snahp=""
 github=""
 mail=""
-youtube=""
+youtube=""
 
 # Variable passed to rofi
 options="$google\n$facebook\n$twitter\n$github\n$mail\n$youtube"
 
 chosen="$(echo -e "$options" | $rofi_command -p "Open In  :  $app" -dmenu -selected-row 0)"
 case $chosen in
-    $google)
-        $app https://www.google.com &
+    $duckduckgo)
+        $app https://www.duckduckgo.com &
         ;;
-    $facebook)
-        $app https://www.facebook.com &
+    $reddit)
+        $app https://www.reddit.com &
         ;;
-    $twitter)
-        $app https://www.twitter.com &
+    $snahp)
+        $app https://fora.snahp.eu/ &
         ;;
     $github)
         $app https://www.github.com &
         ;;
     $mail)
-        $app https://www.gmail.com &
+        $app https://www.protonmail.com https://account.protonvpn.com/login &
         ;;
     $youtube)
         $app https://www.youtube.com &
