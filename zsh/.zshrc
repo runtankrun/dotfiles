@@ -78,6 +78,7 @@ gpsh() {
     pass -c git/git_token; 
     echo "runtankrun"; 
     git push origin "$branch"
+    git-open
 }
 # <<<--GIT <<<--
 

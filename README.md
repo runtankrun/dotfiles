@@ -7,7 +7,7 @@
 
 </div>
 
-> [Custom Dotfiles](https://wiki.archlinux.org/title/Dotfiles) for configuration, customization, scripting, and ricing, within the Linux System.
+> Custom [Dotfiles](https://wiki.archlinux.org/title/Dotfiles) for configuration, customization, scripting, and ricing, within the Linux System.
 
 ## Author
 
