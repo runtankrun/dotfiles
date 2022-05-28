@@ -1,7 +1,7 @@
 <h1 align="center">dotfiles 👋</h1>
 <p>
   <a href="https://www.npmjs.com/package/dotfiles" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/dotfiles.svg">
+        [![made with hearth by dec0dOS](https://img.shields.io/badge/made%20with%20%E2%99%A5%20by-dec0dOS-ff1414.svg?style=flat-square)](https://github.com/dec0dOS)
   </a>
 </p>
 
