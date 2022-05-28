@@ -3,12 +3,12 @@
 <div align="center">
 <br />
 
-[![Hello & Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/dec0dOS/amazing-github-template/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
-[![made with hearth by RunTankRun](https://img.shields.io/badge/made%20with%20%E2%99%A5%20by-dec0dOS-ff1414.svg?style=flat-square)](https://github.com/runtankrun)
+[![Hello & Welcome](https://img.shields.io/badge/Hello-and-Welcome-ff69b4.svg?style=flat-square)](https://github.com/dec0dOS/amazing-github-template/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+[![Made with hearth by RunTankRun](https://img.shields.io/badge/made%20with%20%E2%99%A5%20by-RunTankRun-ff1414.svg?style=flat-square)](https://github.com/runtankrun)
 
 </div>
 
-> Custom Dotfiles for Linux configuration, customization, scripting, and ricing
+> Custom Dotfiles for Linux configuration, customization, scripting, and ricing.
 
 ## Author
 
