@@ -8,21 +8,37 @@ decrypt(){
 }
 
 case $1 in
-
-    "-e")
-        if [ $2 = "-f" ]; then
-            encrypt -in $3 -out encrypted.dat
-        else
-            echo $2 | encrypt
-        fi
+    "-e" | "-encrypt")
+    
+        case $2 in
+            "-f" | "--file") 
+                encrypt -in $3 -out encrypted.dat
+            ;;
+            "-C" | "--command")
+                encrypt | xclip
+            ;;
+            "-c" |  "--clipboard")
+                echo "$(xclip -out -selection primary)" | encrypt | xclip
+            ;;
+            "-s" | "--string")
+                echo $3 | encrypt | xclip
+            ;;
+        esac
     ;;
     
-    "-d")
-        if [ $2 = "-f" ]; then
-            decrypt -in $3
-        else
-            echo $2 | decrypt
-        fi
+    "-d" | "-decrypt")
+
+        case $2 in
+            "-f" | "--file")
+                decrypt -in $3
+            ;;
+            "-c" | "--clipboard")     
+                echo "$(xclip -out -selection primary)" | decrypt
+            ;;
+            "-s" | "--string")    
+                echo $3 | decrypt
+            ;;
+        esac
     ;;
 
     "--generate-private-key")

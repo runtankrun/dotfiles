@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [[ $1 = "-ct" ]]; then
-    kitty --name "cointop" --title "cointop" -e "cointop"
+    kitty --name "cointop" --title "cointop" -e sh -c "docker run -it cointop/cointop"
 elif [[ $1 = "--ticker" ]]; then
     kitty --name "ticker" --title "ticker" -e "ticker"
 else

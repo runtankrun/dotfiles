@@ -1,11 +1,16 @@
 #!/bin/sh
 
+alpha=$(cat ${HOME}/.cache/wal/colors.Xresources | grep -o -e "\[.*\]" | head -n1 | sed 's/\[\|\]//g')
+
 alacritty_fix() {
     ##set variables 
     . "${HOME}/.cache/wal/colors.sh"; \
-    alpha=$(cat ~/.cache/wal/colors.json | grep alpha | tail -c 5 | cut -c1-2)
     converted=$(bc <<<"$alpha*0.01" | head -c 3)
-
+    if [[ $alpha -gt "99" ]]; then
+        t=$converted
+    else
+        t="0$converted"
+    fi
     ##remove previous colors and alpha
     sed -i '/^window:/,$d' ~/.config/alacritty/alacritty.yml; \
     
@@ -13,7 +18,7 @@ alacritty_fix() {
     
     echo \
     "window:
-  opacity: 0$converted
+  opacity: $t
   padding:
     x: 15
     y: 15
@@ -48,10 +53,15 @@ colors:
 }
 
 kitty_fix() {
-
-    alpha=$(cat ~/.cache/wal/colors.json | head -n 3 | tail -n 1 | tail -c 5 | cut -c1-2)
     sed -i '/^background_opacity/d' ~/.config/kitty/kitty.conf
-    echo "background_opacity 0.$alpha" >> ~/.config/kitty/kitty.conf
+
+    if [[ $alpha -gt "99" ]]; then
+        a=$alpha
+    else
+        a="0.$alpha"
+    fi
+
+    echo "background_opacity $a" >> ~/.config/kitty/kitty.conf
     
     sed -i '/^include/d' ~/.config/kitty/kitty.conf
     echo "include ~/.cache/wal/colors-kitty.conf" >> ~/.config//kitty/kitty.conf

@@ -82,8 +82,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-conda activate bdfr
 
+conda activate bdfr
 case $1 in
     ""| " ")
         view

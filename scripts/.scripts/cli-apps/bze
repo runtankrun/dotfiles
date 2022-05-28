@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+mods=($(genact -l | sed 's/^.*://g' | sd '\n' ''))
+font="${HOME}/.fonts/misc/figlet/ANSI_Shadow.flf"
+time_limit=$(shuf -i 10-60 -n1)
+
+for m in ${mods[@]}
+do
+    echo
+    figlet -f $font $m
+    echo
+    genact -m $m \
+        --exit-after-time "$time_limit"s \
+        -s 1 
+done
