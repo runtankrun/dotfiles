@@ -66,7 +66,7 @@ alias tm='tty-clock -c -x -t'
 
 ##feh image
 alias feh='feh --scale-down --auto-zoom'
-alias feh-ss='feh -Z -. -D 5'
+alias feh-ss='nohup feh -Z -. -D 3'
 
 ##Colors
 alias col='cb-small; colorpanes; colorline && hex && hex-block && colortest && colorblocks && colorbars'
@@ -163,8 +163,6 @@ alias bash_name='find "$(pwd)" -type f -print0 | while IFS= read -d  file ; do n
 ##MISC
 alias ez='vim -p ~/.zshrc ~/.oh-my-zsh/custom/alias.zsh'
 alias va='cat ~/.oh-my-zsh/custom/alias.zsh | rg -A 20 "^##.*"'
-#alias screen-rec='ffmpeg -video_size 3440x1440 -framerate 30 -f x11grab -i :0.0+1280,0 -c:v libx264rgb -crf 0 -preset ultrafast output.mp4'
 alias esrgan='conda activate esr; cd ~/dev/Real-esr-gan; real-esr-gan $@'
 alias lsc='ls -latrh --time=birth'
-alias tfn='date +%Y%m%d_%H%M%S'
-alias nohup='nohup /tmp/nonolog'
+

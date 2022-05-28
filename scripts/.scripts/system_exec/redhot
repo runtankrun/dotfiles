@@ -1,16 +1,19 @@
 #!/usr/bin/env sh
 
+dir="/mnt/PSSD_Storage/bdfr/fav"
+#dir="/mnt/TB_2/Media/yd/red/fav"
+
 view(){
     PS3="Enter Subreddit: "             
 
-    select subreddit in $(ls /mnt/TB_2/Media/yd/red/fav/)                
+    select subreddit in $(ls $dir)                
     do                                                                                              
-        ls -r /mnt/TB_2/Media/yd/red/fav/$subreddit/*.mp4 > /tmp/subs                                            
+        ls -r $dir/$subreddit/*.mp4 > /tmp/subs                                            
         nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subs)
     done
 }
-download(){
 
+download(){
     echo "Subreddit: "
     read subreddit
     echo "Sort: "
@@ -18,22 +21,68 @@ download(){
     echo "Time: "
     read time
 
-    python3 -m bdfr download /mnt/TB_2/Media/yd/red -s "$subreddit" \
+    python3 -m bdfr download $dir -s "$subreddit" \
     -t $time \
     -S $srt \
     --file-scheme '{POSTID}' \
     --search-existing \
     --no-dupes
 }
-rndm(){
-for f in $(ls /mnt/TB_2/Media/yd/red/fav/)
-do
-        ls -t /mnt/TB_2/Media/yd/red/fav/$f/*.mp4 | tail -n 30
-done | shuf > /tmp/subz
 
-nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subz)
+rndm(){
+    urxvtc -e sh -c "ranger $dir ${HOME}/Videos/h/"
+    for f in $(ls $dir)
+    do
+            ls $dir/$f/*.mp4 #| tail -n 50
+    done | shuf > /tmp/subz
+    
+    nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subz)
 }
 
+update(){
+    #Ghetto Multiprocessing 
+    echo "Process Number: "
+    read p
+    #List of All Subreddits to update
+    subreddits=$(ls $dir)
+    #Subreddit Math to Split into Two Groups
+    total_subreddit_count=$(echo "$subreddits" | wc -l)
+    one_third_of_subreddit_count=$(bc <<<$total_subreddit_count/3)
+    #Split the List of All Subreddits Into Thirds
+    subreddit_array=($(xargs -n $one_third_of_subreddit_count <<<$subreddits | tr ' ' ','))
+    subs=$(echo $subreddit_array[$p])
+     
+    #Run BDFR
+    echo 
+    echo "-->>> $subs -->>>"
+    echo    
+    python3 -m bdfr download $dir \
+        -s "$subs" \
+        -t month \
+        -S top \
+        --file-scheme '{POSTID}'\
+        --search-existing \
+        --no-dupes
+    echo 
+    echo "<<<-- $subs <<<--"
+    echo
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+conda activate bdfr
 
 case $1 in
     ""| " ")
@@ -46,5 +95,9 @@ case $1 in
 
     "-r" | "--random")
         rndm
+    ;;
+
+    "-u" | "--update")
+        update 
     ;;
 esac 

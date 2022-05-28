@@ -67,7 +67,7 @@ ginit() {
     git push -u origin main
 }
 
-git-rollout() {
+gpsh() {
     echo "$(git branch -a)" 
     echo "Branch: "
     read branch
@@ -78,26 +78,6 @@ git-rollout() {
     pass -c git/git_token; 
     echo "runtankrun"; 
     git push origin "$branch"
-}
-
-gpsh() {
-    case $1 in 
-        "-m | --master")
-            dest="origin master"
-        ;;
-        "-p | --pages")
-            dest="origin gh-pages"
-        ;;
-        "-h | --help | ''")
-            echo "-m | --master \tbranch 'origin master'"
-            echo "-p | --pages  \tbranch 'origin gh-pages'"
-            echo "-h | --help \t show help"
-        ;;
-    esac
-    
-    echo "runtankrun"; 
-    pass -c git/git_token; 
-    git push $dest
 }
 # <<<--GIT <<<--
 
@@ -168,9 +148,9 @@ if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
     if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda/etc/profile.d/conda.sh"
+# . "/opt/anaconda/etc/profile.d/conda.sh"  # commented out by conda initialize
     else
-        export PATH="/opt/anaconda/bin:$PATH"
+# export PATH="/opt/anaconda/bin:$PATH"  # commented out by conda initialize
     fi
 fi
 unset __conda_setup
@@ -196,3 +176,19 @@ export MCFLY_RESULTS=50
 
 #autojump
 . /usr/share/autojump/autojump.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

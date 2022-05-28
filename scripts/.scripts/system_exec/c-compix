@@ -11,6 +11,7 @@ case $1 in
     '--picom')
         pkill compix;
         sleep .3s;
-        picom -b --experimental-backends;
+        picom -b \
+            #--experimental-backends;
     ;;
 esac

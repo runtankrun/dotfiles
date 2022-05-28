@@ -306,7 +306,7 @@ super + m
     megasync
 ##
 super + ctrl + alt + shift + 9
-    pass -c sys/t; xdotool type $(echo $(xclip -out -selection clipboard)); xdotool key Return
+    pass -c sys/t; sleep .3s; xdotool type $(echo $(xclip -out -selection clipboard)); xdotool key Return
 
 ## mpv - launch last directory tagged with "m" 
 super + alt + m

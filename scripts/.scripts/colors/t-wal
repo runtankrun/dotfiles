@@ -1,16 +1,15 @@
 #!/bin/sh
 dir="/home/ellio/.config/wal/colorschemes/user/"
 theme="tokyo-night.json"
-alpha="$(cat "$dir/$theme" | rg '"alpha":')"
 
 case $1 in
     "-t")
-        sd '"alpha": "[1-9][1-9]",' '"alpha": "50",' $dir/$theme;
-        wal -n -q -e -a 50 --theme $dir/$theme; r-wal
+        sd '"alpha".*,' '"alpha": '"$2"',' $dir/$theme;
+        wal -n -q -e --theme $dir/$theme; r-wal
     ;;
 
     "-nt")
-        sd '"alpha": "50",' '"alpha": "99",' $dir/$theme;
+        sd '"alpha".*,' '"alpha": "99",' $dir/$theme;
         wal -n -q -e --theme $dir/$theme; r-wal
     ;;
 esac

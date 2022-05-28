@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+encrypt(){
+    openssl enc -aes-256-cbc -a -A -md sha512 -pbkdf2 -iter 250000 -salt $@
+}
+
+decrypt(){
+    openssl enc -aes-256-cbc -a -A -d -md sha512 -pbkdf2 -iter 250000 -salt $@
+}
+
+case $1 in
+
+    "-e")
+        if [ $2 = "-f" ]; then
+            encrypt -in $3 -out encrypted.dat
+        else
+            echo $2 | encrypt
+        fi
+    ;;
+    
+    "-d")
+        if [ $2 = "-f" ]; then
+            decrypt -in $3
+        else
+            echo $2 | decrypt
+        fi
+    ;;
+
+    "--generate-private-key")
+        openssl genrsa -out private_key.pem 1024
+    ;;
+
+    "--extract-public-key")
+        openssl rsa -in private_key.pem -out public_key.pem -outform PEM -pubout
+    ;;
+    
+esac

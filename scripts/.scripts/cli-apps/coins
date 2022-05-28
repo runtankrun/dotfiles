@@ -8,6 +8,6 @@ else
     kitty --name "xmr" --title "xmr" -e sh -c \
     "superstonk \
     -interval 10 \
-    -shares 22.047580743502 \
+    -shares 33.065605913502 \
     -symbol xmr-usd"
 fi
