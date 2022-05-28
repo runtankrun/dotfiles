@@ -1,4 +1,4 @@
-<h1 align="center">DOTFILES 👋</h1>
+<h1 align="center">Dotfiles 👋</h1>
 
 <div align="center">
 <br />
@@ -7,7 +7,7 @@
 
 </div>
 
-> Custom Dotfiles for Linux configuration, customization, scripting, and ricing.
+> [Custom Dotfiles](https://wiki.archlinux.org/title/Dotfiles) for configuration, customization, scripting, and ricing, within the Linux System.
 
 ## Author
 
