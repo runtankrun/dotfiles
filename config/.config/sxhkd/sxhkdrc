@@ -176,7 +176,8 @@ super + F12
     bspc rule -a kitty:xmr -o desktop='^5'; \
     coins & \
     vboxmanage startvm "Whonix-Gateway-XFCE 1"; sleep 5s; \
-    vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"; sleep 5s; \
+    vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"; \
+    pass -c sys/v
 
 ## tank-ui
 super + ctrl + alt + t

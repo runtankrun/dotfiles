@@ -116,7 +116,22 @@ fm() {
 }
 
 ctmp(){ echo "file_$(date +%F_%T | sd ':|-' '')" }
-
+c-bzebee-mux(){
+    tmux new-session \; \
+    split-window -v \; \
+    split-window -h \; \
+    select-pane -t 0 \; \
+    split-window -h\; \
+    split-window -h\; \
+    select-pane -t 0 \; \
+    split-window -h\; \
+    select-pane -t 4 \; \
+    split-window -h \; \
+    select-pane -t 6 \; \
+    split-window -h \; \
+    split-window -v \
+    'bzebee-mux'
+}
 # -->>> conda initialize -->>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

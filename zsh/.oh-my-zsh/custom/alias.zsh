@@ -166,3 +166,4 @@ alias va='cat ~/.oh-my-zsh/custom/alias.zsh | rg -A 20 "^##.*"'
 alias esrgan='conda activate esr; cd ~/dev/Real-esr-gan; real-esr-gan $@'
 alias lsc='ls -latrh --time=birth'
 
+alias c-tmux='tmux new-session \; \split-window -v \; \split-window -h \; \select-pane -t 0 \; \split-window -h'

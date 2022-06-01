@@ -8,7 +8,7 @@ view(){
 
     select subreddit in $(ls $dir)                
     do                                                                                              
-        ls -r $dir/$subreddit/*.mp4 > /tmp/subs                                            
+        ls -tr $dir/$subreddit/*.mp4 > /tmp/subs                                            
         nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subs)
     done
 }
@@ -33,7 +33,7 @@ rndm(){
     urxvtc -e sh -c "ranger $dir ${HOME}/Videos/h/"
     for f in $(ls $dir)
     do
-            ls $dir/$f/*.mp4 #| tail -n 50
+            ls -t $dir/$f/*.mp4 | tail -n 50
     done | shuf > /tmp/subz
     
     nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subz)
