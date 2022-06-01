@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+launch_panes(){ 
+    tmux send-keys -t"$1" "bzebee $2" "Enter" 
+}
+
+launch_panes 0 1
+launch_panes 1 2  
+launch_panes 2 3
+launch_panes 3 1
+launch_panes 4 2
+launch_panes 5 3
+launch_panes 6 1
+launch_panes 7 2
+launch_panes 8 3
+launch_panes 9 1
