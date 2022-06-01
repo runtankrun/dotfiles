@@ -29,31 +29,6 @@ qa() {
 }
 # <<<-- QUICK ALIAS <<<--
 
-# -->>> COLORS -->>>
-xrdb_query()
-{
-    [ -n "$XRDB_QUERY" ] || XRDB_QUERY="$(xrdb -query)"
-
-    echo "$XRDB_QUERY" | while IFS=';' read -r STRING; do
-        [ "${1}" = "${STRING%%\	*}" ] || continue
-        echo "${STRING##*\	}"
-        break
-    done
-}
-getcolors() {
-  FOREGROUND="$(xrdb_query '*.foreground:')"
-  BACKGROUND="$(xrdb_query '*.background:')"
-  BLACK="$(xrdb_query '*.color0:')"
-  RED="$(xrdb_query '*.color1:')"
-  GREEN="$(xrdb_query '*.color2:')"
-  YELLOW="$(xrdb_query '*.color3:')"
-  BLUE="$(xrdb_query '*.color4:')"
-  MAGENTA="$(xrdb_query '*.color5:')"
-  CYAN="$(xrdb_query '*.color6:')"
-  WHITE="$(xrdb_query '*.color7:')"
-}
-# <<<-- COLORS <<<--
-
 #-->>> GIT -->>>
 ginit() {
     echo "# HTML" >> README.md;

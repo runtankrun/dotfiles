@@ -11,7 +11,7 @@ gpg_actions(){
     for current_key in ${key_names[2,$key_count]};
     do
         case $1 in
-            ' ') 
+            "-e" | "--encrypt") 
                 gpg -easr
 
             ;;

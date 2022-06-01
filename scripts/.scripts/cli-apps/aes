@@ -14,9 +14,6 @@ case $1 in
             "-f" | "--file") 
                 encrypt -in $3 -out encrypted.dat
             ;;
-            "-C" | "--command")
-                encrypt | xclip
-            ;;
             "-c" |  "--clipboard")
                 echo "$(xclip -out -selection primary)" | encrypt | xclip
             ;;

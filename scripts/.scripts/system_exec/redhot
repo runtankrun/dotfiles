@@ -50,7 +50,7 @@ update(){
     one_third_of_subreddit_count=$(bc <<<$total_subreddit_count/3)
     #Split the List of All Subreddits Into Thirds
     subreddit_array=($(xargs -n $one_third_of_subreddit_count <<<$subreddits | tr ' ' ','))
-    subs=$(echo $subreddit_array[$p])
+    subs=$(echo ${subreddit_array[$p]})
      
     #Run BDFR
     echo 

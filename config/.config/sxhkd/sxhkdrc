@@ -177,8 +177,6 @@ super + F12
     coins & \
     vboxmanage startvm "Whonix-Gateway-XFCE 1"; sleep 5s; \
     vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"; sleep 5s; \
-    notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png 'Go for It'; \
-    pass -c sys/v
 
 ## tank-ui
 super + ctrl + alt + t

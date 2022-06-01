@@ -1,0 +1,67 @@
+#!/bin/sh
+mods=($(genact -l | sed 's/^.*://g' | sd '\n' ''))
+font="${HOME}/.fonts/misc/figlet/ANSI_Shadow.flf"
+time_limit=$(shuf -i 10-60 -n1)
+
+bze(){
+    while true;
+    do
+        for m in ${mods[@]}
+        do
+            echo
+            figlet -f $font $m
+            echo
+            genact -m $m \
+                --exit-after-time "$time_limit"s \
+                -s 1 
+        done
+    done
+}
+
+colorize(){
+    case $1 in
+        1)
+            gterm "#f7768e" "#73daca"
+            ;;
+        2)
+            gterm "#e0af68" "#7aa2f7"
+            ;;
+        3)
+            gterm "#bb9af7" "#7dcfff"
+            ;;
+        4)
+            gterm "#7aa2f7" "#bb9af7" "#7dcfff" "#c0caf5"
+            ;;
+    esac
+}
+
+preview_message(){
+    echo "Gradient Preview: The quick brown fox jumps over the lazy dog"
+}
+
+option1=$(preview_message | colorize 1)
+option2=$(preview_message | colorize 2)
+option3=$(preview_message | colorize 3)
+option4=$(preview_message | colorize 4)
+
+PS3='Gradient: '
+
+options=("$option1" "$option2" "$option3" "$option4")
+
+select opt in "${options[@]}"
+do
+    case $opt in
+            "$option1")
+                bze | colorize 1
+                ;;
+            "$option2")
+                bze | colorize 2
+                ;;
+            "$option3")
+                bze | colorize 3
+                ;;
+            "$option4")
+                bze | colorize 4
+                ;;
+    esac
+done
