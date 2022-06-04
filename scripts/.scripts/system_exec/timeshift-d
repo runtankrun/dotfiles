@@ -1,6 +1,7 @@
 #!/bin/sh
-
-figlet -f /home/ellio/.fonts/misc/figlet/3D-ASCII.flf 'Back-Up';
+source ${HOME}/.scripts/colors/getcolors
+font="${HOME}/.fonts/misc/figlet/ANSI_Shadow.flf"
+figlet -f $font 'Back-Up' | gterm "$RED" "$GREEN" ;
 
 tsd=$(sudo timeshift --list | grep -m 2 -o "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]_[0-9][0-9]-[0-9][0-9]-[0-9][0-9]" | tail -1)
 
@@ -22,3 +23,10 @@ sudo timeshift --delete --snapshot $tsd; \
 sudo timeshift --create --comments "house-keeping"; \
 zsh
 fi
+
+notify-send --urgency=normal \
+--expire-time=45000 \
+--app-name="custom app" \
+--icon=${HOME}/Pictures/sbpt.png \
+--category="my category" \
+"Backup Complete"

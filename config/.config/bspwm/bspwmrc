@@ -4,7 +4,7 @@
 sleep .5s; xfsettingsd & 
 
 ## Compositor
-sleep .5s; picom -b --experimental-backends &
+sleep .5s; picom -b &
 
 ## swap caps and escape buttons
 setxkbmap -option caps:swapescape &

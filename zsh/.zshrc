@@ -8,17 +8,17 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 
 # -->>> THEME -->>>
-ZSH_THEME="powerlevel10k"
-#ZSH_THEME="smt"
-#ZSH_THEME="minimal-blackcat"
-#ZSH_THEME="random"
+ZSH_THEME="powerlevel10k" 
 # <<<-- THEME <<<--
 
 # -->>> PLUGINS -->>>
 plugins=(themes git-open zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
 # <<<-- PLUGINS <<<--
-
 source $ZSH/oh-my-zsh.sh
+
+# -->>> Define Color Variables  -->>>
+. ${HOME}/.scripts/colors/getcolors
+# <<<-- Define Color Variables <<<--
 
 #################
 #   FUNCTIONS   #
@@ -28,6 +28,16 @@ qa() {
     echo "alias $1='$2'" >> $HOME/.oh-my-zsh/custom/alias.zsh
 }
 # <<<-- QUICK ALIAS <<<--
+
+# -->>> BSPWM Gaps -->>>
+gaps() {
+side="$1"
+gap="$2"
+bspc config -m HDMI-0 left_padding "$side" &
+bspc config -m HDMI-0 right_padding "$side" &
+bspc config -m HDMI-0 window_gap "$gap"
+}
+# <<<-- BSPWM Gaps <<<--
 
 #-->>> GIT -->>>
 ginit() {
@@ -65,7 +75,7 @@ storage() {
 
 # -->>> CPU TEMP -->>>
 brr() {
-        figlet -f ~/.fonts/misc/figlet/future.tlf $(echo $(temp))
+        figlet -f ~/.fonts/misc/figlet/ANSI_Shadow.tlf $(echo $(temp))
 }
 temp() {
         cat \
@@ -112,10 +122,9 @@ tlinks-a() {
 # <<<-- STOW  <<<--
 
 fm() {
-        source ~/.scripts/ranger/ranger-slim
+    source ranger
 }
 
-ctmp(){ echo "file_$(date +%F_%T | sd ':|-' '')" }
 c-bzebee-mux(){
     tmux new-session \; \
     split-window -v \; \
@@ -132,44 +141,36 @@ c-bzebee-mux(){
     split-window -v \
     'bzebee-mux'
 }
-# -->>> conda initialize -->>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
-# . "/opt/anaconda/etc/profile.d/conda.sh"  # commented out by conda initialize
-    else
-# export PATH="/opt/anaconda/bin:$PATH"  # commented out by conda initialize
-    fi
-fi
-unset __conda_setup
-# <<<-- conda initialize <<<--
 
-# Begin xrdm settings
+# -->>>   -->>>
+
+# <<<-- Last Backup  <<<--
+rewind(){
+    dir=$(ls -d /mnt/PSSD/timeshift/snapshots/* | tail -n1)
+    ranger $dir/localhost/home/ellio/
+}
+# <<<-- Last Backup  <<<--
+
+# -->>> XRDM settings -->>>
 export XRDM_DIR=~/.Xresource.d
 export XRDM_FONT_DIR=$XRDM_DIR/fonts
 export XRDM_COLOR_DIR=$XRDM_DIR/colors
 export XRDM_PRESET_DIR=$XRDM_DIR/presets
 export XRDM_PROGRAM_DIR=$XRDM_DIR/programs
 source xrdm
-# End xrdm settings
+# <<<-- XRDM settings <<<--
 
-# Mcfly
+# -->>> McFly  -->>>
 eval "$(mcfly init zsh)"
-#export MCFLY_FUZZY=1
 source /usr/share/doc/mcfly/mcfly.zsh
 export MCFLY_RESULTS=50
+# <<<-- McFly  <<<--
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-#autojump
+# -->>> AutoJump  -->>>
 . /usr/share/autojump/autojump.zsh
-
+# <<<-- AutoJump  <<<--
+    
 # >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -183,3 +184,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

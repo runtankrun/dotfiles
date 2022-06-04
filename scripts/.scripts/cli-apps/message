@@ -17,7 +17,7 @@ zsh'
 #############
 elif [[ $1 = "-k" ]]; then
 kitty --name "TANK-K" --title "TANK-K" -e sh -c \
-'figlet -f ~/.fonts/misc/figlet/Rectangles.flf 'TANK'; \
+'zerotwo; \
 zsh'
 
 elif [[ $1 = "-kt" ]]; then

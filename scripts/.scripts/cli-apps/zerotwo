@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+. ${HOME}/.scripts/colors/getcolors
+ColorList=($RED $GREEN $YELLOW $BLUE $MAGENTA $CYAN $WHITE)
+FontList=(spliff.flf miniwi.flf)
+dir="${HOME}/.fonts/misc/figlet"
+    
+ShufZeroColor(){ 
+    shuf -i 0-6 -n1 
+}
+ShufFontColor(){ 
+    shuf -i 0-6 -n1 
+}
+    
+ShufFont(){ 
+    shuf -i 0-1 -n1 
+} 
+    
+ZeroColor=${ColorList[$(ShufZeroColor)]}
+FontColor=${ColorList[$(ShufFontColor)]}
+RndmFont=${FontList[$(ShufFont)]}
+    
+figlet -f ${dir}/${RndmFont} "TANK" | gterm $FontColor
+cat ${HOME}/Pictures/02/zerotwo | gterm $ZeroColor 

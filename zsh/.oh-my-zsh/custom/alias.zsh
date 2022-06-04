@@ -104,11 +104,6 @@ alias shreddit='shred -n 5 -v -z'
 alias cs='xrdm color'
 alias tf='xrdm font'
 
-##duck
-alias evc='cd ~/Downloads/EvilOSX; python start.py --cli --port 1337'
-alias evb='cd ~/Downloads/EvilOSX; python start.py --builder'
-alias duck='mv ~/Downloads/EvilOSX/data/builds/*Launcher* ~/Downloads/EvilOSX/data/builds/e.txt; cd ~/Downloads/USB-Rubber-Ducky/;java -jar duckencoder.jar -i ~/Downloads/EvilOSX/data/builds/e.txt; cp ~/Downloads/USB-Rubber-Ducky/inject.bin ~/Downloads/'
-
 ##update firefox
 alias uff='pkill firefox-bin; sudo mv /usr/lib/firefox /usr/lib/firefox_old; sudo cp -r ~/Downloads/firefox /usr/lib/'
 alias dff='sudo rm -rf /usr/lib/firefox_old; rm -rf ~/Downloads/firefox*'

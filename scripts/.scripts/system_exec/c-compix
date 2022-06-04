@@ -1,17 +1,14 @@
-#!/bin/sh
+#!/usr/bin/env sh
 case $1 in
 
     '--compix')
-        pkill picom ;
-        sleep .3s ;
-        cd ~/.config/picom/compix/out ; 
-        ./compix -c ../compix.conf &
+        pkill picom 
+        sleep .5s 
+        cd ${HOME}/.config/picom/compix/out  
+        ./compix -c ../compix.conf & 
     ;;
     
     '--picom')
-        pkill compix;
-        sleep .3s;
-        picom -b \
-            #--experimental-backends;
+        pkill compix && picom -b  
     ;;
 esac

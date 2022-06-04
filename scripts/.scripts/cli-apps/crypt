@@ -7,34 +7,29 @@ gpg_actions(){
     finger_print(){
         gpg --with-colons --fingerprint $current_key | grep "^fpr" | cut -d: -f10 
     }
-    
+
     for current_key in ${key_names[2,$key_count]};
     do
         case $1 in
-            "-e" | "--encrypt") 
-                gpg -easr
-
-            ;;
-
             "-d" | "--delete")
     
                 gpg --delete-secret-keys $(finger_print);    
                 gpg --delete-keys $(finger_print)
         
-            ;;
+                ;;
         
             "-a" | "--add")
                 gpg --quick-gen-key $current_key rsa4096 default;
                 gpg --quick-add-key $(finger_print) rsa4096 encr
-            ;;
-            
-            "-h" | "--help")
-                echo \
-                    "-a | --add [key name]\tAdd Key \
-                    -d | --delete [key name]\tdelete Public and Secret Keys"
-            ;;
+                ;;
         esac
     done
 }
+if [[ -z "$1" ]]; then
+    cat <<EOF   
+    -a | --add [key name]                    Add Key
+    -d | --delete [key name]                 Delete Public and Secret Keys
+EOF
+fi
 
 gpg_actions $@

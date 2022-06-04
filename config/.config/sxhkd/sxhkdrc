@@ -45,7 +45,7 @@ ctrl + shift + alt + 7
 #2
 ## toggle floating on/off
 ctrl + shift + 3
-    bspc node -t \~floating
+    bspc node -t {tiled,pseudo_tiled,floating}
 #pseudo-tiled
 ctrl + shift + alt + p
     bspc node -t \~pseudo_tiled
@@ -177,7 +177,7 @@ super + F12
     coins & \
     vboxmanage startvm "Whonix-Gateway-XFCE 1"; sleep 5s; \
     vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"; \
-    pass -c sys/v
+    pass -c sys/v & notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png "Go For It"
 
 ## tank-ui
 super + ctrl + alt + t

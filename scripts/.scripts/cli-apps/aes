@@ -9,41 +9,40 @@ decrypt(){
 
 case $1 in
     "-e" | "-encrypt")
-    
-        case $2 in
-            "-f" | "--file") 
-                encrypt -in $3 -out encrypted.dat
-            ;;
-            "-c" |  "--clipboard")
-                echo "$(xclip -out -selection primary)" | encrypt | xclip
-            ;;
-            "-s" | "--string")
-                echo $3 | encrypt | xclip
-            ;;
-        esac
-    ;;
-    
-    "-d" | "-decrypt")
 
-        case $2 in
-            "-f" | "--file")
-                decrypt -in $3
-            ;;
-            "-c" | "--clipboard")     
-                echo "$(xclip -out -selection primary)" | decrypt
-            ;;
-            "-s" | "--string")    
-                echo $3 | decrypt
-            ;;
-        esac
-    ;;
+        while getopts ef:s: option
+        do 
+           case "${option}"
+                in
+                f)encrypt -in ${OPTARG} -out $(tfn).dat;;
+                s)echo ${OPTARG} | encrypt | xclip;;
+            esac
+        done
+        ;;
+
+    "-d" | "-decrypt")
+        while getopts df:s:c option
+        do 
+           case "${option}"
+                in
+                f)decrypt -in ${OPTARG} -out encrypted_$(tfn);;
+                s)echo ${OPTARG} | decrypt;;
+                c)echo "$(xclip -out -selection primary)" | decrypt;;
+            esac
+        done
+        ;;
 
     "--generate-private-key")
-        openssl genrsa -out private_key.pem 1024
-    ;;
+        openssl genrsa -aes128 -out private_key.pem 1024 #8912
+        ;;
 
     "--extract-public-key")
         openssl rsa -in private_key.pem -out public_key.pem -outform PEM -pubout
-    ;;
+        ;;
     
 esac
+
+#encrypt 
+#openssl rsautl -encrypt -inkey bob_public.pem -pubin -in top_secret.txt -out top_secret.enc
+#decrypt
+#openssl rsautl -decrypt -inkey bob_private.pem -in top_secret.enc 
