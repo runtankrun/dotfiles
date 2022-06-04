@@ -114,6 +114,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 call plug#end()
 
 ""Plug Config
@@ -135,7 +136,7 @@ map dt :DimInactiveToggle<CR>
 "nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
 "nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
 nnoremap <leader>r :<C-U>RangerChooser<CR>
-colorscheme tokyonight
+colorscheme catppuccin_mocha
 "inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"

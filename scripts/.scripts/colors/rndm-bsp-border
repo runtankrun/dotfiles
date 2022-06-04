@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+. ${HOME}/.cache/wal/colors.sh
+normal_color_set=($color1 $color3 $color5)
+focused_color_set=($color2 $color4 $color6)
+
+i(){
+    shuf -i 0-2 -n1
+}
+
+cols(){
+    case $1 in
+        '-normal')
+            echo "${normal_color_set[$(i)]}"
+            ;;
+        '-focused')
+            echo "${focused_color_set[$(i)]}"
+            ;;
+    esac
+}
+
+bspc config normal_border_color "$(echo "$(cols -normal)")"
+bspc config focused_border_color "$(echo "$(cols -focused)")"

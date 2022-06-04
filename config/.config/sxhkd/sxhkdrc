@@ -246,11 +246,11 @@ super + w
 
 ## launch terminal
 super + z
-	message -k
+    kitty
 super + alt + z
-    message -a
+    alacritty
 super + ctrl + z
-    message
+    urxvtc
 super + ctrl + shift + z
     message -kt
 
@@ -302,7 +302,7 @@ super + shift + m
 
 ## launch mega
 super + m
-    megasync
+    kitty -e sh -c nohup megasync
 ##
 super + ctrl + alt + shift + 9
     pass -c sys/t; sleep .3s; xdotool type $(echo $(xclip -out -selection clipboard)); xdotool key Return

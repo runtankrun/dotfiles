@@ -1,0 +1,63 @@
+#!/usr/bin/env sh
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+conda activate bdfr
+# <<< conda initialize <<<
+
+dir="/mnt/PSSD_Storage/bdfr/fav"
+
+process=$1
+
+mainCMD(){
+    deploy
+    #Ghetto Multiprocessing                     
+                  
+    #List of All Subreddits to update
+    subreddits=$(ls ${dir})
+    #Subreddit Math to Split into Two Groups
+    total_subreddit_count=$(echo "$subreddits" | wc -l)
+    one_third_of_subreddit_count=$(bc <<<$total_subreddit_count/3)
+    #Split the List of All Subreddits Into Thirds
+    subreddit_array=($(xargs -n $one_third_of_subreddit_count <<<$subreddits | tr ' ' ','))
+    subs=$(echo ${subreddit_array[$process]})
+     
+    #Run BDFR
+    echo 
+    echo "-->>> $subs -->>>"
+    echo    
+    python3 -m bdfr download ${dir} \
+        -s "$subs" \
+        -t month \
+        -S top \
+        --file-scheme '{POSTID}'\
+        --search-existing \
+        --no-dupes
+    echo
+    echo "<<<-- $subs <<<--"
+    echo
+}
+launch_panes(){ 
+    tmux send-keys -t"$1" "sudo redhot-update $2" "Enter" 
+}
+deploy(){
+    launch_panes 1 1
+    launch_panes 2 2
+    launch_panes 3 3
+}
+
+if [[ "$1" = "-s" ]]; then
+    tmux new-session \; \split-window -v \; \split-window -h \; \select-pane -t 0 \; \split-window -h redhot-update
+else
+        mainCMD
+fi

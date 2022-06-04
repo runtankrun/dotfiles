@@ -1,5 +1,6 @@
 #!/bin/sh
-##variables
+s
+## Set Alpha & Saturation
 if [[ $1 = '-as' ]]; then
     echo 'alpha (0-100): '
     read alpha
@@ -17,23 +18,22 @@ while [[ $i -ge "0" ]] ;
 do
     for backend in $backends 
     do    
-    
+        ## Ranger Integration
         if [[ $1 = '-r' ]]; then
             file="$(xclip -out -selection clipboard)"
         else
             file=$(find ~/.scripts/colors/colorschemes/* | shuf -n1)
         fi
-    
+        ## Run Py-Wal on Image(s)
         wal -n -e -a $alpha --saturate $sat --backend $backend -i $file
         figlet -f ~/.fonts/misc/figlet/ANSI_Shadow.flf $backend
         echo $file | lolcat
-
+        ## Update Xresources
         sed -i '/^! X/,$d' ~/.Xresources 
         cat ~/.cache/wal/colors.Xresources >> ~/.Xresources
         xrdb ~/.Xresources
-
+        ## Press Any Key to Save Current ColorScheme 
         read -t 7 -rsn1 input
-        
         if [ "$input" = "" ]; then
             continue
         else

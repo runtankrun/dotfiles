@@ -1,0 +1,24 @@
+#!/bin/sh
+tag_count=$(grep -c ^V: ~/.config/ranger/tagged)
+dt=$(bspc query --desktops --names --desktop .\!occupied | head -n 1)
+bspc desktop -f ^2:^$dt;
+
+bspc node @^2:^$dt:/ -i 
+bspc node @^2:^$dt:/ -o 0.47229 -p east -i
+bspc node @^2:^$dt:/1 -o 0.499384 -p east -i
+
+bspc rule -a mpv:h-uhd-1 -o node=@^2:^$dt:/1/1
+bspc rule -a mpv:h-uhd-2 -o node=@^2:^$dt:/1/2
+bspc rule -a kitty:transparent -o node=@^2:^$dt:/2
+
+c-kitty-trans &
+
+mpv --x11-name="h-uhd-1" --shuffle --video-zoom=0.1 $(while IFS= read -r line
+do 
+    echo "$line" | grep ^V: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged) &
+
+mpv --x11-name="h-uhd-2" --shuffle --video-zoom=0.1 $(while IFS= read -r line
+do 
+    echo "$line" | grep ^V: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+done < ~/.config/ranger/tagged)
