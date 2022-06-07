@@ -10,24 +10,26 @@ decrypt(){
 case $1 in
     "-e" | "-encrypt")
 
-        while getopts ef:s: option
+        while getopts ef:s:t: option
         do 
            case "${option}"
                 in
-                f)encrypt -in ${OPTARG} -out $(tfn).dat;;
-                s)echo ${OPTARG} | encrypt | xclip;;
+                f)file=${OPTARG}; encrypt -in $file -out $(tfn).dat;;
+                s)string=${OPTARG}; echo $string | encrypt | xclip;;
+                a)pubkey=${OPTARG}; openssl rsautl -encrypt -inkey $pubkey -pubin -in $file -out top_secret.dat
             esac
         done
         ;;
 
     "-d" | "-decrypt")
-        while getopts df:s:c option
+        while getopts df:s:ca: option
         do 
            case "${option}"
                 in
-                f)decrypt -in ${OPTARG} -out encrypted_$(tfn);;
+                f)decrypt -in ${OPTARG} -out dencrypted_$(tfn);;
                 s)echo ${OPTARG} | decrypt;;
                 c)echo "$(xclip -out -selection primary)" | decrypt;;
+                a)privatekey=${OPTARG}; openssl rsautl -decrypt -inkey $privatekey -in $@
             esac
         done
         ;;

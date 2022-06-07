@@ -2,14 +2,39 @@
 launch_panes(){ 
     tmux send-keys -t"$1" "bzebee $2" "Enter" 
 }
-
-launch_panes 0 1
-launch_panes 1 2  
-launch_panes 2 3
-launch_panes 3 1
-launch_panes 4 2
-launch_panes 5 3
-launch_panes 6 1
-launch_panes 7 2
-launch_panes 8 3
-launch_panes 9 1
+deploy(){
+    launch_panes 0 1 
+    launch_panes 1 2   
+    launch_panes 2 3 
+    launch_panes 3 1 
+    launch_panes 4 2 
+    launch_panes 5 3 
+    launch_panes 6 1 
+    launch_panes 7 2 
+    launch_panes 8 3 
+    launch_panes 9 1
+}
+mainCMD(){
+    tmux new-session \; \
+    split-window -v \; \
+    split-window -h \; \
+    select-pane -t 0 \; \
+    split-window -h\; \
+    split-window -h\; \
+    select-pane -t 0 \; \
+    split-window -h\; \
+    select-pane -t 4 \; \
+    split-window -h \; \
+    select-pane -t 6 \; \
+    split-window -h \; \
+    split-window -v \
+    'bzebee-mux'
+}
+case $1 in
+    -s)
+        mainCMD
+        ;;
+    "")
+        deploy
+        ;;
+esac

@@ -1,4 +1,4 @@
-zerotwo
+figlet -f ~/.fonts/misc/figlet/Rectangles.flf 'TANK'
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -126,32 +126,26 @@ fm() {
     source ranger
 }
 
-c-bzebee-mux(){
-    tmux new-session \; \
-    split-window -v \; \
-    split-window -h \; \
-    select-pane -t 0 \; \
-    split-window -h\; \
-    split-window -h\; \
-    select-pane -t 0 \; \
-    split-window -h\; \
-    select-pane -t 4 \; \
-    split-window -h \; \
-    select-pane -t 6 \; \
-    split-window -h \; \
-    split-window -v \
-    'bzebee-mux'
-}
-
-# -->>>   -->>>
-
-# <<<-- Last Backup  <<<--
+# -->>> Last Backup -->>>
 rewind(){
     dir=$(ls -d /mnt/PSSD/timeshift/snapshots/* | tail -n1)
     ranger $dir/localhost/home/ellio/
 }
 # <<<-- Last Backup  <<<--
+saveMPV(){
+    SOCKET='/tmp/mpvsocket'
 
+    # pass the property as the first argument
+    mpv_communicate() {
+      printf '{ "command": ["get_property", "%s"] }\n' "$1" | socat - "${SOCKET}" | jq -r ".data"
+    }
+
+    video="$(mpv_communicate "path")"
+    name=$(echo $video | sd '.*/' '')
+    echo "$video"
+    cp "$video" ~/Videos/h
+    echo "v:/home/ellio/Videos/h/$name" >> ${HOME}/.config/ranger/tagged
+}
 # -->>> XRDM settings -->>>
 export XRDM_DIR=~/.Xresource.d
 export XRDM_FONT_DIR=$XRDM_DIR/fonts

@@ -5,18 +5,22 @@ CloseTerm(){
     xdotool windowclose $window 
 }
 
-PlayVids(){
-   nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subs) 
-}
-
 view(){
-    PS3="Enter Subreddit: "
+    subreddits=$(ls $dir | sed '/nohup.out/d')
+    sortType=(date score)
     window=$(xdotool getactivewindow)
 
-    select subreddit in $(ls $dir)                
-    do                                                                                              
-        ls -tr $dir/$subreddit/*.mp4 | tail -n 100 > /tmp/subs                                            
-        PlayVids & CloseTerm     
+    PS3="Enter Subreddit: "
+    
+    select sub in $subreddits
+    do
+        PS3="Enter Sort Type: "
+        select sort in "${sortType[@]}"
+        do
+            nohup mpv --playlist-start=0 $(csvsort -c $sort -r "${HOME}/"$sub"_posts.csv" | csvcut -c 'id') &
+            sleep .3s; 
+            CloseTerm
+        done
     done
 }
 
@@ -39,43 +43,13 @@ download(){
 rndm(){
     window=$(xdotool getactivewindow)
     
-    urxvtc -e sh -c "ranger $dir ${HOME}/Videos/h/"
     for f in $(ls $dir)
     do
-            ls -tr $dir/$f/*.mp4 | tail -n 50
+        ls $dir/$f/*.mp4
     done | shuf > /tmp/subz
     
     nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subz) &
     CloseTerm
-}
-
-update(){
-    #Ghetto Multiprocessing 
-    echo "Process Number: "
-    read p
-    #List of All Subreddits to update
-    subreddits=$(ls $dir)
-    #Subreddit Math to Split into Two Groups
-    total_subreddit_count=$(echo "$subreddits" | wc -l)
-    one_third_of_subreddit_count=$(bc <<<$total_subreddit_count/3)
-    #Split the List of All Subreddits Into Thirds
-    subreddit_array=($(xargs -n $one_third_of_subreddit_count <<<$subreddits | tr ' ' ','))
-    subs=$(echo ${subreddit_array[$p]})
-     
-    #Run BDFR
-    echo 
-    echo "-->>> $subs -->>>"
-    echo    
-    python3 -m bdfr download $dir \
-        -s "$subs" \
-        -t month \
-        -S top \
-        --file-scheme '{POSTID}'\
-        --search-existing \
-        --no-dupes
-    echo 
-    echo "<<<-- $subs <<<--"
-    echo
 }
 
 # >>> conda initialize >>>
@@ -91,9 +65,9 @@ else
     fi
 fi
 unset __conda_setup
+conda activate bdfr
 # <<< conda initialize <<<
 
-conda activate bdfr
 case $1 in
     ""| " ")
         view
@@ -105,9 +79,5 @@ case $1 in
 
     "-r" | "--random")
         rndm
-    ;;
-
-    "-u" | "--update")
-        update 
     ;;
 esac 

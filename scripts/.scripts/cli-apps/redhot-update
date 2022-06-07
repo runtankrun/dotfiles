@@ -16,13 +16,10 @@ conda activate bdfr
 # <<< conda initialize <<<
 
 dir="/mnt/PSSD_Storage/bdfr/fav"
-
 process=$1
 
 mainCMD(){
-    deploy
-    #Ghetto Multiprocessing                     
-                  
+    #Ghetto Multiprocessing 
     #List of All Subreddits to update
     subreddits=$(ls ${dir})
     #Subreddit Math to Split into Two Groups
@@ -36,7 +33,7 @@ mainCMD(){
     echo 
     echo "-->>> $subs -->>>"
     echo    
-    python3 -m bdfr download ${dir} \
+    sudo python3 -m bdfr clone $dir \
         -s "$subs" \
         -t month \
         -S top \
@@ -47,17 +44,23 @@ mainCMD(){
     echo "<<<-- $subs <<<--"
     echo
 }
-launch_panes(){ 
-    tmux send-keys -t"$1" "sudo redhot-update $2" "Enter" 
-}
-deploy(){
-    launch_panes 1 1
-    launch_panes 2 2
-    launch_panes 3 3
+
+updateJSON(){
+    echo "title, score, date, id" #> ${HOME}/"$d"_posts.csv
+    dirs=($(ls /mnt/PSSD_Storage/bdfr/fav))
+    for d in $dirs; do 
+        for f in /mnt/PSSD_Storage/bdfr/fav/$d/*.json;
+        do
+                cat $f | jq ".title, .score, .created_utc" | sd '\n' ','
+                echo "/mnt/PSSD_Storage/bdfr/fav/$d/$(cat $f | jq ".id" | sd '"' '').mp4"
+        done #>> ${HOME}/"$d"_posts.csv
+    done 
 }
 
 if [[ "$1" = "-s" ]]; then
     tmux new-session \; \split-window -v \; \split-window -h \; \select-pane -t 0 \; \split-window -h redhot-update
+elif [[ "$1" = "-j" ]]; then
+    updateJSON
 else
-        mainCMD
+    mainCMD 
 fi

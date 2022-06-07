@@ -45,8 +45,7 @@ ctrl + shift + alt + 7
 #2
 ## toggle floating on/off
 ctrl + shift + 3
-    bspc node -t {tiled,pseudo_tiled,floating}
-#pseudo-tiled
+    bspc node -t \~floating
 ctrl + shift + alt + p
     bspc node -t \~pseudo_tiled
 #3
@@ -302,7 +301,7 @@ super + shift + m
 
 ## launch mega
 super + m
-    kitty -e sh -c nohup megasync
+    megasync
 ##
 super + ctrl + alt + shift + 9
     pass -c sys/t; sleep .3s; xdotool type $(echo $(xclip -out -selection clipboard)); xdotool key Return

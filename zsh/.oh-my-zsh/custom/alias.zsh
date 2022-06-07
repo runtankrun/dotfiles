@@ -163,3 +163,4 @@ alias lsc='ls -latrh --time=birth'
 
 alias c-tmux='tmux new-session \; \split-window -v \; \split-window -h \; \select-pane -t 0 \; \split-window -h'
 alias not-flix='conda activate flix; python ~/dev/flix-cli/flix-cli.py'
+alias anime-titties='zerotwo; ani-cli'
