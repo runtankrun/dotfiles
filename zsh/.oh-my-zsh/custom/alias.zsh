@@ -39,10 +39,10 @@ alias wget-i='wget -nd --page-requisites --span-host -A'
 alias gi='git init'
 alias gs='git status'
 alias ga='git add -A'
-alias gc='git commit -m'
+alias gcm='git commit -m'
 alias gpll='git pull'
 alias dotg='cd ~/dotfiles/; git status'
-alias gcl='git clone'
+alias gc='git clone'
 
 ##stow
 alias tlinks='stow --adopt -nv'
@@ -98,14 +98,14 @@ alias yo2='figlet -f ~/.fonts/misc/figlet/isometric.flf'
 alias fig='font="$(ls -d ~/.fonts/misc/figlet/* | shuf | tail -n1)"; figlet -f "$font"'
 
 ##Shred
-alias shreddit='shred -n 5 -v -z'
+alias shreddit='shred --iterations=10 --remove=wipe --zero --verbose'
 
 ##XRDM
 alias cs='xrdm color'
 alias tf='xrdm font'
 
 ##update firefox
-alias uff='pkill firefox-bin; sudo mv /usr/lib/firefox /usr/lib/firefox_old; sudo cp -r ~/Downloads/firefox /usr/lib/'
+alias uff='pkill firefox-bin; sudo rm -rf /usr/lib/firefox_old; sudo mv /usr/lib/firefox /usr/lib/firefox_old; sudo cp -r ~/Downloads/firefox /usr/lib/'
 alias dff='sudo rm -rf /usr/lib/firefox_old; rm -rf ~/Downloads/firefox*'
 
 ##YTFZF
@@ -124,7 +124,7 @@ alias disk-util='ncdu'
 alias gotop='gotop --nvidia --averagecpu --statusbar --mbps --layout kitchensink'
 
 ##pwgen
-alias pwgen='pwgen -scny 12'
+alias pwg='pwgen -scny $@'
 
 ##who
 alias whor='curlie post https://whoer.net/ | rg -A 10 -e 'ip_plain' -e 'anonymizer :' -e 'tor :' -e 'webrtc:' -e 'dsbl :' -e 'vpn_provider' -e 'proxy :' -e 'proxy_ports :' -e 'track :' -e 'langs :' -e 'ua_mismatch :' -e 'datacenter_ip: ' | head -n300 | tail -n46'
@@ -164,3 +164,6 @@ alias lsc='ls -latrh --time=birth'
 alias c-tmux='tmux new-session \; \split-window -v \; \split-window -h \; \select-pane -t 0 \; \split-window -h'
 alias not-flix='conda activate flix; python ~/dev/flix-cli/flix-cli.py'
 alias anime-titties='zerotwo; ani-cli'
+alias gen-readme='npx readme-md-generator'
+alias get-clipboard='xclip -out -selection clipboard'
+alias flip-vid='ffmpeg -i $1 -vf transpose=2 -c:a copy output.mp4'

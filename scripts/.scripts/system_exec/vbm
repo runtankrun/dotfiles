@@ -1,7 +1,20 @@
 #!/bin/sh
 tag_count=$(grep -c ^V: ~/.config/ranger/tagged)
+case $1 in
+    '')
+        zoom="0"
+        pos="0"
+        ;;
+    "-w")
+        zoom="2.1"
+        pos="-0.22"
+        ;;
+esac
 
-mpv --x11-name="bm" $(while IFS= read -r line
-do 
-    echo "$line" | grep ^V: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged)
+mpv --x11-name="bm" \
+    --video-zoom="$zoom" \
+    --video-pan-y="$pos" \
+    $(while IFS= read -r line
+    do
+        echo "$line" | grep ^V: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+    done < ~/.config/ranger/tagged)

@@ -132,20 +132,21 @@ rewind(){
     ranger $dir/localhost/home/ellio/
 }
 # <<<-- Last Backup  <<<--
-saveMPV(){
-    SOCKET='/tmp/mpvsocket'
 
-    # pass the property as the first argument
-    mpv_communicate() {
-      printf '{ "command": ["get_property", "%s"] }\n' "$1" | socat - "${SOCKET}" | jq -r ".data"
-    }
+# -->>> FFMPEG Concat -->>>
+remux-concat(){                                    
+        files=($@)
+        echo "" > ~/Documents/vidlist.txt
 
-    video="$(mpv_communicate "path")"
-    name=$(echo $video | sd '.*/' '')
-    echo "$video"
-    cp "$video" ~/Videos/h
-    echo "v:/home/ellio/Videos/h/$name" >> ${HOME}/.config/ranger/tagged
+        for f in $files
+        do
+                echo "file '$f'" >> ~/Documents/vidlist.txt
+        done
+
+        ffmpeg -f concat -safe 0 -i ~/Documents/vidlist.txt -c copy $(tfn).mp4
 }
+# <<<-- FFMPEG Concat <<<--
+
 # -->>> XRDM settings -->>>
 export XRDM_DIR=~/.Xresource.d
 export XRDM_FONT_DIR=$XRDM_DIR/fonts

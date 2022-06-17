@@ -2,26 +2,17 @@
 if [[ $1 = "-p" ]]; then
 tag_count=$(grep -c ^x: ~/.config/ranger/tagged)
 
-mpv $(while IFS= read -r line
-do 
-    echo "$line" | grep ^x: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged)
+mpv$(cat ~/.config/ranger/tagged | grep -o -e "x:.*$" | sd 'x:' '')   
 
 elif [[ $1 = "-vid" ]]; then
 tag_count=$(grep -c ^v: ~/.config/ranger/tagged)
 
-mpv $(while IFS= read -r line
-do 
-    echo "$line" | grep ^v: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged)
+mpv $(cat ~/.config/ranger/tagged | grep -o -e "v:.*$" | sd 'v:' '')
 
 elif [[ $1 = "-pic" ]]; then
 tag_count=$(grep -c ^p: ~/.config/ranger/tagged)
 
-feh -Z -. $(while IFS= read -r line
-do 
-    echo "$line" | grep ^p: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged)
+feh -Z -. $(cat ~/.config/ranger/tagged | grep -o -e "p:.*$" | sd 'p:' '')
 
 elif [[ $1 = "-ss" ]]; then
 tag_count=$(grep -c ^s: ~/.config/ranger/tagged)

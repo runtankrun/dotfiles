@@ -3,7 +3,7 @@ source ${HOME}/.scripts/colors/getcolors
 font="${HOME}/.fonts/misc/figlet/ANSI_Shadow.flf"
 figlet -f $font 'Back-Up' | gterm "$RED" "$GREEN" ;
 
-tsd=$(sudo timeshift --list | grep -m 2 -o "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]_[0-9][0-9]-[0-9][0-9]-[0-9][0-9]" | tail -1)
+tsd=$(sudo timeshift --list | grep -oe ">.*  " | sed 's/>  \|  .*//g' | head -n 2 | tail -n 1)
 
 if [[ $1 = "-d" ]]; then
 sudo timeshift --list; \

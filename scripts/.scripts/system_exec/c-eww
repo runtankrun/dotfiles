@@ -1,7 +1,7 @@
 #!/bin/sh
 gaps() {
 side="0"
-gap="42"
+gap="40"
 bspc config -m HDMI-0 left_padding "$side" &
 bspc config -m HDMI-0 right_padding "$side" &
 bspc config -m HDMI-0 window_gap "$gap"

@@ -20,18 +20,6 @@ if [[ $1 = "--trim" ]]; then
         -c copy \
         output_$tfn"
 
-elif [[ $1 = "--format" ]]; then
-    echo input file:
-    read input
-    echo output file:
-    read output
-    ffmpeg -i $input -codec copy $output
-
-elif [[ $1 = "--concat" ]]; then
-    echo output file:
-    read output  
-    ffmpeg -f concat -safe 0 -i ~/vidlist.txt -c copy $output
-
 elif [[ $1 = "--side-by-side" ]]; then    
     echo Video1:
     read vid1

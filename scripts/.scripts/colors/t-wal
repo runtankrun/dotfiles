@@ -1,5 +1,5 @@
 #!/bin/sh
-dir="/home/ellio/.config/wal/colorschemes/user/"
+dir="/home/ellio/.config/wal/colorschemes/user"
 theme="tokyo-night"
 
 case $1 in
@@ -9,7 +9,7 @@ case $1 in
     ;;
 
     "-nt")
-        sd '"alpha".*,' '"alpha": "99",' $dir/$theme;
+        sd '"alpha".*,' '"alpha": "99",' $dir/$theme.json;
         wal -n -q -e --theme $dir/$theme; r-wal
     ;;
 esac

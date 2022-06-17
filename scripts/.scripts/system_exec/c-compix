@@ -9,6 +9,7 @@ case $1 in
     ;;
     
     '--picom')
-        pkill compix && picom -b  
+        pkill compix && picom &
+        #--experimental-backend &
     ;;
 esac

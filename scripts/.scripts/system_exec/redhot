@@ -1,25 +1,27 @@
 #!/usr/bin/env sh
 dir="/mnt/PSSD_Storage/bdfr/fav"
+cd /mnt/PSSD_Storage/bdfr/
 
 CloseTerm(){
     xdotool windowclose $window 
 }
 
 view(){
-    subreddits=$(ls $dir | sed '/nohup.out/d')
+    subreddits=($(ls $dir | sed '/nohup.out/d'))
     sortType=(date score)
     window=$(xdotool getactivewindow)
 
     PS3="Enter Subreddit: "
     
-    select sub in $subreddits
+    select sub in ${subreddits[@]}
     do
         PS3="Enter Sort Type: "
         select sort in "${sortType[@]}"
         do
-            nohup mpv --playlist-start=0 $(csvsort -c $sort -r "${HOME}/"$sub"_posts.csv" | csvcut -c 'id') &
-            sleep .3s; 
+            nohup mpv --playlist-start=0 $(csvsort -c $sort -r "$sub"_posts.csv | csvcut -c 'id') &
+            sleep 1
             CloseTerm
+            exit 1
         done
     done
 }
@@ -32,7 +34,8 @@ download(){
     echo "Time: "
     read time
 
-    python3 -m bdfr download $dir -s "$subreddit" \
+    sudo python3 -m bdfr clone $dir \
+    -s "$subreddit" \
     -t $time \
     -S $srt \
     --file-scheme '{POSTID}' \
@@ -43,15 +46,24 @@ download(){
 rndm(){
     window=$(xdotool getactivewindow)
     
-    for f in $(ls $dir)
+    for f in $(ls *.csv)
     do
-        ls $dir/$f/*.mp4
-    done | shuf > /tmp/subz
+        csvsort -c score -r $f | csvcut -c 'id' | head -n200
+    done | shuf 1>/tmp/subz 2>/tmp/subz_errors
     
     nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subz) &
     CloseTerm
 }
 
+search(){          
+        sudo python3 -m bdfr clone /mnt/PSSD_Storage/bdfr/search -v \
+        --subreddit "all" \
+        --sort "top" \
+        --time "all" \
+        --user "DontWorryAboutIt88"\
+        --authenticate \
+        --search "'$1'"
+}
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -73,11 +85,16 @@ case $1 in
         view
     ;;
 
-    "-s" | "--search")
+    "-d" | "--download")
         download
     ;;
 
     "-r" | "--random")
         rndm
     ;;
+    
+    "-s" | "--search")
+        search
+    ;;
+    
 esac 

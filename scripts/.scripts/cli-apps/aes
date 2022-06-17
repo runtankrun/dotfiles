@@ -10,12 +10,13 @@ decrypt(){
 case $1 in
     "-e" | "-encrypt")
 
-        while getopts ef:s:t: option
+        while getopts ef:s:ca: option
         do 
            case "${option}"
                 in
                 f)file=${OPTARG}; encrypt -in $file -out $(tfn).dat;;
                 s)string=${OPTARG}; echo $string | encrypt | xclip;;
+                c)clip=${OPTARG}; xclip -out -selection primary | encrypt | xclip;;
                 a)pubkey=${OPTARG}; openssl rsautl -encrypt -inkey $pubkey -pubin -in $file -out top_secret.dat
             esac
         done
@@ -35,7 +36,7 @@ case $1 in
         ;;
 
     "--generate-private-key")
-        openssl genrsa -aes128 -out private_key.pem 1024 #8912
+        openssl genrsa -aes256 -out private_key.pem 8912 #1024 #8912
         ;;
 
     "--extract-public-key")

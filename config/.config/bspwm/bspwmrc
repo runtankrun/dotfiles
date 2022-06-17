@@ -40,12 +40,10 @@ sleep .5s; feh --bg-fill ~/.config/wall.png --bg-fill ~/.config/wall-case.png &
 bspc config pointer_motion_interval 10
 bspc config focus_follows_pointer true
 
-r-wal -b
-
 sleep .5s; bspc monitor HDMI-1-2 -d 0
 sleep .5s; bspc monitor HDMI-0 -d 1 2 3 4 5
 
-bspc config border_width         2
+bspc config border_width         3.5
 bspc config window_gap           0
 
 bspc config split_ratio          0.333333
@@ -66,8 +64,9 @@ bspc rule -a kitty:vim state=floating
 bspc rule -a URxvt:dl-h state=floating
 bspc rule -a eDEX-UI:edex-ui -o state=fullscreen
 
-force-composition-pipeline &
-pro &
+#force-composition-pipeline &
+r-wal -b
 input-remapper-control --command autoload &
+pro &
 layout-case -gif
 
