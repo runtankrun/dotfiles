@@ -7,23 +7,34 @@ CloseTerm(){
 }
 
 RedhotQuery(){        
-    sort=$1
-    n=$2
+    DIR=/mnt/PSSD_Storage/bdfr/fav
+    SUB="$1"
+    SORT_TYPE="$2"
     
-    fd .json -X cat {} | jq -s \
-    "[ .[] | \
-    {title: .title, \
-    score: .score, \
-    date: .created_utc, \
-    permalink: .permalink, \
-    name: .name}] \
-    | sort_by(.$sort)" \
-    | sd '/comments/.*\n|"/r/|"permalink": ' '' \
-    | sd '    "name": "t3_' '/' \
-    | rg -e "    [A-z].*/.*" \
-    | sd '"' '.mp4' \
-    | sed '1!G;h;$!d' \
-    | head -n"$n"
+    cd $DIR
+
+    GetJsonFiles(){                                
+        fd . -p --extension mp4 --extension json --type file $SUB -x echo {.}.json | sort | uniq --repeated
+    }
+    
+    SortJsonFiles(){
+        jq -s \
+        "[ .[] | \
+        {title: .title, \
+        score: .score, \
+        date: .created_utc, \
+        permalink: .permalink, \
+        name: .name}] | sort_by(.$SORT_TYPE)"
+    }
+
+    ReadDetails=$(cat $(GetJsonFiles)|SortJsonFiles)
+
+    FormatValues(){
+        echo "$ReadDetails"|sd '.*/r/|/comments/.*|"name": "t3_' ''
+    }
+
+    PrintValues=$(FormatValues | sd '\n    '  '/' | sd '"' '' | rg -e "^$SUB.*$" | sd '\n' '.mp4\n' | sed '1!G;h;$!d')
+    nohup mpv $PrintValues 
 }
 
 view(){
@@ -106,24 +117,8 @@ case $1 in
         query="$2"
         search
     ;;
-esac
 
-#sub='Boutinelababes'
-#GetJsonFiles(){fd .json /mnt/PSSD_Storage/bdfr/fav/$sub -X cat {}}
-#SortJsonFiles(){
-#        jq -s \
-#        "[ .[] | \
-#         {title: .title, \
-#        score: .score, \
-#        date: .created_utc, \
-#        permalink: .permalink, \
-#        name: .name}] | sort_by(.score)"
-#}
-#
-#ReadDetails=$(GetJsonFiles|SortJsonFiles)
-#
-#PrintValues(){
-#        echo "$ReadDetails"|sd '.*/r/|/comments/.*|"name": "t3_' ''
-#}
-#PrintValues | sd '\n    '  '/'
-#
+    "-S")
+        RedhotQuery "$2" "$3"
+    ;;
+esac
