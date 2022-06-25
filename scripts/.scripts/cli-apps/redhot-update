@@ -45,26 +45,10 @@ mainCMD(){
     echo
 }
 
-updateJSON(){
-    dirs=($(ls /mnt/PSSD_Storage/bdfr/fav | sed '/nohup.out/d'))
-    for d in "${dirs[@]}"; 
-    do  
-        echo "title,score,date,id" > "${HOME}"/"$d"_posts.csv
-        for f in /mnt/PSSD_Storage/bdfr/fav/$d/*.json;
-        do 
-                cat $f | jq ".title, .score, .created_utc" | sd '\n' ','
-                echo "/mnt/PSSD_Storage/bdfr/fav/$d/$(cat $f | jq ".id" | sd '"' '').mp4"
-        done | tee -a "${HOME}"/"$d"_posts.csv
-    done
-    sudo mv "${HOME}"/*_posts.csv /mnt/PSSD_Storage/bdfr
-}
-
 if [[ "$1" = "--all" ]]; then
     kitty -e sh -c "redhot-update 0" &
     kitty -e sh -c "redhot-update 1" &
     kitty -e sh -c "redhot-update 2"
-elif [[ "$1" = "-j" ]]; then
-    updateJSON
 else
     mainCMD 
 fi

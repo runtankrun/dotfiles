@@ -64,7 +64,7 @@ bspc rule -a kitty:vim state=floating
 bspc rule -a URxvt:dl-h state=floating
 bspc rule -a eDEX-UI:edex-ui -o state=fullscreen
 
-#force-composition-pipeline &
+force-composition-pipeline &
 r-wal -b
 input-remapper-control --command autoload &
 pro &

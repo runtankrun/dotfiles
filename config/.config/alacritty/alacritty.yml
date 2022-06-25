@@ -442,37 +442,36 @@ font:
 #  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
 #  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
 #  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
-
 window:
+  opacity: 1.0
   padding:
     x: 15
-    y: 15     
-    # Colors
-    colors:
-      # Default colors
-      primary:
-        background: '#1a1b26'
-        foreground: '#a9b1d6'
+    y: 15
+# Colors
+colors:
+# Default colors
+  primary:
+    background: '#1a1b26'
+    foreground: '#a9b1d6'
     
-      # Normal colors
-      normal:
-        black:   '#282c34'
-        red:     '#f7768e'
-        green:   '#73daca'
-        yellow:  '#e0af68'
-        blue:    '#7aa2f7'
-        magenta: '#bb9af7'
-        cyan:    '#7dcfff'
-        white:   '#c0caf5'
+  # Normal colors
+  normal:
+    black:   '#282c34'
+    red:     '#f7768e'
+    green:   '#73daca'
+    yellow:  '#e0af68'
+    blue:    '#7aa2f7'
+    magenta: '#bb9af7'
+    cyan:    '#7dcfff'
+    white:   '#c0caf5'
     
-      # Bright colors
-      bright:
-        black:   '#414868'
-        red:     '#f7768e'
-        green:   '#73daca'
-        yellow:  '#e0af68'
-        blue:    '#7aa2f7'
-        magenta: '#bb9af7'
-        cyan:    '#7dcfff'
-        white:   '#c0caf5'
- 
+  # Bright colors
+  bright:
+    black:   '#414868'
+    red:     '#f7768e'
+    green:   '#73daca'
+    yellow:  '#e0af68'
+    blue:    '#7aa2f7'
+    magenta: '#bb9af7'
+    cyan:    '#7dcfff'
+    white:   '#c0caf5'

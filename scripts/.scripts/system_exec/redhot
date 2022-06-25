@@ -6,6 +6,26 @@ CloseTerm(){
     xdotool windowclose $window 
 }
 
+RedhotQuery(){        
+    sort=$1
+    n=$2
+    
+    fd .json -X cat {} | jq -s \
+    "[ .[] | \
+    {title: .title, \
+    score: .score, \
+    date: .created_utc, \
+    permalink: .permalink, \
+    name: .name}] \
+    | sort_by(.$sort)" \
+    | sd '/comments/.*\n|"/r/|"permalink": ' '' \
+    | sd '    "name": "t3_' '/' \
+    | rg -e "    [A-z].*/.*" \
+    | sd '"' '.mp4' \
+    | sed '1!G;h;$!d' \
+    | head -n"$n"
+}
+
 view(){
     subreddits=($(ls $dir | sed '/nohup.out/d'))
     sortType=(date score)
@@ -43,27 +63,19 @@ download(){
     --no-dupes
 }
 
-rndm(){
-    window=$(xdotool getactivewindow)
-    
-    for f in $(ls *.csv)
-    do
-        csvsort -c score -r $f | csvcut -c 'id' | head -n200
-    done | shuf 1>/tmp/subz 2>/tmp/subz_errors
-    
-    nohup mpv --playlist-start=0 $(while IFS= read -r line; do echo $line; done < /tmp/subz) &
-    CloseTerm
-}
+search(){
+        folder="$(echo "$query" | sed 's/ //g')"
 
-search(){          
-        sudo python3 -m bdfr clone /mnt/PSSD_Storage/bdfr/search -v \
+        sudo python3 -m bdfr clone /mnt/PSSD_Storage/bdfr/search/$folder -v \
         --subreddit "all" \
         --sort "top" \
         --time "all" \
         --user "DontWorryAboutIt88"\
         --authenticate \
-        --search "'$1'"
+        --file-scheme '{POSTID}' \
+        --search "'$query'" 
 }
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -77,6 +89,7 @@ else
     fi
 fi
 unset __conda_setup
+
 conda activate bdfr
 # <<< conda initialize <<<
 
@@ -88,13 +101,29 @@ case $1 in
     "-d" | "--download")
         download
     ;;
-
-    "-r" | "--random")
-        rndm
-    ;;
     
     "-s" | "--search")
+        query="$2"
         search
     ;;
-    
-esac 
+esac
+
+#sub='Boutinelababes'
+#GetJsonFiles(){fd .json /mnt/PSSD_Storage/bdfr/fav/$sub -X cat {}}
+#SortJsonFiles(){
+#        jq -s \
+#        "[ .[] | \
+#         {title: .title, \
+#        score: .score, \
+#        date: .created_utc, \
+#        permalink: .permalink, \
+#        name: .name}] | sort_by(.score)"
+#}
+#
+#ReadDetails=$(GetJsonFiles|SortJsonFiles)
+#
+#PrintValues(){
+#        echo "$ReadDetails"|sd '.*/r/|/comments/.*|"name": "t3_' ''
+#}
+#PrintValues | sd '\n    '  '/'
+#

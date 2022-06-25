@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+email=$(tmpmail | grep -oe "Inbox.*\.com" | cut -d ' ' -f3)
+
+GetMail(){
+    LatestMail(){
+        tmpmail | grep -oe "^[0-9].*[0-9]" | cut -d ' ' -f1 | head -n1
+    }
+
+    while [[ $(LatestMail) -lt "1" ]];
+    do
+        echo "$(date "+%H:%M:%S %p"): No Recent mail for $email"
+        LatestMail
+        sleep 5s
+    done
+
+    tmpmail -b firefox -r
+}
+
+echo "$email" | xclip -selection primary
+pass generate -c temp/$email
+GetMail

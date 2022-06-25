@@ -174,8 +174,9 @@ super + shift + alt + h
 super + F12
     bspc rule -a kitty:xmr -o desktop='^5'; \
     coins & \
-    vboxmanage startvm "Whonix-Gateway-XFCE 1"; sleep 5s; \
-    vboxmanage startvm "Kali-Linux-2021.3-vbox-amd64"; \
+    vboxmanage startvm "Whonix-Gateway-XFCE 1" \
+    sleep 3s; \
+    vboxmanage startvm "Kali-Linux-2022.2-virtualbox-amd64"; \
     pass -c sys/v & notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png "Go For It"
 
 ## tank-ui
@@ -320,14 +321,7 @@ Print
 ## record screen
 super + Print
     urxvtc -e sh -c \
-    "ffmpeg \
-    -video_size 3440x1440 \
-    -framerate 30 \
-    -f x11grab \
-    -i :0.0+1280,0 \
-    -c:v libx264rgb \
-    -crf 0 \
-    -preset ultrafast ~/Videos/$(date +%F_%T | sd ':|-' '_').mp4"
+    screen-rec-v2
 
 #giph --format mp4 -s -d 3 -l -c 1,1,1,0.3 -b 5 -p -5 ~/Videos/screen.mp4
 
