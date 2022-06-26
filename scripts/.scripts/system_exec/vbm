@@ -14,7 +14,4 @@ esac
 mpv --x11-name="bm" \
     --video-zoom="$zoom" \
     --video-pan-y="$pos" \
-    $(while IFS= read -r line
-    do
-        echo "$line" | grep ^V: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
-    done < ~/.config/ranger/tagged)
+    mpv $(cat  ~/.config/ranger/tagged | grep -oe "^V.*$" | sd 'V:' '')
