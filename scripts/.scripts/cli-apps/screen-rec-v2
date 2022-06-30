@@ -1,0 +1,63 @@
+#!/bin/sh
+
+#eval $(slop -f "size=%wx%h pos=0+%x scale=%x")
+file="output_$(date +%Y%m%d_%H%M%S).mp4"    
+
+#slop=$(slop -f "%x %y %w %h %g %i") || exit 1
+#read -r X Y W H G ID < <(echo $slop)
+
+record_screen(){    
+
+    ffmpeg -video_size "2560"x"1440" \
+    -framerate 30 \
+    -f x11grab \
+    -show_region 1 -follow_mouse 100 \
+    -i :0.0+1280,0 \
+    -c:v libx264 \
+    -profile:v high \
+    -bf 2 \
+    -g 30 \
+    -crf 18 \
+    -pix_fmt yuv420p \
+    -preset ultrafast \
+    "$file.mkv"
+}
+
+convert_to_gif(){
+    ## TimeStamp
+    tfn=$(date +%Y%m%d_%H%M%S)
+    ## Output File Name
+    output="output_$tfn.gif"
+    
+    ## Options
+    
+    echo "Start: "
+    read start
+    echo "Duration: "
+    read duration
+    echo "fps: "
+    read fps
+    
+    ## Video to GIF
+    ffmpeg \
+        -ss $start \
+        -t $duration \
+        -i $file \
+        -filter_complex \
+        "[0:v] \
+        fps=$fps,\
+        scale=-1:$Y,\
+        split [a][b];[a] palettegen [p];[b][p] paletteuse" \
+        $output
+    
+    ## Play
+    mpv $output
+}
+case $1 in
+    '')
+        record_screen
+        ;;
+    '--gif')
+        convert_to_gif
+        ;;
+esac

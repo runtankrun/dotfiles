@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+option="$1"
+search="$2"
+ts=$(tfn)
+
+call_EmailApi(){
+    key=$(pass dev/emailcrawler)
+    http GET "https://emailcrawlr.com/api/v2/$option?$option=$search" "x-api-key: $key" 
+}
+
+view_EmailApiResponse(){
+    cat /tmp/emailscraper_$ts.json
+}
+
+filter_EmailApiResponse(){
+    jq '[.emails[0] | { email: .email, LinkedIn: .linkedin, name: .name, company: .company_name, job_title: .job_title, job_title_role: .job_title_role, location: .location }]'
+}
+
+call_EmailApi $1 $2 > /tmp/emailcrawler_$ts.json
+view_EmailApiResponse | jq .

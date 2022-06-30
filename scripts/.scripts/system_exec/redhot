@@ -77,7 +77,7 @@ download(){
 search(){
         folder="$(echo "$query" | sed 's/ //g')"
 
-        sudo python3 -m bdfr clone /mnt/PSSD_Storage/bdfr/search/$folder -v \
+        sudo python3 -m bdfr clone /mnt/PSSD_Storage/bdfr/search/ \
         --subreddit "all" \
         --sort "top" \
         --time "all" \

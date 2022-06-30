@@ -24,15 +24,12 @@ bspc rule -a kitty:Fullhtop -o node=@^2:^$dt:/2/2
 
 ##LAUNCH APPS
 kitty --name "Fullgotop" --title "Fullgotop" \
--o include="/home/ellio/.config/kitty/kitty-fulltop.conf" \
 -e sh -c \
-"gotop --nvidia --statusbar --mbps --layout kitchensink" & \
+"gotop" &
 sleep .5s; \
 
 kitty --name "Fullnvtop" --title "Fullnvtop" \
--o include="/home/ellio/.config/kitty/kitty-fulltop.conf" \
 -e sh -c "nvtop" &
 
 kitty --name "Fullhtop" --title "Fullhtop" \
--o include="/home/ellio/.config/kitty/kitty-fulltop.conf" \
 -e sh -c "htop"

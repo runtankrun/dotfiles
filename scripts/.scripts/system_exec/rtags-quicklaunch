@@ -2,7 +2,7 @@
 if [[ $1 = "-p" ]]; then
 tag_count=$(grep -c ^x: ~/.config/ranger/tagged)
 
-mpv$(cat ~/.config/ranger/tagged | grep -o -e "x:.*$" | sd 'x:' '')   
+mpv $(cat ~/.config/ranger/tagged | grep -o -e "x:.*$" | sd 'x:' '')   
 
 elif [[ $1 = "-vid" ]]; then
 tag_count=$(grep -c ^v: ~/.config/ranger/tagged)

@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 
-email=$(tmpmail | grep -oe "Inbox.*\.com" | cut -d ' ' -f3)
+tmpmail -g
+site=$1
+email=$(tmpmail | grep -oE "Inbox.*\.(com|net)" | cut -d ' ' -f3)
+pass=$(pass generate temp/$site/$email 12)
 
 GetMail(){
     LatestMail(){
@@ -8,15 +11,18 @@ GetMail(){
     }
 
     while [[ $(LatestMail) -lt "1" ]];
-    do
+    do  
+        echo
         echo "$(date "+%H:%M:%S %p"): No Recent mail for $email"
+        echo
+        echo "Username: $email"
+        echo "Password: $(pass temp/$site/$email)"
+        echo     
         LatestMail
-        sleep 5s
+        sleep 10s
     done
 
     tmpmail -b firefox -r
 }
 
-echo "$email" | xclip -selection primary
-pass generate -c temp/$email
 GetMail

@@ -462,7 +462,7 @@ super + Tab
 ##-----MISC-----##
 ##bsp-layout
 super + alt + l
-    bsp-layout once {rtall,wide}
+    bsp-layout once {rtall,wide,grid}
 
 ## floating desk
 super + ctrl + alt + p

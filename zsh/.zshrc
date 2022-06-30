@@ -9,7 +9,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 
 # -->>> THEME -->>>
-ZSH_THEME="powerlevel10k" 
+ZSH_THEME="random"
 # <<<-- THEME <<<--
 
 # -->>> PLUGINS -->>>
@@ -146,6 +146,10 @@ remux-concat(){
         ffmpeg -f concat -safe 0 -i ~/Documents/vidlist.txt -c copy $(tfn).mp4
 }
 # <<<-- FFMPEG Concat <<<--
+
+gb(){
+   grep -o -P "(?<=$1).*(?=$2)"
+}
 
 # -->>> XRDM settings -->>>
 export XRDM_DIR=~/.Xresource.d
