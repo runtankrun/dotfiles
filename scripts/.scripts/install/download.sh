@@ -42,4 +42,4 @@ chmod +x *.sh
 
 ##Add Config
 rm alis.conf
-curl -O https://raw.githubusercontent.com/runtankrun/dotfiles/master/config/.config/alis.conf
+curl -O https://raw.githubusercontent.com/runtankrun/dotfiles/master/scripts/.scripts/install/alis.conf
