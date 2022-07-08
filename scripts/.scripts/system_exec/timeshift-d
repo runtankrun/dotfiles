@@ -7,21 +7,18 @@ tsd=$(sudo timeshift --list | grep -oe ">.*  " | sed 's/>  \|  .*//g' | head -n 
 
 if [[ $1 = "-d" ]]; then
 sudo timeshift --list; \
-sudo timeshift --delete --snapshot $tsd; \
-zsh
+sudo timeshift --delete --snapshot $tsd
 
 elif [[ $1 = "-c" ]]; then
 read -p 'comment: ' comment
 sudo timeshift --list; \
 sudo timeshift --delete --snapshot $tsd; \
 sudo timeshift --create --comments "$comment"; \
-zsh
 
 else
 sudo timeshift --list; \
 sudo timeshift --delete --snapshot $tsd; \
 sudo timeshift --create --comments "house-keeping"; \
-zsh
 fi
 
 notify-send --urgency=normal \

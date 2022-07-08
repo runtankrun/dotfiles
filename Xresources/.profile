@@ -17,4 +17,4 @@ export PATH="${PATH}:$HOME/.scripts/xfrom_source/nsxiv"
 export PATH="${PATH}:$HOME/.scripts/layout"
 export PATH="${PATH}:$HOME/.scripts/system_exec"
 export PATH="${PATH}:$HOME/.scripts/ranger"
-
+export PATH="${PATH}:$HOME/.scripts/util"

@@ -120,9 +120,6 @@ alias rvm='python inference.py --variant resnet50 --checkpoint checkpoint/rvm_re
 ##Disk Utility
 alias disk-util='ncdu'
 
-##gotop
-alias gotop='gotop --nvidia --averagecpu --statusbar --mbps --layout kitchensink'
-
 ##pwgen
 alias pwg='pwgen -scny $@'
 

@@ -16,12 +16,9 @@ case $1 in
                 bspc query -N -n >/dev/null || c=d
                 bspc node "${nodes[$s]}" -${c} focused -g hidden=off -f
             fi
-            # bspc node "$hidden" -g hidden=off
         fi
     ;;
-
     "")
          bspc node focused -g hidden=on
     ;;
-
 esac

@@ -266,7 +266,7 @@ super + ctrl + r
 super + b
 	  /usr/lib/firefox/firefox-bin
 super + alt + b
-    surf https://www.duckduckgo.com/
+    librewolf
 	
 ## launch vim
 super + v

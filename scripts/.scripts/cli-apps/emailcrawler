@@ -19,3 +19,5 @@ filter_EmailApiResponse(){
 
 call_EmailApi $1 $2 > /tmp/emailcrawler_$ts.json
 view_EmailApiResponse | jq .
+
+echo "jq '[.emails[0] | { email: .email, LinkedIn: .linkedin, name: .name, company: .company_name, job_title: .job_title }]'"

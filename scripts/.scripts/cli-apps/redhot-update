@@ -15,7 +15,7 @@ unset __conda_setup
 conda activate bdfr
 # <<< conda initialize <<<
 
-dir="/mnt/PSSD_Storage/bdfr/fav"
+dir="/run/media/ellio/T7/bdfr/fav"
 process=$1
 
 mainCMD(){
@@ -33,7 +33,7 @@ mainCMD(){
     echo 
     echo "-->>> $subs -->>>"
     echo    
-    sudo python3 -m bdfr clone $dir \
+    python3 -m bdfr clone $dir \
         -s "$subs" \
         -t month \
         -S top \
@@ -48,7 +48,7 @@ mainCMD(){
 if [[ "$1" = "--all" ]]; then
     kitty -e sh -c "redhot-update 0" &
     kitty -e sh -c "redhot-update 1" &
-    kitty -e sh -c "redhot-update 2"
+    kitty -e sh -c "redhot-update 2" &
 else
     mainCMD 
 fi

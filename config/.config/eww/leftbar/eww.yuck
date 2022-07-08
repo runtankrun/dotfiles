@@ -21,10 +21,10 @@
       "date +\%B")
 
 (defpoll song :interval "3s"  "~/.config/eww/bar/scripts/music_info --song")
-(defpoll song_artist :interval "3s"  "~/.config/eww/leftbar/scripts/music_info --artist")
-(defpoll song_status :interval "3s"  "~/.config/eww/leftbar/scripts/music_info --status")
-(defpoll loop_status :interval "5s"  "~/.config/eww/leftbar/scripts/music_info --loop_ic")
-(defpoll song_time :interval "1s"  "~/.config/eww/leftbar/scripts/music_info --time")
+(defpoll song_artist :interval "3s"  "~/.config/eww/left_dashboard/scripts/music_info --artist")
+(defpoll song_status :interval "3s"  "~/.config/eww/left_dashboard/scripts/music_info --status")
+(defpoll loop_status :interval "5s"  "~/.config/eww/left_dashboard/scripts/music_info --loop_ic")
+(defpoll song_time :interval "1s"  "~/.config/eww/left_dashboard/scripts/music_info --time")
 
 (defpoll battery :interval "15s" "./scripts/battery --bat")
 (defpoll memory :interval "15s" "scripts/memory")
@@ -125,10 +125,10 @@
 
 (defwidget music_ctl []
 				(box :orientation "v" :spacing 1 :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false" :class "msc_ctl_bg"
-					(button :class "song_btn_prev" :onclick "~/.config/eww/leftbar/scripts/music_info --prev" "")
-					(button :class "song_btn_play" :onclick "~/.config/eww/leftbar/scripts/music_info --toggle" song_status)
-					(button :class "song_btn_next" :onclick "~/.config/eww/leftbar/scripts/music_info --next" "")
-					(button :class "song_btn_loop" :onclick "~/.config/eww/leftbar/scripts/music_info --loop" loop_status)))
+					(button :class "song_btn_prev" :onclick "~/.config/eww/left_dashboard/scripts/music_info --prev" "")
+					(button :class "song_btn_play" :onclick "~/.config/eww/left_dashboard/scripts/music_info --toggle" song_status)
+					(button :class "song_btn_next" :onclick "~/.config/eww/left_dashboard/scripts/music_info --next" "")
+					(button :class "song_btn_loop" :onclick "~/.config/eww/left_dashboard/scripts/music_info --loop" loop_status)))
 
 
 (defwidget music_prog []

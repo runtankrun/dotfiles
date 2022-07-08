@@ -5,6 +5,7 @@ figlet -f ~/.fonts/misc/figlet/Rectangles.flf 'TANK'
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -15,6 +16,7 @@ ZSH_THEME="random"
 # -->>> PLUGINS -->>>
 plugins=(themes git-open zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
 # <<<-- PLUGINS <<<--
+
 source $ZSH/oh-my-zsh.sh
 
 # -->>> Define Color Variables  -->>>
@@ -26,17 +28,18 @@ source $ZSH/oh-my-zsh.sh
 #################
 # -->>> QUICK ALIAS -->>>
 qa() {
-    echo "alias $1='$2'" >> $HOME/.oh-my-zsh/custom/alias.zsh
+    
+    alias=echo "alias $1='$2'" >> $HOME/.oh-my-zsh/custom/alias.zsh
 }
 # <<<-- QUICK ALIAS <<<--
 
 # -->>> BSPWM Gaps -->>>
 gaps() {
-side="$1"
-gap="$2"
-bspc config -m HDMI-0 left_padding "$side" &
-bspc config -m HDMI-0 right_padding "$side" &
-bspc config -m HDMI-0 window_gap "$gap"
+    side="$1"
+    gap="$2"
+    bspc config -m HDMI-0 left_padding "$side" &
+    bspc config -m HDMI-0 right_padding "$side" &
+    bspc config -m HDMI-0 window_gap "$gap"
 }
 # <<<-- BSPWM Gaps <<<--
 
@@ -182,7 +185,21 @@ else
     fi
 fi
 unset __conda_setup
+conda activate bdfr
 # <<< conda initialize <<<
-
+#
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh || source ~/.oh-my-zsh/custom/prompt.zsh
+
+##FASD
+if (( ! ${+commands[fasd]} )); then
+  return
+fi
+
+fasd_cache="${ZSH_CACHE_DIR}/fasd-init-cache"
+if [[ "$commands[fasd]" -nt "$fasd_cache" || ! -s "$fasd_cache" ]]; then
+  fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install \
+    zsh-wcomp zsh-wcomp-install >| "$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache

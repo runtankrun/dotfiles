@@ -31,7 +31,7 @@ mainCMD(){
 kitty --name "bzebee" --title "bzebee" -e sh -c "bzebee" &
 c-neo -wal &
 c-neo -pic &
-message -k &
+kitty --name "TANK-K" --title "TANK-K" &
 c-feh -i &
 }
 mainCMD
