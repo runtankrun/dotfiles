@@ -12,9 +12,9 @@ echo "exec bspwm" >> ~/.xinitrc
 writeXServerConfig > ~/.xserverrc
 
 ## Basic ##
-sudo pacman -S git vim python rxvt-unicode kitty feh ranger bspwm sxhkd picom mpd ncmpcpp 
+sudo pacman -S git vim python rxvt-unicode kitty feh ranger bspwm sxhkd picom mpd ncmpcpp feh
 
-neo## Yay ##
+## Yay ##
 sudo pacman -S --needed base-devel git
 git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -27,3 +27,5 @@ yay -S autojump fd mcfly fasd rg sd pywal rofi dunst cava neofech figlet
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 yay -S git-open zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search 
 
+## dots  ##
+git clone https://github.com/runtankrun/dotfiles.git
