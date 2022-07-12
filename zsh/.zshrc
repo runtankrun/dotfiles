@@ -35,11 +35,20 @@ qa() {
 
 # -->>> BSPWM Gaps -->>>
 gaps() {
-    side="$1"
-    gap="$2"
-    bspc config -m HDMI-0 left_padding "$side" &
-    bspc config -m HDMI-0 right_padding "$side" &
-    bspc config -m HDMI-0 window_gap "$gap"
+         while getopts g:h:v: option
+         do
+                case "${option}"
+                        in
+                        h)horizontal=${OPTARG};;
+                        g)gaps=${OPTARG};;
+                        v)vertical=${OPTARG}
+                esac
+        done
+        bspc config -m focused left_padding "$horizontal" &
+        bspc config -m focused right_padding "$horizontal" &
+        bspc config -m focused top_padding "$vertical" &
+        bspc config -m focused bottom_padding "$vertical" &
+        bspc config -m focused window_gap "$gaps"
 }
 # <<<-- BSPWM Gaps <<<--
 
