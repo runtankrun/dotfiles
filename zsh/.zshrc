@@ -14,7 +14,7 @@ ZSH_THEME="random"
 # <<<-- THEME <<<--
 
 # -->>> PLUGINS -->>>
-plugins=(themes git-open zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
+plugins=(themes zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search) 
 # <<<-- PLUGINS <<<--
 
 source $ZSH/oh-my-zsh.sh

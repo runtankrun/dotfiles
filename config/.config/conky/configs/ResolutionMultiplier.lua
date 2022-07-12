@@ -1,2 +1,0 @@
-ResolutionMultiplier = 3 
-

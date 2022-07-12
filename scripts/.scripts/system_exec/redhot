@@ -2,33 +2,27 @@
 dir="/run/media/ellio/T7/bdfr"
 cd $dir
 
-CloseTerm(){
+closeTerm(){
     xdotool windowclose $window 
 }
 
 QueryAllFiles(){
-    echo "path,id,score,time" > $dir/RH.csv
-    fd --full-path "$dir" --extension=mp4 --extension=json $dir/fav -x \
-    jq --arg e {//} -r '. |= . + {"$e": "$e"} | [$e, .id, .score, .created_utc] | @csv' {.}.json 2>/dev/null | tee --append $dir/RH.csv
+    echo "path,score,time" > $dir/RH.csv
+    fd --full-path "$dir" --extension=mp4 $dir/fav -x \
+    jq --arg e {} -r '. |= . + {"$e": "$e"} | [$e, .score, .created_utc] | @csv' {.}.json 2>/dev/null | tee --append $dir/RH.csv
 }
 
 QuerySub(){
         sub=$1
         sort=$2
-        csvgrep -c 1 -r ".$sub" $dir/RH.csv | csvsort -c "$sort" -r | csvcut -c 1-2 | sed 's/,/\//g' | sed 's/$/.mp4/g' | uniq
+        csvgrep -c 1 -r ".$sub" $dir/RH.csv | csvsort -c "$sort" -r | csvcut -c 1
 }
 
 download(){
-    #echo "Subreddit: "
-    #read subreddit
-    #echo "Sort: "
-    #read srt
-    #echo "Time: "
-    #read time
     time='all'
     srt='top'
     subreddit=$1
-    python3 -m bdfr clone $dir \
+    python3 -m bdfr clone $dir/fav \
     -s "$subreddit" \
     -t $time \
     -S $srt \
@@ -50,6 +44,9 @@ search(){
         --search "'$query'" 
 }
 
+searchLocal(){
+    fd --search-path $dir/fav --extension json $1 -x cat {} | jq
+}
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -68,6 +65,12 @@ conda activate bdfr
 # <<< conda initialize <<<
 
 case $1 in
+    '')
+        sub=$(ls $dir/fav | rofi -dmenu)
+        srt=$(cat $dir/srt | rofi -dmenu)
+        redhot -s $sub $srt
+    ;;
+
     "-r"| "--refresh")
         QueryAllFiles 
     ;;
@@ -76,12 +79,17 @@ case $1 in
         download $2
     ;;
     
-    "-s" | "--search")
+    "-S" | "--search")
         query="$2"
         search
     ;;
 
-    "-S")
-        nohup mpv $(QuerySub "$2" "$3")
+    "-sl" | "--search-local")
+        searchLocal $2
+    ;;
+
+    "-s" | "--select")
+        nohup mpv --playlist-start=0 $(QuerySub "$2" "$3")
+        sleep 1s; closeTerm
     ;;
 esac

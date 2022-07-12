@@ -17,16 +17,19 @@ conda activate bdfr
 
 dir="/run/media/ellio/T7/bdfr/fav"
 process=$1
+process_count=5
+i=0
+
+#Ghetto Multiprocessing 
+#List of All Subreddits to update
+subreddits=$(ls ${dir})
+#Subreddit Math to Split into Two Groups
+total_subreddit_count=$(echo "$subreddits" | wc -l)
+array_groups=$(bc <<<$total_subreddit_count/$process_count)
+#Split the List of All Subreddits Into Thirds
+subreddit_array=($(xargs -n $array_groups <<<$subreddits | tr ' ' ','))
 
 mainCMD(){
-    #Ghetto Multiprocessing 
-    #List of All Subreddits to update
-    subreddits=$(ls ${dir})
-    #Subreddit Math to Split into Two Groups
-    total_subreddit_count=$(echo "$subreddits" | wc -l)
-    one_third_of_subreddit_count=$(bc <<<$total_subreddit_count/3)
-    #Split the List of All Subreddits Into Thirds
-    subreddit_array=($(xargs -n $one_third_of_subreddit_count <<<$subreddits | tr ' ' ','))
     subs=$(echo ${subreddit_array[$process]})
      
     #Run BDFR
@@ -46,9 +49,12 @@ mainCMD(){
 }
 
 if [[ "$1" = "--all" ]]; then
-    kitty -e sh -c "redhot-update 0" &
-    kitty -e sh -c "redhot-update 1" &
-    kitty -e sh -c "redhot-update 2" &
+    
+    for k in "${subreddit_array[@]}";
+    do
+        nohup kitty -e sh -c "redhot-update $i" &
+        ((i++))
+    done
 else
     mainCMD 
 fi
