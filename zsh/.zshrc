@@ -60,22 +60,21 @@ ginit() {
     git commit -m "first commit"; 
     git branch -M main; 
     git remote add origin git@github.com:runtankrun/$1.git ; 
-    git remote set-url origin https://github.com/runtankrun/$1.git;
-    pass -c git/git_token;sleep .3s;
+    git remote set-url origin git@github.com:runtankrun/$1.git; 
     git push -u origin main
 }
 
 gpsh() {
-    echo "$(git branch -a)" 
-    echo "Branch: "
-    read branch
-    echo "Commit Comment: "
-    read comment
-    git add . ;
+    git add .
+    
+    if [[ "$#" -eq 0 ]]; then
+        comment="minor updates"
+    else
+        comment="$@"
+    fi
+
     git commit -m "$comment";
-    pass -c git/git_token; 
-    echo "runtankrun"; 
-    git push origin "$branch"
+    git push origin master
     git-open
 }
 # <<<--GIT <<<--
