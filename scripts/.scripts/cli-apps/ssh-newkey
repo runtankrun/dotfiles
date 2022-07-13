@@ -1,0 +1,51 @@
+#!/bin/sh
+
+export PATH=/usr/local/bin:/bin:/usr/bin
+
+# Configure this.
+email='emelli@protonmail.com'
+
+# Arguments: no hostname means create a default key.
+case "$#" in
+    0) host='id' ;;
+    *) host=$1 ;;
+esac
+
+# Do not overwrite existing files.
+set X $(ls ${host}* 2> /dev/null | wc -l)
+shift
+case "$1" in
+    0) ;;
+    *) echo "please delete ${host} files:"; ls ${host}*; exit 1 ;;
+esac
+
+# Real work starts here.
+echo Generating RSA keypair
+ssh-keygen -o -b 4096 -t rsa -C "$email" -N '' -f ${host}_rsa
+
+echo Generating ED25519 keypair
+ssh-keygen -o -t ed25519 -C "$email" -N '' -f ${host}_ed25519
+
+echo Generating ECDSA keypair
+ssh-keygen -o -t ecdsa -C "$email" -N '' -f ${host}_ecdsa
+
+echo
+echo Files:
+ls -lF ${host}*
+
+echo
+echo Full public keys:
+cat ${host}*.pub
+
+echo
+echo Public keys for LOG:
+
+for file in ${host}*.pub
+do
+    set X $(cat $file); type=$2; key=$3; host=$4
+    begin=$(echo "$key" | cut -c1-20)
+    end=$(echo "$key" | sed -e 's/.*\(..........\)$/\1/')
+    echo "$type $begin[...]$end $host"
+done
+
+exit 0

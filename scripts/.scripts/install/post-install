@@ -25,7 +25,7 @@ cd yay
 makepkg -si --noconfirm
 
 ## Yay Packages ##
-yay -S --noconfirm autojump fd mcfly fasd rg sd pywal rofi dunst cava neofech figlet wal eww dunst notify-send.sh ueberzug dmenu
+yay -S --noconfirm autojump fd mcfly fasd rg sd pywal rofi dunst cava neofech figlet wal eww dunst notify-send.sh ueberzug dmenu neofetch
 
 ## ZSH ##
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

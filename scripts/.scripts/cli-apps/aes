@@ -17,7 +17,7 @@ case $1 in
                 f)file=${OPTARG}; encrypt -in $file -out $(tfn).dat;;
                 s)string=${OPTARG}; echo $string | encrypt | xclip;;
                 c)clip=${OPTARG}; xclip -out -selection primary | encrypt | xclip;;
-                a)pubkey=${OPTARG}; openssl rsautl -encrypt -inkey $pubkey -pubin -in $file -out top_secret.dat
+                k)pubkey=${OPTARG}; openssl rsautl -encrypt -inkey $pubkey -pubin -in $file -out top_secret.dat
             esac
         done
         ;;
@@ -30,7 +30,7 @@ case $1 in
                 f)decrypt -in ${OPTARG} -out dencrypted_$(tfn);;
                 s)echo ${OPTARG} | decrypt;;
                 c)echo "$(xclip -out -selection primary)" | decrypt;;
-                a)privatekey=${OPTARG}; openssl rsautl -decrypt -inkey $privatekey -in $@
+                k)privatekey=${OPTARG}; openssl rsautl -decrypt -inkey $privatekey -in $@
             esac
         done
         ;;
@@ -41,11 +41,5 @@ case $1 in
 
     "--extract-public-key")
         openssl rsa -in private_key.pem -out public_key.pem -outform PEM -pubout
-        ;;
-    
+        ;; 
 esac
-
-#encrypt 
-#openssl rsautl -encrypt -inkey bob_public.pem -pubin -in top_secret.txt -out top_secret.enc
-#decrypt
-#openssl rsautl -decrypt -inkey bob_private.pem -in top_secret.enc 
