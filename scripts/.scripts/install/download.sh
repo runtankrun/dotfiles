@@ -42,7 +42,7 @@ chmod +x *.sh
 
 ##Add Config
 rm alis.conf
-curl -O https://raw.githubusercontent.com/runtankrun/dotfiles/master/scripts/.scripts/install/alis.conf
+curl -O https://raw.githubusercontent.com/runtankrun/dotfiles/master/scripts/.scripts/install/alis.dat
 
 encrypt(){
     openssl enc -aes-256-cbc -a -A -md sha512 -pbkdf2 -iter 250000 -salt $@

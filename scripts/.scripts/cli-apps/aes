@@ -14,7 +14,7 @@ case $1 in
         do 
            case "${option}"
                 in
-                f)file=${OPTARG}; encrypt -in $file -out $(tfn).dat;;
+                f)file=${OPTARG}; encrypt -in $file -out $(echo $file|cut -d '.' -f1).dat;;
                 s)string=${OPTARG}; echo $string | encrypt | xclip;;
                 c)clip=${OPTARG}; xclip -out -selection primary | encrypt | xclip;;
                 k)pubkey=${OPTARG}; openssl rsautl -encrypt -inkey $pubkey -pubin -in $file -out top_secret.dat
@@ -27,7 +27,7 @@ case $1 in
         do 
            case "${option}"
                 in
-                f)decrypt -in ${OPTARG} -out dencrypted_$(tfn);;
+                f)decrypt -in ${OPTARG} -out unencrypted$(date +%Y%m%dT%H%M%S);;
                 s)echo ${OPTARG} | decrypt;;
                 c)echo "$(xclip -out -selection primary)" | decrypt;;
                 k)privatekey=${OPTARG}; openssl rsautl -decrypt -inkey $privatekey -in $@
