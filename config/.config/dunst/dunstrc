@@ -302,7 +302,7 @@
 
 [urgency_normal]
     background = "#1A1B26"
-    foreground = "#A9B1D6"
+    foreground = "#c0caf5"
     highlight  = "#A9B1D6"
     timeout = 6
     #script = ~/.config/dunst/scripts/icon

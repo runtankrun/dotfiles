@@ -65,7 +65,7 @@
                 :limit-width 2
                 :tooltip "battery on ${battery}%"
                 :show_truncated false
-                :onclick "$HOME/.config/rofi/menu/apps.sh"
+                :onclick "$HOME/.config/eww/dashboard_2/launch_eww"
                 :wrap false
                 ""))))
 

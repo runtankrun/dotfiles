@@ -13,7 +13,7 @@ echo "exec bspwm" >> ~/.xinitrc
 writeXServerConfig > ~/.xserverrc
 
 ## Basic ##
-sudo pacman -S --noconfirm base-devel git vim python rxvt-unicode kitty alacritty xclip feh ranger bspwm sxhkd picom mpd ncmpcpp
+sudo pacman -S --noconfirm base-devel git vim python openssh bc rxvt-unicode kitty alacritty xclip feh ranger bspwm sxhkd picom mpd ncmpcpp
 
 ## dots  ##
 git clone https://github.com/runtankrun/dotfiles.git
@@ -24,9 +24,6 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 
-## Yay Packages ##
-yay -S --noconfirm autojump fd mcfly fasd rg sd pywal rofi dunst cava neofech figlet wal eww dunst notify-send.sh ueberzug dmenu neofetch
-
 ## ZSH ##
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 yay -S --noconfirm git-open zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search
@@ -35,5 +32,8 @@ echo "source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 echo "source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh" >> ~/.zshrc
 echo "source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 
+## Yay Packages ##
+yay -S --noconfirm autojump fd mcfly fasd ripgrep sd pywal-git rofi dunst cava neofech figlet wal eww notify-send.sh ueberzug w3m dmenu neofetch pass anaconda
+
 ## LibreWolf
-yay -S librewolf-bin librewolf-extension-cookie-autodelete librewolf-ublock-origin librewolf-extension-localcdn
+yay -S --noconfirm librewolf-bin librewolf-extension-cookie-autodelete librewolf-ublock-origin librewolf-extension-localcdn
