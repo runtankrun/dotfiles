@@ -55,6 +55,9 @@ if [[ "$1" = "--all" ]]; then
         nohup kitty -e sh -c "redhot-update $i" &
         ((i++))
     done
+
 else
+
     mainCMD 
+
 fi

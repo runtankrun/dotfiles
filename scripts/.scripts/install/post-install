@@ -33,7 +33,7 @@ echo "source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-sub
 echo "source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 
 ## Yay Packages ##
-yay -S --noconfirm autojump fd mcfly fasd ripgrep sd pywal-git rofi dunst cava neofech figlet wal eww notify-send.sh ueberzug w3m dmenu neofetch pass anaconda
+yay -S --noconfirm autojump fd mcfly fasd ripgrep sd pywal-git rofi dunst cava neofech figlet wal eww notify-send.sh ueberzug w3m dmenu neofetch pass anaconda mpv xcolor
 
 ## LibreWolf
 yay -S --noconfirm librewolf-bin librewolf-extension-cookie-autodelete librewolf-ublock-origin librewolf-extension-localcdn

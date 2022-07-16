@@ -119,7 +119,7 @@ bspc desktop -f ^2:^$dt;
 ##INSERT RECEPTACLES
 bspc node @^2:^$dt:/ -i 
 bspc node @^2:^$dt:/ -o 0.438895 -p east -i
-bspc node @^2:^$dt:/1 -p south -i
+bspc node @^2:^$dt:/1 -o 0.52 -p south -i
 bspc node @^2:^$dt:/1/1 -o 0.718807 -p east -i
 bspc node @^2:^$dt:/1/1/1 -o 0.52 -p south -i
 bspc node @^2:^$dt:/1/1/1/1 -o 0.52 -p east -i
