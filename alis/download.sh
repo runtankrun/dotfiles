@@ -7,7 +7,7 @@ decrypt(){
     openssl enc -aes-256-cbc -a -A -d -md sha512 -pbkdf2 -iter 250000 -salt $@
 }
 
-url='https://github.com/runtankrun/dotfiles/raw/master/alis/alis.tar.gz'
+url='https://github.com/runtankrun/dotfiles/raw/dev/alis/alis.tar.gz'
 curl -L -O $url
 
 tar -xvf alis.tar.gz

@@ -1,6 +1,0 @@
-.
-./gtk-assets
-./gtk-assets/scalable
-./gtk-2.0
-./gtk-2.0/assets
-./gtk-3.0
