@@ -36,13 +36,14 @@ qa() {
 
 # -->>> BSPWM Gaps -->>>
 gaps() {
-         while getopts g:h:v: option
+         while getopts g:h:t:b: option
          do
                 case "${option}"
                         in
                         h)horizontal=${OPTARG};;
                         g)gaps=${OPTARG};;
-                        v)vertical=${OPTARG}
+                        t)top=${OPTARG};;
+                        b)bottom=${OPTARG}
                 esac
         done
         bspc config -m focused left_padding "$horizontal" &
