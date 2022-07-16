@@ -4,12 +4,12 @@
 
 mkdir -p $HOME/.cache/notflix
 
-menu="rofi -dmenu"
+menu="rofi -p 'Search Titles: ' -dmenu"
 baseurl="https://1337x.wtf"
 cachedir="$HOME/.cache/notflix"
 
 if [ -z $1 ]; then
-  query=$(rofi -dmenu)
+  query=$(rofi -p 'search titles: ' -dmenu)
 else
   query=$1
 fi
