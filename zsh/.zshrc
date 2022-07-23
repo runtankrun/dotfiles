@@ -79,7 +79,38 @@ gpsh() {
     git push origin master
     git-open
 }
+
+gitCloneFromBrowser(){
+    sleep 1s;
+    
+    xdotool key ctrl+l; sleep 1s;
+    xdotool key ctrl+c; sleep 1s;
+    
+    url="$(xclip -out -selection primary)"
+    file="$(echo "$url" | cut -d "/" -f4-5)"
+ 
+    kitty --name "k-git" --title "k-git" -e sh -c \
+        "cd "$HOME"/dev ; git clone $url $file"
+}
+
 # <<<--GIT <<<--
+
+# -->>> FF BU  -->>>
+ff-bu(){
+    tar -czvf $HOME/.mozilla/mozilla.tar.gz \
+        $HOME/.mozilla/firefox/v2nnvt6o.default-release/bookmarkbackups \
+        $HOME/.mozilla/firefox/v2nnvt6o.default-release/chrome \
+        $HOME/.mozilla/firefox/v2nnvt6o.default-release/extensions \
+        $HOME/.mozilla/firefox/v2nnvt6o.default-release/settings \
+        $HOME/.mozilla/firefox/v2nnvt6o.default-release/startpage \
+        $HOME/.mozilla/firefox/v2nnvt6o.default-release/addons.json \
+        $HOME/.mozilla/firefox/v2nnvt6o.default-release/extension-preferences.json \
+        $HOME/.mozilla/firefox/v2nnvt6o.default-release/extension-settings.json \
+        $HOME/.mozilla/firefox/v2nnvt6o.default-release/extensions.json
+        cd $HOME/dotfiles
+        clinks Firefox
+}
+# # <<<--   <<<--
 
 # -->>> STORAGE -->>>
 storage() {
@@ -142,21 +173,24 @@ fm() {
 # -->>> Last Backup -->>>
 rewind(){
     dir=$(ls -d /mnt/PSSD/timeshift/snapshots/* | tail -n1)
-    ranger $dir/localhost/home/ellio/
+    ranger $dir/localhost$HOME/
 }
 # <<<-- Last Backup  <<<--
 
 # -->>> FFMPEG Concat -->>>
 remux-concat(){                                    
         files=($@)
-        echo "" > ~/Documents/vidlist.txt
+        tmpDir=$(mktemp -d "${TMPDIR:-/tmp/}$(basename $0).XXXXXXXXXXXX")
+        timeStamp=$(date "+%Y%m%d-%H%M%S%3N")
+        
+        touch $tmpDir/vidlist.txt
 
         for f in $files
         do
-                echo "file '$f'" >> ~/Documents/vidlist.txt
+                echo "file '$f'" >> $tmpDir/vidlist.txt
         done
 
-        ffmpeg -f concat -safe 0 -i ~/Documents/vidlist.txt -c copy $(tfn).mp4
+        ffmpeg -f concat -safe 0 -i $tmpDir/vidlist.txt -c copy $(output_$timeStamp).mp4
 }
 # <<<-- FFMPEG Concat <<<--
 
@@ -186,24 +220,65 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
-# <<<-- ssh  <<<--
+
+
+# -->>> MPV  -->>>
+qmpv(){
+    for i in $(ls /tmp/mpvSockets/*); do
+        echo '{ "command": ["get_property", "path"] }' | socat - "$i"; 
+    done | jq
+
+}
+rhq(){
+    vid=($(qmpv | grep -oe "/.*\.mp4" | sed 's/mp4/json/g'))
+    for j in ${vid[@]};
+    do
+        find $j 2>/dev/null
+    done
+}
+
+rhn(){
+    notify-send.sh $(jq -r .title $(rhq)) 
+    notify-send.sh $(jq -r '.comments[0].subreddit' $(rhq))
+    notify-send.sh $(jq -r .score $(rhq))
+}
+# # <<<-- MPV  <<<--
+
+# -->>> SSH  -->>>
+SSH_ENV="$HOME/.ssh/agent-environment"
+
+function start_agent {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add;
+}
+# Source SSH settings, if applicable
+if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    #ps ${SSH_AGENT_PID} doesn't work under cywgin
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
+fi
+# <<<-- SSH  <<<--
+
 # -->>> XRDM settings -->>>
-export XRDM_DIR=~/.Xresource.d
-export XRDM_FONT_DIR=$XRDM_DIR/fonts
-export XRDM_COLOR_DIR=$XRDM_DIR/colors
-export XRDM_PRESET_DIR=$XRDM_DIR/presets
-export XRDM_PROGRAM_DIR=$XRDM_DIR/programs
-source xrdm
+
 # <<<-- XRDM settings <<<--
 
 # -->>> McFly  -->>>
 eval "$(mcfly init zsh)"
 source /usr/share/doc/mcfly/mcfly.zsh
-export MCFLY_RESULTS=50
+export MCFLY_RESULTS=200
 # <<<-- McFly  <<<--
 
 # -->>> AutoJump  -->>>
-. /usr/share/autojump/autojump.zsh
+source /usr/share/autojump/autojump.zsh
 # <<<-- AutoJump  <<<--
     
 # >>> conda initialize >>>
@@ -236,3 +311,6 @@ if [[ "$commands[fasd]" -nt "$fasd_cache" || ! -s "$fasd_cache" ]]; then
 fi
 source "$fasd_cache"
 unset fasd_cache
+
+export MPV_SOCKET_DIR="$HOME/Videos/MPV_Socket"
+export PATH="${PATH}:$HOME/.local/path.scripts"

@@ -29,9 +29,13 @@ bspc rule -a images:feh -o node=@^2:^$dt:/2/2 focus=off state=pseudo_tiled
 #c-neo -ascii &
 mainCMD(){
 kitty --name "bzebee" --title "bzebee" -e sh -c "bzebee" &
+sleep .4
 c-neo -wal &
+sleep .4
 c-neo -pic &
+sleep .4
 kitty --name "TANK-K" --title "TANK-K" &
+sleep .4
 c-feh -i &
 }
 mainCMD

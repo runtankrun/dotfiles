@@ -5,8 +5,8 @@ export EDITOR=vim
 export VISUAL=vim
 
 # enable mousekeys (my xmodmap has mousekeys mapped to buttons)
-#/usr/bin/xkbset exp =m
-#/usr/bin/xkbset m
+/usr/bin/xkbset exp =m
+/usr/bin/xkbset m
 
 # Make ~/.scripts folder executable
 export PATH="${PATH}:$HOME/.scripts"
