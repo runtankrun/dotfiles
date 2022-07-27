@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+export C_TMP=$(mktemp -d "${TMPDIR:-/tmp/}$(basename $0).XXXXXXXXXXXX")
+export C_BDFR=/run/media/ellio/T7/bdfr
+
+timestamp(){
+    date "+%Y%m%d-%H%M%S%3N"
+}
