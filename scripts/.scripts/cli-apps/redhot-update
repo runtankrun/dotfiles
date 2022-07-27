@@ -57,6 +57,7 @@ if [[ "$1" = "--all" ]]; then
     for k in "${subreddit_array[@]}";
     do
         nohup kitty -e sh -c "redhot-update $i" &
+        sleep .5s;
         ((i++))
     done
 

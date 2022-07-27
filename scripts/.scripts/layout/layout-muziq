@@ -8,17 +8,18 @@ bspc desktop -f ^2:^$dt;
 bspc node @^2:^$dt:/ -i
 bspc node @^2:^$dt:/ -o 0.52 -p east -i
 bspc node @^2:^$dt:/1 -o 0.52 -p south -i
-bspc node @^2:^$dt:/2 -o 0.9 -p south -i
+bspc node @^2:^$dt:/2 -o 0.75 -p south -i
 
 ##ADD RULES
 bspc rule -a kitty:spot -o node=@^2:^$dt:/1/1
 bspc rule -a kitty:music -o node=@^2:^$dt:/1/2
 bspc rule -a URxvt:vis -o node=@^2:^$dt:/2/1
-bspc rule -a URxvt:lofi -o node=@^2:^$dt:/2/2
+bspc rule -a Rofi:rofi -o node=@^2:^$dt:/2/2
 
 ##LAUNCH APPS
 kitty --name "spot" --title "spot" -e sh -c "spt;zsh" &
 kitty --name "music" --title "music" -e sh -c "music" &
 visualizer &
-urxvtc -name "lofi" -title "lofi" -e sh -c 'mpv --x11-name="lofi" --title="lofi" ~/Music/ --mute=yes --no-video;zsh' &
+#urxvtc -name "lofi" -title "lofi" -e sh -c 'mpv --x11-name="lofi" --title="lofi" ~/Music/ --mute=yes --no-video;zsh' &
+"${HOME}"/.config/rofi/applets/menu/mpd.sh &
 spotifyd -u chasetank -P "pass spotify/spotifyd" -B 320

@@ -134,6 +134,9 @@ alias rvm='python inference.py --variant resnet50 --checkpoint checkpoint/rvm_re
 ##MISC
 alias lsc='ls -latrh --time=birth'
 alias gcb='xclip -out -selection clipboard'
+alias ev="fd $1 -X vim {}"
+alias ec="fd $1 -X bat {}"
+alias cat="bat"
 
 alias nmap_open_ports="nmap --open"
 alias nmap_list_interfaces="nmap --iflist"

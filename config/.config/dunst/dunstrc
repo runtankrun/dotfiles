@@ -36,11 +36,9 @@
     offset = 50x50
 
     # Scale factor. It is auto-detected if value is 0.
-<<<<<<< HEAD
+
     scale = 2
-=======
     scale = 0
->>>>>>> 10b705574e2213d3d81fc68cd055ce47309a7845
 
     # Maximum number of notification (0 means no limit)
     notification_limit = 0
