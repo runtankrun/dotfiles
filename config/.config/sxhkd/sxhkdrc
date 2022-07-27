@@ -219,7 +219,11 @@ super + End
 
 ## program launcher
 super + d
+<<<<<<< HEAD
     . ${HOME}/.config/rofi/launchers/colorful/launcher.sh
+=======
+     ${HOME}/.config/rofi/launchers/colorful/launcher.sh
+>>>>>>> 10b705574e2213d3d81fc68cd055ce47309a7845
     #rofi -show drun -show-icons
 
 Menu

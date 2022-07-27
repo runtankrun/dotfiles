@@ -237,7 +237,11 @@ rhq(){
     done
 }
 
+<<<<<<< HEAD
 redn(){
+=======
+rhn(){
+>>>>>>> 10b705574e2213d3d81fc68cd055ce47309a7845
     notify-send.sh $(jq -r .title $(rhq)) 
     notify-send.sh $(jq -r '.comments[0].subreddit' $(rhq))
     notify-send.sh $(jq -r .score $(rhq))
@@ -256,7 +260,10 @@ function start_agent {
     /usr/bin/ssh-add;
 }
 # Source SSH settings, if applicable
+<<<<<<< HEAD
 
+=======
+>>>>>>> 10b705574e2213d3d81fc68cd055ce47309a7845
 if [ -f "${SSH_ENV}" ]; then
     . "${SSH_ENV}" > /dev/null
     #ps ${SSH_AGENT_PID} doesn't work under cywgin
@@ -267,6 +274,10 @@ else
     start_agent;
 fi
 # <<<-- SSH  <<<--
+<<<<<<< HEAD
+=======
+
+>>>>>>> 10b705574e2213d3d81fc68cd055ce47309a7845
 # -->>> XRDM settings -->>>
 
 # <<<-- XRDM settings <<<--
@@ -274,11 +285,11 @@ fi
 # -->>> McFly  -->>>
 eval "$(mcfly init zsh)"
 source /usr/share/doc/mcfly/mcfly.zsh
-export MCFLY_RESULTS=50
+export MCFLY_RESULTS=200
 # <<<-- McFly  <<<--
 
 # -->>> AutoJump  -->>>
-. /usr/share/autojump/autojump.zsh
+source /usr/share/autojump/autojump.zsh
 # <<<-- AutoJump  <<<--
     
 # >>> conda initialize >>>
@@ -314,4 +325,7 @@ unset fasd_cache
 
 export MPV_SOCKET_DIR="$HOME/Videos/MPV_Socket"
 export PATH="${PATH}:$HOME/.local/path.scripts"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 10b705574e2213d3d81fc68cd055ce47309a7845
