@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="scripts/search.js"></script>
+    <script src="scripts/load.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="head">
+        <div class="logo"><img src="icons/fox.svg" /></div>
+        <div class="search_box">
+
+          <img class="engine" id="engineLogo" src="icons/duck.svg" onclick="toggleEngine()" style="cursor:pointer" />
+
+          <div id="gSearch" style="display:block;">
+            <form id="textField" class="google" action="https://duckduckgo.com/" method="get">
+              <input class="input_box" type="text" name="q" placeholder="Search with DuckDuckGo">
+              <button class="button"> <img src="icons/search.svg" style="cursor:pointer" /></button>
+            </form>
+          </div>
+
+          <div id="dSearch" style="display:none;">
+            <form class="duck" action="https://duckduckgo.com/" method="get">
+              <input class="input_box" type="text" name="q" placeholder="Search with DuckDuckGo">
+              <button class="button"> <img src="icons/search.svg" style="cursor:pointer" /></button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="bookmark">
+
+        <div class="category">
+          <div class="icon"><img src="icons/entertainment.svg" /></div>
+          <div class="bookmarks ent">
+            <li><a class="bm" href="https://www.youtube.com/">Youtube</a></li>
+            <li><a class="bm" href="https://www.reddit.com/saved">Reddit</a></li>
+            <li><a class="bm" href="https://www.lookmovie.ag">LookMovie</a></li>
+            <li><a class="bm" href="https://fora.snahp.eu/">Snahp.it</a></li>
+            <li><a class="bm" href="https://rarbg.to/">RARBG</a></li>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="icon"><img src="icons/docs.svg" /></div>
+          <div class="bookmarks doc">
+            <li><a class="bm" href="https://www.redditp.com/r/BoutinelaBabes/top/?sort=top&t=week">BLA</a></li>
+            <li><a class="bm" href="https://www.gitlogs.com/search">Git Logs</a></li>
+            <li><a class="bm" href="https://protonmail.com/">Proton Mail</a></li>
+            <li><a class="bm" href="https://account.protonvpn.com/login">Proton VPN</a></li>	
+            <li><a class="bm" href="https://mega.nz/">Mega</a></li>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="icon"><img src="icons/art.svg" /></div>
+          <div class="bookmarks art">
+            <li><a class="bm" href="https://www.google.com/search?as_st=y&tbm=isch&hl=en-US&as_q=wallpaper&as_epq=&as_oq=&as_eq=&cr=&as_sitesearch=&safe=images&tbs=isz:lt,islt:4mp,iar:w">Image Search</a></li>
+            <li><a class="bm" href="https://www.wallhaven.cc/">Wallhaven</a></li>
+            <li><a class="bm" href="https://www.behance.net/">Behance</a></li>	
+            <li><a class="bm" href="https://www.redditp.com/r/Cinemagraphs/top/?t=month">Cinemagraphs</a></li>
+            <li><a class="bm" href="https://www.redditp.com/r/simulated/top/?t=month">Simulated</a></li>          
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="icon"><img src="icons/code.svg" /></div>
+          <div class="bookmarks cod">
+            <li><a class="bm" href="https://github.com/runtankrun">Github</a></li>
+            <li><a class="bm" href="https://runtankrun.github.io/Reveal/">Pages</a></li>
+            <li><a class="bm" href="about:debugging#/setup">FireFox Dev</a></li>
+            <li><a class="bm" href="https://archive.archlinux.org/packages/">Arch Archive</a></li>
+            <li><a class="bm" href="https://codeforces.com/">CodeForces</a></li>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="icon"><img src="icons/music.svg" /></div>
+          <div class="bookmarks mus">
+            <li><a class="bm" href="https://www.youtube.com/user/SkidPremiseMusic/videos?view=0&sort=p&flow=grid">PREMISE</a></li>
+            <li><a class="bm" href="https://www.youtube.com/watch?v=FTxSXUzc96A&list=RDFTxSXUzc96A&start_radio=1">Covet</a></li>
+            <li><a class="bm" href="https://www.youtube.com/watch?v=OO0aSOuTDwA">OP-1</a></li>
+            <li><a class="bm" href="https://www.youtube.com/watch?v=1SprY2WirqU">Slacker</a></li>
+            <li><a class="bm" href="https://soundcloud.com/sangobeats/sns-instrumental">Sango</a></li>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </body>
+
+</html>
