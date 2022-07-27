@@ -1,6 +1,6 @@
 ### Directories ###
-ncmpcpp_directory 	= ~/.ncmpcpp
-lyrics_directory  	= ~/.ncmpcpp/lyrics
+ncmpcpp_directory 	= ~/.config/ncmpcpp
+lyrics_directory  	= ~/.config/ncmpcpp/lyrics
 mpd_music_dir     	= ~/Music/music
 mpd_host 		  	= "localhost"
 mpd_port 		  	= "6600"
@@ -80,4 +80,4 @@ song_window_title_format = "Now Playing .."
 
 # EXEC SCRIPT
 # ---
-execute_on_song_change="~/.ncmpcpp/scripts/album-art"
+execute_on_song_change="~/.config/ncmpcpp/scripts/album-art"
