@@ -198,30 +198,6 @@ gb(){
    grep -o -P "(?<=$1).*(?=$2)"
 }
 
-# -->>> ssh  -->>>
-SSH_ENV="$HOME/.ssh/agent-environment"
-
-function start_agent {
-    echo "Initialising new SSH agent..."
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    echo succeeded
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add;
-}
-# Source SSH settings, if applicable
-
-if [ -f "${SSH_ENV}" ]; then
-    . "${SSH_ENV}" > /dev/null
-    #ps ${SSH_AGENT_PID} doesn't work under cywgin
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-        start_agent;
-    }
-else
-    start_agent;
-fi
-
-
 # -->>> MPV  -->>>
 qmpv(){
     for i in $(ls /tmp/mpvSockets/*); do
@@ -237,11 +213,7 @@ rhq(){
     done
 }
 
-<<<<<<< HEAD
 redn(){
-=======
-rhn(){
->>>>>>> 10b705574e2213d3d81fc68cd055ce47309a7845
     notify-send.sh $(jq -r .title $(rhq)) 
     notify-send.sh $(jq -r '.comments[0].subreddit' $(rhq))
     notify-send.sh $(jq -r .score $(rhq))
@@ -260,10 +232,7 @@ function start_agent {
     /usr/bin/ssh-add;
 }
 # Source SSH settings, if applicable
-<<<<<<< HEAD
 
-=======
->>>>>>> 10b705574e2213d3d81fc68cd055ce47309a7845
 if [ -f "${SSH_ENV}" ]; then
     . "${SSH_ENV}" > /dev/null
     #ps ${SSH_AGENT_PID} doesn't work under cywgin
@@ -274,13 +243,6 @@ else
     start_agent;
 fi
 # <<<-- SSH  <<<--
-<<<<<<< HEAD
-=======
-
->>>>>>> 10b705574e2213d3d81fc68cd055ce47309a7845
-# -->>> XRDM settings -->>>
-
-# <<<-- XRDM settings <<<--
 
 # -->>> McFly  -->>>
 eval "$(mcfly init zsh)"
@@ -310,22 +272,6 @@ conda activate bdfr
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh || source ~/.oh-my-zsh/custom/prompt.zsh
 
-##FASD
-if (( ! ${+commands[fasd]} )); then
-  return
-fi
-
-fasd_cache="${ZSH_CACHE_DIR}/fasd-init-cache"
-if [[ "$commands[fasd]" -nt "$fasd_cache" || ! -s "$fasd_cache" ]]; then
-  fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install \
-    zsh-wcomp zsh-wcomp-install >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
-
 export MPV_SOCKET_DIR="$HOME/Videos/MPV_Socket"
 export PATH="${PATH}:$HOME/.local/path.scripts"
-<<<<<<< HEAD
 
-=======
->>>>>>> 10b705574e2213d3d81fc68cd055ce47309a7845
