@@ -7,9 +7,21 @@ closeTerm(){
 }
 
 QueryAllFiles(){
-    echo "path,score,time" > $dir/RH.csv
+    echo "path,score,time" > $dir/tmp.csv
     fd --full-path "$dir" --extension=mp4 $dir/fav -x \
-    jq --arg e {} -r '. |= . + {"$e": "$e"} | [$e, .score, .created_utc] | @csv' {.}.json 2>/dev/null | tee --append $dir/RH.csv
+    jq --arg e {} -r '. |= . + {"$e": "$e"} | [$e, .score, .created_utc] | @csv' {.}.json 2>/dev/null | tee --append $dir/tmp.csv
+    
+    # append human readable date
+    echo "hrTime" > $dir/dates.csv             
+    while IFS= read -r line;
+    do
+        date +%Y%m%dT%H%M%S --date=@$line
+    done < <((cat $dir/tmp.csv|cut -d "," -f 3)) >> $dir/dates.csv
+
+    cat "$dir/dates.csv" | csvjoin "$dir/tmp.csv" - > $dir/RH.csv
+    sed 's/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9],//g' -i $dir/RH.csv
+    rm $dir/tmp.csv
+    cat $dir/RH.csv
 }
 
 QuerySub(){
@@ -93,3 +105,16 @@ case $1 in
         sleep 1s; closeTerm
     ;;
 esac
+
+getHR-Date(){
+    dates=($($dir/cat RH.csv | csvcut -c 3)) 
+    for d in "${dates[@]}";
+    do
+        date "+%Y-%m-%d__%H%M%S%3N" --date=@$d
+    done | tee $dir/Date.csv
+
+}
+
+#bdfr month=$(date +%m)
+#cat RH.csv | csvgrep -c 3 -r "2022-$month.*" | csvgrep -c 1 -r "BoutinelaBabes" | csvsort -c 2 -r | csvcut -c 1 
+

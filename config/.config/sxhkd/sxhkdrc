@@ -28,6 +28,9 @@ button10
     bspc desktop -f next.local.occupied
 ctrl +shift + 1
     bspc desktop -f next.local.occupied
+~button3
+	  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu_run 
+
 
 ## focus previous occupied desktop
 button9
@@ -169,6 +172,13 @@ super + shift + alt + h
     xdotool key ctrl+l; sleep 1s; \
     xdotool key ctrl+c; sleep 1s; \
     urxvtc -name "dl-h" -title "dl-h" -e sh -c "dl-h -p"
+super + ctrl  + g
+    sleep 1s; \
+    xdotool key ctrl+l; sleep 1s; \
+    xdotool key ctrl+c; sleep 1s; \
+
+    kitty --name "k-git" --title "k-git" -e sh -c \
+    "source "$HOME"/.zshrc ; gitCloneFromBrowser"
 
 ## Virtualbox
 super + F12
@@ -209,7 +219,7 @@ super + End
 
 ## program launcher
 super + d
-    . ${HOME}/.config/rofi/launchers/text/launcher.sh
+    . ${HOME}/.config/rofi/launchers/colorful/launcher.sh
     #rofi -show drun -show-icons
 
 Menu
