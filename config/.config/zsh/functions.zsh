@@ -1,35 +1,3 @@
-figlet -f ~/.fonts/misc/figlet/Rectangles.flf 'TANK'
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# -->>> THEME -->>>
-ZSH_THEME="josh"
-# <<<-- THEME <<<--
-
-# -->>> PLUGINS -->>>
-plugins=(
-        zsh-syntax-highlighting 
-        zsh-history-substring-search 
-        zsh-autosuggestions
-        ) 
-# <<<-- PLUGINS <<<--
-
-source $ZSH/oh-my-zsh.sh
-
-# -->>> Define Color Variables  -->>>
-. ${HOME}/.scripts/colors/getcolors
-# <<<-- Define Color Variables <<<--
-
-source "${HOME}/.config/ranger/plugins/shell_subshell_notice.sh"
-source "${HOME}/.scripts/c-env"
-
 #################
 #   FUNCTIONS   #
 #################
@@ -63,6 +31,26 @@ qa() {
     echo "alias $1='$2'" >> $HOME/.oh-my-zsh/custom/alias.zsh
 }
 # <<<-- QUICK ALIAS <<<--
+
+# -->>> BSPWM Gaps -->>>
+gaps() {
+         while getopts g:h:t:b: option
+         do
+                case "${option}"
+                        in
+                        h)horizontal=${OPTARG};;
+                        g)gaps=${OPTARG};;
+                        t)top=${OPTARG};;
+                        b)bottom=${OPTARG}
+                esac
+        done
+        bspc config -m focused left_padding "$horizontal" &
+        bspc config -m focused right_padding "$horizontal" &
+        bspc config -m focused top_padding "$vertical" &
+        bspc config -m focused bottom_padding "$vertical" &
+        bspc config -m focused window_gap "$gaps"
+}
+# <<<-- BSPWM Gaps <<<--
 
 
 #-->>> GIT -->>>
@@ -102,6 +90,7 @@ gitCloneFromBrowser(){
     kitty --name "k-git" --title "k-git" -e sh -c \
         "cd "$HOME"/dev ; git clone $url $file"
 }
+
 # <<<--GIT <<<--
 
 
@@ -196,12 +185,32 @@ gb(){
 }
 # <<<-- GREP BETWEEN  <<<--
 
-# -->>> RANGER  -->>>
+
+# -->>> MPV  -->>>
+qmpv(){
+    for i in $(ls /tmp/mpvSockets/*); do
+        echo '{ "command": ["get_property", "path"] }' | socat - "$i"; 
+    done | jq
+
+}
+rhq(){
+    vid=($(qmpv | grep -oe "/.*\.mp4" | sed 's/mp4/json/g'))
+    for j in ${vid[@]};
+    do
+        find $j 2>/dev/null
+    done
+}
+
+redn(){
+    notify-send.sh $(jq -r .title $(rhq)) 
+    notify-send.sh $(jq -r '.comments[0].subreddit' $(rhq))
+    notify-send.sh $(jq -r .score $(rhq))
+}
+# # <<<-- MPV  <<<--
+
 fm() {
     source ranger
 }
-# <<<-- RANGER  <<<--
-
 
 # -->>> McFly  -->>>
 eval "$(mcfly init zsh)"
@@ -216,33 +225,24 @@ source /usr/share/autojump/autojump.zsh
 
 
 # >>> conda initialize >>>
-#__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-#    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
-#        . "/opt/anaconda/etc/profile.d/conda.sh"
-#    else
-#        export PATH="/opt/anaconda/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
-#conda activate bdfr
-# <<< conda initialize <<<
-
-# -->>> FASD -->>>
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda/bin:$PATH"
+    fi
 fi
-source "$fasd_cache"
-unset fasd_cache
-# <<<-- FASD <<<--
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh || source ~/.oh-my-zsh/custom/prompt.zsh
-
+unset __conda_setup
+# <<< conda initialize <<<
 
 export MPV_SOCKET_DIR="$HOME/Videos/MPV_Socket"
 
+
+# -->>> Define Color Variables  -->>>
+. ${HOME}/.scripts/colors/getcolors
+# <<<-- Define Color Variables <<<--
+
+source "${HOME}/.scripts/c-env"

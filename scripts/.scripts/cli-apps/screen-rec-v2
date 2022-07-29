@@ -8,10 +8,10 @@ file="output_$(date +%Y%m%d_%H%M%S).mp4"
 
 record_screen(){    
 
-    ffmpeg -video_size "2560"x"1440" \
+    ffmpeg -video_size "2560"x"1080" \
     -framerate 30 \
     -f x11grab \
-    -show_region 1 -follow_mouse 100 \
+    -follow_mouse 100 \
     -i :0.0+1280,0 \
     -c:v libx264 \
     -profile:v high \
@@ -55,6 +55,7 @@ convert_to_gif(){
 }
 case $1 in
     '')
+        sleep 3s;
         record_screen
         ;;
     '--gif')

@@ -59,6 +59,28 @@ search(){
 searchLocal(){
     fd --search-path $dir/fav --extension json $1 -x cat {} | jq
 }
+
+ShowMPVProperties(){
+    for i in $(ls /tmp/mpvSockets/*); do
+        echo '{ "command": ["get_property", "path"] }' | socat - "$i"; 
+    done | jq
+
+}
+
+Get_MPV_Post_Info(){
+    vid=($(ShowMPVProperties | grep -oe "/.*\.mp4" | sed 's/mp4/json/g'))
+    for j in ${vid[@]};
+    do
+        find $j 2>/dev/null
+    done
+}
+
+RH_MPV_Notify(){
+    notify-send.sh $(jq -r .title $(Get_MPV_Post_Info)) 
+    notify-send.sh $(jq -r '.comments[0].subreddit' $(Get_MPV_Post_Info))
+    notify-send.sh $(jq -r .score $(Get_MPV_Post_Info))
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -104,16 +126,11 @@ case $1 in
         nohup mpv --playlist-start=0 $(QuerySub "$2" "$3")
         sleep 1s; closeTerm
     ;;
+
+    "-n" | "--notify")
+        RH_MPV_Notify
+    ;;
 esac
-
-getHR-Date(){
-    dates=($($dir/cat RH.csv | csvcut -c 3)) 
-    for d in "${dates[@]}";
-    do
-        date "+%Y-%m-%d__%H%M%S%3N" --date=@$d
-    done | tee $dir/Date.csv
-
-}
 
 #bdfr month=$(date +%m)
 #cat RH.csv | csvgrep -c 3 -r "2022-$month.*" | csvgrep -c 1 -r "BoutinelaBabes" | csvsort -c 2 -r | csvcut -c 1 
