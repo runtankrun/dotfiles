@@ -14,8 +14,8 @@ nnoremap <silent> 	 :tabnext
 map <NL> j
 map  k
 map  l
-xmap <nowait>  <Plug>(VM-Find-Subword-Under)
 nmap <nowait>  <Plug>(VM-Find-Under)
+xmap <nowait>  <Plug>(VM-Find-Subword-Under)
 map  :w
 map  :tabnew
 map  :UndotreeToggle
@@ -24,16 +24,17 @@ nnoremap  "+gP
 nnoremap  "+dd
 vnoremap  "+d
 map <silent>   :noh
-xmap <nowait> \\c <Plug>(VM-Visual-Cursors)
-nmap <nowait> \\gS <Plug>(VM-Reselect-Last)
-nmap <nowait> \\/ <Plug>(VM-Start-Regex-Search)
-nmap <nowait> \\\ <Plug>(VM-Add-Cursor-At-Pos)
-xmap <nowait> \\a <Plug>(VM-Visual-Add)
-xmap <nowait> \\f <Plug>(VM-Visual-Find)
-xmap <nowait> \\/ <Plug>(VM-Visual-Regex)
-xmap <nowait> \\A <Plug>(VM-Visual-All)
 nmap <nowait> \\A <Plug>(VM-Select-All)
+xmap <nowait> \\A <Plug>(VM-Visual-All)
+xmap <nowait> \\/ <Plug>(VM-Visual-Regex)
+xmap <nowait> \\f <Plug>(VM-Visual-Find)
+xmap <nowait> \\a <Plug>(VM-Visual-Add)
+nmap <nowait> \\\ <Plug>(VM-Add-Cursor-At-Pos)
+nmap <nowait> \\/ <Plug>(VM-Start-Regex-Search)
+nmap <nowait> \\gS <Plug>(VM-Reselect-Last)
+xmap <nowait> \\c <Plug>(VM-Visual-Cursors)
 nmap \tc <Plug>Colorizer
+nnoremap \r :RangerChooser
 map ct :ColorToggle
 map cs :colorscheme 
 map dt :DimInactiveToggle
@@ -47,51 +48,51 @@ map sv :vsp
 map sh :sp
 map ss :mks! ~/.vim/sessions/
 map tt :terminal
+xmap <silent> <expr> <Plug>(VM-Visual-Find) vm#operators#find(1, 1)
+nnoremap <silent> <Plug>(VM-Add-Cursor-At-Pos) :call vm#commands#add_cursor_at_pos(0)
+nnoremap <silent> <Plug>(VM-Add-Cursor-At-Word) :call vm#commands#add_cursor_at_word(1, 1)
+nnoremap <silent> <Plug>(VM-Add-Cursor-Down) :call vm#commands#add_cursor_down(0, v:count1)
+nnoremap <silent> <Plug>(VM-Add-Cursor-Up) :call vm#commands#add_cursor_up(0, v:count1)
+nnoremap <silent> <Plug>(VM-Select-Cursor-Down) :call vm#commands#add_cursor_down(1, v:count1)
+nnoremap <silent> <Plug>(VM-Select-Cursor-Up) :call vm#commands#add_cursor_up(1, v:count1)
+nnoremap <silent> <Plug>(VM-Reselect-Last) :call vm#commands#reselect_last()
+nnoremap <silent> <Plug>(VM-Select-All) :call vm#commands#find_all(0, 1)
+xnoremap <silent> <Plug>(VM-Visual-Cursors) :call vm#commands#visual_cursors()
+xnoremap <silent> <Plug>(VM-Visual-Add) :call vm#commands#visual_add()
+xnoremap <silent> <Plug>(VM-Visual-Reduce) :call vm#visual#reduce()
+nnoremap <silent> <Plug>(VM-Find-Under) :call vm#commands#ctrln(v:count1)
+nnoremap <silent> <Plug>(VM-Start-Regex-Search) @=vm#commands#find_by_regex(1)
+nnoremap <silent> <Plug>(VM-Slash-Search) @=vm#commands#find_by_regex(3)
+xnoremap <silent> <Plug>(VM-Visual-Regex) :call vm#commands#find_by_regex(2):call feedkeys('/', 'n')
+nnoremap <silent> <Plug>(VM-Left-Mouse) <LeftMouse>
+nmap <silent> <Plug>(VM-Mouse-Cursor) <Plug>(VM-Left-Mouse)<Plug>(VM-Add-Cursor-At-Pos)
+nmap <silent> <Plug>(VM-Mouse-Word) <Plug>(VM-Left-Mouse)<Plug>(VM-Find-Under)
+nnoremap <silent> <Plug>(VM-Mouse-Column) :call vm#commands#mouse_column()
+nnoremap <silent> <Plug>(VM-Select-h) :call vm#commands#motion('h', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-j) :call vm#commands#motion('j', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-k) :call vm#commands#motion('k', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-l) :call vm#commands#motion('l', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-w) :call vm#commands#motion('w', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-W) :call vm#commands#motion('W', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-b) :call vm#commands#motion('b', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-B) :call vm#commands#motion('B', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-e) :call vm#commands#motion('e', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-E) :call vm#commands#motion('E', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-ge) :call vm#commands#motion('ge', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-gE) :call vm#commands#motion('gE', v:count1, 1, 0)
+nnoremap <silent> <Plug>(VM-Select-BBW) :call vm#commands#motion('BBW', v:count1, 1, 0)
+nmap <nowait> <C-N> <Plug>(VM-Find-Under)
+nmap <nowait> <S-Left> <Plug>(VM-Select-h)
+nmap <nowait> <S-Right> <Plug>(VM-Select-l)
+nmap <nowait> <C-Up> <Plug>(VM-Add-Cursor-Up)
+xmap <nowait> <C-N> <Plug>(VM-Find-Subword-Under)
+nmap <nowait> <C-Down> <Plug>(VM-Add-Cursor-Down)
 xnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
 tnoremap <silent> <Plug>(fzf-normal) 
 tnoremap <silent> <Plug>(fzf-insert) i
 nnoremap <silent> <Plug>(fzf-normal) <Nop>
 nnoremap <silent> <Plug>(fzf-insert) i
-nmap <nowait> <C-Down> <Plug>(VM-Add-Cursor-Down)
-xmap <nowait> <C-N> <Plug>(VM-Find-Subword-Under)
-nmap <nowait> <C-Up> <Plug>(VM-Add-Cursor-Up)
-nmap <nowait> <S-Right> <Plug>(VM-Select-l)
-nmap <nowait> <S-Left> <Plug>(VM-Select-h)
-nmap <nowait> <C-N> <Plug>(VM-Find-Under)
-nnoremap <silent> <Plug>(VM-Select-BBW) :call vm#commands#motion('BBW', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-gE) :call vm#commands#motion('gE', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-ge) :call vm#commands#motion('ge', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-E) :call vm#commands#motion('E', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-e) :call vm#commands#motion('e', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-B) :call vm#commands#motion('B', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-b) :call vm#commands#motion('b', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-W) :call vm#commands#motion('W', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-w) :call vm#commands#motion('w', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-l) :call vm#commands#motion('l', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-k) :call vm#commands#motion('k', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-j) :call vm#commands#motion('j', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Select-h) :call vm#commands#motion('h', v:count1, 1, 0)
-nnoremap <silent> <Plug>(VM-Mouse-Column) :call vm#commands#mouse_column()
-nmap <silent> <Plug>(VM-Mouse-Word) <Plug>(VM-Left-Mouse)<Plug>(VM-Find-Under)
-nmap <silent> <Plug>(VM-Mouse-Cursor) <Plug>(VM-Left-Mouse)<Plug>(VM-Add-Cursor-At-Pos)
-nnoremap <silent> <Plug>(VM-Left-Mouse) <LeftMouse>
-xnoremap <silent> <Plug>(VM-Visual-Regex) :call vm#commands#find_by_regex(2):call feedkeys('/', 'n')
-nnoremap <silent> <Plug>(VM-Slash-Search) @=vm#commands#find_by_regex(3)
-nnoremap <silent> <Plug>(VM-Start-Regex-Search) @=vm#commands#find_by_regex(1)
-nnoremap <silent> <Plug>(VM-Find-Under) :call vm#commands#ctrln(v:count1)
-xnoremap <silent> <Plug>(VM-Visual-Reduce) :call vm#visual#reduce()
-xnoremap <silent> <Plug>(VM-Visual-Add) :call vm#commands#visual_add()
-xnoremap <silent> <Plug>(VM-Visual-Cursors) :call vm#commands#visual_cursors()
-nnoremap <silent> <Plug>(VM-Select-All) :call vm#commands#find_all(0, 1)
-nnoremap <silent> <Plug>(VM-Reselect-Last) :call vm#commands#reselect_last()
-nnoremap <silent> <Plug>(VM-Select-Cursor-Up) :call vm#commands#add_cursor_up(1, v:count1)
-nnoremap <silent> <Plug>(VM-Select-Cursor-Down) :call vm#commands#add_cursor_down(1, v:count1)
-nnoremap <silent> <Plug>(VM-Add-Cursor-Up) :call vm#commands#add_cursor_up(0, v:count1)
-nnoremap <silent> <Plug>(VM-Add-Cursor-Down) :call vm#commands#add_cursor_down(0, v:count1)
-nnoremap <silent> <Plug>(VM-Add-Cursor-At-Word) :call vm#commands#add_cursor_at_word(1, 1)
-nnoremap <silent> <Plug>(VM-Add-Cursor-At-Pos) :call vm#commands#add_cursor_at_pos(0)
-xmap <silent> <expr> <Plug>(VM-Visual-Find) vm#operators#find(1, 1)
 nnoremap <silent> <Plug>(lsp-signature-help) :call lsp#ui#vim#signature_help#get_signature_help_under_cursor()
 nnoremap <silent> <Plug>(lsp-previous-reference) :call lsp#internal#document_highlight#jump(-1)
 nnoremap <silent> <Plug>(lsp-next-reference) :call lsp#internal#document_highlight#jump(+1)
@@ -192,15 +193,21 @@ cd ~
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
-set shortmess=aoO
+if &shortmess =~ 'A'
+  set shortmess=aoOA
+else
+  set shortmess=aoO
+endif
 badd +1 .Xresources
-badd +0 .zshrc
-badd +0 .oh-my-zsh/custom/alias.zsh
-badd +0 .config/sxhkd/sxhkdrc
-badd +0 .config/bspwm/bspwmrc
-badd +0 .config/picom/picom.conf
-badd +0 .config/ranger/rc.conf
-badd +0 .vimrc
+badd +1 .zshrc
+badd +1 .oh-my-zsh/custom/alias.zsh
+badd +1 .config/sxhkd/sxhkdrc
+badd +1 .config/bspwm/bspwmrc
+badd +1 .config/picom/picom.conf
+badd +1 .config/ranger/rc.conf
+badd +1 .vimrc
+badd +0 ~/.config/zsh/c_zsh/alias.zsh
+badd +0 ~/.config/zsh/c_zsh/plugins.zsh
 argglobal
 %argdel
 $argadd .Xresources
@@ -236,6 +243,7 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=s1:/*,mb:*,ex:*/,:!
@@ -351,17 +359,18 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 2 - ((1 * winheight(0) + 25) / 51)
+let s:l = 2 - ((1 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 2
 normal! 0
 tabnext
-edit .zshrc
+edit ~/.config/zsh/c_zsh/alias.zsh
 argglobal
 2argu
-balt .Xresources
+if bufexists(fnamemodify("~/.config/zsh/c_zsh/alias.zsh", ":p")) | buffer ~/.config/zsh/c_zsh/alias.zsh | else | edit ~/.config/zsh/c_zsh/alias.zsh | endif
+balt .zshrc
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -376,10 +385,11 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=:#
-setlocal commentstring=#\ %s
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=inc
 setlocal conceallevel=2
@@ -394,7 +404,7 @@ setlocal define=
 setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
-setlocal errorformat=%f:\ line\ %l:\ %m,%-G%.%#
+setlocal errorformat=
 setlocal expandtab
 if &filetype != 'zsh'
 setlocal filetype=zsh
@@ -411,7 +421,7 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
+setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal formatprg=
 setlocal grepprg=
@@ -419,18 +429,18 @@ setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetShIndent()
-setlocal indentkeys=0{,0},0),0],!^F,o,O,e,0=then,0=do,0=else,0=elif,0=fi,0=esac,0=done,0=end,),0=;;,0=;&,0=fin,0=fil,0=fip,0=fir,0=fix
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=:RunHelp
+setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
 setlocal listchars=
 setlocal makeencoding=
-setlocal makeprg=zsh\ -n\ --\ %:S
+setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
@@ -454,7 +464,7 @@ setlocal noshortname
 setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
-setlocal nosmartindent
+setlocal smartindent
 setlocal softtabstop=4
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
@@ -491,17 +501,18 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 1 - ((0 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 tabnext
-edit .oh-my-zsh/custom/alias.zsh
+edit ~/.config/zsh/c_zsh/plugins.zsh
 argglobal
 3argu
-balt .Xresources
+if bufexists(fnamemodify("~/.config/zsh/c_zsh/plugins.zsh", ":p")) | buffer ~/.config/zsh/c_zsh/plugins.zsh | else | edit ~/.config/zsh/c_zsh/plugins.zsh | endif
+balt .oh-my-zsh/custom/alias.zsh
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -516,10 +527,11 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=:#
-setlocal commentstring=#\ %s
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=inc
 setlocal conceallevel=2
@@ -534,7 +546,7 @@ setlocal define=
 setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
-setlocal errorformat=%f:\ line\ %l:\ %m,%-G%.%#
+setlocal errorformat=
 setlocal expandtab
 if &filetype != 'zsh'
 setlocal filetype=zsh
@@ -551,7 +563,7 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
+setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal formatprg=
 setlocal grepprg=
@@ -559,18 +571,18 @@ setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetShIndent()
-setlocal indentkeys=0{,0},0),0],!^F,o,O,e,0=then,0=do,0=else,0=elif,0=fi,0=esac,0=done,0=end,),0=;;,0=;&,0=fin,0=fil,0=fip,0=fir,0=fix
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=:RunHelp
+setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
 setlocal listchars=
 setlocal makeencoding=
-setlocal makeprg=zsh\ -n\ --\ %:S
+setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
@@ -594,7 +606,7 @@ setlocal noshortname
 setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
-setlocal nosmartindent
+setlocal smartindent
 setlocal softtabstop=4
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
@@ -631,7 +643,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 1 - ((0 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -656,6 +668,7 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=:#
@@ -771,7 +784,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 1 - ((0 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -790,14 +803,14 @@ nmap <buffer> K <Plug>(lsp-hover)
 nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
 nmap <buffer> \rn <Plug>(lsp-rename)
 nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
-nmap <buffer> gt <Plug>(lsp-type-definition)
-nmap <buffer> gi <Plug>(lsp-implementation)
-nmap <buffer> gr <Plug>(lsp-references)
-nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
-nmap <buffer> gs <Plug>(lsp-document-symbol-search)
 nmap <buffer> gd <Plug>(lsp-definition)
-nnoremap <buffer> <expr> <C-D> lsp#scroll(-4)
+nmap <buffer> gs <Plug>(lsp-document-symbol-search)
+nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
+nmap <buffer> gr <Plug>(lsp-references)
+nmap <buffer> gi <Plug>(lsp-implementation)
+nmap <buffer> gt <Plug>(lsp-type-definition)
 nnoremap <buffer> <expr> <C-F> lsp#scroll(+4)
+nnoremap <buffer> <expr> <C-D> lsp#scroll(-4)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -814,6 +827,7 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
@@ -929,7 +943,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 1 - ((0 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -954,6 +968,7 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=:#
@@ -1069,7 +1084,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 1 - ((0 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1094,6 +1109,7 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=:#
@@ -1209,7 +1225,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 1 - ((0 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1225,29 +1241,29 @@ nnoremap <buffer> <expr>  lsp#scroll(+4)
 let s:cpo_save=&cpo
 set cpo&vim
 nmap <buffer> K <Plug>(lsp-hover)
-nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
-vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
-nnoremap <buffer> <silent> [] m':call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
-vnoremap <buffer> <silent> [[ m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "bW")
 nnoremap <buffer> <silent> [[ m':call search('^\s*\(fu\%[nction]\|def\)\>', "bW")
+vnoremap <buffer> <silent> [[ m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "bW")
+nnoremap <buffer> <silent> [] m':call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
+vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "bW")
+nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
+vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
+nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
 nmap <buffer> \rn <Plug>(lsp-rename)
-nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
-vnoremap <buffer> <silent> ]" :exe "normal! gv"|call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-nnoremap <buffer> <silent> ]" :call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "W")
-nnoremap <buffer> <silent> ][ m':call search('^\s*end\(f\%[unction]\|def\)\>', "W")
-vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "W")
 nnoremap <buffer> <silent> ]] m':call search('^\s*\(fu\%[nction]\|def\)\>', "W")
-nmap <buffer> gt <Plug>(lsp-type-definition)
-nmap <buffer> gi <Plug>(lsp-implementation)
-nmap <buffer> gr <Plug>(lsp-references)
-nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
-nmap <buffer> gs <Plug>(lsp-document-symbol-search)
+vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "W")
+nnoremap <buffer> <silent> ][ m':call search('^\s*end\(f\%[unction]\|def\)\>', "W")
+vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*end\(f\%[unction]\|def\)\>', "W")
+nnoremap <buffer> <silent> ]" :call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
+vnoremap <buffer> <silent> ]" :exe "normal! gv"|call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
+nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
 nmap <buffer> gd <Plug>(lsp-definition)
-nnoremap <buffer> <expr> <C-D> lsp#scroll(-4)
+nmap <buffer> gs <Plug>(lsp-document-symbol-search)
+nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
+nmap <buffer> gr <Plug>(lsp-references)
+nmap <buffer> gi <Plug>(lsp-implementation)
+nmap <buffer> gt <Plug>(lsp-type-definition)
 nnoremap <buffer> <expr> <C-F> lsp#scroll(+4)
+nnoremap <buffer> <expr> <C-D> lsp#scroll(-4)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -1264,6 +1280,7 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=sO:\"\ -,mO:\"\ \ ,eO:\"\",:\"
@@ -1379,13 +1396,13 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 25) / 51)
+let s:l = 1 - ((0 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
-tabnext 2
+tabnext 3
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf

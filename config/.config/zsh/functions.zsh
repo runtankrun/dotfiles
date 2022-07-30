@@ -28,7 +28,7 @@ fi
 
 # -->>> QUICK ALIAS -->>>
 qa() {
-    echo "alias $1='$2'" >> $HOME/.oh-my-zsh/custom/alias.zsh
+    echo "alias $1='$2'" >> $ZDOTDIR/alias.zsh
 }
 # <<<-- QUICK ALIAS <<<--
 
@@ -170,35 +170,3 @@ fm() {
     source ranger
 }
 
-# -->>> McFly  -->>>
-eval "$(mcfly init zsh)"
-source /usr/share/doc/mcfly/mcfly.zsh
-export MCFLY_RESULTS=200
-# <<<-- McFly  <<<--
-
-
-# -->>> AutoJump  -->>>
-source /usr/share/autojump/autojump.zsh
-# <<<-- AutoJump  <<<--
-
-
-# >>> conda initialize >>>
-__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-export MPV_SOCKET_DIR="$HOME/Videos/MPV_Socket"
-
-
-# -->>> Define Color Variables  -->>>
-. ${HOME}/.scripts/colors/getcolors
-# <<<-- Define Color Variables <<<--

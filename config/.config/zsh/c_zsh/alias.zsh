@@ -30,8 +30,8 @@ alias yays="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk 
 ##ZSH
 alias rb='source ~/.bashrc'
 alias rz='source $ZDOTDIR/.zshrc'
-alias ez='vim -p $ZDOTDIR/.zshrc $ZDOTDIR/c_alias.zsh'
-alias va='cat $ZDOTDIR/c_alias.zsh | rg -A 20 "^##.*"'
+alias ez='vim -p $ZDOTDIR/.zshrc $ZDOTDIR/alias.zsh'
+alias va='cat $ZDOTDIR/alias.zsh | rg -A 20 "^##.*"'
 
 ##fix terminal
 alias fixur='xrdb ~/.Xresources'

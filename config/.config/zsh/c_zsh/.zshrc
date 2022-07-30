@@ -13,9 +13,9 @@ done <<-EOF
 plugins
 theme
 env
+alias
 functions
 prompt
 utility
-alias
 key-bindings
 EOF
