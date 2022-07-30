@@ -202,5 +202,3 @@ export MPV_SOCKET_DIR="$HOME/Videos/MPV_Socket"
 # -->>> Define Color Variables  -->>>
 . ${HOME}/.scripts/colors/getcolors
 # <<<-- Define Color Variables <<<--
-
-source "${HOME}/.scripts/c-env"

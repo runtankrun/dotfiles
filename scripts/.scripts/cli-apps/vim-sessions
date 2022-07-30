@@ -31,9 +31,14 @@ elif [[ $1 = "-kitty" ]]; then
     "nvim -S ~/.config/nvim/main.vim"
 
 elif [[ $1 = "-kitty2" ]]; then
+    
+    
     kitty \
     --name "vim2" \
     --title "vim2" \
+    -o="initial_window_width 1017" \
+    -o="initial_window_height 1162" \
+    -o="background_opacity=1.00" \
     -e sh -c \
     "vim -S ~/.vim/sessions/main.vim"
 
