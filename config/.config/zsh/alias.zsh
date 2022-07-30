@@ -8,7 +8,6 @@
 # brainstormr=~/Projects/development/planetargon/brainstormr
 # cd $brainstormr
 
-
 ##System
 alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
 
@@ -30,9 +29,9 @@ alias yays="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk 
 
 ##ZSH
 alias rb='source ~/.bashrc'
-alias rz='source ~/.zshrc'
-alias ez='vim -p ~/.zshrc ~/.oh-my-zsh/custom/alias.zsh'
-alias va='cat ~/.oh-my-zsh/custom/alias.zsh | rg -A 20 "^##.*"'
+alias rz='source $ZDOTDIR/.zshrc'
+alias ez='vim -p $ZDOTDIR/.zshrc $ZDOTDIR/alias.zsh'
+alias va='cat $ZDOTDIR/alias.zsh | rg -A 20 "^##.*"'
 
 ##fix terminal
 alias fixur='xrdb ~/.Xresources'
@@ -155,7 +154,5 @@ alias nmap_web_safe_osscan="sudo nmap -p 80,443 -O -v --osscan-guess --fuzzy "
 alias nmap_ping_scan="nmap -n -sP"
 
 alias rofi-shot='rofi -show drun -normal-window & disown'
-#alias ui-pics='montage -shadow -background '#c397d8' -geometry +20+20 -tile 2x *.png montage.png'
-#alias ls='exa --long --all --group --icons --sort=accessed'
-alias exa='exa --long --all --group --icons --sort=accessed --git'
-alias sl='exa --long --all --group --icons --sort=accessed --git'
+alias ui-pics='montage -shadow -background '#c397d8' -geometry +20+20 -tile 2x *.png montage.png'
+alias ls='exa --all --group --icons --sort=accessed'

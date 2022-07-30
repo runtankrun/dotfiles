@@ -276,9 +276,9 @@ super + ctrl + r
 
 ## launch browser 
 super + b
-	  /usr/lib/firefox/firefox-bin
-super + alt + b
     librewolf
+super + alt + b
+    firefox
 	
 ## launch vim
 super + v

@@ -1,2 +1,2 @@
-ZDOTDIR="$HOME/.config/zsh/c_zsh"
+ZDOTDIR="$HOME/.config/zsh"
 
