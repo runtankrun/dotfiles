@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+dir="${HOME}/dev/Real-esr-gan"
+rm $dir/inputs/*.png
+
+ffmpeg -i $1 \
+    -qscale:v 1 \
+    -qmin 1 \
+    -qmax 1 \
+    -vsync 0 $dir/inputs/frame%04d.png ;
+
+python inference_realesrgan.py \
+    --input $dir/inputs \
+    --model_path experiments/pretrained_models/RealESRGAN_x4plus.pth \
+    --output $dir/out_frames \
+    --outscale 2 \
+    --half ;
+
+ffmpeg \
+    -i $dir/out_frames/frame%04d_out.png \
+    -i $1 \
+    -map 0:v:0 \
+    -c:v libx264 \
+    -pix_fmt yuv420p "$dir/output_$(date +%F_%T).mp4"

@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh 
+source $ZDOTDIR/env.zsh
+
+pass -c sys/t
+sleep .3s;
+
+xdotool type $(xclip -out -selection clipboard)

@@ -187,7 +187,7 @@ super + F12
     vboxmanage startvm "Whonix-Gateway-XFCE 1" \
     sleep 3s; \
     vboxmanage startvm "Kali-Linux-2022.2-virtualbox-amd64"; \
-    pass -c sys/v & notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png "Go For It"
+    zsh -c "pass -c sys/v" & notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png "Go For It"
 
 ## tank-ui
 super + ctrl + alt + t
@@ -317,7 +317,7 @@ super + m
     megasync
 ##
 super + ctrl + alt + shift + 9
-    pass -c sys/t; sleep .3s; xdotool type $(echo $(xclip -out -selection clipboard)); xdotool key Return
+    lazy-pass 
 
 ## mpv - launch last directory tagged with "m" 
 super + alt + m

@@ -41,7 +41,7 @@ mainCMD(){
     echo    
     python3 -m bdfr clone $dir \
         -s "$subs" \
-        -t month \
+        -t week \
         -S top \
         --file-scheme '{POSTID}'\
         --search-existing \
