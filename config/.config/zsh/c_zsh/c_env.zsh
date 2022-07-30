@@ -3,20 +3,21 @@
 export C_TMP=$(mktemp -d "${TMPDIR:-/tmp/}$(basename $0).XXXXXXXXXXXX")
 export C_BDFR=/run/media/ellio/T7/bdfr
 export C_HOME=${HOME}/.scripts
-export ZDOTDIR="$HOME"/.config/zsh/c_zsh
-
 timestamp(){
     date "+%Y%m%d-%H%M%S%3N"
 }
 
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+export ZDOTDIR="$HOME"/.config/zsh/c_zsh
+export HISTFILE="$ZDOTDIR"/.zsh_history
 
 export SUDO_PROMPT="passwd: "
 export TERMINAL="kitty"
 export BROWSER="firefox"
 export VISUAL="vim"
 export EDITOR="vim"
+    
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -34,7 +35,6 @@ export XDG_MUSIC_DIR="$HOME/Music"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
 
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv

@@ -11,7 +11,7 @@ do
 done <<-EOF
 theme
 env
-aliases
+alias
 utility
 functions
 options

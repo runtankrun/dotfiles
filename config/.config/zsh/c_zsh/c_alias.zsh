@@ -156,6 +156,4 @@ alias nmap_ping_scan="nmap -n -sP"
 
 alias rofi-shot='rofi -show drun -normal-window & disown'
 alias ui-pics='montage -shadow -background '#c397d8' -geometry +20+20 -tile 2x *.png montage.png'
-#alias ls='exa --long --all --group --icons --sort=accessed'
-#alias exa='exa --long --all --group --icons --sort=accessed --git'
-alias sl='exa --all --group --icons --sort=accessed --git'
+alias sl='exa --all --group --icons --sort=accessed'

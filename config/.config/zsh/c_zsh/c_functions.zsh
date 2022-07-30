@@ -28,7 +28,7 @@ fi
 
 # -->>> QUICK ALIAS -->>>
 qa() {
-    echo "alias $1='$2'" >> $HOME/.oh-my-zsh/custom/alias.zsh
+    echo "alias $1='$2'" >> $ZDOTDIR/alias.zsh
 }
 # <<<-- QUICK ALIAS <<<--
 
