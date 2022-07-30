@@ -17,9 +17,13 @@ bspc rule -a URxvt:vis -o node=@^2:^$dt:/2/1
 bspc rule -a Rofi:rofi -o node=@^2:^$dt:/2/2
 
 ##LAUNCH APPS
+spt play --playlist --random --uri=spotify:playlist:36jMjt77enSYMSr4uoYe9J
 kitty --name "spot" --title "spot" -e sh -c "spt;zsh" &
+sleep 1
 kitty --name "music" --title "music" -e sh -c "music" &
+sleep 1
 visualizer &
+sleep 1
 #urxvtc -name "lofi" -title "lofi" -e sh -c 'mpv --x11-name="lofi" --title="lofi" ~/Music/ --mute=yes --no-video;zsh' &
 "${HOME}"/.config/rofi/applets/menu/mpd.sh &
 spotifyd -u chasetank -P "pass spotify/spotifyd" -B 320

@@ -24,7 +24,7 @@ zstyle ":completion:*" ignored-patterns
 zstyle ":completion:*" completer _complete
 
 # History
-HISTFILE="$XDG_CACHE_HOME/zsh/.zhistory"
+HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
 

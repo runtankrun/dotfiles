@@ -10,7 +10,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 
 # -->>> THEME -->>>
-ZSH_THEME="josh"
+ZSH_THEME="powerlevel10k"
 # <<<-- THEME <<<--
 
 # -->>> PLUGINS -->>>

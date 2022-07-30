@@ -32,26 +32,6 @@ qa() {
 }
 # <<<-- QUICK ALIAS <<<--
 
-# -->>> BSPWM Gaps -->>>
-gaps() {
-         while getopts g:h:t:b: option
-         do
-                case "${option}"
-                        in
-                        h)horizontal=${OPTARG};;
-                        g)gaps=${OPTARG};;
-                        t)top=${OPTARG};;
-                        b)bottom=${OPTARG}
-                esac
-        done
-        bspc config -m focused left_padding "$horizontal" &
-        bspc config -m focused right_padding "$horizontal" &
-        bspc config -m focused top_padding "$vertical" &
-        bspc config -m focused bottom_padding "$vertical" &
-        bspc config -m focused window_gap "$gaps"
-}
-# <<<-- BSPWM Gaps <<<--
-
 
 #-->>> GIT -->>>
 ginit() {
@@ -185,28 +165,6 @@ gb(){
 }
 # <<<-- GREP BETWEEN  <<<--
 
-
-# -->>> MPV  -->>>
-qmpv(){
-    for i in $(ls /tmp/mpvSockets/*); do
-        echo '{ "command": ["get_property", "path"] }' | socat - "$i"; 
-    done | jq
-
-}
-rhq(){
-    vid=($(qmpv | grep -oe "/.*\.mp4" | sed 's/mp4/json/g'))
-    for j in ${vid[@]};
-    do
-        find $j 2>/dev/null
-    done
-}
-
-redn(){
-    notify-send.sh $(jq -r .title $(rhq)) 
-    notify-send.sh $(jq -r '.comments[0].subreddit' $(rhq))
-    notify-send.sh $(jq -r .score $(rhq))
-}
-# # <<<-- MPV  <<<--
 
 fm() {
     source ranger

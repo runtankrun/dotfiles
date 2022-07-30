@@ -155,7 +155,7 @@ alias nmap_web_safe_osscan="sudo nmap -p 80,443 -O -v --osscan-guess --fuzzy "
 alias nmap_ping_scan="nmap -n -sP"
 
 alias rofi-shot='rofi -show drun -normal-window & disown'
-#alias ui-pics='montage -shadow -background '#c397d8' -geometry +20+20 -tile 2x *.png montage.png'
+alias ui-pics='montage -shadow -background '#c397d8' -geometry +20+20 -tile 2x *.png montage.png'
 #alias ls='exa --long --all --group --icons --sort=accessed'
-alias exa='exa --long --all --group --icons --sort=accessed --git'
+#alias exa='exa --long --all --group --icons --sort=accessed --git'
 alias sl='exa --long --all --group --icons --sort=accessed --git'

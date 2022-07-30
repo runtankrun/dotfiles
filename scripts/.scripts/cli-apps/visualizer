@@ -1,5 +1,12 @@
 #!/bin/sh
 
+COLORS=('black' 'blue' 'cyan' 'green' \
+        'magenta' 'red' 'white' 'yellow')
+
+ACCENT="foreground=${COLORS[$(( $RANDOM % 8 ))]}"
+
+sed -i "s/foreground.*/$ACCENT/g" "${HOME}"/.config/cava/config
+
 if [[ $1 = "-w" ]]; then
 urxvtc -name "vis-case" -title "vis-case" --transparent -e sh -c \
 "cava -p ~/.config/cava/config_2"
