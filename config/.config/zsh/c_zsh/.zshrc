@@ -17,4 +17,5 @@ functions
 prompt
 utility
 alias
+key-bindings
 EOF
