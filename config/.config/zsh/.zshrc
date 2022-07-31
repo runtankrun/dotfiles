@@ -13,6 +13,7 @@ done <<-EOF
 plugins
 theme
 env
+history
 key-bindings
 alias
 functions
