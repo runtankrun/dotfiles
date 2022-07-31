@@ -1,6 +1,6 @@
 {
   "special":{
-      "alpha": 90,
+      "alpha": "99",
       "background": "#1a1b26",
       "foreground": "#a9b1d6",
       "cursor": "#c0caf5"

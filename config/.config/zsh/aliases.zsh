@@ -1,13 +1,3 @@
-# You can put files here to add functionality separated per file, which
-# will be ignored by git.
-# Files on the custom/ directory will be automatically loaded by the init
-# script, in alphabetical order.
-
-# For example: add yourself some shortcuts to projects you often work on.
-#
-# brainstormr=~/Projects/development/planetargon/brainstormr
-# cd $brainstormr
-
 ##System
 alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
 
@@ -30,8 +20,8 @@ alias yays="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk 
 ##ZSH
 alias rb='source ~/.bashrc'
 alias rz='source $ZDOTDIR/.zshrc'
-alias ez='vim -p $ZDOTDIR/.zshrc $ZDOTDIR/alias.zsh'
-alias va='cat $ZDOTDIR/alias.zsh | rg -A 20 "^##.*"'
+alias ez='vim -p $ZDOTDIR/.zshrc $ZDOTDIR/aliases.zsh'
+alias va='cat $ZDOTDIR/aliases.zsh | rg -A 20 "^##.*"'
 
 ##fix terminal
 alias fixur='xrdb ~/.Xresources'
@@ -133,9 +123,7 @@ alias rvm='python inference.py --variant resnet50 --checkpoint checkpoint/rvm_re
 ##MISC
 alias lsc='ls -latrh --time=birth'
 alias gcb='xclip -out -selection clipboard'
-alias ev="fd $1 -X vim {}"
-alias ec="fd $1 -X bat {}"
-alias cat="bat"
+alias v="f -e $EDITOR"
 
 alias nmap_open_ports="nmap --open"
 alias nmap_list_interfaces="nmap --iflist"
@@ -156,3 +144,5 @@ alias nmap_ping_scan="nmap -n -sP"
 alias rofi-shot='rofi -show drun -normal-window & disown'
 alias ui-pics='montage -shadow -background '#c397d8' -geometry +20+20 -tile 2x *.png montage.png'
 alias ls='exa --all --group --icons --sort=accessed'
+
+alias git-shrink='git repack -a -d --depth=250 --window=250'

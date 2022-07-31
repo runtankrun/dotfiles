@@ -16,7 +16,7 @@ c-tmp(){
 
 # -->>> QUICK ALIAS -->>>
 qa() {
-    echo "alias $1='$2'" >> $ZDOTDIR/alias.zsh
+    echo "alias $1='$2'" >> $ZDOTDIR/aliases.zsh
 }
 # <<<-- QUICK ALIAS <<<--
 
@@ -182,5 +182,3 @@ fm() {
     source ranger
 }
 # <<<-- RANGER  <<<--
-
-#alias ls="exa --all --group --icons --sort=accessed"

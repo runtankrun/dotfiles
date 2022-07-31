@@ -2,6 +2,9 @@
 source $ZDOTDIR/env.zsh
 
 pass -c sys/t
-sleep .3s;
+sleep .1;
 
 xdotool type $(xclip -out -selection clipboard)
+sleep .1
+
+xdotool key "Return"

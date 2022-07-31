@@ -15,7 +15,7 @@ history
 theme
 key-bindings
 plugins
-alias
+aliases
 functions
 utility
 EOF

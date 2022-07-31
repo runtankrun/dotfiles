@@ -47,7 +47,3 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 # -->>> Define Color Variables-->>>
 . ${HOME}/.scripts/colors/getcolors
 # <<<-- Define Color Variables <<<--
-
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/c_zsh/.p10k.zsh.
-[[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh || source $ZDOTDIR/prompt.zsh
