@@ -1,31 +1,3 @@
-# -->>> THEME -->>>
-fav_themes(){
-    cat<<EOF
-frontcube
-fwalch
-gallois
-afowler
-candy
-dallasx
-half-life
-mikeh
-flazz
-bira
-pygman
-minimal-blackcat
-jonathan
-smt
-dogenpunk
-mlh
-gnzh
-cypher
-josh  
-miloshadzic
-EOF
-}
-# <<<-- THEME <<<--
-
-
 # Special
 background='#1a1b26'
 foreground='#a9b1d6'

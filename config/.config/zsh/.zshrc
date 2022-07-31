@@ -12,11 +12,10 @@ do
 done <<-EOF
 env
 history
-alias
 theme
-prompt
 key-bindings
 plugins
+alias
 functions
 utility
 EOF
