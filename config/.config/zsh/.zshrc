@@ -10,13 +10,13 @@ while read file
 do 
   source "$ZDOTDIR/$file.zsh"
 done <<-EOF
-plugins
-theme
 env
 history
-key-bindings
 alias
-functions
+theme
 prompt
+key-bindings
+plugins
+functions
 utility
 EOF

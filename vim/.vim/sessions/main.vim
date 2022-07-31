@@ -151,21 +151,22 @@ else
   set shortmess=aoO
 endif
 badd +1 .config/zsh/alias.zsh
-badd +0 .config/zsh/env.zsh
-badd +0 .config/zsh/functions.zsh
-badd +0 .config/zsh/history.zsh
-badd +0 .config/zsh/key-bindings.zsh
-badd +0 .config/zsh/plugins.zsh
-badd +0 .config/zsh/prompt.zsh
-badd +0 .config/zsh/theme.zsh
-badd +0 .config/zsh/utility.zsh
-badd +0 .Xresources
-badd +0 .vim
-badd +0 .config/bspwm/bspwmrc
-badd +0 .config/.config/sxhkd/sxhkdrc
-badd +0 .config/ranger/rc.conf
-badd +0 .config/sxhkd/sxhkdrc
-badd +0 .vimrc
+badd +1 .config/zsh/env.zsh
+badd +1 .config/zsh/functions.zsh
+badd +1 .config/zsh/history.zsh
+badd +1 .config/zsh/key-bindings.zsh
+badd +25 .config/zsh/plugins.zsh
+badd +1 .config/zsh/prompt.zsh
+badd +1 .config/zsh/theme.zsh
+badd +1 .config/zsh/utility.zsh
+badd +1 .Xresources
+badd +1 .vim
+badd +1 .config/bspwm/bspwmrc
+badd +1 .config/.config/sxhkd/sxhkdrc
+badd +1 .config/ranger/rc.conf
+badd +1 .config/sxhkd/sxhkdrc
+badd +1 .vimrc
+badd +0 .config/zsh/.zshrc
 argglobal
 %argdel
 $argadd .config/zsh/alias.zsh
@@ -328,7 +329,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 158 - ((61 * winheight(0) + 31) / 62)
+let s:l = 158 - ((70 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -469,7 +470,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 21 - ((20 * winheight(0) + 31) / 62)
+let s:l = 21 - ((20 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -610,7 +611,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+let s:l = 1 - ((0 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -751,7 +752,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 40 - ((39 * winheight(0) + 31) / 62)
+let s:l = 40 - ((39 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -892,14 +893,173 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+let s:l = 1 - ((0 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 tabnext
-edit .config/zsh/plugins.zsh
+edit .config/zsh/.zshrc
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 71 + 69) / 139)
+exe 'vert 2resize ' . ((&columns * 67 + 69) / 139)
+argglobal
+6argu
+if bufexists(fnamemodify(".config/zsh/.zshrc", ":p")) | buffer .config/zsh/.zshrc | else | edit .config/zsh/.zshrc | endif
+balt .config/zsh/plugins.zsh
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=:#
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=inc
+setlocal conceallevel=2
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%f:\ line\ %l:\ %m,%-G%.%#
+setlocal expandtab
+if &filetype != 'zsh'
+setlocal filetype=zsh
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetShIndent()
+setlocal indentkeys=0{,0},0),0],!^F,o,O,e,0=then,0=do,0=else,0=elif,0=fi,0=esac,0=done,0=end,),0=;;,0=;&,0=fin,0=fil,0=fip,0=fir,0=fix
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=:RunHelp
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=zsh\ -n\ --\ %:S
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'zsh'
+setlocal syntax=zsh
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal undofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+set nowrap
+setlocal nowrap
+setlocal wrapmargin=0
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 15 - ((14 * winheight(0) + 35) / 71)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 15
+normal! 05|
+wincmd w
 argglobal
 6argu
 balt .config/zsh/alias.zsh
@@ -1033,12 +1193,16 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 22 - ((21 * winheight(0) + 31) / 62)
+let s:l = 25 - ((24 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 22
-normal! 06|
+keepjumps 25
+normal! 021|
+wincmd w
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 71 + 69) / 139)
+exe 'vert 2resize ' . ((&columns * 67 + 69) / 139)
 tabnext
 edit .config/zsh/prompt.zsh
 argglobal
@@ -1174,7 +1338,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+let s:l = 1 - ((0 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1315,7 +1479,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+let s:l = 1 - ((0 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1456,7 +1620,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 18 - ((17 * winheight(0) + 31) / 62)
+let s:l = 18 - ((17 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1597,7 +1761,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+let s:l = 1 - ((0 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1606,6 +1770,7 @@ normal! 0
 tabnext
 edit .config/bspwm/bspwmrc
 argglobal
+1argu
 if bufexists(fnamemodify(".config/bspwm/bspwmrc", ":p")) | buffer .config/bspwm/bspwmrc | else | edit .config/bspwm/bspwmrc | endif
 setlocal keymap=
 setlocal noarabic
@@ -1737,7 +1902,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+let s:l = 1 - ((0 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1878,7 +2043,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+let s:l = 1 - ((0 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1909,14 +2074,14 @@ vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*end\(f\%[u
 nnoremap <buffer> <silent> ][ m':call search('^\s*end\(f\%[unction]\|def\)\>', "W")
 vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "W")
 nnoremap <buffer> <silent> ]] m':call search('^\s*\(fu\%[nction]\|def\)\>', "W")
-nmap <buffer> gt <Plug>(lsp-type-definition)
-nmap <buffer> gi <Plug>(lsp-implementation)
-nmap <buffer> gr <Plug>(lsp-references)
-nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
-nmap <buffer> gs <Plug>(lsp-document-symbol-search)
 nmap <buffer> gd <Plug>(lsp-definition)
-nnoremap <buffer> <expr> <C-D> lsp#scroll(-4)
+nmap <buffer> gs <Plug>(lsp-document-symbol-search)
+nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
+nmap <buffer> gr <Plug>(lsp-references)
+nmap <buffer> gi <Plug>(lsp-implementation)
+nmap <buffer> gt <Plug>(lsp-type-definition)
 nnoremap <buffer> <expr> <C-F> lsp#scroll(+4)
+nnoremap <buffer> <expr> <C-D> lsp#scroll(-4)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -2049,7 +2214,7 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 127 - ((34 * winheight(0) + 31) / 62)
+let s:l = 127 - ((39 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -2063,11 +2228,14 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 set shortmess=filnxtToOS
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
