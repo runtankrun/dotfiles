@@ -20,6 +20,31 @@ qa() {
 }
 # <<<-- QUICK ALIAS <<<--
 
+getRandomTheme(){
+
+    font=$(find .fonts/misc/figlet | shuf | tail -n1)
+    theme=$(find "$ZDOTDIR"/prompts | shuf | tail -n1)
+
+    echo \n\n
+    echo "$theme"
+    
+    source "$theme"
+    
+}
+
+
+# -->>> TORRENTINIM -->>>
+StartTorrentServer(){
+
+#    ALLOW_ORIGINS='https://rarbg.to'
+    ALLOW_ORIGINS="${ALLOW_ORIGINS}":https://1337.wtf
+#    ALLOW_ORIGINS="${ALLOW_ORIGINS}":https://nyaa.si
+
+    exec "$HOME"/dev/torrentinim/torrentinim
+
+}
+# <<<-- TORRENTINIM <<<--
+
 
 #-->>> GIT -->>>
 ginit() {

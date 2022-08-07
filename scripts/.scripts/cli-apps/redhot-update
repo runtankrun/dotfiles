@@ -20,9 +20,6 @@ process=$1
 process_count=5
 i=0
 
-dt=$(bspc query --desktops --names --desktop .\!occupied | head -n 1)
-bspc desktop -f $dt
-
 #Ghetto Multiprocessing 
 #List of All Subreddits to update
 subreddits=$(ls ${dir})

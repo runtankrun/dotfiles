@@ -81,6 +81,20 @@ RH_MPV_Notify(){
     notify-send.sh $(jq -r .score $(Get_MPV_Post_Info))
 }
 
+getRandomTopFifty(){
+
+    if [[ ! -f $C_BDFR/month.txt ]]; then
+        subs=($(find "$C_BDFR"/fav/ -maxdepth 1 | cut -d "/" -f 8))
+        for s in "${subs[@]}";
+        do
+            cat $C_BDFR/RH.csv | grep -e "$s" | csvsort -c 2 -r | csvcut -c 1 | head -n 50 | tail $C_BDFR/month.txt
+        done
+    fi
+    
+    nohup mpv $(cat $C_BDFR/month.txt) &> month.txt.out &!
+
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

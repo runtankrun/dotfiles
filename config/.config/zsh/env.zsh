@@ -1,4 +1,25 @@
 #!/usr/bin/env zsh
+
+##Personal
+
+export C_HOME="${HOME}"/.scripts
+export C_BDFR="/run/media/ellio/T7/bdfr"
+
+##ZSH
+
+export HISTFILE="$ZDOTDIR"/.zsh_history
+SAVEHIST=10000
+export SUDO_PROMPT="passwd: "
+
+##Default Programs
+
+export TERMINAL="kitty"
+export BROWSER="librewolf"
+export VISUAL="vim"
+export EDITOR="vim"
+
+##XDG
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -15,17 +36,7 @@ export XDG_MUSIC_DIR="$HOME/Music"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
 
-export C_BDFR="/run/media/ellio/T7/bdfr"
-export C_HOME="${HOME}"/.scripts
-
-export HISTFILE="$ZDOTDIR"/.zsh_history
-SAVEHIST=10000
-
-export SUDO_PROMPT="passwd: "
-export TERMINAL="kitty"
-export BROWSER="librewolf"
-export VISUAL="vim"
-export EDITOR="vim"
+## Programs
 
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
@@ -45,5 +56,3 @@ export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export POETRY_HOME="$XDG_DATA_HOME"/poetry
 export KERAS_HOME="${XDG_STATE_HOME}/keras"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-
-

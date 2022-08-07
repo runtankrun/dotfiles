@@ -20,7 +20,7 @@ alias yays="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk 
 ##ZSH
 alias rb='source ~/.bashrc'
 alias rz='source $ZDOTDIR/.zshrc'
-alias ez='vim -p $ZDOTDIR/.zshrc $ZDOTDIR/aliases.zsh'
+alias ez='vim -p $ZDOTDIR'
 alias va='cat $ZDOTDIR/aliases.zsh | rg -A 20 "^##.*"'
 
 ##fix terminal
@@ -141,8 +141,11 @@ alias nmap_full_with_scripts="sudo nmap -sS -sU -T4 -A -v -PE -PP -PS21,22,23,25
 alias nmap_web_safe_osscan="sudo nmap -p 80,443 -O -v --osscan-guess --fuzzy "
 alias nmap_ping_scan="nmap -n -sP"
 
+## Misc
 alias rofi-shot='rofi -show drun -normal-window & disown'
 alias ui-pics='montage -shadow -background '#c397d8' -geometry +20+20 -tile 2x *.png montage.png'
 alias ls='exa --all --group --icons --sort=accessed'
-
 alias git-shrink='git repack -a -d --depth=250 --window=250'
+alias chpr='PURE_PROMPT_SYMBOL="(☞ﾟヮﾟ)☞"'
+alias rz='source'
+alias rz='source "$ZDOTDIR"/.zshrc'

@@ -20,7 +20,6 @@ color13='#bb9af7'
 color14='#7dcfff'
 color15='#c0caf5'
 
-
 # FZF colors
 export FZF_DEFAULT_OPTS="
     $FZF_DEFAULT_OPTS
@@ -30,7 +29,6 @@ export FZF_DEFAULT_OPTS="
 
 # Fix LS_COLORS being unreadable.
 export LS_COLORS="${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"
-
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
@@ -42,7 +40,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
-
 
 # -->>> Define Color Variables-->>>
 . ${HOME}/.scripts/colors/getcolors

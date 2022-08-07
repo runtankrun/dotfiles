@@ -166,7 +166,7 @@ badd +1 .config/.config/sxhkd/sxhkdrc
 badd +1 .config/ranger/rc.conf
 badd +1 .config/sxhkd/sxhkdrc
 badd +1 .vimrc
-badd +0 .config/zsh/.zshrc
+badd +1 .config/zsh/.zshrc
 argglobal
 %argdel
 $argadd .config/zsh/alias.zsh
@@ -184,7 +184,6 @@ $argadd .config/bspwm/bspwmrc
 $argadd .config/.config/sxhkd/sxhkdrc
 $argadd .config/ranger/rc.conf
 set stal=2
-tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -329,11 +328,11 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 158 - ((70 * winheight(0) + 35) / 71)
+let s:l = 1 - ((0 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 158
+keepjumps 1
 normal! 0
 tabnext
 edit .config/zsh/env.zsh
@@ -917,8 +916,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 71 + 69) / 139)
-exe 'vert 2resize ' . ((&columns * 67 + 69) / 139)
+exe 'vert 1resize ' . ((&columns * 69 + 69) / 139)
+exe 'vert 2resize ' . ((&columns * 69 + 69) / 139)
 argglobal
 6argu
 if bufexists(fnamemodify(".config/zsh/.zshrc", ":p")) | buffer .config/zsh/.zshrc | else | edit .config/zsh/.zshrc | endif
@@ -1058,7 +1057,7 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 15
-normal! 05|
+normal! 03|
 wincmd w
 argglobal
 6argu
@@ -1198,152 +1197,16 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 25
-normal! 021|
+let s:c = 21 - ((8 * winwidth(0) + 34) / 69)
+if s:c > 0
+  exe 'normal! ' . s:c . '|zs' . 21 . '|'
+else
+  normal! 021|
+endif
 wincmd w
 2wincmd w
-exe 'vert 1resize ' . ((&columns * 71 + 69) / 139)
-exe 'vert 2resize ' . ((&columns * 67 + 69) / 139)
-tabnext
-edit .config/zsh/prompt.zsh
-argglobal
-7argu
-balt .config/zsh/alias.zsh
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinscopedecls=public,protected,private
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=:#
-setlocal commentstring=#\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=inc
-setlocal conceallevel=2
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=%f:\ line\ %l:\ %m,%-G%.%#
-setlocal expandtab
-if &filetype != 'zsh'
-setlocal filetype=zsh
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=GetShIndent()
-setlocal indentkeys=0{,0},0),0],!^F,o,O,e,0=then,0=do,0=else,0=elif,0=fi,0=esac,0=done,0=end,),0=;;,0=;&,0=fin,0=fil,0=fip,0=fir,0=fix
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=:RunHelp
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=zsh\ -n\ --\ %:S
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'zsh'
-setlocal syntax=zsh
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal thesaurusfunc=
-setlocal undofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-set nowrap
-setlocal nowrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 35) / 71)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 1
-normal! 03|
+exe 'vert 1resize ' . ((&columns * 69 + 69) / 139)
+exe 'vert 2resize ' . ((&columns * 69 + 69) / 139)
 tabnext
 edit .config/zsh/theme.zsh
 argglobal
@@ -1625,7 +1488,7 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 18
-normal! 026|
+normal! 019|
 tabnext
 edit .Xresources
 argglobal
@@ -1772,6 +1635,7 @@ edit .config/bspwm/bspwmrc
 argglobal
 1argu
 if bufexists(fnamemodify(".config/bspwm/bspwmrc", ":p")) | buffer .config/bspwm/bspwmrc | else | edit .config/bspwm/bspwmrc | endif
+balt .config/zsh/alias.zsh
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -2074,14 +1938,14 @@ vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*end\(f\%[u
 nnoremap <buffer> <silent> ][ m':call search('^\s*end\(f\%[unction]\|def\)\>', "W")
 vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "W")
 nnoremap <buffer> <silent> ]] m':call search('^\s*\(fu\%[nction]\|def\)\>', "W")
-nmap <buffer> gd <Plug>(lsp-definition)
-nmap <buffer> gs <Plug>(lsp-document-symbol-search)
-nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
-nmap <buffer> gr <Plug>(lsp-references)
-nmap <buffer> gi <Plug>(lsp-implementation)
 nmap <buffer> gt <Plug>(lsp-type-definition)
-nnoremap <buffer> <expr> <C-F> lsp#scroll(+4)
+nmap <buffer> gi <Plug>(lsp-implementation)
+nmap <buffer> gr <Plug>(lsp-references)
+nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
+nmap <buffer> gs <Plug>(lsp-document-symbol-search)
+nmap <buffer> gd <Plug>(lsp-definition)
 nnoremap <buffer> <expr> <C-D> lsp#scroll(-4)
+nnoremap <buffer> <expr> <C-F> lsp#scroll(+4)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
