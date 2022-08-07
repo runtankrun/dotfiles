@@ -1,4 +1,5 @@
 source ~/.zplug/init.zsh
+
 zplug "larkery/zsh-histdb", from:github
 zplug "jgogstad/passwordless-history", from:github
 #zplug "romkatv/powerlevel10k", as:theme, depth:1
@@ -11,6 +12,8 @@ zplug "Aloxaf/fzf-tab", from:github
 ## nohup Keybind
 zplug "micrenda/zsh-nohup", from:github
 #zplug "marlonrichert/zsh-autocomplete", from:github
+# notifier
+zplug "MichaelAquilina/zsh-auto-notify"
 ## Syntax Highlighting
 zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:2
 

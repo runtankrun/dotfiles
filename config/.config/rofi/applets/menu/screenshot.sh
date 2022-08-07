@@ -23,7 +23,11 @@ window=""
 # Variable passed to rofi
 options="$screen\n$area\n$window"
 
-chosen="$(echo -e "$options" | $rofi_command -p 'App : scrot' -dmenu -selected-row 1)"
+
+dir="$HOME/.config/rofi/applets/menu/configs" 
+rofi_command=$(rofi -theme $dir/square/screenshot.rasi -dmenu)
+
+chosen="$(echo -e "$options" | $rofi_command -p 'App : screen-rec' -dmenu -selected-row 1)"
 case $chosen in
     $screen)
 		if [[ -f /usr/bin/scrot ]]; then

@@ -146,6 +146,3 @@ case $1 in
     ;;
 esac
 
-#bdfr month=$(date +%m)
-#cat RH.csv | csvgrep -c 3 -r "2022-$month.*" | csvgrep -c 1 -r "BoutinelaBabes" | csvsort -c 2 -r | csvcut -c 1 
-

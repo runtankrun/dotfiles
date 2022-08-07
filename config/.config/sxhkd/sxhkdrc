@@ -333,7 +333,7 @@ Print
 ## record screen
 super + Print
     urxvtc -e sh -c \
-    screen-rec-v2
+    screen-rec
 
 #giph --format mp4 -s -d 3 -l -c 1,1,1,0.3 -b 5 -p -5 ~/Videos/screen.mp4
 

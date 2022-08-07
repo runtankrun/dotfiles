@@ -15,6 +15,11 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   zle -N zle-line-finish
 fi
 
+# Histdb Keybind
+source "$HOME"/.zplug/repos/larkery/zsh-histdb/histdb-interactive.zsh
+bindkey '^t' _histdb-isearch
+# Histdb Keybind
+
 # Use emacs key bindings
 bindkey -e
 
@@ -117,13 +122,6 @@ bindkey '\C-x\C-e' edit-command-line
 
 # file rename magick
 bindkey "^[m" copy-prev-shell-word
-
-
-#Histdb Keybind
-source "$HOME"/.zplug/repos/larkery/zsh-histdb/histdb-interactive.zsh
-bindkey '^t' _histdb-isearch
-#+Histdb Keybind
-
 
 # consider emacs keybindings:
 

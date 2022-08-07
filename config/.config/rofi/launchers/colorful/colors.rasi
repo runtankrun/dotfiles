@@ -5,5 +5,5 @@
   bg:  #1a1b26ff;
   se:  #282c34ff;
   fg:  #c0caf5ff;
-  ac:  #282c34ff;
+  ac:  #7dcfffff;
 }

@@ -1,0 +1,75 @@
+#!/bin/sh
+
+file="output_$(date +%Y%m%d_%H%M%S).mp4"    
+
+SelectArea(){
+    
+    eval $(slop -f "size=%wx%h pos=0+%x scale=%x")
+    slop=$(slop -f "%x %y %w %h %g %i") || exit 1
+    read -r X Y W H G ID < <(echo $slop)
+
+}   
+
+record_screen(){    
+    
+    ffmpeg -video_size "$W"x"$H" \
+    -framerate 30 \
+    -f x11grab \
+    -i :0.0+$X,$Y \
+    -follow_mouse 100 \
+    -c:v libx264 \
+    -profile:v high \
+    -bf 2 \
+    -g 30 \
+    -crf 18 \
+    -pix_fmt yuv420p \
+    -preset ultrafast \
+    $file
+}
+
+# Options
+screen=""
+area=""
+window=""
+
+# Variable passed to rofi
+options="$screen\n$area\n$window"
+
+
+dir="$HOME/.config/rofi/applets/menu/configs"
+rofi_command="rofi -theme $dir/square/screenshot.rasi drun"
+
+chosen="$(echo -e "$options" | $rofi_command -p 'App : screen-rec' -dmenu -selected-row 1)"
+case $chosen in
+        
+    $screen)
+        
+        W=3440
+        H=1440
+        X=1280
+        Y=0
+
+        record_screen 
+
+        ;;
+
+    $area)
+
+        SelectArea 
+        record_screen 
+        
+        ;;
+    
+    $window)
+        
+        W=2560
+        H=1080
+        X=1280
+        Y=0
+
+        record_screen
+
+        ;;        
+
+esac
+

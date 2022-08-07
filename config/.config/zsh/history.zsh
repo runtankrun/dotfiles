@@ -17,6 +17,20 @@ function omz_history {
   fi
 }
 
+##SQL zsh history storage
+  _zsh_autosuggest_strategy_histdb_top_here() {
+      local query="select commands.argv from
+  history left join commands on history.command_id = commands.rowid
+  left join places on history.place_id = places.rowid
+  where places.dir LIKE '$(sql_escape $PWD)%'
+  and commands.argv LIKE '$(sql_escape $1)%'
+  group by commands.argv order by count(*) desc limit 1"
+      suggestion=$(_histdb_query "$query")
+  }
+
+  ZSH_AUTOSUGGEST_STRATEGY=histdb_top_here
+#+END_SRC
+
 # Timestamp format
 case ${HIST_STAMPS-} in
   "mm/dd/yyyy") alias history='omz_history -f' ;;
@@ -39,16 +53,4 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt share_history          # share command history data
 
-#+BEGIN_SRC sh
-  _zsh_autosuggest_strategy_histdb_top_here() {
-      local query="select commands.argv from
-  history left join commands on history.command_id = commands.rowid
-  left join places on history.place_id = places.rowid
-  where places.dir LIKE '$(sql_escape $PWD)%'
-  and commands.argv LIKE '$(sql_escape $1)%'
-  group by commands.argv order by count(*) desc limit 1"
-      suggestion=$(_histdb_query "$query")
-  }
 
-  ZSH_AUTOSUGGEST_STRATEGY=histdb_top_here
-#+END_SRC
