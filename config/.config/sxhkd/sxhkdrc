@@ -179,6 +179,9 @@ super + ctrl  + g
 
     kitty --name "k-git" --title "k-git" -e sh -c \
     "source "$HOME"/.zshrc ; gitCloneFromBrowser"
+## Redhot Notification
+super + shift + r
+    redhot -n
 
 ## Virtualbox
 super + F12

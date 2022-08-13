@@ -144,7 +144,7 @@ alias nmap_ping_scan="nmap -n -sP"
 ## Misc
 alias rofi-shot='rofi -show drun -normal-window & disown'
 alias ui-pics='montage -shadow -background '#c397d8' -geometry +20+20 -tile 2x *.png montage.png'
-alias ls='exa --all --group --icons --sort=accessed'
+alias l='exa --all --group --icons --sort=accessed'
 alias git-shrink='git repack -a -d --depth=250 --window=250'
 alias chpr='PURE_PROMPT_SYMBOL="(☞ﾟヮﾟ)☞"'
 alias rz='source'

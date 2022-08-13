@@ -1,19 +1,27 @@
 #!/bin/bash
 
-file=$1
+files=($@)
+browser="librewolf"
+links=()
 
-cat "$file" | curl -F 'f:1=<-' ix.io | xclip -selection c
-notify-send "😀 pastebin for $file created."
+for f in "${files[@]}"; 
+do
 
-url=$(echo "$(xclip -sel c -o)")
-time=$(date '+%d-%m-%y-%H_%M_%S')
-title="[$time] 	$url 	$file"
+    cat "$f" | curl -F 'f:1=<-' ix.io | xclip -selection c
+    notify-send "😀 pastebin for $f created."
 
-echo
-echo $url
-echo
+    url=$(echo "$(xclip -sel c -o)")
+    time=$(date '+%d-%m-%y-%H_%M_%S')
+    title="[$time] 	$url 	$f"
+    
+    echo
+    echo $url
+    echo
+    echo "$title" >> "$HOME/.scripts/paste_hist.txt"
+    
+    links+=$url
 
-echo "$title" >> "$HOME/.scripts/paste_hist.txt"
+done
 
-firefox $url &
-
+echo -e "${links[@]}" #| sed 's/ /\n/g'
+nohup $browser --new-tab "${links[@]}" &> /tmp/pastebin.out &!

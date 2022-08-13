@@ -2,10 +2,9 @@
 #   FUNCTIONS   #
 #################
 # -->>> Create Tmp Directory  -->>>
-c-tmp(){
+C_TMP(){  
 
-    export C_TMP=$(mktemp -d "${TMPDIR:-/tmp/}$(basename $0).XXXXXXXXXXXX")
-    
+    export C_TMP=$(mktemp -d "${TMPDIR:-/${C_TMP}/}$(basename $0).XXXXXXXXXXX")
     timestamp(){
         date "+%Y%m%d-%H%M%S%3N"
     }
