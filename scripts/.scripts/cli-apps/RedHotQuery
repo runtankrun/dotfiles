@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+#
+RH_GetJsonFiles(){
+
+        search=("${@}")
+
+        echo "path,score,time" > "${C_TMP}"/tmp.csv
+        fd . --full-path "${C_BDFR}"/"${search[@]}" --extension=mp4 "${C_BDFR}"/"${search[@]}" -x \
+                jq --arg e {} -r '. |= . + {"$e": "$e"} | [$e, .score, .created_utc] | @csv' {.}.json 2>/dev/null | tee --append "${C_TMP}"/grjf.csv
+
+}
+
+RH_SortJsonFiles(){
+
+    cat "${C_TMP}"/grjf.csv | csvsort -c 2 -r | csvcut -c 1 | tee --append "${C_TMP}"/srjf.csv 
+
+}
+
+RH_GetJsonFiles "${@}"
+RH_SortJsonFiles
+
+nohup mpv $(cat "${C_TMP}"/srjf.csv) &> "$C_TMP"/tmp.csv &!
