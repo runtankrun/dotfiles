@@ -222,11 +222,9 @@ super + End
 
 ## program launcher
 super + d
-
-    . ${HOME}/.config/rofi/launchers/colorful/launcher.sh
-    #${HOME}/.config/rofi/launchers/colorful/launcher.sh
-    #rofi -show drun -show-icons
-
+    c-rofi
+    #. ${HOME}/.config/rofi/launchers/colorful/launcher.sh
+    
 Menu
     rofi -show run
 

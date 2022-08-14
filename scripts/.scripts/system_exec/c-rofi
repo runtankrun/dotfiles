@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+config=$(find "${HOME}"/.config/rofi/launchers/ -name "*.sh" | shuf | tail -n1)
+
+echo $config >> "${C_TMP}/rofi"
+
+sh $config
+
