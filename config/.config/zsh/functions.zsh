@@ -1,18 +1,6 @@
 #################
 #   FUNCTIONS   #
 #################
-# -->>> Create Tmp Directory  -->>>
-C_TMP(){  
-
-    export C_TMP=$(mktemp -d "${TMPDIR:-/${C_TMP}/}$(basename $0).XXXXXXXXXXX")
-    timestamp(){
-        date "+%Y%m%d-%H%M%S%3N"
-    }
-
-}
-# # <<<-- Create Tmp Directory  <<<--
-
-
 # -->>> QUICK ALIAS -->>>
 qa() {
     echo "alias $1='$2'" >> $ZDOTDIR/aliases.zsh

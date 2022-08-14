@@ -13,7 +13,7 @@ SelectArea(){
 record_screen(){    
     
     ffmpeg -video_size "$W"x"$H" \
-    -framerate 30 \
+    -framerate 24 \
     -f x11grab \
     -i :0.0+$X,$Y \
     -follow_mouse 100 \
@@ -21,9 +21,9 @@ record_screen(){
     -profile:v high \
     -bf 2 \
     -g 30 \
-    -crf 18 \
+    -crf 22 \
     -pix_fmt yuv420p \
-    -preset ultrafast \
+    -preset medium \
     $file
 }
 
@@ -73,3 +73,4 @@ case $chosen in
 
 esac
 
+vid-compress $file

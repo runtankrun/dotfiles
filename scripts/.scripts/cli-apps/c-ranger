@@ -18,7 +18,7 @@ kitty --title "ranger-k" --name "ranger-k" -e sh -c \
 elif [[ $1 = "-a" ]]; then
 alacritty --title "ranger" --class "ranger" -e sh -c \
 "ranger \
---cmd='set preview_images_method ueberzug' \
+--cmd='set preview_images_method w3m' \
 --selectfile=$(grep ^h: ~/.config/ranger/tagged | tail -1 | tail -c +3)"
 
 ##############

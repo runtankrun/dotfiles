@@ -13,7 +13,7 @@
 
 dir="$HOME/.config/rofi/launchers/type-1"
 #theme='style-1'
-theme=$(find "${HOME}/.config/rofi/launchers/type-1/" -type f -name "*-*.rasi" | shuf | tail -n1 | grep -oe "style-.*")
+theme=$(find "${dir}" | rg -oe "style-[0-9][0-9]?" | shuf | tail -n1)
 
 
 ## Run
