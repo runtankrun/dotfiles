@@ -2,33 +2,46 @@
 
 tfn="$(date +%F_%T)"
 
-if [[ $1 = "--trim" ]]; then
-#inpoint=$(xclip -out -selection clipboard)
-    echo input file:
-    read input
-    echo start time: 
-    read st
-    echo end time:
-    read et
+remux-concat(){                                    
+        files=($@)
+        tmpDir=$(mktemp -d "${TMPDIR:-/tmp/}$(basename $0).XXXXXXXXXXXX")
+        timeStamp=$(date "+%Y%m%d-%H%M%S%3N")
+        
+        touch $tmpDir/vidlist.txt
 
-    ffmpeg -i $input -ss $st -to $et -c copy output_$tfn
+        for f in $files
+        do
+                echo "file '$f'" >> $tmpDir/vidlist.txt
+        done
 
-    echo "ffmpeg \
-        -i $input \
-        -ss $st \
-        -to $et \
-        -c copy \
-        output_$tfn"
+        ffmpeg -f concat -safe 0 -i $tmpDir/vidlist.txt -c copy $(output_$timeStamp).mp4
+}
 
-elif [[ $1 = "--side-by-side" ]]; then    
-    echo Video1:
-    read vid1
-    echo Video2:
-    read vid2
-    echo output:
-    read output
-    ffmpeg -i $vid1 -i $vid2 -filter_complex hstack -c:v libx264 -crf 20 "$file_timestamp.mp4"
+case $1 in
 
-else
-    cat ${HOME}/.scripts/system_exec/remux | grep -o -e '"-.*"' | sd '"' '' 
-fi
+    "-t" | "--trim")
+
+        
+        ffmpeg -i $input -ss $startTime -to $endTime -c copy output_$tfn
+        ;;
+
+
+    "-sbs" | "--side-by-side")  
+
+
+        ffmpeg -i $vid1 -i $vid2 -filter_complex hstack -c:v libx264 -crf 20 "$file_timestamp.mp4"
+        ;;
+
+    "-c" | "--concat")
+        
+        
+        remux-concat
+
+
+    '')
+
+        cat ${HOME}/.scripts/system_exec/remux | grep -o -e '"-.*"' | sd '"' '' 
+        ;;
+
+esac
+

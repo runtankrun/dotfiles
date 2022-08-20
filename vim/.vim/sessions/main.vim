@@ -167,6 +167,7 @@ badd +1 .config/ranger/rc.conf
 badd +1 .config/sxhkd/sxhkdrc
 badd +1 .vimrc
 badd +1 .config/zsh/.zshrc
+badd +0 ~/.config/zsh/aliases.zsh
 argglobal
 %argdel
 $argadd .config/zsh/alias.zsh
@@ -196,8 +197,10 @@ tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit .config/zsh/alias.zsh
+edit ~/.config/zsh/aliases.zsh
 argglobal
+if bufexists(fnamemodify("~/.config/zsh/aliases.zsh", ":p")) | buffer ~/.config/zsh/aliases.zsh | else | edit ~/.config/zsh/aliases.zsh | endif
+balt .config/zsh/alias.zsh
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -236,6 +239,7 @@ setlocal expandtab
 if &filetype != 'zsh'
 setlocal filetype=zsh
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -377,6 +381,7 @@ setlocal expandtab
 if &filetype != 'zsh'
 setlocal filetype=zsh
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -518,6 +523,7 @@ setlocal expandtab
 if &filetype != 'zsh'
 setlocal filetype=zsh
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -659,6 +665,7 @@ setlocal expandtab
 if &filetype != 'zsh'
 setlocal filetype=zsh
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -800,6 +807,7 @@ setlocal expandtab
 if &filetype != 'zsh'
 setlocal filetype=zsh
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -960,6 +968,7 @@ setlocal expandtab
 if &filetype != 'zsh'
 setlocal filetype=zsh
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -1100,6 +1109,7 @@ setlocal expandtab
 if &filetype != 'zsh'
 setlocal filetype=zsh
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -1192,19 +1202,13 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 25 - ((24 * winheight(0) + 35) / 71)
+let s:l = 9 - ((8 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 25
-let s:c = 21 - ((8 * winwidth(0) + 34) / 69)
-if s:c > 0
-  exe 'normal! ' . s:c . '|zs' . 21 . '|'
-else
-  normal! 021|
-endif
+keepjumps 9
+normal! 0
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 69 + 69) / 139)
 exe 'vert 2resize ' . ((&columns * 69 + 69) / 139)
 tabnext
@@ -1250,6 +1254,7 @@ setlocal expandtab
 if &filetype != 'zsh'
 setlocal filetype=zsh
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -1342,11 +1347,11 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 35) / 71)
+let s:l = 59 - ((58 * winheight(0) + 35) / 71)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 59
 normal! 0
 tabnext
 edit .config/zsh/utility.zsh
@@ -1391,6 +1396,7 @@ setlocal expandtab
 if &filetype != 'zsh'
 setlocal filetype=zsh
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -1532,6 +1538,7 @@ setlocal expandtab
 if &filetype != 'xdefaults'
 setlocal filetype=xdefaults
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -1674,6 +1681,7 @@ setlocal expandtab
 if &filetype != 'sh'
 setlocal filetype=sh
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -1815,6 +1823,7 @@ setlocal expandtab
 if &filetype != 'conf'
 setlocal filetype=conf
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -1938,14 +1947,14 @@ vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*end\(f\%[u
 nnoremap <buffer> <silent> ][ m':call search('^\s*end\(f\%[unction]\|def\)\>', "W")
 vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "W")
 nnoremap <buffer> <silent> ]] m':call search('^\s*\(fu\%[nction]\|def\)\>', "W")
-nmap <buffer> gt <Plug>(lsp-type-definition)
-nmap <buffer> gi <Plug>(lsp-implementation)
-nmap <buffer> gr <Plug>(lsp-references)
-nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
-nmap <buffer> gs <Plug>(lsp-document-symbol-search)
 nmap <buffer> gd <Plug>(lsp-definition)
-nnoremap <buffer> <expr> <C-D> lsp#scroll(-4)
+nmap <buffer> gs <Plug>(lsp-document-symbol-search)
+nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
+nmap <buffer> gr <Plug>(lsp-references)
+nmap <buffer> gi <Plug>(lsp-implementation)
+nmap <buffer> gt <Plug>(lsp-type-definition)
 nnoremap <buffer> <expr> <C-F> lsp#scroll(+4)
+nnoremap <buffer> <expr> <C-D> lsp#scroll(-4)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -1986,6 +1995,7 @@ setlocal expandtab
 if &filetype != 'vim'
 setlocal filetype=vim
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -2084,7 +2094,7 @@ keepjumps exe s:l
 normal! zt
 keepjumps 127
 normal! 022|
-tabnext 6
+tabnext 1
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf

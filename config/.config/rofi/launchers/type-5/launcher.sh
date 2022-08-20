@@ -10,8 +10,7 @@
 ## style-1     style-2     style-3     style-4     style-5
 
 dir="$HOME/.config/rofi/launchers/type-5"
-#theme='style-1'
-theme=$(find "${dir}" | rg -oe "style-[0-9][0-9]?" | shuf | tail -n1)
+theme='style-1'
 
 ## Run
 rofi \

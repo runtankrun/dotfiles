@@ -340,7 +340,7 @@ super + Print
 
 ## log out
 ctrl + alt + End
-    /home/ellio/.config/rofi/applets/applets/powermenu.sh
+    /home/ellio/.config/rofi/powermenu/type-5/powermenu.sh
 
 ## color
 super + c
