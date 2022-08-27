@@ -175,4 +175,8 @@ configuration {
 	me-accept-custom: "Control+MouseDPrimary";
 */
 }
-@theme "/usr/share/rofi/themes/style-1.rasi"
+//@theme "/usr/share/rofi/themes/style-1.rasi"
+//@theme "/usr/share/rofi/themes/style-12.rasi"
+//@theme "/usr/share/rofi/themes/style-10.rasi"
+//@theme "/usr/share/rofi/themes/style-6.rasi"
+@theme "/usr/share/rofi/themes/style-10.rasi"

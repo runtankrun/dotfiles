@@ -19,7 +19,16 @@ getRandomTheme(){
     
 }
 
+depRofi(){
 
+    launcher=$(cat ${C_TMP}/rofi | tail -n3 | head -n1 | grep -o "/home.*")
+    name=$(echo $launcher | cut -d '/' -f 7)
+    dir=$(echo $launcher | cut -d '/' -f 1-6)
+
+    mv "$launcher" "$dir/dep_$name"
+    ls $dir
+
+}
 # -->>> TORRENTINIM -->>>
 StartTorrentServer(){
 

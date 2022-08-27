@@ -187,7 +187,7 @@ super + shift + r
 super + F12
     bspc rule -a kitty:xmr -o desktop='^5'; \
     coins & \
-    vboxmanage startvm "Whonix-Gateway-XFCE 1" \
+    vboxmanage startvm "Whonix-Gateway-XFCE" \
     sleep 3s; \
     vboxmanage startvm "Kali-Linux-2022.2-virtualbox-amd64"; \
     zsh -c "pass -c sys/v" & notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png "Go For It"
@@ -226,7 +226,8 @@ super + d
     #. ${HOME}/.config/rofi/launchers/colorful/launcher.sh
     
 Menu
-    rofi -show run
+    #rofi -show run
+    /home/ellio/.config/rofi/launchers/type-7/launcher.sh
 
 ctrl+Menu
     rofi-pass

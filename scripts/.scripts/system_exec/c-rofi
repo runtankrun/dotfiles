@@ -1,6 +1,15 @@
 #!/usr/bin/env sh
 
-config="$(find "${HOME}"/.config/rofi/launchers/ -name "*.sh" | shuf | tail -n1)"
-echo "$config" >> ~/.scripts/tmp/rofi
+dir=$(find /home/ellio/.config/rofi/launchers -iname "type*" | shuf | tail -n 1)
+theme=$(find $dir -iname "style-*" | grep -oE "style.*[0-9]" | shuf | tail -n1)
 
-sh $config
+echo -n "
+
+===
+launcher: $dir
+style: $theme
+config: ${dir}/${theme}.rasi" >> ~/.scripts/tmp/rofi
+
+rofi \
+    -show drun \
+    -theme ${dir}/${theme}.rasi

@@ -11,10 +11,10 @@ zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 #zplug "anmull/zsh-ls-colors", from:github
 
 ## String Search
-zplug "marlonrichert/zsh-autocomplete", from:github
+#zplug "marlonrichert/zsh-autocomplete", from:github
 zplug "zsh-users/zsh-history-substring-search", from:github
 zplug "zsh-users/zsh-autosuggestions", from:github
-#zplug "Aloxaf/fzf-tab", from:github
+zplug "Aloxaf/fzf-tab", from:github
 
 ## nohup Keybind
 zplug "micrenda/zsh-nohup", from:github
