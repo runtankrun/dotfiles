@@ -8,7 +8,7 @@
 
 configuration {
 	/*---------- General setting ----------*/
-	modi: "drun,run,filebrowser,window";
+	modi: "drun,run,filebrowser,window,Kill:~/.config/rofi/scripts/kill.sh";
 	case-sensitive: false;
 	cycle: true;
 	filter: "";
@@ -179,4 +179,7 @@ configuration {
 //@theme "/usr/share/rofi/themes/style-12.rasi"
 //@theme "/usr/share/rofi/themes/style-10.rasi"
 //@theme "/usr/share/rofi/themes/style-6.rasi"
-@theme "/usr/share/rofi/themes/style-10.rasi"
+//@theme "/usr/share/rofi/themes/style-10.rasi"
+//@theme "/usr/share/rofi/themes/type-7_style-1.rasi"
+//@theme "/usr/share/rofi/themes/type-4_style-2.rasi"
+@theme "/usr/share/rofi/themes/type-7_style-1.rasi"

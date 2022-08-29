@@ -1,15 +1,25 @@
 #!/usr/bin/env sh
+logOutput(){
 
-dir=$(find /home/ellio/.config/rofi/launchers -iname "type*" | shuf | tail -n 1)
-theme=$(find $dir -iname "style-*" | grep -oE "style.*[0-9]" | shuf | tail -n1)
-
-echo -n "
-
+cat<<EOF
 ===
 launcher: $dir
 style: $theme
 config: ${dir}/${theme}.rasi" >> ~/.scripts/tmp/rofi
+EOF
+}
 
-rofi \
-    -show drun \
-    -theme ${dir}/${theme}.rasi
+case $1 in
+    '-r')
+        dir=$(find /home/ellio/.config/rofi/launchers -iname "type*" | shuf | tail -n 1)
+        theme=$(find $dir -iname "style-*" | grep -oE "style.*[0-9]" | shuf | tail -n1)
+        logOutput
+        rofi \
+            -show drun \
+            -theme ${dir}/${theme}.rasi
+        ;;
+
+    '')
+        rofi -show run
+        ;;
+esac    

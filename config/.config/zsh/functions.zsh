@@ -7,6 +7,14 @@ qa() {
 }
 # <<<-- QUICK ALIAS <<<--
 
+
+# -->>> View Script Content  -->>>
+viewScript(){
+    find "${HOME}"/.scripts -iname "$1"
+}
+# # <<<-- View Script Content   <<<--
+
+
 getRandomTheme(){
 
     font=$(find .fonts/misc/figlet | shuf | tail -n1)
@@ -21,25 +29,14 @@ getRandomTheme(){
 
 depRofi(){
 
-    launcher=$(cat ${C_TMP}/rofi | tail -n3 | head -n1 | grep -o "/home.*")
-    name=$(echo $launcher | cut -d '/' -f 7)
-    dir=$(echo $launcher | cut -d '/' -f 1-6)
+    launcher=$(cat ${C_TMP}/rofi | tail -n1 | grep -o "/home.*")
+    name=$(echo $launcher | cut -d '/' -f 8)
+    dir=$(echo $launcher | cut -d '/' -f 1-7)
 
     mv "$launcher" "$dir/dep_$name"
     ls $dir
 
 }
-# -->>> TORRENTINIM -->>>
-StartTorrentServer(){
-
-#    ALLOW_ORIGINS='https://rarbg.to'
-    ALLOW_ORIGINS="${ALLOW_ORIGINS}":https://1337.wtf
-#    ALLOW_ORIGINS="${ALLOW_ORIGINS}":https://nyaa.si
-
-    exec "$HOME"/dev/torrentinim/torrentinim
-
-}
-# <<<-- TORRENTINIM <<<--
 
 
 #-->>> GIT -->>>

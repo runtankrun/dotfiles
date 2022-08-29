@@ -2,7 +2,7 @@
 dir="/run/media/ellio/T7/bdfr"
 cd $dir
 
-source $C_HOME/system_exec/init.redhot 
+source ~/.scripts/system_exec/init.redhot 
 
 # >>> conda initialize >>>
 source "${HOME}"/.conda/init

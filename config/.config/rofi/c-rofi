@@ -1,2 +1,0 @@
-#!/bin/sh
-sh $(find "${HOME}"/.config/rofi/launchers -executable -type f | shuf | tail -n1)

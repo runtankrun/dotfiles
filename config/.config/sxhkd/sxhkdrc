@@ -190,7 +190,7 @@ super + F12
     vboxmanage startvm "Whonix-Gateway-XFCE" \
     sleep 3s; \
     vboxmanage startvm "Kali-Linux-2022.2-virtualbox-amd64"; \
-    zsh -c "pass -c sys/v" & notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png "Go For It"
+    sh -c "pass -c sys/v" & notify-send --expire-time=45000 --icon=~/Pictures/sbpt.png "Go For It"
 
 ## tank-ui
 super + ctrl + alt + t
@@ -222,14 +222,14 @@ super + End
 
 ## program launcher
 super + d
-    c-rofi
+    c-rofi -r
     #. ${HOME}/.config/rofi/launchers/colorful/launcher.sh
     
 Menu
     #rofi -show run
-    /home/ellio/.config/rofi/launchers/type-7/launcher.sh
+    c-rofi
 
-ctrl+Menu
+ctrl + Menu
     rofi-pass
 
 ## sysadmin

@@ -127,9 +127,11 @@ alias v="f -e $EDITOR"
 
 ## Misc
 alias rofi-shot='rofi -show drun -normal-window & disown'
+alias save-rofi='sudo cp $(cat ${C_TMP}/rofi | tail -n1 | grep -o "/home.*") /usr/share/rofi/themes'
 alias ui-pics='montage -shadow -background "$BLUE" -geometry +20+20 -tile 2x *.png montage.png'
 alias l='exa --all --group --icons --sort=accessed'
 alias lz='exa --all --long --accessed --icons --sort=accessed --time-style=iso --no-permissions'
 alias git-shrink='git repack -a -d --depth=250 --window=250'
 alias chpr='PURE_PROMPT_SYMBOL="(☞ﾟヮﾟ)☞"'
 alias rz='source "$ZDOTDIR"/.zshrc'
+alias gs='find "${HOME}"/.scripts -iname "$1"'
