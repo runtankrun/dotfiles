@@ -20,23 +20,19 @@ remux-concat(){
 case $1 in
 
     "-t" | "--trim")
-
         
         ffmpeg -i $input -ss $startTime -to $endTime -c copy output_$tfn
         ;;
 
-
     "-sbs" | "--side-by-side")  
-
-
-        ffmpeg -i $vid1 -i $vid2 -filter_complex hstack -c:v libx264 -crf 20 "$file_timestamp.mp4"
+        
+        ffmpeg -i $1 -i $2 -filter_complex hstack -c:v libx264 -crf 20 $file_timestamp.mp4
         ;;
 
     "-c" | "--concat")
         
-        
         remux-concat
-
+        ;;
 
     '')
 

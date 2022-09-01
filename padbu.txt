@@ -1,0 +1,21 @@
+$config="$HOME\test.csv"
+$codeLocationPattern="$HOME\flows\*.robin"
+$Settings=Import-CSV -Path $config -Header 'FlowName','OutputLocation','isShared'
+#$timestamp=Get-Date
+$searchSettings={
+    $settings | Where-Object -Property FlowName -EQ -Value $flow
+}
+$NewestPADCodeFile={
+     Get-ChildItem -Path $codeLocationPattern -Filter *.robin | Where-Object -Property LastWriteTime -gt $timestamp
+}
+foreach($flow in @($settings.FlowName)){
+    $currentFlow=invoke-command $searchSettings
+    $codeFile=NewestPADCodeFile
+    [string]$combinedCode=Get-Content $codeFile.FullName
+    $exportParams=@{
+        Name=$currentFlow.FlowName.Replace(' ','_') + '.flow'
+        Path=$currentFlow.OutputLocation
+        Value=Write-Output $combinedCode                
+    }
+    New-Item @exportParams -Force
+}

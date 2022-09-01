@@ -27,15 +27,13 @@ getRandomTheme(){
     
 }
 
+
 depRofi(){
+    config=$(cat ${C_TMP}/rofi | tail -n1 | grep -o "/home.*\.rasi")
+    dep=$(echo $config | sed 's/style/deprecated_style/')
 
-    launcher=$(cat ${C_TMP}/rofi | tail -n1 | grep -o "/home.*")
-    name=$(echo $launcher | cut -d '/' -f 8)
-    dir=$(echo $launcher | cut -d '/' -f 1-7)
-
-    mv "$launcher" "$dir/dep_$name"
-    ls $dir
-
+    mv $config $dep   
+    echo $dep
 }
 
 
@@ -155,9 +153,9 @@ save-theme() {
 tlinks-a() {
     cd ${HOME}/dotfiles ;
     for dir in *; do                         
-            echo "# -->>> $dir -->>>" | lolcat  
+            echo "# -->>> $dir -->>>" | gterm $GREEN  
             tlinks "$dir"                      
-            echo "# <<<-- $dir <<<--\n" | lolcat
+            echo "# <<<-- $dir <<<--\n" | gterm $GREEN
     done
 }
 # <<<-- STOW  <<<--
@@ -195,8 +193,20 @@ gb(){
 }
 # <<<-- GREP BETWEEN  <<<--
 
+
 # -->>> RANGER  -->>>
 fm() {
     source ranger
 }
 # <<<-- RANGER  <<<--
+
+
+# -->>> anaconda  -->>>
+ca(){             
+        if ! conda; then
+                source "${HOME}"/.conda/init 
+        fi 2> /dev/null
+
+        conda activate $1
+}
+# <<<-- anaconda  <<<--#

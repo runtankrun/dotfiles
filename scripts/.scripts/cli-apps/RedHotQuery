@@ -13,10 +13,20 @@ RH_GetJsonFiles(){
 RH_SortJsonFiles(){
 
     cat "${C_TMP}"/queryResults.csv | csvsort -c 2 -r | csvcut -c 1 | tee --append "${C_TMP}"/sortedQueryResults.csv 
-    
+     
 }
 
 RH_GetJsonFiles "${@}"
-RH_SortJsonFiles
+echo '================================='
+echo '"${C_TMP}"/queryResults.csv'
+echo '================================='
 
-nohup mpv $(cat "${C_TMP}"/sortedQueryResults.csv) &> "$C_TMP"/tmp.csv &!
+RH_SortJsonFiles
+echo '================================='
+echo '"${C_TMP}"/sortedQueryResults.csv'
+echo '================================='
+
+if [[ $1 = '-v' ]];
+then
+    nohup mpv $(cat "${C_TMP}"/sortedQueryResults.csv) &> "$C_TMP"/tmp.csv &!
+fi

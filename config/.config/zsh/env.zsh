@@ -6,7 +6,7 @@ export C_TMP="${C_HOME}"/tmp
 export C_PATH="${C_HOME}"/bin
 export C_CONFIG="${C_HOME}"/config
 export C_DATA="${C_HOME}"/etc
-export C_BDFR="/mnt/PSSD/bdfr"
+export C_BDFR="/run/media/ellio/T7/bdfr"
 
 ##ZSH
 

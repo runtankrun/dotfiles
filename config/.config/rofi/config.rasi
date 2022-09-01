@@ -182,4 +182,5 @@ configuration {
 //@theme "/usr/share/rofi/themes/style-10.rasi"
 //@theme "/usr/share/rofi/themes/type-7_style-1.rasi"
 //@theme "/usr/share/rofi/themes/type-4_style-2.rasi"
+//@theme "/usr/share/rofi/themes/type-7_style-1.rasi"
 @theme "/usr/share/rofi/themes/type-7_style-1.rasi"

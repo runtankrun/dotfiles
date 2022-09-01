@@ -42,7 +42,7 @@ alias gen-readme='npx readme-md-generator'
 
 ##python
 alias py='source ~/.venv/bin/activate'
-alias ca='conda activate'
+#alias ca='source "${HOME}"/.conda/init ; conda activate'
 alias cel='conda env list'
 alias cr='conda env list; echo "env: "; read env; conda env remove -n $env'
 alias ccr='conda create -n'
