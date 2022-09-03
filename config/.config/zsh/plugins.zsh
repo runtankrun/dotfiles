@@ -9,7 +9,8 @@ zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 ##LS Colors
 #zplug "anmull/zsh-ls-colors", from:github
-
+#zplug "gretzky/auto-color-ls", from:github
+zplug "supercrabtree/k", from:github
 ## String Search
 #zplug "marlonrichert/zsh-autocomplete", from:github
 zplug "zsh-users/zsh-history-substring-search", from:github
