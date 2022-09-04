@@ -1,0 +1,2 @@
+#!/bin/sh
+ffmpeg -i $1 -vcodec libx264 -crf 20 -pix_fmt yuv420p "compressed_$(timestamp).mp4"

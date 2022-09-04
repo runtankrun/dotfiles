@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+dir=$1
+config="$HOME/.config/rofi/image.rasi"
+main() {
+  imagePath="$dir"
+  image="$(fd . "$imagePath" -tf -x basename)"
+  i="$(ls $imagePath | grep -oe ".*\(jpg\|png\)" |
+        while read A ;
+        do
+                echo -en "$A\x00icon\x1f$imagePath/$A\n"
+        done | rofi -config "${config}" -dmenu)"
+  feh "${imagePath}/${i}"
+}
+
+main "$@"

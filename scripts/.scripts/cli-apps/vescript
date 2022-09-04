@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+scripts(){
+        LIST=$(fd . "${C_HOME}" | cut -d '/' -f 5,6 | sd '/' '|')
+        echo "${LIST[@]}" | gum filter
+}
+selection(){
+        gum confirm \
+                --affirmative "view" --negative "edit" \
+                --default "view"
+}
+
+dir="$C_HOME"
+file="$(echo "$(scripts)" | sd '\|' '/')"
+
+if selection -e; then
+        cmd="bat"
+else
+        cmd="vim"
+fi
+
+$cmd "$dir/$file"

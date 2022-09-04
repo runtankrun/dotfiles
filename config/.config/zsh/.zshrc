@@ -12,4 +12,5 @@ plugins
 aliases
 functions
 utility
+dircolors
 EOF

@@ -1,0 +1,158 @@
+#!/usr/bin/env sh
+
+closeTerm(){
+    xdotool windowclose $window 
+}
+
+QueryAllFiles(){
+    echo "path,score,time" > $dir/tmp.csv
+    fd --full-path "$dir" --extension=mp4 $dir/fav -x \
+    jq --arg e {} -r '. |= . + {"$e": "$e"} | [$e, .score, .created_utc] | @csv' {.}.json 2>/dev/null | tee --append $dir/tmp.csv
+    
+    # append human readable date
+    echo "hrTime" > $dir/dates.csv             
+    while IFS= read -r line;
+    do
+        date +%Y%m%dT%H%M%S --date=@$line
+    done < <((cat $dir/tmp.csv|cut -d "," -f 3)) >> $dir/dates.csv
+
+    cat "$dir/dates.csv" | csvjoin "$dir/tmp.csv" - > $dir/RH.csv
+    sed 's/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9],//g' -i $dir/RH.csv
+    rm $dir/tmp.csv
+    cat $dir/RH.csv
+}
+
+QuerySub(){
+        sub=$1
+        sort=$2
+        csvgrep -c 1 -r ".$sub" $dir/RH.csv | csvsort -c "$sort" -r | csvcut -c 1
+}
+
+download(){
+    time='all'
+    srt='top'
+    subreddit=$1
+    python3 -m bdfr clone $dir/fav \
+    -s "$subreddit" \
+    -t $time \
+    -S $srt \
+    --file-scheme '{POSTID}' \
+    --search-existing \
+    --no-dupes
+}
+
+search(){
+        folder="$(echo "$query" | sed 's/ //g')"
+
+        python3 -m bdfr clone $dir/search/$folder \
+        --subreddit "all" \
+        --sort "top" \
+        --time "all" \
+        --user "DontWorryAboutIt88"\
+        --authenticate \
+        --file-scheme '{POSTID}' \
+        --search "'$query'" 
+}
+
+searchLocal(){
+    fd --search-path $dir/fav --extension json $1 -x cat {} | jq
+}
+
+
+Get_MPV_Post_Info(){
+    
+    ShowMPVProperties(){
+        for i in $(ls /tmp/mpvSockets/*); do
+            echo '{ "command": ["get_property", "path"] }' | socat - "$i"; 
+        done | jq
+
+    }
+
+    vid=($(ShowMPVProperties | grep -oe "/.*\.mp4" | sed 's/mp4/json/g'))
+    for j in ${vid[@]};
+    do
+        find $j 2>/dev/null
+    done
+
+}
+
+RH_MPV_Notify(){
+    notify-send.sh $(jq -r .title $(Get_MPV_Post_Info)) 
+    notify-send.sh $(jq -r '.comments[0].subreddit' $(Get_MPV_Post_Info))
+    notify-send.sh $(jq -r .score $(Get_MPV_Post_Info))
+}
+
+getRandomTopFifty(){
+
+    #if [[ ! -f $C_BDFR/month.txt ]]; then
+        rm "${C_BDFR}"/month.txt 
+        subs=($(find "$C_BDFR"/fav/ -maxdepth 1 | cut -d "/" -f 8))
+        for s in "${subs[@]}";
+        do
+            cat $C_BDFR/RH.csv | grep -e "$s" | csvsort -c 2 -r | csvcut -c 1 | head -n 50 | tee -a $C_BDFR/month.txt
+        done
+    #fi
+    
+    nohup mpv $(cat $C_BDFR/month.txt) &> month.txt.out &!
+
+}
+
+Generate_Model_List(){
+
+    fd . --full-path --extension=json $C_BDFR/fav/BoutinelaBabes -X \
+        jq -s '[ .[] | {score: .score, title: .title} ] | sort_by(.score)' | \
+        grep -e "title" | \
+        sed 's/(and\|&)/\n/g' | \
+        tr -s ' ' |  cut -d ' ' -f 3-4 | \
+        grep -e "^\"[A-Z].* [A-Z].*$" | \
+        sed 's/\("\|,\|$\)/"/g' | \
+        sort | uniq --repeated
+
+}
+
+Read_Model_List(){
+    
+    models=($(Generate_Model_List))
+
+    while PS1= read -r line;
+    do
+
+        redhot -S "$line"
+
+    done < <((echo "${models[@]}" | sed 's/" "/\n/g'))
+
+}
+
+get_RedHotJson(){
+    
+    cd "${C_BDFR}"
+    search=("${@}")
+
+    fd . --full-path --extension=mp4 "${search[@]}" -x jq -s \
+    '[ .[] | { title: .title, score: .score, sub: .comments[].subreddit } ] | sort_by(.score)' \
+    "{.}.json" 2>/dev/null | rg "(title|score|sub)"
+ 
+}
+
+redhotInfo(){
+    eval $(C_TMP)
+    i=1
+
+    jq -r '.title, .permalink' $(Get_MPV_Post_Info) >> "$C_TMPFILE"
+
+    while [[ $i -lt 2 ]];
+    do
+
+        jq -r .title $(Get_MPV_Post_Info) >> "$C_TMPFILE"
+        current=$(cat $C_TMPFILE | tail -n2)
+        prev=$(cat $C_TMPFILE | tail -n4 | head -n2)
+
+        if [ $current = $prev ]; then     
+            sleep .5
+        else
+            echo "$current"
+       fi
+
+    done
+}
+

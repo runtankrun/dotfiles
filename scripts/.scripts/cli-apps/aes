@@ -6,40 +6,83 @@ encrypt(){
 decrypt(){
     openssl enc -aes-256-cbc -a -A -d -md sha512 -pbkdf2 -iter 250000 -salt $@
 }
+setClipboard(){
+        xclip -in -selection primarry
+}
+setClipboard(){
+        xclip -out -selection primary
+}
+store(){
+    setClipboard && setClipboard
+}
+
+help(){
+    cat<<EOF
+OPTIONS:
+KEYS
+--generate-private-key
+--extract-public-key
+
+ENCRYPT
+-e|--encrypt        encrypt
+-f|--file           file
+-s|--string         string
+-c|--clipboard      clipboard
+-k|--publickey      publickey
+
+DECRYPT
+-d|--decrypt        decrypt
+-f|--file           file
+-s|--string         string
+-c|--clipboard      clipboard
+-k|--privatekey     privatekey
+EOF
+}
 
 case $1 in
-    "-e" | "-encrypt")
+    "-e" | "--encrypt")
 
         while getopts ef:s:ca: option
         do 
            case "${option}"
                 in
-                f)file=${OPTARG}; encrypt -in $file -out $(echo $file|cut -d '.' -f1).dat;;
-                s)string=${OPTARG}; echo $string | encrypt | xclip;;
-                c)clip=${OPTARG}; xclip -out -selection primary | encrypt | xclip;;
-                k)pubkey=${OPTARG}; openssl rsautl -encrypt -inkey $pubkey -pubin -in $file -out top_secret.dat
+                'f'|'--file')
+                    file=${OPTARG}; encrypt -in $file -out $(echo $file|cut -d '.' -f1).dat;;
+                's'|'--string')
+                    string=${OPTARG}; echo $string | encrypt | store;;
+                'c'|'--clipboard')
+                    clip=${OPTARG}; setClipboard | encrypt | setClipboard;;
+                'k'|'--publickey')
+                    pubkey=${OPTARG}; openssl rsautl -encrypt -inkey $pubkey -pubin -in $file -out top_secret.dat
             esac
         done
         ;;
 
-    "-d" | "-decrypt")
+    "-d" | "--decrypt")
         while getopts df:s:ca: option
         do 
            case "${option}"
                 in
-                f)decrypt -in ${OPTARG} -out unencrypted$(date +%Y%m%dT%H%M%S);;
-                s)echo ${OPTARG} | decrypt;;
-                c)echo "$(xclip -out -selection primary)" | decrypt;;
-                k)privatekey=${OPTARG}; openssl rsautl -decrypt -inkey $privatekey -in $@
+                'f'|'--file')
+                    decrypt -in ${OPTARG} -out unencrypted$(date +%Y%m%dT%H%M%S);;
+                's'|'--string')
+                    echo ${OPTARG} | decrypt;;
+                'c'|'--clipboard')
+                    echo "$(setClipboard)" | decrypt;;
+                'k'|'--privatekey')
+                    privatekey=${OPTARG}; openssl rsautl -decrypt -inkey $privatekey -in $@
             esac
         done
         ;;
 
     "--generate-private-key")
-        openssl genrsa -aes256 -out private_key.pem 8912 #1024 #8912
+        openssl genrsa -aes256 -out private_key.pem 4096 #1024 2040 4096 8912
         ;;
 
     "--extract-public-key")
         openssl rsa -in private_key.pem -out public_key.pem -outform PEM -pubout
         ;; 
+
+    ''|'--help'|'-h')
+        help
 esac

@@ -15,6 +15,16 @@ viewScript(){
 # # <<<-- View Script Content   <<<--
 
 
+# -->>> Clipboard -->>>
+set-clipboard(){
+        xclip -in -selection primarry
+}
+get-clipboard(){
+        xclip -out -selection primary
+}
+# <<<-- Clibpoard <<<--
+
+
 getRandomTheme(){
 
     font=$(find .fonts/misc/figlet | shuf | tail -n1)

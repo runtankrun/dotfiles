@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+#tmpDir=$(mktemp -d "${TMPDIR:-/tmp/}$(basename $0).XXXXXXXXXXXX")
+#timestamp=$(date "+%Y%m%d-%H%M%S%3N")
+#$tmpFile="$tmpDir/bsp-opacity$timestamp"
+
+desktop=$(wmctrl -d | rg "\*" | cut -d " " -f 1)
+windows=($(wmctrl -lp | grep -e " $desktop " | cut -d " " -f1))
+
+GetWindowTitles(){                        
+    xtitle "${windows[@]}"
+}
+
+opacity=$1
+
+case "$2"
+    in
+    "-s")
+        window=$(GetWindowTitles | rofi -p "Select a Window: " -dmenu); 
+        picom-trans -o $opacity -n "$window"
+        ;;
+
+    '')
+        for window in "${windows[@]}";
+        do
+            picom-trans -o $opacity -w "$window"
+            sleep .05
+        done
+esac

@@ -60,3 +60,4 @@ alias l='ls -CF'
 # -->>> Define Color Variables-->>>
 . ${HOME}/.scripts/colors/getcolors
 # <<<-- Define Color Variables <<<--
+

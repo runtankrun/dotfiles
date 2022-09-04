@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+i=1                                                               
+top(){
+        (cat "${C_BDFR}"/topmodels.csv | sort | uniq)
+}
+
+model=($(top))
+while [[ $i -le 1 ]];
+do
+
+        bspc rule -a Rofi:rofi -o node=@^2:^1:/2/2/2/2 state=tiled
+        selection=$(echo "${model[@]}" | sd ' ' '\n'  | rofi -dmenu -normal-window)
+
+        nohup mpv $(fd "$selection" --full-path "${C_BDFR}"/search --extension=mp4) &
+        sleep .5
+
+done

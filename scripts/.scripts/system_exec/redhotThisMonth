@@ -1,0 +1,51 @@
+#!/usr/bin/env sh
+
+redhotTimeFilter(){   
+
+    currentMonth=$(date +%m)
+    lastMonth=$(echo "0$(bc <<<$currentMonth-01)")
+    day=$(date +%d)
+
+    sub="$1"
+
+    cat "${C_BDFR}/RH.csv" |\
+    rg "2022-$month" |\
+    rg "$sub" |\
+    rg -o ".*mp4"
+ 
+}
+
+getRandomTopFifty(){
+
+    if [[ ! -f $C_BDFR/month.txt ]]; then
+        subs=($(find "$C_BDFR"/fav/ -maxdepth 1 | cut -d "/" -f 8))
+        for s in "${subs[@]}";
+        do
+            cat $C_BDFR/RH.csv | grep -e "$s" | csvsort -c 2 -r | csvcut -c 1 | head -n 50 | tail $C_BDFR/month.txt
+        done
+    fi
+    
+    nohup mpv $(cat $C_BDFR/month.txt) &> /tmp/month.txt.out &!
+
+}
+
+case $1 in
+
+    '-b')
+    
+        nohup mpv $(redhotTimeFilter $2) &> /tmp/RH.out &!
+    
+    ;;
+
+    "")
+    
+        getRandomTopFifty 
+    
+    ;;
+
+    '-a')
+        
+        nohup mpv $(redhotTimeFilter $2) &> /tmp/RH.out &!
+        getRandomTopFifty
+
+esac

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+dir="${HOME}/.config/rofi/applets"
+type=$(find $dir -iname "type-*" | shuf | tail -n 1)
+newline=$(echo "type='$type'")
+
+sed -i "s|type.*|${newline}|" $dir/shared/theme.bash
+find $dir/bin -type f | shuf | tail -n 1 | sh
