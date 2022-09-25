@@ -167,7 +167,8 @@ badd +1 .config/ranger/rc.conf
 badd +1 .config/sxhkd/sxhkdrc
 badd +1 .vimrc
 badd +1 .config/zsh/.zshrc
-badd +0 ~/.config/zsh/aliases.zsh
+badd +1 ~/.config/zsh/aliases.zsh
+badd +0 ~/.librewolf/wcmmxw7s.default-release/startpage/index.html
 argglobal
 %argdel
 $argadd .config/zsh/alias.zsh
@@ -197,148 +198,6 @@ tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit ~/.config/zsh/aliases.zsh
-argglobal
-if bufexists(fnamemodify("~/.config/zsh/aliases.zsh", ":p")) | buffer ~/.config/zsh/aliases.zsh | else | edit ~/.config/zsh/aliases.zsh | endif
-balt .config/zsh/alias.zsh
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinscopedecls=public,protected,private
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=:#
-setlocal commentstring=#\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=inc
-setlocal conceallevel=2
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=%f:\ line\ %l:\ %m,%-G%.%#
-setlocal expandtab
-if &filetype != 'zsh'
-setlocal filetype=zsh
-endif
-setlocal fillchars=
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=GetShIndent()
-setlocal indentkeys=0{,0},0),0],!^F,o,O,e,0=then,0=do,0=else,0=elif,0=fi,0=esac,0=done,0=end,),0=;;,0=;&,0=fin,0=fil,0=fip,0=fir,0=fix
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=:RunHelp
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=zsh\ -n\ --\ %:S
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'zsh'
-setlocal syntax=zsh
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal thesaurusfunc=
-setlocal undofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-set nowrap
-setlocal nowrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 35) / 71)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 1
-normal! 0
-tabnext
 edit .config/zsh/env.zsh
 argglobal
 2argu
@@ -924,8 +783,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 69 + 69) / 139)
-exe 'vert 2resize ' . ((&columns * 69 + 69) / 139)
+exe 'vert 1resize ' . ((&columns * 118 + 69) / 139)
+exe 'vert 2resize ' . ((&columns * 20 + 69) / 139)
 argglobal
 6argu
 if bufexists(fnamemodify(".config/zsh/.zshrc", ":p")) | buffer .config/zsh/.zshrc | else | edit .config/zsh/.zshrc | endif
@@ -1209,8 +1068,8 @@ normal! zt
 keepjumps 9
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 69 + 69) / 139)
-exe 'vert 2resize ' . ((&columns * 69 + 69) / 139)
+exe 'vert 1resize ' . ((&columns * 118 + 69) / 139)
+exe 'vert 2resize ' . ((&columns * 20 + 69) / 139)
 tabnext
 edit .config/zsh/theme.zsh
 argglobal
@@ -1947,14 +1806,14 @@ vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*end\(f\%[u
 nnoremap <buffer> <silent> ][ m':call search('^\s*end\(f\%[unction]\|def\)\>', "W")
 vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*\(fu\%[nction]\|def\)\>', "W")
 nnoremap <buffer> <silent> ]] m':call search('^\s*\(fu\%[nction]\|def\)\>', "W")
-nmap <buffer> gd <Plug>(lsp-definition)
-nmap <buffer> gs <Plug>(lsp-document-symbol-search)
-nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
-nmap <buffer> gr <Plug>(lsp-references)
-nmap <buffer> gi <Plug>(lsp-implementation)
 nmap <buffer> gt <Plug>(lsp-type-definition)
-nnoremap <buffer> <expr> <C-F> lsp#scroll(+4)
+nmap <buffer> gi <Plug>(lsp-implementation)
+nmap <buffer> gr <Plug>(lsp-references)
+nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
+nmap <buffer> gs <Plug>(lsp-document-symbol-search)
+nmap <buffer> gd <Plug>(lsp-definition)
 nnoremap <buffer> <expr> <C-D> lsp#scroll(-4)
+nnoremap <buffer> <expr> <C-F> lsp#scroll(+4)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -2094,7 +1953,167 @@ keepjumps exe s:l
 normal! zt
 keepjumps 127
 normal! 022|
-tabnext 1
+tabnext
+edit ~/.librewolf/wcmmxw7s.default-release/startpage/index.html
+argglobal
+if bufexists(fnamemodify("~/.librewolf/wcmmxw7s.default-release/startpage/index.html", ":p")) | buffer ~/.librewolf/wcmmxw7s.default-release/startpage/index.html | else | edit ~/.librewolf/wcmmxw7s.default-release/startpage/index.html | endif
+balt .vimrc
+nnoremap <buffer> <expr>  lsp#scroll(-4)
+nnoremap <buffer> <expr>  lsp#scroll(+4)
+let s:cpo_save=&cpo
+set cpo&vim
+nmap <buffer> K <Plug>(lsp-hover)
+nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
+nmap <buffer> \rn <Plug>(lsp-rename)
+nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+nmap <buffer> gt <Plug>(lsp-type-definition)
+nmap <buffer> gi <Plug>(lsp-implementation)
+nmap <buffer> gr <Plug>(lsp-references)
+nmap <buffer> gS <Plug>(lsp-workspace-symbol-search)
+nmap <buffer> gs <Plug>(lsp-document-symbol-search)
+nmap <buffer> gd <Plug>(lsp-definition)
+nnoremap <buffer> <expr> <C-D> lsp#scroll(-4)
+nnoremap <buffer> <expr> <C-F> lsp#scroll(+4)
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+setlocal commentstring=<!--%s-->
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=inc
+setlocal conceallevel=2
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'html'
+setlocal filetype=html
+endif
+setlocal fillchars=
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=HtmlIndent()
+setlocal indentkeys=o,O,<Return>,<>>,{,},!^F
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=lsp#complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=yes
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal spelloptions=
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'html'
+setlocal syntax=html
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=lsp#tagfunc
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal undofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+set nowrap
+setlocal nowrap
+setlocal wrapmargin=0
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 35) / 71)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+tabnext 12
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf

@@ -2,18 +2,24 @@
 
 dir="${C_BDFR}/search"      
 tmp="${C_TMP}"/rh_search.csv
+cache="${C_TMP}"/rh_gum-cache.txt
+
 echo '' > $tmp
 cd "${dir}"
 
 for f in $(ls $dir);
 do
-        echo "$(ls $dir/$f | wc -l)-$f" >> $tmp
+    echo "$(ls $dir/$f | wc -l)-$f" >> $tmp
 done
 
 select=$(gum choose --no-limit --height=40 \
     $(cat $tmp | sort -n -r))
+
 models=($(echo "$select" | cut -d '-' -f 2))
+
 for m in "${models[@]}"; do
         vids+=$(fd . --full-path --extension mp4 "${C_BDFR}/search/$m/")
 done
+
+echo "${models[@]}" > $cache
 nohup mpv --playlist-start=0 $(echo "${vids[@]}") &> /"${C_TMP}"/gum.txt &!

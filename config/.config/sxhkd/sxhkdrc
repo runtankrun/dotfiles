@@ -226,9 +226,9 @@ super + d
     #. ${HOME}/.config/rofi/launchers/colorful/launcher.sh
     
 Menu
+    rofi -config ~/.config/rofi/launchers/type-5/style-5.rasi -show run
     #rofi -show run
-    c-rofi
-
+    
 ctrl + Menu
     rofi-pass
 

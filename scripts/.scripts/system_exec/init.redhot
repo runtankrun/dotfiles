@@ -1,38 +1,38 @@
 #!/usr/bin/env sh
 
-closeTerm(){
+RHCloseTerm(){
     xdotool windowclose $window 
 }
 
-QueryAllFiles(){
-    echo "path,score,time" > $dir/tmp.csv
-    fd --full-path "$dir" --extension=mp4 $dir/fav -x \
-    jq --arg e {} -r '. |= . + {"$e": "$e"} | [$e, .score, .created_utc] | @csv' {.}.json 2>/dev/null | tee --append $dir/tmp.csv
+RHQueryAllFiles(){
+    echo "path,score,time" > "${C_BDFR}"/tmp.csv
+    fd --full-path "${C_BDFR}" --extension=mp4 ${C_BDFR}/fav -x \
+    jq --arg e {} -r '. |= . + {"$e": "$e"} | [$e, .score, .created_utc] | @csv' {.}.json 2>/dev/null | tee --append ${C_BDFR}/tmp.csv
     
     # append human readable date
-    echo "hrTime" > $dir/dates.csv             
+    echo "hrTime" > ${C_BDFR}/dates.csv             
     while IFS= read -r line;
     do
         date +%Y%m%dT%H%M%S --date=@$line
-    done < <((cat $dir/tmp.csv|cut -d "," -f 3)) >> $dir/dates.csv
+    done < <((cat ${C_BDFR}/tmp.csv|cut -d "," -f 3)) >> ${C_BDFR}/dates.csv
 
-    cat "$dir/dates.csv" | csvjoin "$dir/tmp.csv" - > $dir/RH.csv
-    sed 's/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9],//g' -i $dir/RH.csv
-    rm $dir/tmp.csv
-    cat $dir/RH.csv
+    cat "${C_BDFR}/dates.csv" | csvjoin "${C_BDFR}/tmp.csv" - > ${C_BDFR}/RH.csv
+    sed 's/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9],//g' -i ${C_BDFR}/RH.csv
+    rm ${C_BDFR}/tmp.csv
+    cat ${C_BDFR}/RH.csv
 }
 
-QuerySub(){
+RHQuerySub(){
         sub=$1
         sort=$2
-        csvgrep -c 1 -r ".$sub" $dir/RH.csv | csvsort -c "$sort" -r | csvcut -c 1
+        csvgrep -c 1 -r ".$sub" ${C_BDFR}/RH.csv | csvsort -c "$sort" -r | csvcut -c 1
 }
 
-download(){
+RHDownload(){
     time='all'
     srt='top'
     subreddit=$1
-    python3 -m bdfr clone $dir/fav \
+    python3 -m bdfr clone ${C_BDFR}/fav \
     -s "$subreddit" \
     -t $time \
     -S $srt \
@@ -41,10 +41,10 @@ download(){
     --no-dupes
 }
 
-search(){
+RHsearch(){
         folder="$(echo "$query" | sed 's/ //g')"
 
-        python3 -m bdfr clone $dir/search/$folder \
+        python3 -m bdfr clone ${C_BDFR}/search/$folder \
         --subreddit "all" \
         --sort "top" \
         --time "all" \
@@ -54,12 +54,12 @@ search(){
         --search "'$query'" 
 }
 
-searchLocal(){
-    fd --search-path $dir/fav --extension json $1 -x cat {} | jq
+RHSearchLocal(){
+    fd --search-path ${C_BDFR}/fav --extension json $1 -x cat {} | jq
 }
 
 
-Get_MPV_Post_Info(){
+RHGetMPVPostInfo(){
     
     ShowMPVProperties(){
         for i in $(ls /tmp/mpvSockets/*); do
@@ -76,28 +76,34 @@ Get_MPV_Post_Info(){
 
 }
 
-RH_MPV_Notify(){
+RHMPVNotify(){
     notify-send.sh $(jq -r .title $(Get_MPV_Post_Info)) 
     notify-send.sh $(jq -r '.comments[0].subreddit' $(Get_MPV_Post_Info))
     notify-send.sh $(jq -r .score $(Get_MPV_Post_Info))
 }
 
-getRandomTopFifty(){
+RHgetTopFifty(){
+    monthFile="$C_BDFR/month.txt"        
+   
+    get_TopFiftyFromSubs(){
+       subs=($(find "$C_BDFR"/fav/ -maxdepth 1 | cut -d "/" -f 8))
+       for s in "${subs[@]}";
+       do                                                                                          
+           cat $C_BDFR/RH.csv | grep -e "$s" | csvsort -c 2 -r | csvcut -c 1 | head -n 50 | tee -a "$monthFile"
+       done                                                       
+    }
 
-    #if [[ ! -f $C_BDFR/month.txt ]]; then
-        rm "${C_BDFR}"/month.txt 
-        subs=($(find "$C_BDFR"/fav/ -maxdepth 1 | cut -d "/" -f 8))
-        for s in "${subs[@]}";
-        do
-            cat $C_BDFR/RH.csv | grep -e "$s" | csvsort -c 2 -r | csvcut -c 1 | head -n 50 | tee -a $C_BDFR/month.txt
-        done
-    #fi
-    
-    nohup mpv $(cat $C_BDFR/month.txt) &> month.txt.out &!
+    if [[ ! -f "$monthFile" ]]; then
+        echo "$monthFile does not Exist, generating new Month file"                                                
+        sleep 2
+        get_TopFiftyFromSubs
+                        
+    fi                                                         
 
+    nohup mpv $(cat "$monthFile") &> /tmp/month.txt.out &!
 }
 
-Generate_Model_List(){
+RHGenerate_Model_List(){
 
     fd . --full-path --extension=json $C_BDFR/fav/BoutinelaBabes -X \
         jq -s '[ .[] | {score: .score, title: .title} ] | sort_by(.score)' | \
@@ -110,9 +116,9 @@ Generate_Model_List(){
 
 }
 
-Read_Model_List(){
+RHRead_Model_List(){
     
-    models=($(Generate_Model_List))
+    models=($($RHGenerate_Model_List))
 
     while PS1= read -r line;
     do
@@ -123,7 +129,7 @@ Read_Model_List(){
 
 }
 
-get_RedHotJson(){
+RHget_RedHotJson(){
     
     cd "${C_BDFR}"
     search=("${@}")
@@ -134,7 +140,7 @@ get_RedHotJson(){
  
 }
 
-redhotInfo(){
+RHredhotInfo(){
     eval $(C_TMP)
     i=1
 
@@ -156,3 +162,49 @@ redhotInfo(){
     done
 }
 
+redhotTimeFilter(){   
+
+    currentMonth=$(date +%m)
+    lastMonth=$(echo "0$(bc <<<$currentMonth-01)")
+    day=$(date +%d)
+
+    sub="$1"
+
+    cat "${C_BDFR}/RH.csv" |\
+    rg "2022-$month" |\
+    rg "$sub" |\
+    rg -o ".*mp4"
+ 
+}
+
+getTopAllSubs(){                           
+
+    cachePath="${C_BDFR}/cache"
+    subs=($(find "$C_BDFR"/fav/ -maxdepth 1 | cut -d "/" -f 8))
+    limit=$1
+    collection=()
+
+    for s in "${subs[@]}";
+    do
+        cacheName="top$limit-byMonth-$s.txt"
+        output="$cachePath/$cacheName"
+        if [[ ! -f "$output" ]]; then
+            cat $C_BDFR/RH.csv | grep -e "$s" | \
+                csvsort -c 2 -r | csvcut -c 1 | \
+                head -n $limit | \
+                tee $output
+        fi
+        collection+="$output"
+    done
+
+    if [[ $2 = '--play' ]]; then
+        folders=($(find "${C_BDFR}/fav" -type d | cut -d '/' -f 8))
+        selection=$(gum choose $folders)
+        playlist="$cachePath/top50-byMonth-$selection.txt"
+        nohup mpv \
+            --playlist="$playlist" \
+            --playlist-start=0 \
+            &> "${C_TMP}"/mpv.out &!
+    fi
+
+}

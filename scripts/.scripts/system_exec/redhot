@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
-dir="/run/media/ellio/T7/bdfr"
-cd $dir
+cd ${C_BDFR}
 
 source ~/.scripts/system_exec/init.redhot 
 
@@ -11,35 +10,35 @@ conda activate bdfr
 
 case $1 in
     '')
-        sub=$(ls $dir/fav | rofi -dmenu)
-        srt=$(cat $dir/srt | rofi -dmenu)
+        sub=$(ls ${C_BDFR}/fav | rofi -dmenu)
+        srt=$(cat ${C_BDFR}/srt | rofi -dmenu)
         redhot -s $sub $srt
     ;;
 
     "-r"| "--refresh")
-        QueryAllFiles 
+        RHQueryAllFiles 
     ;;
 
     "-d" | "--download")
-        download $2
+        RHdownload $2
     ;;
     
     "-S" | "--search")
         query="$2"
-        search
+        RHsearch
     ;;
 
     "-sl" | "--search-local")
-        searchLocal $2
+        RHsearchLocal $2
     ;;
 
     "-s" | "--select")
-        nohup mpv --playlist-start=0 $(QuerySub "$2" "$3")
-        sleep 1s; closeTerm
+        nohup mpv --playlist-start=0 $(RHQuerySub "$2" "$3")
+        sleep 1s; RHCloseTerm
     ;;
 
     "-n" | "--notify")
-        RH_MPV_Notify
+        RHMPVNotify
     ;;
 esac
 
