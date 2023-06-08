@@ -26,12 +26,9 @@ get-clipboard(){
 
 
 getRandomTheme(){
-
-    font=$(find .fonts/misc/figlet | shuf | tail -n1)
     theme=$(find "$ZDOTDIR"/prompts | shuf | tail -n1)
 
-    echo -n \n\n
-    figlet -f $font "$theme"
+    echo -n "\n\n$theme"
     
     source "$theme"
     

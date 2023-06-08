@@ -65,7 +65,7 @@ alias dff='sudo rm -rf /usr/lib/firefox_old; rm -rf ~/Downloads/firefox*'
 
 ##feh image
 alias feh='feh --scale-down --auto-zoom'
-alias feh-ss='nohup feh -Z -. -D 3'
+alias feh-ss='nohup feh -Z -. -D 5'
 
 ##Colors
 alias col='cb-small; colorpanes; colorline && hex && hex-block && colortest && colorblocks && colorbars'
@@ -135,3 +135,4 @@ alias git-shrink='git repack -a -d --depth=250 --window=250'
 alias chpr='PURE_PROMPT_SYMBOL="(☞ﾟヮﾟ)☞"'
 alias rz='source "$ZDOTDIR"/.zshrc'
 alias gs='find "${HOME}"/.scripts -iname "$1"'
+alias gcb='xclip -out secondary'

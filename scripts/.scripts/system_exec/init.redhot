@@ -179,31 +179,41 @@ redhotTimeFilter(){
 
 getTopAllSubs(){                           
 
-    cachePath="${C_BDFR}/cache"
-    subs=($(find "$C_BDFR"/fav/ -maxdepth 1 | cut -d "/" -f 8))
     limit=$1
+    cachePath="${C_BDFR}/cache"
+    cachePrefix="top$limit"
+    playlist=$cachePath/$cachePrefix
+
+    subs=($(find "$C_BDFR"/fav/ -maxdepth 1 | cut -d "/" -f 8))
     collection=()
+
+    returnSelectedVideos(){
+
+        folders=($(find "${C_BDFR}/fav" -type d | cut -d '/' -f 8))
+        selection=($(gum choose --no-limit $folders))
+       
+        for file in "${selection[@]}"; do
+            cat "$playlist-$file.txt"
+        done  
+    
+    }
 
     for s in "${subs[@]}";
     do
-        cacheName="top$limit-byMonth-$s.txt"
-        output="$cachePath/$cacheName"
+        output="$playlist-$s.txt"
         if [[ ! -f "$output" ]]; then
-            cat $C_BDFR/RH.csv | grep -e "$s" | \
+            cat "$C_BDFR/RH.csv" | grep -e "$s" | \
                 csvsort -c 2 -r | csvcut -c 1 | \
-                head -n $limit | \
-                tee $output
+                head -n "$limit" | \
+                tee "$output"
         fi
         collection+="$output"
     done
 
     if [[ $2 = '--play' ]]; then
-        folders=($(find "${C_BDFR}/fav" -type d | cut -d '/' -f 8))
-        selection=$(gum choose $folders)
-        playlist="$cachePath/top50-byMonth-$selection.txt"
         nohup mpv \
-            --playlist="$playlist" \
             --playlist-start=0 \
+            $(returnSelectedVideos) \
             &> "${C_TMP}"/mpv.out &!
     fi
 

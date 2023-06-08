@@ -68,6 +68,5 @@ bspc rule -a eDEX-UI:edex-ui -o state=fullscreen
 force-composition-pipeline &
 r-wal -b
 input-remapper-control --command autoload &
-pro &
+urxvtc -e sh -c "mountDrives; sudo protonvpn connect -f"
 layout-case -gif
-

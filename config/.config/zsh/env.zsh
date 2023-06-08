@@ -1,12 +1,14 @@
 #!/usr/bin/env zsh
 
 ##Personal
+
 export C_HOME="${HOME}"/.scripts
 export C_TMP="${C_HOME}"/tmp
 export C_PATH="${C_HOME}"/bin
 export C_CONFIG="${C_HOME}"/config
 export C_DATA="${C_HOME}"/etc
 export C_BDFR="/run/media/ellio/T7/bdfr"
+export MPV_SOCKET_DIR="$HOME/Videos/MPV_Socket    "
 
 ##ZSH
 
@@ -20,6 +22,17 @@ export TERMINAL="kitty"
 export BROWSER="librewolf"
 export VISUAL="vim"
 export EDITOR="vim"
+
+# CUDA
+#export PATH="/opt/cuda/bin:$PATH"
+#export LD_LIBRARY_PATH="/opt/cuda/lib64:$LD_LIBRARY_PATH"
+
+# Hugging Face
+export TRANSFORMERS_CACHE='/mnt/PSSD/dev'
+export HF_HOME='/mnt/PSSD/dev/huggingface'
+
+# ElevenLabs
+export ELEVEN_API_KEY='9ee13b273d0a81ccf8bdff5ffa28e1f0'
 
 ##XDG
 

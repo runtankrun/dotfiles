@@ -1,0 +1,22 @@
+#!/bin/sh
+app=$(xdotool getwindowclassname $(xdotool getactivewindow) | tr '[:upper:]' '[:lower:]')
+
+home='file:///home/ellio/.librewolf/wcmmxw7s.default-release/startpage/index.html'
+reddit='https://www.reddit.com/login'
+yoututbe='https://youtube.com'
+url=$1
+
+case $1 in
+    '--home')
+        url=$home
+        ;;
+    '--reddit')
+        url=$reddit
+        ;;
+    '--youtube')
+        url=$youtube
+        ;;
+esac
+
+$app --new-tab $url
+

@@ -1,33 +1,35 @@
 #!/bin/sh
-if [[ $1 = "-p" ]]; then
-tag_count=$(grep -c ^x: ~/.config/ranger/tagged)
+case $1 in
+     "-p")
+        tag_count=$(grep -c ^x: ~/.config/ranger/tagged)
+        mpv $(cat ~/.config/ranger/tagged | grep -o -e "x:.*$" | sd 'x:' '')   
+        ;;
 
-mpv $(cat ~/.config/ranger/tagged | grep -o -e "x:.*$" | sd 'x:' '')   
+    "-vid")    
+        tag_count=$(grep -c ^v: ~/.config/ranger/tagged)
+        videos=($(cat ~/.config/ranger/tagged | grep -o -e "v:.*$" | sd 'v:' ''))
+        startindex=$(echo "$tag_count - 10" | bc)
+        mpv --playlist-start="$startindex" "${videos[@]}"
+        ;;
 
-elif [[ $1 = "-vid" ]]; then
-tag_count=$(grep -c ^v: ~/.config/ranger/tagged)
+    "-pic")
+        tag_count=$(grep -c ^p: ~/.config/ranger/tagged)
+        feh -Z -. $(cat ~/.config/ranger/tagged | grep -o -e "p:.*$" | sd 'p:' '')
+        ;;
 
-mpv $(cat ~/.config/ranger/tagged | grep -o -e "v:.*$" | sd 'v:' '')
+    "-ss")
+        tag_count=$(grep -c ^s: ~/.config/ranger/tagged)
+        feh -Z -. $(while IFS= read -r line
+        do 
+            echo "$line" | grep ^s: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+        done < ~/.config/ranger/tagged)
+        ;;
 
-elif [[ $1 = "-pic" ]]; then
-tag_count=$(grep -c ^p: ~/.config/ranger/tagged)
-
-feh -Z -. $(cat ~/.config/ranger/tagged | grep -o -e "p:.*$" | sd 'p:' '')
-
-elif [[ $1 = "-ss" ]]; then
-tag_count=$(grep -c ^s: ~/.config/ranger/tagged)
-
-feh -Z -. $(while IFS= read -r line
-do 
-    echo "$line" | grep ^s: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged)
-
-elif [[ $1 = "-wide-vid" ]]; then
-tag_count=$(grep -c ^w: ~/.config/ranger/tagged)
-
-mpv $(while IFS= read -r line
-do 
-    echo "$line" | grep ^w: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
-done < ~/.config/ranger/tagged)
-
-fi
+    "-wide-vid")
+        tag_count=$(grep -c ^w: ~/.config/ranger/tagged)
+        mpv $(while IFS= read -r line
+        do 
+            echo "$line" | grep ^w: | tail -n $tag_count | tail -c +3 | tr '\n' ' '
+        done < ~/.config/ranger/tagged)
+        ;;
+esac

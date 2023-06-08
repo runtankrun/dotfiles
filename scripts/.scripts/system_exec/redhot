@@ -1,11 +1,10 @@
 #!/usr/bin/env sh
 cd ${C_BDFR}
 
-source ~/.scripts/system_exec/init.redhot 
+source "${HOME}"/.scripts/system_exec/init.redhot
 
 # >>> conda initialize >>>
-source "${HOME}"/.conda/init
-conda activate bdfr
+source "${HOME}"/.venv/bin/activate
 # <<< conda initialize <<<
 
 case $1 in
